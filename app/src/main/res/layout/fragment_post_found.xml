@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.PostFoundFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Image Upload Section -->
+            <RelativeLayout
+                android:id="@+id/inputImage"
+                android:layout_width="375dp"
+                android:layout_height="240dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_input_image"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/bg_input_image_circle"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ico_add_photo"
+                        android:contentDescription="Image" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <!-- Section Title -->
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Other Information"
+                android:textSize="18sp"
+                style="@style/LabelStyle"
+                app:layout_constraintTop_toBottomOf="@+id/inputImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <!-- Divider -->
+            <View
+                android:id="@+id/divider"
+                android:layout_width="350dp"
+                android:layout_height="1.5dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <!-- Information Input -->
+            <EditText
+                android:id="@+id/inputInformation"
+                android:layout_width="375dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_input_edit_text"
+                android:gravity="top"
+                android:hint="All informations..."
+                android:inputType="textMultiLine"
+                android:lines="5"
+                android:padding="10dp"
+                android:scrollbarStyle="insideInset"
+                android:textSize="14sp"
+                android:overScrollMode="always"
+                android:autofillHints=""
+                app:layout_constraintTop_toBottomOf="@+id/divider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <!-- Location Label and Value -->
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:text="Location:"
+                android:textSize="14sp"
+                style="@style/LabelStyle"
+                app:layout_constraintTop_toBottomOf="@+id/inputInformation"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Royal Univerity of Phnom Penh"
+                android:textColor="#2196F3"
+                android:textSize="14sp"
+                android:drawableEnd="@drawable/ico_arrow_outward"
+                style="@style/LabelStyle"
+                app:layout_constraintTop_toBottomOf="@+id/inputInformation"
+                app:layout_constraintStart_toEndOf="@+id/tvLocation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <!-- Location Note -->
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="NOTE: Srroy, we currently availible in RUPP."
+                android:textColor="#FF0000"
+                android:textSize="10sp"
+                app:layout_constraintTop_toBottomOf="@+id/tvLocation"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <!-- Date and Time Section -->
+            <TextView
+                android:id="@+id/tvDateAndTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="Date and Time"
+                android:textSize="18sp"
+                style="@style/LabelStyle"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="350dp"
+                android:layout_height="1.5dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintTop_toBottomOf="@+id/tvDateAndTime"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/divider2">
+
+                <TextView
+                    android:id="@+id/tvSelectedDate"
+                    android:layout_width="185dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/bg_input_edit_text"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ico_calendar_month"
+                    android:drawablePadding="8dp"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:paddingHorizontal="10dp"
+                    android:text="Select Date"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvSelectedTime"
+                    android:layout_width="185dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_input_edit_text"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ico_timer"
+                    android:drawablePadding="8dp"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:paddingHorizontal="10dp"
+                    android:text="Select Time"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Contact Author Section -->
+            <TextView
+                android:id="@+id/tvContact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="Contact Author"
+                android:textSize="18sp"
+                style="@style/LabelStyle"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="350dp"
+                android:layout_height="1.5dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintTop_toBottomOf="@+id/tvContact"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="Email"
+                android:textSize="14sp"
+                style="@style/LabelStyle"
+                app:layout_constraintTop_toBottomOf="@+id/divider3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/editText"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="375dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_input_edit_text"
+                android:hint="Email Address"
+                android:paddingHorizontal="10dp"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/tvEmail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <TextView
+                android:id="@+id/tvPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:text="Phone Number"
+                android:textSize="14sp"
+                style="@style/LabelStyle"
+                app:layout_constraintTop_toBottomOf="@+id/editText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <EditText
+                android:id="@+id/editPhone"
+                android:layout_width="375dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_input_edit_text"
+                android:hint="Phone Number"
+                android:inputType="phone"
+                android:paddingHorizontal="10dp"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/tvPhone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:text="NOTE: Please use your real information."
+                android:textColor="#FF0000"
+                android:textSize="10sp"
+                app:layout_constraintTop_toBottomOf="@+id/editPhone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <!-- Submit Section -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCreate"
+                    android:layout_width="375dp"
+                    android:layout_height="65dp"
+                    android:enabled="false"
+                    android:text="Create"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:backgroundTint="#E1E1E1"
+                    app:cornerRadius="4dp" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxPolicy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="65dp"
+                    android:text="I agree to the policy"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</FrameLayout>

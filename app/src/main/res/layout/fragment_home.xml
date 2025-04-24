@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardLost"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_card_home">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="125dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/view_lost_png"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_marginStart="140dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/LabelStyle"
+                            android:textSize="16sp"
+                            android:text="Lost Items"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:layout_marginTop="10dp"
+                            android:text="View Lost Items"/>
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="145dp"
+                android:layout_height="36dp"
+                android:layout_alignBottom="@id/cardLost"
+                android:layout_alignEnd="@id/cardLost"
+                android:layout_marginBottom="-18dp"
+                android:layout_marginEnd="10dp"
+                android:paddingHorizontal="16dp"
+                android:gravity="center"
+                android:background="@drawable/bg_under_text_card_home"
+                android:text="View Items"
+                android:textColor="@color/white"
+                android:drawableEnd="@drawable/ico_arrow_forward"
+                android:drawablePadding="4dp"
+                android:textSize="14sp"
+                android:elevation="12dp"
+                android:translationZ="12dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardFound"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_card_home">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="125dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/view_found_png"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_marginStart="140dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/LabelStyle"
+                            android:textSize="16sp"
+                            android:text="Found Items"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:layout_marginTop="10dp"
+                            android:text="View Found Items"/>
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="145dp"
+                android:layout_height="36dp"
+                android:layout_alignBottom="@id/cardFound"
+                android:layout_alignEnd="@id/cardFound"
+                android:layout_marginBottom="-18dp"
+                android:layout_marginEnd="10dp"
+                android:paddingHorizontal="16dp"
+                android:gravity="center"
+                android:background="@drawable/bg_under_text_card_home"
+                android:text="View Items"
+                android:textColor="@color/white"
+                android:drawableEnd="@drawable/ico_arrow_forward"
+                android:drawablePadding="4dp"
+                android:textSize="14sp"
+                android:elevation="12dp"
+                android:translationZ="12dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardCreate"
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_card_home">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="12dp"
+                        android:src="@drawable/create_post"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_marginStart="140dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/LabelStyle"
+                            android:textSize="16sp"
+                            android:text="Create Post"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:layout_marginTop="10dp"
+                            android:text="Report lost or found."/>
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/view_items_button"
+                android:layout_width="145dp"
+                android:layout_height="36dp"
+                android:layout_alignBottom="@id/cardCreate"
+                android:layout_alignEnd="@id/cardCreate"
+                android:layout_marginBottom="-18dp"
+                android:layout_marginEnd="10dp"
+                android:paddingHorizontal="16dp"
+                android:gravity="center"
+                android:background="@drawable/bg_under_text_card_home"
+                android:text="Create Post"
+                android:textColor="@color/white"
+                android:drawableEnd="@drawable/ico_arrow_forward"
+                android:drawablePadding="4dp"
+                android:textSize="14sp"
+                android:elevation="12dp"
+                android:translationZ="12dp"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

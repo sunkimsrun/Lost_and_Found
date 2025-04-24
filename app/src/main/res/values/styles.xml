@@ -24,4 +24,20 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <!-- Style: Radio Button -->
+    <style name="RadioButtonStyle">
+        <item name="android:fontFamily">@font/adlam_display</item>
+        <item name="android:textColor">@color/radio_text_color</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">@drawable/radio_selector</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <!--  Style : Post Items -->
+    <style name="LabelStyle">
+        <item name="android:fontFamily">@font/adlam_display</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>

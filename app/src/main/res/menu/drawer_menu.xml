@@ -1,0 +1,42 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ico_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/nav_account"
+        android:icon="@drawable/ico_user"
+        android:title="Account" />
+
+    <item
+        android:id="@+id/nav_lost"
+        android:icon="@drawable/ico_lost"
+        android:title="View lose items" />
+
+    <item
+        android:id="@+id/nav_found"
+        android:icon="@drawable/ico_found"
+        android:title="View found items" />
+
+    <group android:id="@+id/group_privacy" android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_privacy"
+            android:icon="@drawable/ico_shield"
+            android:title="Privacy and Policy" />
+
+        <item
+            android:id="@+id/nav_contact"
+            android:icon="@drawable/ico_contact"
+            android:title="Contact Us" />
+    </group>
+
+    <group android:id="@+id/group_account" android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_signout"
+            android:icon="@drawable/ico_signout"
+            android:title="Sign Out" />
+    </group>
+
+</menu>

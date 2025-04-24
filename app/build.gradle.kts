@@ -5,9 +5,7 @@ plugins {
 android {
     namespace = "com.example.lost_and_found_app"
     compileSdk = 35
-    viewBinding{
-        enable = true
-    }
+    viewBinding.enable = true
 
     defaultConfig {
         applicationId = "com.example.lost_and_found_app"

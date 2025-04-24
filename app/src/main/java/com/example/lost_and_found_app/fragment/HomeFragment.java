@@ -1,0 +1,35 @@
+package com.example.lost_and_found_app.fragment;
+
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.example.lost_and_found_app.HomeActivity;
+import com.example.lost_and_found_app.databinding.FragmentHomeBinding;
+
+
+public class HomeFragment extends Fragment {
+
+    FragmentHomeBinding binding;
+    HomeActivity homeActivity;
+    public HomeFragment() {
+        // Required empty public constructor
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
+
+        binding.cardCreate.setOnClickListener(v -> {
+            HomeActivity homeActivity = (HomeActivity) getActivity();
+            homeActivity.LoadFragment(new PostItemFragment());
+        });
+
+        return binding.getRoot();
+    }
+}
