@@ -5,10 +5,13 @@ plugins {
 android {
     namespace = "com.example.lost_and_found_app"
     compileSdk = 35
+    viewBinding{
+        enable = true
+    }
 
     defaultConfig {
         applicationId = "com.example.lost_and_found_app"
-        minSdk = 24
+        minSdk = 35
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
