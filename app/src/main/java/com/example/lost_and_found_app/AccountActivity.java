@@ -8,10 +8,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.example.lostandfound.fragment.AccountInformationFragment;
-import com.example.lostandfound.fragment.ChangePasswordFragment;
-import com.example.lostandfound.fragment.ManagePostFragment;
-import com.example.lostandfound.model.User;
+import com.example.lost_and_found_app.fragment.AccountInformationFragment;
+import com.example.lost_and_found_app.fragment.ChangePasswordFragment;
+import com.example.lost_and_found_app.fragment.ManagePostFragment;
+import com.example.lost_and_found_app.model.User;
 
 public class AccountActivity extends AppCompatActivity {
 

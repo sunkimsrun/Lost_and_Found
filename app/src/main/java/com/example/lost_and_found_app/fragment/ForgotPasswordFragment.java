@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.lostandfound.R;
+import com.example.lost_and_found_app.R;
 
 public class ForgotPasswordFragment extends Fragment {
 

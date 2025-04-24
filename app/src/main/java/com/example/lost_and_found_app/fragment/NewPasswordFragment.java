@@ -14,8 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.lostandfound.R;
-import com.example.lostandfound.model.User;
+import com.example.lost_and_found_app.R;
+import com.example.lost_and_found_app.model.User;
 
 public class NewPasswordFragment extends Fragment {
 

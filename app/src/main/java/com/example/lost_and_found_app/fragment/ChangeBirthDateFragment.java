@@ -16,8 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.lostandfound.R;
-import com.example.lostandfound.model.User;
+import com.example.lost_and_found_app.R;
+import com.example.lost_and_found_app.model.User;
 
 import java.util.Calendar;
 
@@ -71,8 +71,8 @@ public class ChangeBirthDateFragment extends Fragment {
                 User.currentUser.dob = selectedDate;
                 Toast.makeText(getContext(), "Updated successfully", Toast.LENGTH_SHORT).show();
 
-                if (getActivity() instanceof com.example.lostandfound.AccountActivity) {
-                    ((com.example.lostandfound.AccountActivity) getActivity()).updateUserDisplay();
+                if (getActivity() instanceof com.example.lost_and_found_app.AccountActivity) {
+                    ((com.example.lost_and_found_app.AccountActivity) getActivity()).updateUserDisplay();
                 }
 
                 Fragment parent = getParentFragment();

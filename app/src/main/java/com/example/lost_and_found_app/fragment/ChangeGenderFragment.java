@@ -15,8 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.lostandfound.R;
-import com.example.lostandfound.model.User;
+import com.example.lost_and_found_app.R;
+import com.example.lost_and_found_app.model.User;
 
 public class ChangeGenderFragment extends Fragment {
 
@@ -90,8 +90,8 @@ public class ChangeGenderFragment extends Fragment {
         User.currentUser.gender = chosenGender;
         Toast.makeText(getContext(), "Updated successfully", Toast.LENGTH_SHORT).show();
 
-        if (getActivity() instanceof com.example.lostandfound.AccountActivity) {
-            ((com.example.lostandfound.AccountActivity) getActivity()).updateUserDisplay();
+        if (getActivity() instanceof com.example.lost_and_found_app.AccountActivity) {
+            ((com.example.lost_and_found_app.AccountActivity) getActivity()).updateUserDisplay();
         }
 
         Fragment parent = getParentFragment();

@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.lostandfound.R;
+import com.example.lost_and_found_app.R;
 
 public class ManagePostFragment extends Fragment {
 
