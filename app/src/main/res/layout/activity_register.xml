@@ -24,7 +24,7 @@
         android:id="@+id/create_an_account"
         android:layout_width="185dp"
         android:layout_height="83dp"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="@font/adlam_display"
         android:gravity="top"
         android:lineSpacingExtra="-1sp"
         android:text="@string/create_an_account"

@@ -23,7 +23,7 @@
             style="@style/LabelStyle"
             android:textAlignment="center"
             android:textSize="46sp"
-            android:textColor="@color/blue_500"
+            android:textColor="@color/blue"
             android:text="Successfully!!"/>
     </LinearLayout>
 

@@ -123,7 +123,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/gender"
-            android:text="@string/gender"
+            android:text="@string/selected_gender"
             android:textAppearance="@style/edit_label"
             android:layout_centerVertical="true"
             android:translationX="60dp"/>

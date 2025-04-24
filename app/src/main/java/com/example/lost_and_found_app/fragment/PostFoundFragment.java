@@ -43,7 +43,7 @@ public class PostFoundFragment extends Fragment {
         binding.checkBoxPolicy.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 binding.btnCreate.setEnabled(true);
-                binding.btnCreate.setBackgroundColor(getResources().getColor(R.color.blue_500));
+                binding.btnCreate.setBackgroundColor(getResources().getColor(R.color.blue));
             } else {
                 binding.btnCreate.setEnabled(false);
                 binding.btnCreate.setBackgroundColor(getResources().getColor(R.color.gray));
