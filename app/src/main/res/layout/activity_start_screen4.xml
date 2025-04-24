@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.034" />
 
     <TextView
-        android:id="@+id/textView2"
+            android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/skip"
@@ -110,19 +110,19 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/bg_blue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/todo"
-                app:srcCompat="@drawable/blue_dot" />
-
-            <ImageView
                 android:id="@+id/bg_dot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
                 android:contentDescription="@string/todo"
                 app:srcCompat="@drawable/gray_dot" />
+
+            <ImageView
+                android:id="@+id/bg_blue"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/todo"
+                app:srcCompat="@drawable/blue_dot" />
 
             <ImageView
                 android:id="@+id/bg_dot2"

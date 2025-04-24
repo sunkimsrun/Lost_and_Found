@@ -66,7 +66,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="12dp"
             android:layout_toEndOf="@id/user_toggle"
-            android:autofillHints="todo"
+            android:autofillHints="username"
             android:background="@null"
             android:hint="@string/username_auth1"
             android:inputType="textNoSuggestions"
@@ -130,7 +130,7 @@
 
     <TextView
         android:id="@+id/forgot_pass"
-        android:layout_width="102dp"
+        android:layout_width="wrap_content"
         android:layout_height="15dp"
         android:layout_marginTop="12dp"
         android:fontFamily="sans-serif-thin"

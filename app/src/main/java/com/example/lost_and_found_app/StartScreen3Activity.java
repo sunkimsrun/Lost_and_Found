@@ -1,24 +1,33 @@
 package com.example.lost_and_found_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.example.lost_and_found_app.databinding.ActivityStartScreen3Binding;
 
 public class StartScreen3Activity extends AppCompatActivity {
 
+    ActivityStartScreen3Binding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_start_screen3);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        binding = ActivityStartScreen3Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        binding.textView3.setOnClickListener(view -> {
+            Intent intent = new Intent(StartScreen3Activity.this, StartScreen4Activity.class);
+            startActivity(intent);
         });
+
+        binding.textView2.setOnClickListener(view -> {
+            Intent intent = new Intent(StartScreen3Activity.this, LoginActivity.class);
+            startActivity(intent);
+        });
+
+        }
     }
-}

@@ -31,7 +31,7 @@
             android:name=".CreateNewPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".forgetPasswordActivity"
+            android:name=".ForgetPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".changedPasswordActivity"
@@ -40,13 +40,13 @@
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".Register"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
+            android:name=".RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".AccountActivity"

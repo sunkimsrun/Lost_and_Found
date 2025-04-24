@@ -1,24 +1,39 @@
 package com.example.lost_and_found_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.example.lost_and_found_app.databinding.ActivityStartScreen4Binding;
 
 public class StartScreen4Activity extends AppCompatActivity {
+
+    ActivityStartScreen4Binding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_start_screen4);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        binding = ActivityStartScreen4Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        binding.textView3.setOnClickListener(view -> {
+            Intent intent = new Intent(StartScreen4Activity.this, LoginActivity.class);
+            startActivity(intent);
         });
+
+        binding.textView3.setOnClickListener(view -> {
+            Intent intent = new Intent(StartScreen4Activity.this, StartScreen5Activity.class);
+            startActivity(intent);
+        });
+
+        binding.prev.setOnClickListener(view -> {
+            Intent intent = new Intent(StartScreen4Activity.this, StartScreen3Activity.class);
+            startActivity(intent);
+        });
+
     }
 }

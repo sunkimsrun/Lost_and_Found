@@ -32,7 +32,7 @@
         <string name="explore_start_screen5">explore</string>
         <string name="bg_explore_start_screen5">Explore</string>
         <string name="explore_something">Browse through reported lost and found items, connect with users, and help reunite lost belongings with their owners.</string>
-        <string name="get_started">Get_Started</string>
+        <string name="get_started">Get Started</string>
 
         <!--    login-->
         <string name="skip_for_now">Skip for now!</string>
@@ -46,7 +46,7 @@
         <string name="create_an_a">Create An Account</string>
         <string name="sign_up">Sign Up</string>
         <string name="create_an_account">Create an Account!</string>
-        <string name="sign_up_des">By clicking the Register button, you agree to the public offer</string>
+        <string name="sign_up_des">By clicking the <font color="#FF0000">Register</font> button, you agree to\nthe public offer</string>
         <string name="complete">Complete\n</string>
         <string name="complete_your_profile">Complete\nYour Profile!</string>
         <string name="don_t_worry">Don’t worry, we not selling your data.</string>

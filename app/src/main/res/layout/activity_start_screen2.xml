@@ -66,6 +66,7 @@
             app:layout_constraintTop_toBottomOf="@id/languageText">
 
             <RelativeLayout
+                android:id="@+id/selected_english"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/bg_gray">
