@@ -1,39 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <resources>
-        <string name="app_name">Lost and Found</string>
-        <string name="username">Sok Sochetra</string>
-        <string name="account_inf">Account Information</string>
-        <string name="manage_post">Manage Post</string>
-        <string name="change_password">Change Password</string>
-        <string name="hello_blank_fragment">Hello blank fragment</string>
-        <string name="your_post">Your Post</string>
-        <string name="not_found">Not Found</string>
-        <string name="back">Back</string>
-        <string name="enter_password_to_confirm">Enter Password to Confirm</string>
-        <string name="dob">12 - 10 - 2004</string>
-        <string name="confirm_changes">Confirm Changes</string>
-        <string name="change_username">Change Username</string>
-        <string name="enter_new_username">Enter new username</string>
-        <string name="enter_new_email_address">Enter new email address</string>
-        <string name="gmail">traialetralala@gmail.com</string>
-        <string name="gender">Male</string>
-        <string name="change_gender">Change Gender</string>
-        <string name="change_email">Change Email</string>
-        <string name="change_birth_date">Change Birth Date</string>
-        <string name="change_phone_number">Change Phone Number</string>
-        <string name="reset_password">Reset Password</string>
-        <string name="confirm_new_password">Confirm New Password</string>
-        <string name="current_password">Current Password</string>
-        <string name="new_password">New Password</string>
-        <string name="confirm_password">Confirm Password</string>
-        <string name="forgot_pass">Forgot Password?</string>
-        <string name="reset_passw">Reset Password</string>
-        <string name="we_will_sen">* We will send you a message to set or reset your new password</string>
-        <string name="resend_code">Resend code in</string>
+        <!--    activity_main-->
+        <string name="app_name">lost_and_found_app</string>
+        <string name="logo">logo</string>
+
+        <!--    start_screen2-->
+        <string name="earth">Earth</string>
+        <string name="flag">Flag</string>
+        <string name="choose_your_language">Choose your Language</string>
+        <string name="english">English</string>
+        <string name="united_kingdom">United Kingdom</string>
         <string name="next">Next</string>
-        <string name="enter_new_phone_number">Enter new phone number</string>
-        <string name="post_name">My Girlfriend</string>
-        <string name="post_description">"I lost my girlfriend at RUPP around 2 PM today. Last seen near RUPP. If found, please return her to me Tra. "</string>
+
+        <!--    start_screen3-->
+        <string name="some_id">1/3</string>
+        <string name="skip">skip</string>
+        <string name="report_lose">Report Lost Items</string>
+        <string name="lost_something">Lost something valuable? Submit details about your lost item, including descriptions and location, to help others identify and return it.</string>
+        <string name="prev">Prev</string>
+        <string name="lost_found">lost_found</string>
+        <string name="todo">TODO</string>
+
+        <!--    start_screen4-->
+        <string name="some_id_start_screen4">2/3</string>
+        <string name="found_item_start_screen4">found_item</string>
+        <string name="report_found_start_screen4">Report Found Items</string>
+        <string name="found_something">Found an item? Provide details, including photos and location, so the rightful owner can claim it quickly and easily.</string>
+
+        <!--    start_screen5-->
+        <string name="some_id_start_screen5">3/3</string>
+        <string name="explore_start_screen5">explore</string>
+        <string name="bg_explore_start_screen5">Explore</string>
+        <string name="explore_something">Browse through reported lost and found items, connect with users, and help reunite lost belongings with their owners.</string>
+        <string name="get_started">Get_Started</string>
+
+        <!--    login-->
+        <string name="skip_for_now">Skip for now!</string>
+        <string name="welcome_back">Welcome Back!</string>
+        <string name="username_auth1">Username or Email</string>
+        <string name="password_auth1">Password</string>
+        <string name="forgot_pass">forgot_password</string>
+        <string name="login">Login</string>
+        <string name="or_continue">- OR Continue With -</string>
+
+        <!--    register-->
+        <string name="create_an_a">Create An Account</string>
+        <string name="sign_up">Sign Up</string>
+        <string name="create_an_account">Create an Account!</string>
+        <string name="sign_up_des">By clicking the Register button, you agree to the public offer</string>
+        <string name="complete">Complete\n</string>
+        <string name="complete_your_profile">Complete\nYour Profile!</string>
+        <string name="don_t_worry">Don’t worry, we not selling your data.</string>
+        <string name="todo_forgetemail">TODO</string>
+        <string name="welcome_to_fountit">Welcome to\n<br /><font color="#2196F3">Foundit.</font></string>
+
+
+        <string-array name="gender">
+            <item>Male</item>
+            <item>Female</item>
+        </string-array>
     </resources>
 </resources>
