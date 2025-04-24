@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    activity_main-->
+    <string name="app_name">lost_and_found_app</string>
+    <string name="logo">logo</string>
+
+    <!--    start_screen2-->
+    <string name="earth">Earth</string>
+    <string name="flag">Flag</string>
+    <string name="choose_your_language">Choose your Language</string>
+    <string name="english">English</string>
+    <string name="united_kingdom">United Kingdom</string>
+    <string name="next">Next</string>
+
+    <!--    start_screen3-->
+    <string name="some_id">1/3</string>
+    <string name="skip">skip</string>
+    <string name="report_lose">Report Lost Items</string>
+    <string name="lost_something">Lost something valuable? Submit details about your lost item, including descriptions and location, to help others identify and return it.</string>
+    <string name="prev">Prev</string>
+    <string name="lost_found">lost_found</string>
+    <string name="todo">TODO</string>
+
+    <!--    start_screen4-->
+    <string name="some_id_start_screen4">2/3</string>
+    <string name="found_item_start_screen4">found_item</string>
+    <string name="report_found_start_screen4">Report Found Items</string>
+    <string name="found_something">Found an item? Provide details, including photos and location, so the rightful owner can claim it quickly and easily.</string>
+
+    <!--    start_screen5-->
+    <string name="some_id_start_screen5">3/3</string>
+    <string name="explore_start_screen5">explore</string>
+    <string name="bg_explore_start_screen5">Explore</string>
+    <string name="explore_something">Browse through reported lost and found items, connect with users, and help reunite lost belongings with their owners.</string>
+    <string name="get_started">Get_Started</string>
+
+    <!--    login-->
+    <string name="skip_for_now">Skip for now!</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="username_auth1">Username or Email</string>
+    <string name="password_auth1">Password</string>
+    <string name="forgot_pass">forgot_password</string>
+    <string name="login">Login</string>
+    <string name="or_continue">- OR Continue With -</string>
+
+    <!--    register-->
+    <string name="create_an_a">Create An Account</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="create_an_account">Create an Account!</string>
+    <string name="sign_up_des">By clicking the Register button, you agree to the public offer</string>
+    <string name="complete">Complete\n</string>
+    <string name="complete_your_profile">Complete\nYour Profile!</string>
+    <string name="don_t_worry">Don’t worry, we not selling your data.</string>
+    <string name="todo_forgetemail">TODO</string>
+    <string name="welcome_to_fountit">Welcome to\n<br /><font color="#2196F3">Foundit.</font></string>
+
+
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+</resources>

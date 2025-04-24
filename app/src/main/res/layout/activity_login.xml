@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Input field with icon before it -->
+    <TextView
+        android:id="@+id/skip_for_now"
+        android:layout_width="114dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="100dp"
+        android:textAlignment="textEnd"
+        android:text="@string/skip_for_now"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.898"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/welcome_back"
+        android:layout_width="185dp"
+        android:layout_height="83dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="top"
+        android:lineSpacingExtra="-1sp"
+        android:text="@string/welcome_back"
+        android:textColor="#1E1E1E"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.267" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="327dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/bg_gray_rectangle"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.325"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_back">
+
+        <!-- Eye Icon on the Left -->
+        <ImageView
+            android:id="@+id/user_toggle"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/icon_user" />
+
+        <!-- Username Input -->
+        <EditText
+            android:id="@+id/rectangle_user"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/user_toggle"
+            android:autofillHints="todo"
+            android:background="@null"
+            android:hint="@string/username_auth1"
+            android:inputType="textNoSuggestions"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textAppearance="@style/username_or_email" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="333dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/bg_gray_rectangle"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.31"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+
+        <!-- Lock icon at the start -->
+        <ImageView
+            android:id="@+id/key_toggle"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/icon_key" />
+
+        <!-- Eye icon at the end -->
+        <ImageView
+            android:id="@+id/password_toggle"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/baseline_remove_red_eye_24" />
+
+        <!-- EditText fills space between the icons -->
+        <EditText
+            android:id="@+id/rectangle_password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/key_toggle"
+            android:layout_toStartOf="@id/password_toggle"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@null"
+            android:hint="@string/password_auth1"
+            android:inputType="textPassword"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textAppearance="@style/username_or_email" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/forgot_pass"
+        android:layout_width="102dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="sans-serif-thin"
+        android:gravity="center_horizontal|top"
+        android:text="@string/forgot_pass"
+        android:textAppearance="@style/forgot_pass"
+        android:textColorHighlight="bol"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.813"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
+
+    <RelativeLayout
+        android:id="@+id/frame_3"
+        android:layout_width="326dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/frame_login_or_signup"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.364"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forgot_pass">
+
+        <TextView
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/login"
+            android:textAppearance="@style/login" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/or_continue"
+        android:layout_width="118dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/or_continue"
+        android:textAppearance="@style/or_continue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frame_3" />
+
+
+    <RelativeLayout
+        android:id="@+id/google"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/google"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.348"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/or_continue"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/google_icon"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/google_image" /> <!-- Google logo image -->
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/facebook"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="112dp"
+        android:background="@drawable/facebook_image"
+        app:layout_constraintBottom_toBottomOf="@+id/google"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toEndOf="@+id/google"
+        app:layout_constraintTop_toTopOf="@+id/google"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/create_an_a"
+        android:layout_width="125dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="32dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/create_an_a"
+        android:textAppearance="@style/create_an_a"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/google"
+        app:layout_constraintVertical_bias="0.021" />
+
+    <TextView
+        android:id="@+id/sign_up"
+        android:layout_width="53dp"
+        android:layout_height="17dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/sign_up"
+        android:textAppearance="@style/sign_up"
+        app:layout_constraintBottom_toBottomOf="@+id/create_an_a"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/create_an_a"
+        app:layout_constraintTop_toTopOf="@+id/create_an_a"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
