@@ -73,7 +73,7 @@
         <string name="enter_new_username">Enter new username</string>
         <string name="enter_new_email_address">Enter new email address</string>
         <string name="gmail">traialetralala@gmail.com</string>
-        <string name="gender">Male</string>
+        <string name="selected_gender">Male</string>
         <string name="change_gender">Change Gender</string>
         <string name="change_email">Change Email</string>
         <string name="change_birth_date">Change Birth Date</string>

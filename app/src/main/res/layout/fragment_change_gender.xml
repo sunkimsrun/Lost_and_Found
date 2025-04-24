@@ -67,7 +67,7 @@
                 android:layout_toEndOf="@id/gender_icon"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="60dp"
-                android:text="@string/gender"
+                android:text="@string/selected_gender"
                 android:textAppearance="@style/edit_label"/>
 
 
