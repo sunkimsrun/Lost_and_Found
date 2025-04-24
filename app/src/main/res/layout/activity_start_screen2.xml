@@ -113,7 +113,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="10dp"
                     android:contentDescription="@string/next"
-                    android:src="@drawable/arrow_right" />
+                    android:src="@drawable/arrow_right_black" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
