@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <resources>
         <!--    activity_main-->
         <string name="app_name">lost_and_found_app</string>
         <string name="logo">logo</string>
@@ -40,7 +39,6 @@
         <string name="welcome_back">Welcome Back!</string>
         <string name="username_auth1">Username or Email</string>
         <string name="password_auth1">Password</string>
-        <string name="forgot_pass">forgot_password</string>
         <string name="login">Login</string>
         <string name="or_continue">- OR Continue With -</string>
 
@@ -60,5 +58,38 @@
             <item>Male</item>
             <item>Female</item>
         </string-array>
-    </resources>
+
+
+        <string name="username">Sok Sochetra</string>
+        <string name="account_inf">Account Information</string>
+        <string name="manage_post">Manage Post</string>
+        <string name="change_password">Change Password</string>
+        <string name="hello_blank_fragment">Hello blank fragment</string>
+        <string name="your_post">Your Post</string>
+        <string name="not_found">Not Found</string>
+        <string name="back">Back</string>
+        <string name="enter_password_to_confirm">Enter Password to Confirm</string>
+        <string name="dob">12 - 10 - 2004</string>
+        <string name="confirm_changes">Confirm Changes</string>
+        <string name="change_username">Change Username</string>
+        <string name="enter_new_username">Enter new username</string>
+        <string name="enter_new_email_address">Enter new email address</string>
+        <string name="gmail">traialetralala@gmail.com</string>
+        <string name="gender">Male</string>
+        <string name="change_gender">Change Gender</string>
+        <string name="change_email">Change Email</string>
+        <string name="change_birth_date">Change Birth Date</string>
+        <string name="change_phone_number">Change Phone Number</string>
+        <string name="reset_password">Reset Password</string>
+        <string name="confirm_new_password">Confirm New Password</string>
+        <string name="current_password">Current Password</string>
+        <string name="new_password">New Password</string>
+        <string name="confirm_password">Confirm Password</string>
+        <string name="forgot_pass">Forgot Password?</string>
+        <string name="reset_passw">Reset Password</string>
+        <string name="we_will_sen">* We will send you a message to set or reset your new password</string>
+        <string name="resend_code">Resend code in</string>
+        <string name="enter_new_phone_number">Enter new phone number</string>
+        <string name="post_name">My Girlfriend</string>
+        <string name="post_description">"I lost my girlfriend at RUPP around 2 PM today. Last seen near RUPP. If found, please return her to me Tra. "</string>
 </resources>
