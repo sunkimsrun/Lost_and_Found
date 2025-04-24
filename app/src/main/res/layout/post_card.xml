@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="4dp"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/checkbox"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:clipToOutline="true"
+                android:background="@drawable/checkbox_selector"
+                android:elevation="3dp" />
+            <TextView
+                android:id="@+id/not_found"
+                android:layout_width="87dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="10dp"
+                android:text="@string/not_found"
+                android:textAppearance="@style/not_found" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="372dp"
+            android:layout_height="240dp"
+            android:layout_marginVertical="15dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/img_container"
+                android:scaleType="fitXY">
+
+                <ImageView
+                    android:id="@+id/more_button"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/more_button" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/post_name"
+                    android:layout_width="105dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:lineSpacingExtra="4sp"
+                    android:text="@string/post_name"
+                    android:textAppearance="@style/post_name"
+                    android:translationY="-2.11sp" />
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="271dp"
+                    android:layout_height="1dp"
+                    android:background="@drawable/post_divider"
+                    />
+
+                <TextView
+                    android:id="@+id/post_description"
+                    android:layout_width="372dp"
+                    android:layout_height="72dp"
+                    android:gravity="center_vertical"
+                    android:lineSpacingExtra="5sp"
+                    android:text="@string/post_description"
+                    android:textAppearance="@style/post_description" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="50dp">
+                        <View
+                            android:id="@+id/timer_icon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:background="@drawable/timer"
+                            />
+                        <TextView
+                            android:id="@+id/feb_28_2025"
+                            android:layout_width="86dp"
+                            android:layout_height="17dp"
+                            android:layout_marginStart="10dp"
+                            android:text="feb_28_2025"
+                            android:textAppearance="@style/post_date_location"
+                            android:layout_gravity="center"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <View
+                            android:id="@+id/location_icon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:background="@drawable/location"
+                            />
+                        <TextView
+                            android:id="@+id/rupp"
+                            android:layout_width="37dp"
+                            android:layout_height="17dp"
+                            android:layout_marginHorizontal="10dp"
+                            android:text="RUPP"
+                            android:textAppearance="@style/post_date_location"
+                            android:layout_gravity="center"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/bottom_post_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/post_divider"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

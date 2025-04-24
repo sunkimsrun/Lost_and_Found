@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Background circle -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#FFFFFF" />
+            <size android:width="42dp" android:height="42dp" />
+        </shape>
+    </item>
+
+    <!-- Centered icon (your "more" or "edit" icon) -->
+    <item
+        android:drawable="@drawable/more"
+        android:gravity="center"
+        android:width="20dp"
+        android:height="20dp" />
+</layer-list>

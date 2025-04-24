@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Blue circle background (from your vector) -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#2196F3"/>
+            <size android:width="32dp" android:height="32dp"/>
+        </shape>
+    </item>
+
+    <!-- White border -->
+    <item>
+        <shape android:shape="oval">
+            <stroke android:width="2dp" android:color="#FFFFFF"/>
+            <size android:width="36dp" android:height="36dp"/>
+        </shape>
+    </item>
+
+    <!-- Your PNG centered -->
+    <item android:drawable="@drawable/pf_edit" android:gravity="center" android:width="20dp" android:height="20dp"/>
+</layer-list>

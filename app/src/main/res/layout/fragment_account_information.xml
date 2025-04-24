@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5"
+    android:id="@+id/nav_account_info"
+    tools:context=".fragment.AccountInformationFragment">
+
+    <RelativeLayout
+        android:id="@+id/top_panel"
+        android:layout_width="match_parent"
+        android:layout_height="217dp"
+        android:background="#96000000"
+        android:foregroundGravity="top"
+        android:clipToOutline="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/account_inf"
+            android:textSize="20sp"
+            android:textAppearance="@style/over_break_line"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey"
+        android:layout_marginVertical="16dp"/>
+
+    <!-- Name Item -->
+    <RelativeLayout
+        android:layout_width="317dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/information_container">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/user"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/username"
+            android:layout_centerVertical="true"
+            android:translationX="60dp"
+            android:text="@string/username"
+            android:textAppearance="@style/edit_label"/>
+
+        <ImageView
+            android:id="@+id/edit_username"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/in_edit"/>
+    </RelativeLayout>
+
+    <!-- Email Item -->
+    <RelativeLayout
+        android:layout_width="317dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="19dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/information_container">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/email"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/email"
+            android:text="@string/gmail"
+            android:textAppearance="@style/edit_label"
+            android:layout_centerVertical="true"
+            android:translationX="60dp"/>
+
+        <ImageView
+            android:id="@+id/edit_email"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/in_edit"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+    <!-- Gender Item -->
+    <RelativeLayout
+        android:layout_width="317dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="19dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/information_container">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/gender"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/gender"
+            android:text="@string/gender"
+            android:textAppearance="@style/edit_label"
+            android:layout_centerVertical="true"
+            android:translationX="60dp"/>
+
+        <ImageView
+            android:id="@+id/edit_gender"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/in_edit"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+    <!-- Phone Item -->
+    <RelativeLayout
+        android:layout_width="317dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="19dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/information_container">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/phone"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/phone"
+            android:text="0123456789"
+            android:textAppearance="@style/edit_label"
+            android:layout_centerVertical="true"
+            android:translationX="60dp"/>
+
+        <ImageView
+            android:id="@+id/edit_phnumber"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/in_edit"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+    <!-- Birth Date Item -->
+    <RelativeLayout
+        android:layout_width="317dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/information_container">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/calender"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/birth_of_date"
+            android:text="@string/dob"
+            android:textAppearance="@style/edit_label"
+            android:layout_centerVertical="true"
+            android:translationX="60dp"/>
+
+        <ImageView
+            android:id="@+id/edit_dob"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/in_edit"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+    <!-- Centered Back Button -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
+
+        <RelativeLayout
+            android:id="@+id/back_button"
+            android:layout_width="317dp"
+            android:layout_height="55dp"
+            android:background="@drawable/button"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/back"
+                android:textAppearance="@style/back"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>
