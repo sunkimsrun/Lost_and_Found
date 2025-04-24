@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Primary text style -->
+    <style name="PrimaryText">
         <item name="android:textColor">#1E1E1E</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
+    <!-- Highlighted text style -->
+    <style name="HighlightedText">
         <item name="android:textColor">#2196F3</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
-        <item name="android:textSize">20sp</item>
+    <!-- Large white text style -->
+    <style name="LargeWhiteText">
         <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
+    <!-- Small text style -->
+    <style name="SmallText">
         <item name="android:textSize">12sp</item>
     </style>
 
-        <item name="android:textSize">14sp</item>
-    </style>
-
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">#2196F3</item>
-    </style>
-
-        <item name="android:textSize">12sp</item>
-    </style>
-
-    </style>
-
-    </style>
 </resources>
