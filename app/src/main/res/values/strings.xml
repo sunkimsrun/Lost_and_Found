@@ -53,12 +53,10 @@
         <string name="todo_forgetemail">TODO</string>
         <string name="welcome_to_fountit">Welcome to\n<br /><font color="#2196F3">Foundit.</font></string>
 
-
         <string-array name="gender">
-            <item>Male</item>
-            <item>Female</item>
+                <item>Male</item>
+                <item>Female</item>
         </string-array>
-
 
         <string name="username">Sok Sochetra</string>
         <string name="account_inf">Account Information</string>

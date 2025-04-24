@@ -13,7 +13,7 @@
         android:layout_width="266.15dp"
         android:layout_height="68dp"
         android:layout_marginTop="100dp"
-        android:background="@drawable/logo"
+        android:background="@drawable/logo_v2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.234"
         app:layout_constraintStart_toStartOf="parent"
