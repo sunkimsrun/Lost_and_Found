@@ -1,4 +1,4 @@
-# Foundit - Lost and Found Application Platform
+    # Foundit - Lost and Found Application Platform
 
 Welcome to Foundit! 
 
