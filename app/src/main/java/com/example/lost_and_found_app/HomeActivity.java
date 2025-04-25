@@ -1,5 +1,6 @@
 package com.example.lost_and_found_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -19,6 +20,8 @@ import com.example.lost_and_found_app.fragment.ViewLostFragment;
 public class HomeActivity extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
+
+    private boolean userIsLoggedIn = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +49,11 @@ public class HomeActivity extends AppCompatActivity {
             if (itemId == R.id.nav_home) {
                 LoadFragment(new HomeFragment());
             } else if (itemId == R.id.nav_account) {
-                LoadFragment(new AccountFragment());
+                if (userIsLoggedIn) {
+                    LoadFragment(new AccountFragment());
+                }else{
+                    Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                }
             } else if (itemId == R.id.nav_lost) {
                 LoadFragment(new ViewLostFragment());
             } else if (itemId == R.id.nav_found) {
