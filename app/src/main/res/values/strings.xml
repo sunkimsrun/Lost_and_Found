@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
         <!--    activity_main-->
-        <string name="app_name">lost_and_found_app</string>
+        <string name="app_name">Foundit</string>
         <string name="logo">logo</string>
 
         <!--    start_screen2-->
