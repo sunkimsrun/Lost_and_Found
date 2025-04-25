@@ -19,7 +19,7 @@ public class HomeFragment extends Fragment {
     FragmentHomeBinding binding;
     HomeActivity homeActivity;
 
-    private boolean userNotLoggedIn = true;
+    private boolean userIsLoggedIn = true;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -31,7 +31,7 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
 
         binding.cardCreate.setOnClickListener(v -> {
-            if (userNotLoggedIn){
+            if (!userIsLoggedIn){
                 startActivity(new Intent(getActivity(), LoginActivity.class));
                 return;
             }else{

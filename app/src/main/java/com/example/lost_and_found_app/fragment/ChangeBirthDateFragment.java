@@ -71,8 +71,9 @@ public class ChangeBirthDateFragment extends Fragment {
                 User.currentUser.dob = selectedDate;
                 Toast.makeText(getContext(), "Updated successfully", Toast.LENGTH_SHORT).show();
 
-                if (getActivity() instanceof com.example.lost_and_found_app.AccountActivity) {
-                    ((com.example.lost_and_found_app.AccountActivity) getActivity()).updateUserDisplay();
+                Fragment parentFragment = getParentFragment();
+                if (parentFragment instanceof com.example.lost_and_found_app.fragment.AccountFragment) {
+                    ((com.example.lost_and_found_app.fragment.AccountFragment) parentFragment).updateUserDisplay();
                 }
 
                 Fragment parent = getParentFragment();
