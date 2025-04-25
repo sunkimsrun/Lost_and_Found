@@ -41,6 +41,16 @@ public class HomeFragment extends Fragment {
 
         });
 
+        binding.cardLost.setOnClickListener(v -> {
+            HomeActivity homeActivity = (HomeActivity) getActivity();
+            homeActivity.LoadFragment(new ViewLostFragment());
+        });
+
+        binding.cardFound.setOnClickListener(v -> {
+            HomeActivity homeActivity = (HomeActivity) getActivity();
+            homeActivity.LoadFragment(new ViewFoundFragment());
+        });
+
         return binding.getRoot();
     }
 }

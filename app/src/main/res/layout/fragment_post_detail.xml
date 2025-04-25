@@ -181,12 +181,14 @@
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:text="Royal University of Phnom Penh"
-                    android:textColor="@color/blue"
-                    android:textSize="13sp" />
+                    android:layout_marginStart="10dp"
+                    android:text="Royal Univerity of Phnom Penh"
+                    android:textColor="#2196F3"
+                    android:textSize="13sp"
+                    android:drawableEnd="@drawable/ico_arrow_outward" />
             </LinearLayout>
 
             <TextView
@@ -194,7 +196,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="@string/contact"
+                android:text="Contact"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
