@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.lost_and_found_app.AccountActivity;
 import com.example.lost_and_found_app.R;
 import com.example.lost_and_found_app.model.User;
 
@@ -123,8 +122,9 @@ public class ChangeFieldFragment extends Fragment {
 
         Toast.makeText(getContext(), "Updated successfully", Toast.LENGTH_SHORT).show();
 
-        if (getActivity() instanceof AccountActivity) {
-            ((AccountActivity) getActivity()).updateUserDisplay();
+        Fragment parentFragment = getParentFragment();
+        if (parentFragment instanceof com.example.lost_and_found_app.fragment.AccountFragment) {
+            ((com.example.lost_and_found_app.fragment.AccountFragment) parentFragment).updateUserDisplay();
         } else if (getParentFragment() instanceof AccountInformationFragment) {
             ((AccountInformationFragment) getParentFragment()).updateUserData(
                     User.currentUser.name,

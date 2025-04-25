@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,7 +11,6 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
         android:gravity="top"
-        android:lineSpacingExtra="-1sp"
         android:text="@string/complete_your_profile"
         android:textColor="#1E1E1E"
         android:textSize="36sp"
@@ -32,7 +30,7 @@
         android:textAppearance="@style/don_t_worry"
         app:layout_constraintBottom_toTopOf="@+id/user_input_container"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/complete_profile"
         app:layout_constraintVertical_bias="0.04" />
@@ -72,7 +70,6 @@
     </RelativeLayout>
 
 
-
     <LinearLayout
         android:id="@+id/user_input_container"
         android:layout_width="match_parent"
@@ -87,9 +84,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
             android:background="@drawable/bg_gray_rectangle"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
             android:paddingHorizontal="10dp">
 
             <ImageView
@@ -102,9 +99,8 @@
             <Spinner
                 android:id="@+id/gender_auth_spinner"
                 android:layout_width="match_parent"
-                android:entries="@array/gender"
                 android:layout_height="55dp"
-                />
+                android:entries="@array/gender" />
 
         </LinearLayout>
 
@@ -113,38 +109,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="15dp"
+            android:autofillHints="phone"
             android:background="@drawable/bg_gray_rectangle"
             android:drawableStart="@drawable/icon_phone"
             android:drawablePadding="10dp"
             android:hint="Phone Number"
-            android:autofillHints="phone"
             android:paddingHorizontal="10dp" />
 
     </LinearLayout>
 
-
-    <RelativeLayout
-        android:id="@+id/frame_3"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button"
         android:layout_width="317dp"
-        android:layout_height="55dp"
+        android:layout_height="65dp"
         android:layout_marginTop="40dp"
-        android:background="@drawable/frame_login_or_signup"
-        android:gravity="center"
+        android:backgroundTint="@color/blue"
+        android:text="Complete"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:cornerRadius="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_input_container">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="10dp"
-            android:textSize="24sp"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:text="@string/complete"/>
-    </RelativeLayout>
-
+        app:layout_constraintTop_toBottomOf="@+id/user_input_container"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

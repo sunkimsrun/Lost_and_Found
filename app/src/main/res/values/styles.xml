@@ -127,7 +127,7 @@
 
     <!--  Srun  -->
     <style name="username_or_email">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">#1E1E1E</item>
     </style>
 
@@ -166,8 +166,16 @@
         <item name="android:textColor">#676767</item>
     </style>
 
-    <style name="LabelStyle1">
-        <item name="android:textColor">#000</item>
+    <!-- Style : Post Items Image -->
+    <style name="RoundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">15dp</item>
+    </style>
+
+    <!-- Style : User Image -->
+    <style name="UserImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">75dp</item>
     </style>
 
 </resources>

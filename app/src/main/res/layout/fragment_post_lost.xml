@@ -69,6 +69,24 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0" />
 
+            <EditText
+                android:id="@+id/inputTitle"
+                android:layout_width="375dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_input_edit_text"
+                android:hint="Title"
+                android:inputType="text"
+                android:lines="1"
+                android:paddingHorizontal="10dp"
+                android:textSize="14sp"
+                android:autofillHints=""
+                app:layout_constraintTop_toBottomOf="@+id/divider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" />
+
             <!-- Information Input -->
             <EditText
                 android:id="@+id/inputInformation"
@@ -86,7 +104,7 @@
                 android:textSize="14sp"
                 android:overScrollMode="always"
                 android:autofillHints=""
-                app:layout_constraintTop_toBottomOf="@+id/divider"
+                app:layout_constraintTop_toBottomOf="@+id/inputTitle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0" />

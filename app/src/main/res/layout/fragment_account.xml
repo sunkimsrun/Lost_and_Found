@@ -24,14 +24,15 @@
             android:layout_height="160dp"
             android:background="@drawable/user_pf_bg" />
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/profile_image"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
             android:translationX="5dp"
             android:translationY="5dp"
-            android:src="@drawable/user_01" />
+            android:src="@drawable/img_container"
+            app:shapeAppearanceOverlay="@style/UserImageView" />
 
         <ImageView
             android:id="@+id/edit_icon"

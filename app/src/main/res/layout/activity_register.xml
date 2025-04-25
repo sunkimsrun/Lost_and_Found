@@ -60,6 +60,7 @@
             android:autofillHints="username"
             android:drawablePadding="10dp"
             android:hint="Username"
+            android:textSize="18sp"
             android:paddingHorizontal="10dp" />
 
         <EditText
@@ -71,6 +72,7 @@
             android:drawableStart="@drawable/icon_email"
             android:autofillHints="emailAddress"
             android:drawablePadding="10dp"
+            android:textSize="18sp"
             android:hint="Email"
             android:paddingHorizontal="10dp" />
 
@@ -84,6 +86,7 @@
             android:autofillHints="password"
             android:drawableEnd="@drawable/baseline_remove_red_eye_24"
             android:drawablePadding="10dp"
+            android:textSize="18sp"
             android:hint="Password"
             android:paddingHorizontal="10dp" />
 
@@ -97,6 +100,7 @@
             android:drawableStart="@drawable/icon_key"
             android:drawableEnd="@drawable/baseline_remove_red_eye_24"
             android:drawablePadding="10dp"
+            android:textSize="18sp"
             android:hint="ConfirmPassword"
             android:paddingHorizontal="10dp" />
 

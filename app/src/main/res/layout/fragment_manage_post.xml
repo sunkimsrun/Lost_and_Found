@@ -13,12 +13,14 @@
 
     <TextView
         android:id="@+id/your_post"
-        android:layout_width="188dp"
-        android:layout_height="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="20dp"
         android:text="@string/your_post"
-        android:textAppearance="@style/your_post" />
+        android:textColor="@color/blue"
+        style="@style/LabelStyle"
+        android:textSize="32sp"/>
 
     <FrameLayout
         android:id="@+id/fragment_container"

@@ -33,7 +33,7 @@
             style="@style/LabelStyle"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="100dp"
             android:text="@string/introduction"
             android:textSize="13sp" />
     </LinearLayout>

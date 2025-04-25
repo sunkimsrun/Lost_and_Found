@@ -27,7 +27,6 @@
         android:id="@+id/bottomSection"
         android:layout_width="match_parent"
         android:layout_height="434dp"
-        android:layout_marginBottom="4dp"
         android:background="@drawable/bg_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="w,5:5"
@@ -86,12 +85,12 @@
                     android:id="@+id/languageName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
+                    android:layout_alignTop="@+id/flagIcon"
                     android:layout_marginStart="10dp"
                     android:layout_toEndOf="@id/flagIcon"
                     android:text="@string/english"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <!-- Country Text -->
                 <TextView
@@ -102,8 +101,8 @@
                     android:layout_marginStart="10dp"
                     android:layout_toEndOf="@id/flagIcon"
                     android:text="@string/united_kingdom"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
+                    android:textColor="#6600091F"
+                    android:textSize="10sp" />
 
                 <!-- Arrow Icon -->
                 <ImageView

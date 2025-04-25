@@ -61,7 +61,7 @@ public class AccountFragment extends Fragment {
         updateUserDisplay();
     }
 
-    private void updateUserDisplay() {
+    public void updateUserDisplay() {
         User user = User.currentUser;
         if (user != null) {
             nameText.setText(user.name);

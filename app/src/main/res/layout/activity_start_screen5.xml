@@ -13,12 +13,13 @@
         android:text="@string/some_id_start_screen5"
         android:textColor="@color/black"
         android:textStyle="bold"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.036" />
+        app:layout_constraintVertical_bias="0.05" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -55,7 +56,7 @@
         android:gravity="center_horizontal|top"
         android:lineSpacingExtra="7sp"
         android:text="@string/explore_something"
-        android:textColor="@color/black"
+        android:textColor="#6600091F"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +66,7 @@
         android:id="@+id/screen3_actionbar"
         android:layout_width="345dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="50dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"

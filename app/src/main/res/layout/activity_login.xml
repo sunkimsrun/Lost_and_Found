@@ -8,11 +8,13 @@
     <!-- Input field with icon before it -->
     <TextView
         android:id="@+id/skip_for_now"
-        android:layout_width="114dp"
-        android:layout_height="22dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:textAlignment="textEnd"
         android:text="@string/skip_for_now"
+        android:textAlignment="textEnd"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.898"
@@ -22,9 +24,9 @@
 
     <TextView
         android:id="@+id/welcome_back"
-        android:layout_width="185dp"
-        android:layout_height="83dp"
-        android:fontFamily="sans-serif-black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/LabelStyle"
         android:gravity="top"
         android:lineSpacingExtra="-1sp"
         android:text="@string/welcome_back"
@@ -40,10 +42,10 @@
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="327dp"
-        android:layout_height="67dp"
+        android:layout_height="55dp"
         android:layout_marginTop="36dp"
         android:background="@drawable/bg_gray_rectangle"
-        android:padding="5dp"
+        android:paddingHorizontal="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.325"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,6 +56,7 @@
             android:id="@+id/user_toggle"
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             android:contentDescription="@string/todo"
@@ -64,7 +67,7 @@
             android:id="@+id/rectangle_user"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/user_toggle"
             android:autofillHints="username"
             android:background="@null"
@@ -79,27 +82,29 @@
     <RelativeLayout
         android:id="@+id/relativeLayout2"
         android:layout_width="333dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/bg_gray_rectangle"
-        android:padding="5dp"
+        android:paddingHorizontal="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.31"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
         <!-- Lock icon at the start -->
+
+        <!-- Eye icon at the end -->
+
         <ImageView
             android:id="@+id/key_toggle"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_alignParentStart="true"
+            android:layout_marginStart="14dp"
             android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
             android:contentDescription="@string/todo"
             android:src="@drawable/icon_key" />
 
-        <!-- Eye icon at the end -->
         <ImageView
             android:id="@+id/password_toggle"
             android:layout_width="24dp"
@@ -115,10 +120,10 @@
             android:id="@+id/rectangle_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toEndOf="@id/key_toggle"
-            android:layout_toStartOf="@id/password_toggle"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@id/password_toggle"
+            android:layout_toEndOf="@id/key_toggle"
             android:background="@null"
             android:hint="@string/password_auth1"
             android:inputType="textPassword"
@@ -131,7 +136,7 @@
     <TextView
         android:id="@+id/forgot_pass"
         android:layout_width="wrap_content"
-        android:layout_height="15dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="sans-serif-thin"
         android:gravity="center_horizontal|top"

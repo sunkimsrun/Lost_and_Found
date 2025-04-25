@@ -29,6 +29,7 @@
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:checked="true"
+                android:textSize="18sp"
                 android:text="Lost" />
 
             <RadioButton
@@ -37,6 +38,7 @@
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
+                android:textSize="18sp"
                 android:text="Found" />
 
         </RadioGroup>
