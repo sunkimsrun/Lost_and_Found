@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:paddingTop="32dp">
+        android:paddingTop="52dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
