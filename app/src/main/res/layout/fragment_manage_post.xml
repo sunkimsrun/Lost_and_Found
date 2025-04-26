@@ -8,6 +8,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:elevation="10dp"
+    android:paddingTop="20dp"
     android:id="@+id/nav_manage_post"
     tools:context=".fragment.ManagePostFragment">
 
