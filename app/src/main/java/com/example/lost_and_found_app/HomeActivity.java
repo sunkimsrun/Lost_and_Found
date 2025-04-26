@@ -3,12 +3,10 @@ package com.example.lost_and_found_app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
-
 import com.example.lost_and_found_app.databinding.ActivityHomeBinding;
 import com.example.lost_and_found_app.fragment.AccountFragment;
 import com.example.lost_and_found_app.fragment.ContactFragment;
@@ -16,11 +14,12 @@ import com.example.lost_and_found_app.fragment.HomeFragment;
 import com.example.lost_and_found_app.fragment.PolicyFragment;
 import com.example.lost_and_found_app.fragment.ViewFoundFragment;
 import com.example.lost_and_found_app.fragment.ViewLostFragment;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
-
+    private FirebaseAuth mAuth;
     private boolean userIsLoggedIn = true;
 
     @Override
@@ -30,6 +29,8 @@ public class HomeActivity extends AppCompatActivity {
 
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        mAuth = FirebaseAuth.getInstance();
 
         binding.btnHamburger.setOnClickListener(view -> {
             if (!binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -51,8 +52,9 @@ public class HomeActivity extends AppCompatActivity {
             } else if (itemId == R.id.nav_account) {
                 if (userIsLoggedIn) {
                     LoadFragment(new AccountFragment());
-                }else{
-                    Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                } else {
+                    startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                    finish();
                 }
             } else if (itemId == R.id.nav_lost) {
                 LoadFragment(new ViewLostFragment());
@@ -60,10 +62,15 @@ public class HomeActivity extends AppCompatActivity {
                 LoadFragment(new ViewFoundFragment());
             } else if (itemId == R.id.nav_privacy) {
                 LoadFragment(new PolicyFragment());
-            } else // TODO: Handle sign-out logic here
-                if (itemId == R.id.nav_contact) {
+            } else if (itemId == R.id.nav_contact) {
                 LoadFragment(new ContactFragment());
-            } else return itemId == R.id.nav_signout;
+            } else if (itemId == R.id.nav_signout) {
+                mAuth.signOut();
+                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
 
             binding.drawerLayout.closeDrawer(GravityCompat.START);
             return true;
@@ -71,12 +78,11 @@ public class HomeActivity extends AppCompatActivity {
 
         binding.navigationView.setCheckedItem(R.id.nav_home);
         LoadFragment(new HomeFragment());
-
     }
+
     public void LoadFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frameContainer, fragment)
                 .commit();
     }
-
 }

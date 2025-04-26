@@ -173,39 +173,6 @@
     </RelativeLayout>
 
     <!-- Birth Date Item -->
-    <RelativeLayout
-        android:layout_width="317dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginBottom="16dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/information_container">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/calender"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/birth_of_date"
-            android:text="@string/dob"
-            android:textAppearance="@style/edit_label"
-            android:layout_centerVertical="true"
-            android:translationX="60dp"/>
-
-        <ImageView
-            android:id="@+id/edit_dob"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/in_edit"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"
-            android:layout_alignParentEnd="true"/>
-    </RelativeLayout>
 
     <!-- Centered Back Button -->
     <RelativeLayout

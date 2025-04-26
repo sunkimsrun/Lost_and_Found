@@ -102,37 +102,37 @@ public class ChangeFieldFragment extends Fragment {
             return;
         }
 
-        if (!password.equals(User.currentUser.password)) {
-            Toast.makeText(getContext(), "Incorrect password", Toast.LENGTH_SHORT).show();
-            return;
-        }
+//        if (!password.equals(User.currentUser.password)) {
+//            Toast.makeText(getContext(), "Incorrect password", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
 
-        if (field.equals("name")) {
-            User.currentUser.name = newValue;
-        } else if (field.equals("email")) {
-            User.currentUser.email = newValue;
-        } else if (field.equals("phone")) {
-            User.currentUser.phone = newValue;
-        } else if (field.equals("password")) {
-            User.currentUser.password = newValue;
-        } else {
-            Toast.makeText(getContext(), "Unknown field", Toast.LENGTH_SHORT).show();
-            return;
-        }
+//        if (field.equals("name")) {
+//            User.currentUser.name = newValue;
+//        } else if (field.equals("email")) {
+//            User.currentUser.email = newValue;
+//        } else if (field.equals("phone")) {
+//            User.currentUser.phone = newValue;
+//        } else if (field.equals("password")) {
+//            User.currentUser.password = newValue;
+//        } else {
+//            Toast.makeText(getContext(), "Unknown field", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
 
         Toast.makeText(getContext(), "Updated successfully", Toast.LENGTH_SHORT).show();
 
         Fragment parentFragment = getParentFragment();
-        if (parentFragment instanceof com.example.lost_and_found_app.fragment.AccountFragment) {
-            ((com.example.lost_and_found_app.fragment.AccountFragment) parentFragment).updateUserDisplay();
-        } else if (getParentFragment() instanceof AccountInformationFragment) {
-            ((AccountInformationFragment) getParentFragment()).updateUserData(
-                    User.currentUser.name,
-                    User.currentUser.gender,
-                    User.currentUser.dob,
-                    User.currentUser.password
-            );
-        }
+//        if (parentFragment instanceof com.example.lost_and_found_app.fragment.AccountFragment) {
+//            ((com.example.lost_and_found_app.fragment.AccountFragment) parentFragment).updateUserDisplay();
+//        } else if (getParentFragment() instanceof AccountInformationFragment) {
+//            ((AccountInformationFragment) getParentFragment()).updateUserData(
+//                    User.currentUser.name,
+//                    User.currentUser.gender,
+//                    User.currentUser.dob,
+//                    User.currentUser.password
+//            );
+//        }
 
         requireActivity().getSupportFragmentManager().popBackStack();
     }

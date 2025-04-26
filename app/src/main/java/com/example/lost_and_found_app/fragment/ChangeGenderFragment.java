@@ -10,13 +10,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import com.example.lost_and_found_app.R;
 import com.example.lost_and_found_app.model.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ChangeGenderFragment extends Fragment {
 
@@ -87,26 +87,25 @@ public class ChangeGenderFragment extends Fragment {
             return;
         }
 
-        User.currentUser.gender = chosenGender;
-        Toast.makeText(getContext(), "Updated successfully", Toast.LENGTH_SHORT).show();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        String userId = auth.getCurrentUser().getUid();
+        firestore.collection("users").document(userId).update("gender", chosenGender)
+                .addOnSuccessListener(aVoid -> {
+                    User.currentUser.gender = chosenGender;
+                    Toast.makeText(getContext(), "Gender updated successfully", Toast.LENGTH_SHORT).show();
 
-        Fragment parentFragment = getParentFragment();
-        if (parentFragment instanceof com.example.lost_and_found_app.fragment.AccountFragment) {
-            ((com.example.lost_and_found_app.fragment.AccountFragment) parentFragment).updateUserDisplay();
-        }
-
-
-        Fragment parent = getParentFragment();
-        if (parent instanceof AccountInformationFragment) {
-            ((AccountInformationFragment) parent).updateUserData(
-                    User.currentUser.name,
-                    User.currentUser.gender,
-                    User.currentUser.dob,
-                    User.currentUser.password
-            );
-        }
-
-        goBack();
+                    Fragment parentFragment = getParentFragment();
+                    if (parentFragment instanceof AccountInformationFragment) {
+                        ((AccountInformationFragment) parentFragment).updateUserData(
+                                User.currentUser.name,
+                                User.currentUser.gender,
+                                User.currentUser.password
+                        );
+                    }
+                    goBack();
+                })
+                .addOnFailureListener(e -> Toast.makeText(getContext(), "Error updating gender: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
     private void goBack() {

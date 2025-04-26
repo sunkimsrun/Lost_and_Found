@@ -1,22 +1,28 @@
 package com.example.lost_and_found_app.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.lost_and_found_app.R;
-import com.example.lost_and_found_app.model.User;
+import com.example.lost_and_found_app.databinding.FragmentAccountBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class AccountFragment extends Fragment {
 
-    private TextView nameText, detailsText;
+    private FragmentAccountBinding binding;
+    private FirebaseAuth mAuth;
 
     public AccountFragment() {
         // Required empty public constructor
@@ -25,30 +31,29 @@ public class AccountFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false);
+        binding = FragmentAccountBinding.inflate(inflater, container, false);
+        mAuth = FirebaseAuth.getInstance();
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        nameText = view.findViewById(R.id.nameText);
-        detailsText = view.findViewById(R.id.detailsText);
-
         updateUserDisplay();
 
-        view.findViewById(R.id.account_info_item).setOnClickListener(v ->
+        binding.accountInfoItem.setOnClickListener(v ->
                 loadFragment(new AccountInformationFragment()));
 
-        view.findViewById(R.id.manage_post_item).setOnClickListener(v ->
+        binding.managePostItem.setOnClickListener(v ->
                 loadFragment(new ManagePostFragment()));
 
-        view.findViewById(R.id.change_password_item).setOnClickListener(v ->
+        binding.changePasswordItem.setOnClickListener(v ->
                 loadFragment(new ChangePasswordFragment()));
 
         requireActivity().getSupportFragmentManager().addOnBackStackChangedListener(() -> {
-            Fragment currentFragment = requireActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+            Fragment currentFragment = requireActivity().getSupportFragmentManager()
+                    .findFragmentById(com.example.lost_and_found_app.R.id.fragment_container);
             if (currentFragment instanceof AccountInformationFragment) {
                 updateUserDisplay();
             }
@@ -62,20 +67,43 @@ public class AccountFragment extends Fragment {
     }
 
     public void updateUserDisplay() {
-        User user = User.currentUser;
+        FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
-            nameText.setText(user.name);
-            detailsText.setText("Gender: " + user.gender + " | DOB: " + user.dob);
+            String userID = user.getUid();
+            getUsernameFromDatabase(userID);
         }
     }
 
     private void loadFragment(Fragment fragment) {
-        FrameLayout container = requireActivity().findViewById(R.id.fragment_container);
-        container.setVisibility(View.VISIBLE);
+        binding.fragmentContainer.setVisibility(View.VISIBLE);
 
         requireActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, fragment)
+                .replace(binding.fragmentContainer.getId(), fragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    private void getUsernameFromDatabase(String userID) {
+        DatabaseReference userRef = FirebaseDatabase.getInstance()
+                .getReference("Users").child(userID);
+
+        userRef.child("username").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (!isAdded() || binding == null) return;
+
+                if (dataSnapshot.exists()) {
+                    String username = dataSnapshot.getValue(String.class);
+                    if (username != null) {
+                        binding.nameText.setText(username);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("FirebaseError", "Failed to fetch username: " + databaseError.getMessage());
+            }
+        });
     }
 }

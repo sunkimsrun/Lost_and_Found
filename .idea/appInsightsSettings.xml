@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.lost_and_found_app" />
+                  <option name="mobileSdkAppId" value="1:991018082480:android:3ea6d290f989e32f0adb75" />
+                  <option name="projectId" value="mad-founditt" />
+                  <option name="projectNumber" value="991018082480" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
