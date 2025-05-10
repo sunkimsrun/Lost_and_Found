@@ -4,14 +4,17 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
+
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.lost_and_found_app.databinding.ActivityProfileBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -19,6 +22,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     private ActivityProfileBinding binding;
     private Uri imageUri;
+
+
     private FirebaseStorage storage;
     private FirebaseFirestore firestore;
     private FirebaseAuth auth;
@@ -69,17 +74,18 @@ public class ProfileActivity extends AppCompatActivity {
                 profileData.put("gender", gender);
                 profileData.put("phoneNumber", phone);
                 profileData.put("profileImageUrl", downloadUri.toString());
+                profileData.put("isProfileComplete", true);
 
                 firestore.collection("users").document(userId).set(profileData)
                         .addOnSuccessListener(unused -> {
                             Toast.makeText(this, "Profile saved!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(this, HomeActivity.class);
+                            Intent intent = new Intent(this, MainActivity.class);
                             startActivity(intent);
+                            finish();
                         })
                         .addOnFailureListener(e ->
                                 Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show()
                         );
-
             }
         });
     }

@@ -16,6 +16,7 @@
             android:layout_height="150dp"
             android:background="@drawable/loading_background"
             android:gravity="center_horizontal"
+            android:elevation="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/frameContainer"
             app:layout_constraintStart_toStartOf="@+id/frameContainer"

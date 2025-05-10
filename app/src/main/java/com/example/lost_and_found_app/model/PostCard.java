@@ -1,8 +1,8 @@
 package com.example.lost_and_found_app.model;
 
 import com.example.lost_and_found_app.util.ISO8601DateAdapter;
-import com.google.gson.annotations.lost_and_found_app;
-import com.google.gson.annotations.lost_and_found_app;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
