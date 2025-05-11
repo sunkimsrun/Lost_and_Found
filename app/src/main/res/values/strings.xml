@@ -93,4 +93,8 @@
 
         <string name="introduction">Welcome to Foundit! Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and protect your personal information when you use our lost and found platform.\n\nWhen you post a lost or found item, we may collect your name, contact details (such as email or phone number), and any other information you choose to provide. Item Information: Details about lost or found items, including descriptions, images, and locations. Usage Data: We may collect information about how you interact with our platform, such as page views, searches, and other activity logs. Device Information: Information about the device you use to access Foundit, such as IP address, browser type, and operating system.</string>
     <string name="loading">Loading</string>
+
+
+<!--        fix warning activity_login-->
+        <string name="googleTodo">TODO</string>
 </resources>

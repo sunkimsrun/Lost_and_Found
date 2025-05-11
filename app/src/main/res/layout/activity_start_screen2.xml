@@ -81,6 +81,7 @@
                     android:src="@drawable/netherlandmap" />
 
                 <!-- Language Text -->
+                <!--if use linearlayout not need to ignor RelativeOverlap-->
                 <TextView
                     android:id="@+id/languageName"
                     android:layout_width="wrap_content"
@@ -90,7 +91,8 @@
                     android:layout_toEndOf="@id/flagIcon"
                     android:text="@string/english"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:ignore="RelativeOverlap" />
 
                 <!-- Country Text -->
                 <TextView
@@ -102,7 +104,8 @@
                     android:layout_toEndOf="@id/flagIcon"
                     android:text="@string/united_kingdom"
                     android:textColor="#6600091F"
-                    android:textSize="10sp" />
+                    tools:ignore="TextContrastCheck"
+                    android:textSize="12sp" />
 
                 <!-- Arrow Icon -->
                 <ImageView

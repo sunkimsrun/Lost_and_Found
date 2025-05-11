@@ -57,6 +57,7 @@
         android:lineSpacingExtra="7sp"
         android:text="@string/explore_something"
         android:textColor="#6600091F"
+        tools:ignore="TextContrastCheck"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
