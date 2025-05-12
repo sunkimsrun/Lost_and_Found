@@ -180,7 +180,7 @@
         android:layout_marginStart="46dp"
         android:layout_marginEnd="46dp"
         android:fontFamily="@font/adlam_display"
-        android:text="Don't have account yet? Register."
+        android:text="@string/activity_Login_Dont_Have_Account_Yet_Register"
         android:textAlignment="center"
         android:textColor="#1E1E1E"
         android:textSize="14sp"

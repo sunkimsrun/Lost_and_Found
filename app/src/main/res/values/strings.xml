@@ -97,6 +97,7 @@
 
 <!--        fix warning activity_login-->
         <string name="googleTodo">TODO</string>
+        <string name="activity_Login_Dont_Have_Account_Yet_Register">Don\'t have account yet? <font color="#2196F3">Register.</font></string>
 
 <!--        activity_profile-->
         <string name="activity_Profile_Phone_Number">Phone Number</string>
@@ -143,8 +144,6 @@
 
 <!--    activity_auth_screen-->
     <string name="activity_Auth_Screen_Get_Start">Get Start</string>
-
-
 
 
 
