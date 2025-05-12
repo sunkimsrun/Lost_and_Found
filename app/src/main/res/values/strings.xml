@@ -51,7 +51,7 @@
         <string name="complete_your_profile">Complete\nYour Profile!</string>
         <string name="don_t_worry">Don’t worry, we not selling your data.</string>
         <string name="todo_forgetemail">TODO</string>
-        <string name="welcome_to_fountit">Welcome to\n<br /><font color="#2196F3">Foundit.</font></string>
+        <string name="welcome_to_FountIt">Welcome to\n<br /><font color="#2196F3">Foundit.</font></string>
 
         <string-array name="gender">
                 <item>Male</item>
@@ -128,6 +128,24 @@
         <string name="activity_Forget_Password_hint_4">0</string>
         <string name="activity_Forget_Password_hint_5">0</string>
         <string name="activity_Forget_Password_hint_6">0</string>
+
+<!--    activity_create_new_password-->
+    <string name="activity_Create_New_Password_ConfirmPassword">ConfirmPassword</string>
+    <string name="activity_Create_New_Password_Create_Your_New_Password">Create your\nNew Password!</string>
+    <string name="activity_Create_New_Password_Lock_Icon">Lock Icon</string>
+    <string name="activity_Create_New_Password_New_Password">New Password</string>
+    <string name="Lock_Icon">Lock Icon</string>
+    <string name="activity_Create_New_Password_Submit">Submit</string>
+
+<!--    activity_changed_password-->
+    <string name="activity_Changed_Password_Password_Changed">Password Changed!</string>
+    <string name="activity_Changed_Password_Go_To_Log_In">Go to Log In</string>
+
+<!--    activity_auth_screen-->
+    <string name="activity_Auth_Screen_Get_Start">Get Start</string>
+
+
+
 
 
 </resources>
