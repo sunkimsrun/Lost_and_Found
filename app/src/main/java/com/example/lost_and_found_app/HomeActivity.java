@@ -65,7 +65,9 @@ public class HomeActivity extends AppCompatActivity {
             } else if (itemId == R.id.nav_contact) {
                 LoadFragment(new ContactFragment());
             } else if (itemId == R.id.nav_signout) {
+                binding.loadingBar.setVisibility(View.VISIBLE);
                 mAuth.signOut();
+                binding.loadingBar.setVisibility(View.GONE);
                 Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
@@ -84,5 +86,12 @@ public class HomeActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frameContainer, fragment)
                 .commit();
+    }
+    public void showProgressBar() {
+        binding.loadingBar .setVisibility(View.VISIBLE);
+    }
+
+    public void hideProgressBar() {
+        binding.loadingBar.setVisibility(View.GONE);
     }
 }

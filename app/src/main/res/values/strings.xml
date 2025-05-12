@@ -58,7 +58,7 @@
                 <item>Female</item>
         </string-array>
 
-        <string name="username">Sok Sochetra</string>
+        <string name="username">Username</string>
         <string name="account_inf">Account Information</string>
         <string name="manage_post">Manage Post</string>
         <string name="change_password">Change Password</string>

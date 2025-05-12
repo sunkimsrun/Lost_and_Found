@@ -1,8 +1,11 @@
 package com.example.lost_and_found_app;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -10,9 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lost_and_found_app.databinding.ActivityLoginBinding;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
@@ -20,7 +20,8 @@ public class LoginActivity extends AppCompatActivity {
 
     ActivityLoginBinding binding;
     private FirebaseAuth mAuth;
-    private DatabaseReference usersRef;
+
+    private boolean isPasswordVisible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,69 +32,82 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mAuth = FirebaseAuth.getInstance();
-        usersRef = FirebaseDatabase.getInstance().getReference("Users");
 
-        binding.skipForNow.setOnClickListener(view -> {
+        setupPasswordToggle(binding.etPassword, true);
+
+        binding.tvSkipForNow.setOnClickListener(view -> {
             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
         });
 
-        binding.forgotPass.setOnClickListener(view -> {
+        binding.tvForgetPassword.setOnClickListener(view -> {
             startActivity(new Intent(LoginActivity.this, ForgetPasswordActivity.class));
-            FirebaseAuth.getInstance().sendPasswordResetEmail("sunkimsrun123@gmail.com");
         });
 
-        binding.signUp.setOnClickListener(view -> {
+        binding.tvRegister.setOnClickListener(view -> {
             startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
         });
 
-        binding.frame3.setOnClickListener(view -> {
-            String userInput = binding.rectangleUser.getText().toString().trim();
-            String password = binding.rectanglePassword.getText().toString().trim();
+        binding.btnLogIn.setOnClickListener(view -> {
+            String userInput = binding.etEmail.getText().toString().trim();
+            String password = binding.etPassword.getText().toString().trim();
 
             if (TextUtils.isEmpty(userInput)) {
-                binding.rectangleUser.setError("Username or Email is required!");
+                binding.etEmail.setError("Please enter a valid email!!");
                 return;
             }
             if (TextUtils.isEmpty(password)) {
-                binding.rectanglePassword.setError("Password is required!");
+                binding.etPassword.setError("Password is required!");
                 return;
             }
 
-            if (userInput.contains("@")) {
-                loginWithEmail(userInput, password);
-            } else {
-                fetchEmailByUsername(userInput, password);
-            }
+            loginWithEmail(userInput, password);
         });
     }
 
     private void loginWithEmail(String email, String password) {
+        binding.loadingBar.setVisibility(View.VISIBLE);
+
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
+                    binding.loadingBar.setVisibility(View.GONE);
+
                     if (task.isSuccessful()) {
                         Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                         finish();
                     } else {
-                        Toast.makeText(LoginActivity.this, "Login failed: " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Login failed: " +
+                                Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
-    private void fetchEmailByUsername(String username, String password) {
-        usersRef.orderByChild("username").equalTo(username)
-                .get().addOnCompleteListener(task -> {
-                    if (task.isSuccessful() && task.getResult().exists()) {
-                        for (DataSnapshot snapshot : task.getResult().getChildren()) {
-                            String email = snapshot.child("email").getValue(String.class);
-                            if (email != null) {
-                                loginWithEmail(email, password);
-                                return;
-                            }
-                        }
-                    } else {
-                        Toast.makeText(LoginActivity.this, "No account found with this username", Toast.LENGTH_SHORT).show();
+    @SuppressLint("ClickableViewAccessibility")
+    private void setupPasswordToggle(EditText editText, boolean isMainPassword) {
+        editText.setOnTouchListener((v, event) -> {
+            final int DRAWABLE_END = 2;
+            if (event.getAction() == android.view.MotionEvent.ACTION_UP) {
+                if (event.getRawX() >= (editText.getRight() - editText.getCompoundDrawables()[DRAWABLE_END].getBounds().width())) {
+                    if (isMainPassword) {
+                        isPasswordVisible = !isPasswordVisible;
+                        updatePasswordVisibility(editText, isPasswordVisible);
                     }
-                });
+                    return true;
+                }
+            }
+            return false;
+        });
     }
+
+    private void updatePasswordVisibility(EditText editText, boolean visible) {
+        if (visible) {
+            editText.setInputType(android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            editText.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ico_lock, 0, R.drawable.ico_eye_closed, 0);
+        } else {
+            editText.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            editText.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ico_lock, 0, R.drawable.ico_eye_open, 0);
+        }
+        editText.setSelection(editText.getText().length());
+    }
+
 }

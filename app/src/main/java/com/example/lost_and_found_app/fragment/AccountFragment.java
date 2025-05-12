@@ -10,6 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+import com.example.lost_and_found_app.HomeActivity;
+import com.example.lost_and_found_app.R;
 import com.example.lost_and_found_app.databinding.FragmentAccountBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,9 +27,9 @@ public class AccountFragment extends Fragment {
     private FragmentAccountBinding binding;
     private FirebaseAuth mAuth;
 
-    public AccountFragment() {
-        // Required empty public constructor
-    }
+    HomeActivity homeActivity;
+
+    public AccountFragment() {}
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -40,20 +43,17 @@ public class AccountFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        homeActivity = (HomeActivity) getActivity();
+
         updateUserDisplay();
 
-        binding.accountInfoItem.setOnClickListener(v ->
-                loadFragment(new AccountInformationFragment()));
-
-        binding.managePostItem.setOnClickListener(v ->
-                loadFragment(new ManagePostFragment()));
-
-        binding.changePasswordItem.setOnClickListener(v ->
-                loadFragment(new ChangePasswordFragment()));
+        binding.accountInfoItem.setOnClickListener(v -> loadFragment(new AccountInformationFragment()));
+        binding.managePostItem.setOnClickListener(v -> loadFragment(new ManagePostFragment()));
+        binding.changePasswordItem.setOnClickListener(v -> loadFragment(new ChangePasswordFragment()));
 
         requireActivity().getSupportFragmentManager().addOnBackStackChangedListener(() -> {
             Fragment currentFragment = requireActivity().getSupportFragmentManager()
-                    .findFragmentById(com.example.lost_and_found_app.R.id.fragment_container);
+                    .findFragmentById(R.id.fragment_container);
             if (currentFragment instanceof AccountInformationFragment) {
                 updateUserDisplay();
             }
@@ -67,43 +67,72 @@ public class AccountFragment extends Fragment {
     }
 
     public void updateUserDisplay() {
+        showProgressBar();
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
             String userID = user.getUid();
-            getUsernameFromDatabase(userID);
+            getUserDataFromDatabase(userID);
+        } else {
+            hideProgressBar();
         }
     }
 
     private void loadFragment(Fragment fragment) {
         binding.fragmentContainer.setVisibility(View.VISIBLE);
-
         requireActivity().getSupportFragmentManager().beginTransaction()
                 .replace(binding.fragmentContainer.getId(), fragment)
                 .addToBackStack(null)
                 .commit();
     }
 
-    private void getUsernameFromDatabase(String userID) {
+    private void getUserDataFromDatabase(String userID) {
         DatabaseReference userRef = FirebaseDatabase.getInstance()
                 .getReference("Users").child(userID);
 
-        userRef.child("username").addListenerForSingleValueEvent(new ValueEventListener() {
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!isAdded() || binding == null) return;
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (!isAdded() || binding == null) {
+                    hideProgressBar();
+                    return;
+                }
 
-                if (dataSnapshot.exists()) {
-                    String username = dataSnapshot.getValue(String.class);
+                if (snapshot.exists()) {
+                    String username = snapshot.child("username").getValue(String.class);
+                    String profileImageUrl = snapshot.child("profileImageUrl").getValue(String.class);
+
                     if (username != null) {
                         binding.nameText.setText(username);
                     }
+
+                    if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
+                        Glide.with(requireContext())
+                                .load(profileImageUrl)
+                                .centerCrop()
+                                .into(binding.profileImage);
+                    }
                 }
+
+                hideProgressBar();
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("FirebaseError", "Failed to fetch username: " + databaseError.getMessage());
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("FirebaseError", "Failed to fetch user data: " + error.getMessage());
+                hideProgressBar();
             }
         });
+    }
+
+    private void showProgressBar() {
+        if (homeActivity != null) {
+            homeActivity.showProgressBar();
+        }
+    }
+
+    private void hideProgressBar() {
+        if (homeActivity != null) {
+            homeActivity.hideProgressBar();
+        }
     }
 }
