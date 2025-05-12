@@ -55,13 +55,14 @@
             android:id="@+id/username_auth"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:autofillHints="username"
             android:background="@drawable/bg_gray_rectangle"
             android:drawableStart="@drawable/icon_user"
-            android:autofillHints="username"
             android:drawablePadding="10dp"
-            android:hint="Username"
+            android:hint="@string/activity_Register_Username"
+            android:paddingHorizontal="10dp"
             android:textSize="18sp"
-            android:paddingHorizontal="10dp" />
+            tools:ignore="TextFields" />
 
         <EditText
             android:id="@+id/email_auth"
@@ -73,8 +74,9 @@
             android:autofillHints="emailAddress"
             android:drawablePadding="10dp"
             android:textSize="18sp"
-            android:hint="Email"
-            android:paddingHorizontal="10dp" />
+            android:hint="@string/activity_Register_Email"
+            android:paddingHorizontal="10dp"
+            tools:ignore="TextFields" />
 
         <EditText
             android:id="@+id/password_auth"
@@ -87,8 +89,9 @@
             android:drawableEnd="@drawable/baseline_remove_red_eye_24"
             android:drawablePadding="10dp"
             android:textSize="18sp"
-            android:hint="Password"
-            android:paddingHorizontal="10dp" />
+            android:hint="@string/activity_Register_Password"
+            android:paddingHorizontal="10dp"
+            tools:ignore="TextFields" />
 
         <EditText
             android:id="@+id/confirmPassword_auth"
@@ -101,8 +104,9 @@
             android:drawableEnd="@drawable/baseline_remove_red_eye_24"
             android:drawablePadding="10dp"
             android:textSize="18sp"
-            android:hint="ConfirmPassword"
-            android:paddingHorizontal="10dp" />
+            android:hint="@string/activity_Register_ConfirmPassword"
+            android:paddingHorizontal="10dp"
+            tools:ignore="TextFields" />
 
     </LinearLayout>
 
@@ -172,6 +176,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:contentDescription="@string/activity_Register_Todo"
             android:src="@drawable/google_image" /> <!-- Google logo image -->
     </RelativeLayout>
 
@@ -195,7 +200,7 @@
         android:layout_marginStart="116dp"
         android:layout_marginTop="32dp"
         android:gravity="center_horizontal|center_vertical"
-        android:text="Already have an accout"
+        android:text="@string/activity_Register_Already_Have_An_Account"
         android:textAppearance="@style/create_an_a"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
