@@ -188,4 +188,9 @@
         <item name="cornerSize">50dp</item>
     </style>
 
+    <style name="ShapeAppearanceOverlay.App.Corner16dp" parent="">
+        <item name="cornerSize">16dp</item>
+    </style>
+
+
 </resources>

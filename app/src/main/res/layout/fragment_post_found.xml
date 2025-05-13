@@ -16,46 +16,55 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!-- Image Upload Section -->
-            <RelativeLayout
+
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/inputImage"
                 android:layout_width="375dp"
                 android:layout_height="240dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/bg_input_image"
-                android:gravity="center"
-                app:layout_constraintTop_toTopOf="parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bg_input_image"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Corner16dp" />
 
-                <RelativeLayout
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/bg_input_image_circle"
-                    android:gravity="center">
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ico_add_photo"
-                        android:contentDescription="Image" />
-                </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/selectImageOverlay"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/bg_input_image_circle"
+                android:gravity="center"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/inputImage"
+                app:layout_constraintEnd_toEndOf="@+id/inputImage"
+                app:layout_constraintStart_toStartOf="@+id/inputImage"
+                app:layout_constraintTop_toTopOf="@+id/inputImage">
+
+                <ImageView
+                    android:id="@+id/imageViewIcon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="Image"
+                    android:src="@drawable/ico_add_photo" />
             </RelativeLayout>
+
+            <!-- Image Upload Section -->
 
             <!-- Section Title -->
             <TextView
                 android:id="@+id/textView"
+                style="@style/LabelStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Other Information"
                 android:textSize="18sp"
-                style="@style/LabelStyle"
-                app:layout_constraintTop_toBottomOf="@+id/inputImage"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputImage" />
 
             <!-- Divider -->
             <View
@@ -65,10 +74,10 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
                 android:background="?android:attr/listDivider"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <EditText
                 android:id="@+id/inputTitle"
@@ -76,17 +85,17 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
+                android:autofillHints=""
                 android:background="@drawable/bg_input_edit_text"
                 android:hint="Title"
                 android:inputType="text"
                 android:lines="1"
                 android:paddingHorizontal="10dp"
                 android:textSize="14sp"
-                android:autofillHints=""
-                app:layout_constraintTop_toBottomOf="@+id/divider"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider" />
 
             <!-- Information Input -->
             <EditText
@@ -95,51 +104,51 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
+                android:autofillHints=""
                 android:background="@drawable/bg_input_edit_text"
                 android:gravity="top"
                 android:hint="All informations..."
                 android:inputType="textMultiLine"
                 android:lines="5"
+                android:overScrollMode="always"
                 android:padding="10dp"
                 android:scrollbarStyle="insideInset"
                 android:textSize="14sp"
-                android:overScrollMode="always"
-                android:autofillHints=""
-                app:layout_constraintTop_toBottomOf="@+id/inputTitle"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputTitle" />
 
             <!-- Location Label and Value -->
             <TextView
                 android:id="@+id/tvLocation"
+                style="@style/LabelStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
                 android:text="Location:"
                 android:textSize="14sp"
-                style="@style/LabelStyle"
-                app:layout_constraintTop_toBottomOf="@+id/inputInformation"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputInformation" />
 
             <TextView
                 android:id="@+id/textView2"
+                style="@style/LabelStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:drawableEnd="@drawable/ico_arrow_outward"
                 android:text="Royal Univerity of Phnom Penh"
                 android:textColor="#2196F3"
                 android:textSize="14sp"
-                android:drawableEnd="@drawable/ico_arrow_outward"
-                style="@style/LabelStyle"
-                app:layout_constraintTop_toBottomOf="@+id/inputInformation"
-                app:layout_constraintStart_toEndOf="@+id/tvLocation"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/tvLocation"
+                app:layout_constraintTop_toBottomOf="@+id/inputInformation" />
 
             <!-- Location Note -->
             <TextView
@@ -150,25 +159,25 @@
                 android:text="NOTE: Srroy, we currently availible in RUPP."
                 android:textColor="#FF0000"
                 android:textSize="10sp"
-                app:layout_constraintTop_toBottomOf="@+id/tvLocation"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLocation" />
 
             <!-- Date and Time Section -->
             <TextView
                 android:id="@+id/tvDateAndTime"
+                style="@style/LabelStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
                 android:text="Date and Time"
                 android:textSize="18sp"
-                style="@style/LabelStyle"
-                app:layout_constraintTop_toBottomOf="@+id/textView3"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
             <View
                 android:id="@+id/divider2"
@@ -177,10 +186,10 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
                 android:background="?android:attr/listDivider"
-                app:layout_constraintTop_toBottomOf="@+id/tvDateAndTime"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDateAndTime" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -226,17 +235,17 @@
             <!-- Contact Author Section -->
             <TextView
                 android:id="@+id/tvContact"
+                style="@style/LabelStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
                 android:text="Contact Author"
                 android:textSize="18sp"
-                style="@style/LabelStyle"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
             <View
                 android:id="@+id/divider3"
@@ -245,25 +254,25 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
                 android:background="?android:attr/listDivider"
-                app:layout_constraintTop_toBottomOf="@+id/tvContact"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvContact" />
 
             <TextView
                 android:id="@+id/tvEmail"
+                style="@style/LabelStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
                 android:text="Email"
                 android:textSize="14sp"
-                style="@style/LabelStyle"
-                app:layout_constraintTop_toBottomOf="@+id/divider3"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/editText"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider3" />
 
             <EditText
                 android:id="@+id/editText"
@@ -275,24 +284,24 @@
                 android:hint="Email Address"
                 android:paddingHorizontal="10dp"
                 android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@+id/tvEmail"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
 
             <TextView
                 android:id="@+id/tvPhone"
+                style="@style/LabelStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="5dp"
                 android:text="Phone Number"
                 android:textSize="14sp"
-                style="@style/LabelStyle"
-                app:layout_constraintTop_toBottomOf="@+id/editText"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editText" />
 
             <EditText
                 android:id="@+id/editPhone"
@@ -305,10 +314,10 @@
                 android:inputType="phone"
                 android:paddingHorizontal="10dp"
                 android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@+id/tvPhone"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPhone" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -319,10 +328,10 @@
                 android:text="NOTE: Please use your real information."
                 android:textColor="#FF0000"
                 android:textSize="10sp"
-                app:layout_constraintTop_toBottomOf="@+id/editPhone"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editPhone" />
 
             <!-- Submit Section -->
             <RelativeLayout

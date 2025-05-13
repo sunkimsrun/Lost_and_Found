@@ -9,48 +9,143 @@ import java.util.Date;
 import java.util.Locale;
 
 public class PostCard {
-    @SerializedName("postId") private String postId;
-    @SerializedName("title") private String title;
-    @SerializedName("description") private String description;
-    @SerializedName("location") private String location;
-    @SerializedName("email") private String email;
-    @SerializedName("phoneNumber") private String phoneNumber;
-    @SerializedName("reward") private String reward;
-    @SerializedName("postDate") private String postDate;
-    @SerializedName("postTime") private String postTime;
 
-    @SerializedName("createdDate") @JsonAdapter(ISO8601DateAdapter.class)
+    @SerializedName("imageUrl")
+    private String imageUrl;
+    @SerializedName("postId")
+    private String postId;
+    @SerializedName("title")
+    private String title;
+    @SerializedName("information")
+    private String information;
+    @SerializedName("email")
+    private String email;
+    @SerializedName("phone")
+    private String phone;
+    @SerializedName("reward")
+    private String reward;
+
+    @SerializedName("status")
+    private String status;
+    @SerializedName("date")
+    private String date;
+    @SerializedName("postTime")
+    private String postTime;
+
+    @SerializedName("createdDate")
+    @JsonAdapter(ISO8601DateAdapter.class)
     private Date createdDate;
 
-    public PostCard(String postId, String title, String description, String location, String email, String phoneNumber, String reward, String postDate, String postTime, Date createdDate) {
-        this.postId = postId;
-        this.title = title;
-        this.description = description;;
-        this.location = location;;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.reward = reward;
-        this.postDate = postDate;
-        this.postTime = postTime;
-        this.createdDate = createdDate != null ? createdDate : new Date();
+    public PostCard() {
     }
 
-    public String getPostId() { return postId; }
-    public String getTitle() { return title; }
-    public String getDescription() { return description; }
-    public String getLocation() { return location; }
-    public String getEmail() { return email; }
-    public String getPhoneNumber() { return phoneNumber; }
-    public String getReward() { return reward; }
-    public String getPostDate() { return postDate; }
-    public String getPostTime() { return postTime; }
+    public PostCard(String imageUrl, String postId, String title, String information, String email, String phone, String reward, String date, String postTime, Date createdDate, String status) {
+        this.imageUrl = imageUrl;
+        this.postId = postId;
+        this.title = title;
+        this.information = information;
+        this.email = email;
+        this.phone = phone;
+        this.reward = reward;
+        this.date = date;
+        this.postTime = postTime;
+        this.createdDate = createdDate != null ? createdDate : new Date();
+        this.status = status;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getPostId() {
+        return postId;
+    }
+
+    public void setPostId(String postId) {
+        this.postId = postId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getInformation() {
+        return information;
+    }
+
+    public void setInformation(String information) {
+        this.information = information;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getReward() {
+        return reward;
+    }
+
+    public void setReward(String reward) {
+        this.reward = reward;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getPostTime() {
+        return postTime;
+    }
+
+    public void setPostTime(String postTime) {
+        this.postTime = postTime;
+    }
+
     public String getCreatedDate() {
-        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(createdDate);
+        return createdDate != null
+                ? new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(createdDate)
+                : "Unknown";
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     @Override
     public String toString() {
-        return String.format("Card{postId=%s, title=%s, description=%s, location=%s, email=%s, phoneNumber=%s, reward=%s, postDate=%s, postTime=%s, createdDate=%s}",
-                postId, title, description, location, email, phoneNumber, reward, postDate, postTime, getCreatedDate());
+        return String.format("Card{ imageUrl=%s ,postId=%s, title=%s, information=%s, email=%s, phoneNumber=%s, reward=%s, date=%s, postTime=%s, status=%s,createdDate=%s}",
+                imageUrl, postId, title, information, email, phone, reward, date, postTime, status, getCreatedDate());
     }
 }
