@@ -12,7 +12,8 @@
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:paddingTop="52dp">
+        android:paddingTop="52dp"
+        tools:ignore="UselessParent">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -37,7 +38,9 @@
                     <ImageView
                         android:layout_width="125dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/view_lost_png"/>
+                        android:contentDescription="Continue With Lost Item"
+                        android:src="@drawable/view_lost_png"
+                        tools:ignore="HardcodedText" />
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -49,13 +52,13 @@
                             android:layout_height="wrap_content"
                             style="@style/LabelStyle"
                             android:textSize="16sp"
-                            android:text="Lost Items"/>
+                            android:text="@string/fragment_Home_Lost_Items"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="14sp"
                             android:layout_marginTop="10dp"
-                            android:text="View Lost Items"/>
+                            android:text="@string/Fragment_Home_View_Lost_Items"/>
                     </LinearLayout>
 
                 </RelativeLayout>
@@ -71,13 +74,14 @@
                 android:paddingHorizontal="16dp"
                 android:gravity="center"
                 android:background="@drawable/bg_under_text_card_home"
-                android:text="View Items"
+                android:text="@string/Fragment_Home_View_items"
                 android:textColor="@color/white"
                 android:drawableEnd="@drawable/ico_arrow_forward"
                 android:drawablePadding="4dp"
                 android:textSize="14sp"
                 android:elevation="12dp"
-                android:translationZ="12dp"/>
+                android:translationZ="12dp"
+                tools:ignore="UseCompatTextViewDrawableXml" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -103,7 +107,9 @@
                     <ImageView
                         android:layout_width="125dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/view_found_png"/>
+                        android:contentDescription="Continue With Found Item"
+                        android:src="@drawable/view_found_png"
+                        tools:ignore="HardcodedText" />
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -115,13 +121,13 @@
                             android:layout_height="wrap_content"
                             style="@style/LabelStyle"
                             android:textSize="16sp"
-                            android:text="Found Items"/>
+                            android:text="@string/Fragment_Home_Found_Items"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="14sp"
                             android:layout_marginTop="10dp"
-                            android:text="View Found Items"/>
+                            android:text="@string/Fragment_Home_View_Found_Items"/>
                     </LinearLayout>
 
                 </RelativeLayout>
@@ -137,13 +143,14 @@
                 android:paddingHorizontal="16dp"
                 android:gravity="center"
                 android:background="@drawable/bg_under_text_card_home"
-                android:text="View Items"
+                android:text="@string/Fragment_Home_View_Items"
                 android:textColor="@color/white"
                 android:drawableEnd="@drawable/ico_arrow_forward"
                 android:drawablePadding="4dp"
                 android:textSize="14sp"
                 android:elevation="12dp"
-                android:translationZ="12dp"/>
+                android:translationZ="12dp"
+                tools:ignore="UseCompatTextViewDrawableXml" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -171,7 +178,9 @@
                         android:layout_height="64dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="12dp"
-                        android:src="@drawable/create_post"/>
+                        android:contentDescription="Continue With Create Post"
+                        android:src="@drawable/create_post"
+                        tools:ignore="HardcodedText" />
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -183,13 +192,13 @@
                             android:layout_height="wrap_content"
                             style="@style/LabelStyle"
                             android:textSize="16sp"
-                            android:text="Create Post"/>
+                            android:text="@string/Fragment_Home_Create_Post"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="14sp"
                             android:layout_marginTop="10dp"
-                            android:text="Report lost or found."/>
+                            android:text="@string/Fragment_Home_Report_Lost_Or_Found"/>
                     </LinearLayout>
 
                 </RelativeLayout>
@@ -206,13 +215,14 @@
                 android:paddingHorizontal="16dp"
                 android:gravity="center"
                 android:background="@drawable/bg_under_text_card_home"
-                android:text="Create Post"
+                android:text="@string/Create_Post"
                 android:textColor="@color/white"
                 android:drawableEnd="@drawable/ico_arrow_forward"
                 android:drawablePadding="4dp"
                 android:textSize="14sp"
                 android:elevation="12dp"
-                android:translationZ="12dp"/>
+                android:translationZ="12dp"
+                tools:ignore="UseCompatTextViewDrawableXml" />
         </RelativeLayout>
 
     </LinearLayout>

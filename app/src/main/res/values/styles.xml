@@ -180,7 +180,7 @@
 
     <style name="UserPostImageView" parent="">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">28dp</item>
+        <item name="cornerSize">16dp</item>
     </style>
 
     <style name="UserCompleteImageView" parent="">
@@ -188,27 +188,16 @@
         <item name="cornerSize">50dp</item>
     </style>
 
-    <style name="ShapeAppearanceOverlay.App.Corner16dp" parent="">
-        <item name="cornerSize">16dp</item>
+    <style name="OtpBox">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_marginStart">6dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/otp_box_background</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:inputType">number</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:importantForAutofill">no</item>
     </style>
-
-    <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
-        <item name="chipBackgroundColor">@color/chip_background_selector</item>
-        <item name="android:textColor">@color/chip_text_selector</item>
-        <item name="chipCornerRadius">16dp</item>
-        <item name="chipStrokeColor">#E5E7EB</item>
-        <item name="chipStrokeWidth">1dp</item>
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="CustomStatusStyle" parent="Widget.MaterialComponents.Chip.Choice">
-        <item name="chipBackgroundColor">@color/chip_background_status_selector</item>
-        <item name="android:textColor">@color/chip_text_selector</item>
-        <item name="chipCornerRadius">16dp</item>
-        <item name="chipStrokeColor">#E5E7EB</item>
-        <item name="chipStrokeWidth">1dp</item>
-        <item name="android:textSize">14sp</item>
-    </style>
-
 
 </resources>

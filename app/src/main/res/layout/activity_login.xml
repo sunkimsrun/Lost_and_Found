@@ -9,32 +9,36 @@
         android:id="@+id/tvSkipForNow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="46dp"
+        android:fontFamily="@font/adlam_display"
         android:text="Skip for now!"
         android:textAlignment="textEnd"
         android:textColor="#1E1E1E"
         android:textSize="18sp"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="46dp"
-        android:layout_marginEnd="46dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
         android:layout_marginStart="46dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="46dp"
-        android:textSize="46sp"
+        android:fontFamily="@font/adlam_display"
         android:text="Welcome\nBack!!"
         android:textColor="#1E1E1E"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/tvSkipForNow"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tvSkipForNow"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/et_email"
@@ -54,7 +58,8 @@
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/textView7"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/et_password"
@@ -76,7 +81,8 @@
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/et_email"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/tvForgetPassword"
@@ -85,14 +91,15 @@
         android:layout_marginTop="15dp"
         android:layout_marginStart="46dp"
         android:layout_marginEnd="46dp"
-        android:textStyle="bold"
+        android:fontFamily="@font/adlam_display"
         android:text="Forget password?"
         android:textAlignment="textEnd"
         android:textColor="@color/blue"
         android:textSize="12sp"
         app:layout_constraintTop_toBottomOf="@id/et_password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogIn"
@@ -108,13 +115,14 @@
         app:cornerRadius="4dp"
         app:layout_constraintTop_toBottomOf="@id/tvForgetPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="41dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/btnLogIn"
@@ -133,7 +141,8 @@
             android:text="Or Continue with"
             android:textColor="@color/grey"
             android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="HardcodedText, TextContrastCheck" />
 
         <View
             android:layout_width="112dp"
@@ -145,7 +154,7 @@
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="35dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_marginStart="46dp"
@@ -158,18 +167,20 @@
             android:id="@+id/btnFacebook"
             android:layout_width="105dp"
             android:layout_height="56dp"
-            android:background="@drawable/bg_btn_socail"
-            android:contentDescription="Facebook Button"
-            android:src="@drawable/facebook_ic" />
+            android:background="@drawable/bg_btn_social"
+            android:contentDescription="Continue with Facebook"
+            android:src="@drawable/facebook_ic"
+            tools:ignore="HardcodedText" />
 
         <ImageButton
             android:id="@+id/btnGoogle"
             android:layout_width="105dp"
             android:layout_height="56dp"
             android:layout_marginStart="20dp"
-            android:background="@drawable/bg_btn_socail"
-            android:contentDescription="Google Button"
-            android:src="@drawable/google_ic" />
+            android:background="@drawable/bg_btn_social"
+            android:contentDescription="Continue with Google"
+            android:src="@drawable/google_ic"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 
     <TextView
@@ -179,7 +190,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="46dp"
         android:layout_marginEnd="46dp"
-        android:textStyle="bold"
+        android:fontFamily="@font/adlam_display"
         android:text="@string/activity_Login_Dont_Have_Account_Yet_Register"
         android:textAlignment="center"
         android:textColor="#1E1E1E"

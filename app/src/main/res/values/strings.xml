@@ -102,7 +102,6 @@
 <!--        activity_profile-->
         <string name="activity_Profile_Phone_Number">Phone Number</string>
         <string name="activity_Profile_Todo">TODO</string>
-        <string name="activity_Profile_Todo1">TODO</string>
         <string name="activity_Profile_complete">Complete</string>
 
 <!--        activity_register-->
@@ -110,25 +109,31 @@
         <string name="activity_Register_Email">Email</string>
         <string name="activity_Register_Password">Password</string>
         <string name="activity_Register_ConfirmPassword">ConfirmPassword</string>
-        <string name="activity_Register_Already_Have_An_Account">Already have an account</string>
         <string name="activity_Register_Todo">TODO</string>
+        <string name="activity_Register_Or_Continue_With">Or Continue with</string>
+        <string name="activity_Register_Register">Register</string>
+        <string name="activity_Register_Button_Social_Media">Continue with Google</string>
+        <string name="activity_Register_Already_Have_Account_Login">Already have account? <font color="#2196F3">Login.</font></string>
 
-<!--        activity_forget_password-->
+
+    <!--        activity_forget_password-->
         <string name="activity_Forget_Password_0_59">0.59</string>
         <string name="activity_Forget_Password_Enter_Your_Email_Address">Enter your email address</string>
         <string name="activity_Forget_Password_Forgot_Password">Forgot\nPassword!</string>
         <string name="submit">Submit</string>
         <string name="activity_Forget_Password_Resend_Code_In">Resend code in</string>
         <string name="activity_Forget_Password_How_To_Verify_Email">How to Verify Email</string>
-        <string name="we_will_send_you_a_message_to_set_or_reset_your_new_password">* We will send you a message to set or reset your new password</string>
-
-<!--        activity_forget_password-->
-        <string name="activity_Forget_Password_hint_1">0</string>
-        <string name="activity_Forget_Password_hint_2">0</string>
-        <string name="activity_Forget_Password_hint_3">0</string>
-        <string name="activity_Forget_Password_hint_4">0</string>
-        <string name="activity_Forget_Password_hint_5">0</string>
-        <string name="activity_Forget_Password_hint_6">0</string>
+        <string name="activity_Forget_Password_Email">Email</string>
+        <string name="activity_Forget_Password_we_will_send_you_a_message_to_set_or_reset_your_new_password">* We will send you a message to set or reset your new password</string>
+        <string name="activity_Forget_Password_Reset">Reset</string>
+        <string name="activity_Forget_Password_Email_Sent_Successfully">Email sent successfully!</string>
+        <string name="activity_Forget_Password_Log_In">Log In</string>
+        <string name="activity_Forget_Password_hint_1">1</string>
+        <string name="activity_Forget_Password_hint_2">2</string>
+        <string name="activity_Forget_Password_hint_3">3</string>
+        <string name="activity_Forget_Password_hint_4">4</string>
+        <string name="activity_Forget_Password_hint_5">5</string>
+        <string name="activity_Forget_Password_hint_6">6</string>
 
 <!--    activity_create_new_password-->
     <string name="activity_Create_New_Password_ConfirmPassword">ConfirmPassword</string>
@@ -145,6 +150,21 @@
 <!--    activity_auth_screen-->
     <string name="activity_Auth_Screen_Get_Start">Get Start</string>
     <string name="already_have_account_login">Already have account?  <font color="#2196F3">Login.</font></string>
+
+<!--    Fragment Home-->
+    <string name="fragment_Home_Lost_Items">Lost Items</string>
+    <string name="Fragment_Home_View_Lost_Items">View Lost Items</string>
+    <string name="Fragment_Home_View_items">View Items</string>
+    <string name="Fragment_Home_Found_Items">Found Items</string>
+    <string name="Fragment_Home_View_Found_Items">View Found Items</string>
+    <string name="Fragment_Home_View_Items">View Items</string>
+    <string name="Fragment_Home_Create_Post">Create Post</string>
+    <string name="Fragment_Home_Report_Lost_Or_Found">Report lost or found.</string>
+    <string name="Create_Post">Create Post</string>
+
+
+
+
 
 
 </resources>
