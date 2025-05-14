@@ -3,10 +3,12 @@ package com.example.lost_and_found_app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
+
 import com.example.lost_and_found_app.databinding.ActivityHomeBinding;
 import com.example.lost_and_found_app.fragment.AccountFragment;
 import com.example.lost_and_found_app.fragment.ContactFragment;
@@ -18,9 +20,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private ActivityHomeBinding binding;
+    public ActivityHomeBinding binding;
     private FirebaseAuth mAuth;
-    private boolean userIsLoggedIn = true;
+    private final boolean userIsLoggedIn = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +90,7 @@ public class HomeActivity extends AppCompatActivity {
                 .commit();
     }
     public void showProgressBar() {
-        binding.loadingBar .setVisibility(View.VISIBLE);
+        binding.loadingBar.setVisibility(View.VISIBLE);
     }
 
     public void hideProgressBar() {

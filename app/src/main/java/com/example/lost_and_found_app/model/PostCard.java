@@ -1,45 +1,50 @@
 package com.example.lost_and_found_app.model;
 
-import com.example.lost_and_found_app.util.ISO8601DateAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 public class PostCard {
 
+    @SerializedName("userId")
+    private String userId;
+
     @SerializedName("imageUrl")
     private String imageUrl;
+
     @SerializedName("postId")
     private String postId;
+
     @SerializedName("title")
     private String title;
+
     @SerializedName("information")
     private String information;
+
     @SerializedName("email")
     private String email;
+
     @SerializedName("phone")
     private String phone;
+
     @SerializedName("reward")
     private String reward;
 
     @SerializedName("status")
     private String status;
+
     @SerializedName("date")
     private String date;
-    @SerializedName("postTime")
-    private String postTime;
+
+    @SerializedName("time")
+    private String time;
 
     @SerializedName("createdDate")
-    @JsonAdapter(ISO8601DateAdapter.class)
-    private Date createdDate;
+    private String createdDate;
 
     public PostCard() {
     }
 
-    public PostCard(String imageUrl, String postId, String title, String information, String email, String phone, String reward, String date, String postTime, Date createdDate, String status) {
+    public PostCard(String imageUrl, String postId, String title, String information, String email,
+                    String phone, String reward, String date, String time, String createdDate, String status) {
         this.imageUrl = imageUrl;
         this.postId = postId;
         this.title = title;
@@ -48,9 +53,17 @@ public class PostCard {
         this.phone = phone;
         this.reward = reward;
         this.date = date;
-        this.postTime = postTime;
-        this.createdDate = createdDate != null ? createdDate : new Date();
+        this.time = time;
+        this.createdDate = createdDate;
         this.status = status;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getImageUrl() {
@@ -126,26 +139,24 @@ public class PostCard {
     }
 
     public String getPostTime() {
-        return postTime;
+        return time;
     }
 
     public void setPostTime(String postTime) {
-        this.postTime = postTime;
+        this.time = postTime;
     }
 
     public String getCreatedDate() {
-        return createdDate != null
-                ? new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(createdDate)
-                : "Unknown";
+        return createdDate != null ? createdDate : "Unknown";
     }
 
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
 
     @Override
     public String toString() {
-        return String.format("Card{ imageUrl=%s ,postId=%s, title=%s, information=%s, email=%s, phoneNumber=%s, reward=%s, date=%s, postTime=%s, status=%s,createdDate=%s}",
-                imageUrl, postId, title, information, email, phone, reward, date, postTime, status, getCreatedDate());
+        return String.format("Card{ imageUrl=%s ,postId=%s, title=%s, information=%s, email=%s, phoneNumber=%s, reward=%s, date=%s, time=%s, status=%s, createdDate=%s}",
+                imageUrl, postId, title, information, email, phone, reward, date, time, status, getCreatedDate());
     }
 }

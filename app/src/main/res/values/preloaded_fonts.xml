@@ -2,5 +2,7 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/adlam_display</item>
+        <item>@font/lato</item>
+        <item>@font/poppins_medium</item>
     </array>
 </resources>

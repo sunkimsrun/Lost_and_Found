@@ -28,6 +28,11 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         binding = ActivityForgetPasswordBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.tvBack.setOnClickListener(v -> {
+            Intent intent = new Intent(ForgetPasswordActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        });
         binding.btnReset.setOnClickListener(v -> {
             String email = binding.etEmail.getText().toString().trim();
 

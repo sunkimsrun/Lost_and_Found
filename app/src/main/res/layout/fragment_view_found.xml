@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="20dp"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.ViewFoundFragment">
 
@@ -22,12 +23,12 @@
         <EditText
             android:id="@+id/editText"
             android:layout_width="0dp"
-            android:layout_height="55dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/background"
-            android:drawableStart="@drawable/component_52"
+            android:background="@drawable/bg_search_bar"
+            android:drawableStart="@drawable/ico_search"
             android:drawablePadding="10dp"
             android:hint="Search Something"
             android:inputType="text"
@@ -44,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
-            android:text="200+ Reported found today"
+            android:text="200+ Reported lost today"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -53,66 +54,70 @@
 
         <HorizontalScrollView
             android:id="@+id/horizontalScrollView"
-            android:layout_width="419dp"
-            android:layout_height="63dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:scrollbars="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView">
 
-            <LinearLayout
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/filterChipGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="8dp">
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                app:chipSpacing="4dp"
+                app:singleSelection="true">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/postRecently"
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_today"
+                    style="@style/CustomChipStyle"
                     android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:text="Posted Recently"
-                    android:backgroundTint="@color/white"
-                    android:textColor="@color/black" />
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:text="Today" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/postToday"
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_this_week"
+                    style="@style/CustomChipStyle"
                     android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="5dp"
-                    android:text="Today"
-                    android:backgroundTint="@color/white"
-                    android:textColor="@color/black" />
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:text="This Week" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/postWeek"
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_this_month"
+                    style="@style/CustomChipStyle"
                     android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="5dp"
-                    android:text="This Week"
-                    android:backgroundTint="@color/white"
-                    android:textColor="@color/black" />
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:text="This Month" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/postMonth"
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_this_year"
+                    style="@style/CustomChipStyle"
                     android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="5dp"
-                    android:text="This Month"
-                    android:backgroundTint="@color/white"
-                    android:textColor="@color/black" />
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:text="This Year" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/postYear"
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_clear_filter"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
                     android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="5dp"
-                    android:text="This Year"
-                    android:backgroundTint="@color/white"
-                    android:textColor="@color/black" />
-            </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:text="Clear Filter" />
+
+
+            </com.google.android.material.chip.ChipGroup>
+
         </HorizontalScrollView>
 
         <androidx.recyclerview.widget.RecyclerView

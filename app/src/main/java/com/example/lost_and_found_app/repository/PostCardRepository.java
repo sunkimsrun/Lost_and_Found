@@ -22,8 +22,8 @@ public class PostCardRepository {
         postCardService = RetrofitClient.getClient().create(PostCardService.class);
     }
 
-    public void getAllPosts(final IApiCallback<List<PostCard>> callback) {
-        postCardService.getCards().enqueue(new Callback<Map<String, PostCard>>() {
+    public void getAllPosts(String itemType, final IApiCallback<List<PostCard>> callback) {
+        postCardService.getCards(itemType).enqueue(new Callback<Map<String, PostCard>>() {
             @Override
             public void onResponse(@NonNull Call<Map<String, PostCard>> call, @NonNull Response<Map<String, PostCard>> response) {
                 if (response.isSuccessful() && response.body() != null) {
@@ -41,8 +41,8 @@ public class PostCardRepository {
         });
     }
 
-    public void getPost(String postId, final IApiCallback<PostCard> callback) {
-        postCardService.getCard(postId).enqueue(new Callback<PostCard>() {
+    public void getPost(String itemType, String postId, final IApiCallback<PostCard> callback) {
+        postCardService.getCard(itemType, postId).enqueue(new Callback<PostCard>() {
             @Override
             public void onResponse(@NonNull Call<PostCard> call, @NonNull Response<PostCard> response) {
                 if (response.isSuccessful() && response.body() != null) {
@@ -59,8 +59,8 @@ public class PostCardRepository {
         });
     }
 
-    public void createPost(PostCard postCard, final IApiCallback<PostCard> callback) {
-        postCardService.createCard(postCard).enqueue(new Callback<PostCard>() {
+    public void createPost(String itemType, String postId, PostCard postCard, final IApiCallback<PostCard> callback) {
+        postCardService.createCard(itemType, postId, postCard).enqueue(new Callback<PostCard>() {
             @Override
             public void onResponse(@NonNull Call<PostCard> call, @NonNull Response<PostCard> response) {
                 if (response.isSuccessful() && response.body() != null) {
@@ -77,8 +77,8 @@ public class PostCardRepository {
         });
     }
 
-    public void deletePost(String postId, final IApiCallback<String> callback) {
-        postCardService.deleteCard(postId).enqueue(new Callback<Void>() {
+    public void deletePost(String itemType, String postId, final IApiCallback<String> callback) {
+        postCardService.deleteCard(itemType, postId).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
                 if (response.isSuccessful()) {

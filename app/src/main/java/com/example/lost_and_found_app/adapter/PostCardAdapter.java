@@ -1,6 +1,8 @@
 package com.example.lost_and_found_app.adapter;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -8,7 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.lost_and_found_app.HomeActivity;
 import com.example.lost_and_found_app.databinding.PostCardBinding;
+import com.example.lost_and_found_app.fragment.PostDetailFragment;
 import com.example.lost_and_found_app.model.PostCard;
 
 import java.text.SimpleDateFormat;
@@ -21,8 +25,10 @@ import java.util.Objects;
 public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHolder> {
 
     private final List<PostCard> postCards;
+    private final String currentUserId;
 
-    public PostCardAdapter() {
+    public PostCardAdapter(String currentUserId) {
+        this.currentUserId = currentUserId;
         this.postCards = new ArrayList<>();
     }
 
@@ -46,6 +52,35 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHo
         holder.binding.postInformation.setText(post.getInformation());
         holder.binding.date.setText(post.getDate());
         holder.binding.checkbox.setChecked(Objects.equals(post.getStatus(), "Found") || Objects.equals(post.getStatus(), "Returned"));
+        holder.binding.checkbox.setText(post.getStatus());
+
+        String source;
+        if (Objects.equals(post.getUserId(), currentUserId)) {
+            source = "manage";
+        } else if (post.getStatus().equals("Found") || post.getStatus().equals("Not Found")) {
+            source = "lost";
+        } else if (post.getStatus().equals("Returned") || post.getStatus().equals("Not Returned")) {
+            source = "found";
+        } else {
+            source = "lost";
+        }
+
+
+        holder.itemView.setOnClickListener(view -> {
+            PostDetailFragment fragment = new PostDetailFragment();
+
+            Bundle bundle = new Bundle();
+            bundle.putString("postId", post.getPostId());
+            bundle.putString("status", post.getStatus());
+            bundle.putString("source", source);
+
+            fragment.setArguments(bundle);
+
+            Context context = view.getContext();
+            if (context instanceof HomeActivity) {
+                ((HomeActivity) context).LoadFragment(fragment);
+            }
+        });
     }
 
     @Override

@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="20dp"
-    tools:context=".PostDetailFragment">
+    android:background="@color/white"
+    tools:context=".fragment.PostDetailFragment">
 
     <TextView
+        android:id="@+id/tvReturn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
@@ -19,268 +21,347 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="290dp"
-        android:layout_marginTop="47dp"
-        android:background="@android:color/transparent"
-        android:buttonTint="#357AE9"
-        android:padding="8dp"
-        android:text="Found"
-        android:textColor="#357AE9"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="85dp"
-        android:orientation="vertical"
-        android:padding="18dp">
-
-        <RelativeLayout
-            android:layout_width="375dp"
-            android:layout_height="240dp">
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/img_container"
-                app:shapeAppearanceOverlay="@style/RoundedImageView" />
-
-            <ImageButton
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                android:layout_marginStart="320dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg_saved"
-                android:contentDescription="TODO"
-                android:src="@drawable/ico_bookmark"
-                tools:ignore="TouchTargetSizeCheck" />
-
-        </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp">
 
         <LinearLayout
-            android:layout_width="366dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical"
+            android:paddingHorizontal="18dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="vertical"
-                android:padding="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/timer"
-                    android:gravity="center_vertical"
-                    android:text="Feb, 29 2025"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="start"
-                    android:text="@string/post_name"
-                    android:textAppearance="@style/post_name"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="8dp">
+            <RelativeLayout
+                android:layout_width="375dp"
+                android:layout_height="240dp">
 
                 <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:id="@+id/displayImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:scaleType="centerCrop"
                     android:src="@drawable/img_container"
-                    app:shapeAppearanceOverlay="@style/UserPostImageView" />
+                    app:shapeAppearanceOverlay="@style/RoundedImageView" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:gravity="start"
-                    android:text="@string/post_name"
-                    android:textAppearance="@style/post_name"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/checkbox"
+                    style="@style/CustomStatusStyle"
+                    android:layout_width="110dp"
+                    android:layout_height="54dp"
+                    android:layout_marginStart="250dp"
+                    android:layout_marginTop="5dp"
+                    android:checked="true"
+                    android:clickable="false"
+                    android:text="Not Returned"
+                    android:textAlignment="center" />
 
-            </LinearLayout>
+                <ImageButton
+                    android:id="@+id/btnDelete"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="320dp"
+                    android:layout_marginTop="185dp"
+                    android:background="@drawable/bg_saved"
+                    android:contentDescription="TODO"
+                    android:src="@drawable/ico_delete"
+                    android:visibility="gone"
+                    tools:ignore="TouchTargetSizeCheck" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Other Information"
-                android:textColor="@color/black"
-                android:textSize="22dp"
-                android:textStyle="bold" />
-
-            <View
-                android:id="@+id/divider"
-                android:layout_width="270dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/post_divider" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="50dp">
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/post_description"
-                android:layout_width="match_parent"
-                android:layout_height="105dp"
-                android:gravity="center_vertical"
-                android:lineSpacingExtra="5sp"
-                android:text="@string/post_description"
-                android:textAppearance="@style/post_description"
-                android:textSize="18dp" />
+            </RelativeLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="366dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Location :"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="Royal Univerity of Phnom Penh"
-                    android:textColor="#2196F3"
-                    android:textSize="13sp"
-                    android:drawableEnd="@drawable/ico_arrow_outward" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="Contact"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <View
-                android:id="@+id/divider2"
-                android:layout_width="270dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/post_divider" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/email"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/displayTitle"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/mail"
-                    android:drawablePadding="10dp"
-                    android:gravity="center_vertical"
-                    android:padding="10dp"
-                    android:text="tra@somthing.com"
-                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="start"
+                    android:maxLines="2"
+                    android:text="@string/post_name"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/userImage"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_container"
+                        app:shapeAppearanceOverlay="@style/UserPostImageView" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/userName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:text="@string/post_name"
+                            android:textAppearance="@style/post_name"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <!-- Calendar icon -->
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginEnd="6dp"
+                                android:src="@drawable/ico_calendar" />
+
+                            <TextView
+                                android:id="@+id/displayDate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Feb, 29 2025"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <!-- Spacer -->
+                            <View
+                                android:layout_width="10dp"
+                                android:layout_height="0dp" />
+
+                            <!-- Clock icon -->
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginEnd="6dp"
+                                android:src="@drawable/ico_clock" />
+
+                            <TextView
+                                android:id="@+id/displayTime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="12:00"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
                 <TextView
-                    android:id="@+id/phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/baseline_contact_phone_24"
-                    android:drawablePadding="10dp"
-                    android:gravity="center_vertical"
-                    android:padding="10dp"
-                    android:text="+855 96789876"
+                    android:layout_marginTop="10dp"
+                    android:text="Other Information"
                     android:textColor="@color/black"
+                    android:textSize="16dp"
                     android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/didver_line" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="50dp">
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/displayInformation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:lineSpacingExtra="5sp"
+                    android:text="@string/post_description"
+                    android:textAlignment="textStart"
+                    android:textAppearance="@style/post_description"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="5dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ico_pin"
+                        app:tint="@color/blue" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Royal University of Phnom Penh"
+                        android:textColor="#2196F3"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/didver_line" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Contact"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginEnd="10dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ico_mail" />
+
+                        <TextView
+                            android:id="@+id/displayEmail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="tra@somthing.com"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginEnd="10dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ico_phone" />
+
+                        <TextView
+                            android:id="@+id/displayPhone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="+855 96789876"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/rewardContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/didver_line" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Reward"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/reward"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:lineSpacingExtra="5sp"
+                        android:text="@string/post_description"
+                        android:textAlignment="textStart"
+                        android:textAppearance="@style/post_description"
+                        android:textSize="14sp" />
+                </LinearLayout>
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="Reward"
-                android:textColor="@color/black"
+            <Button
+                android:id="@+id/btnCall"
+                android:layout_width="370dp"
+                android:layout_height="65dp"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="@color/blue"
+                android:enabled="true"
+                android:text="Call Now"
+                android:textColor="@color/white"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                app:cornerRadius="4dp" />
 
-            <View
-                android:id="@+id/divider3"
-                android:layout_width="270dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/post_divider" />
-
-            <TextView
-                android:id="@+id/reward"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawablePadding="10dp"
-                android:gravity="center_vertical"
-                android:padding="10dp"
-                android:text="Skin Epic Nana"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+                android:layout_height="50dp"
+                android:background="@color/white" />
 
         </LinearLayout>
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="370dp"
-            android:layout_height="65dp"
-            android:layout_marginTop="50dp"
-            android:backgroundTint="@color/blue"
-            android:text="Call Now"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:cornerRadius="4dp" />
-
-    </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

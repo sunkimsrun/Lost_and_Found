@@ -144,7 +144,7 @@
 
 <!--    activity_auth_screen-->
     <string name="activity_Auth_Screen_Get_Start">Get Start</string>
-
+    <string name="already_have_account_login">Already have account?  <font color="#2196F3">Login.</font></string>
 
 
 </resources>

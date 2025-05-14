@@ -147,7 +147,7 @@ public class ProfileActivity extends AppCompatActivity {
                                                     .addOnSuccessListener(authResult -> {
                                                         binding.loadingBar.setVisibility(View.GONE);
                                                         Toast.makeText(this, "Welcome!", Toast.LENGTH_SHORT).show();
-                                                        startActivity(new Intent(this, HomeActivity.class));
+                                                        startActivity(new Intent(this, AuthScreenActivity.class));
                                                         finish();
                                                     })
                                                     .addOnFailureListener(e -> {

@@ -17,29 +17,36 @@
             android:layout_height="match_parent">
 
             <!-- Image Upload Section -->
-            <RelativeLayout
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/inputImage"
                 android:layout_width="375dp"
                 android:layout_height="240dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/bg_input_image"
-                android:gravity="center"
-                app:layout_constraintTop_toTopOf="parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bg_input_image"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Corner16dp" />
 
-                <RelativeLayout
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/bg_input_image_circle"
-                    android:gravity="center">
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ico_add_photo"
-                        android:contentDescription="Image" />
-                </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/selectImageOverlay"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/bg_input_image_circle"
+                android:gravity="center"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/inputImage"
+                app:layout_constraintEnd_toEndOf="@+id/inputImage"
+                app:layout_constraintStart_toStartOf="@+id/inputImage"
+                app:layout_constraintTop_toTopOf="@+id/inputImage">
+
+                <ImageView
+                    android:id="@+id/imageViewIcon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="Image"
+                    android:src="@drawable/ico_add_photo" />
             </RelativeLayout>
 
             <!-- Section Title -->
