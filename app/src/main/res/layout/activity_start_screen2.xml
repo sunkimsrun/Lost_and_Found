@@ -81,7 +81,7 @@
                     android:src="@drawable/netherlandmap" />
 
                 <!-- Language Text -->
-                <!--if use linearlayout not need to ignor RelativeOverlap-->
+                <!--if use linearlayout not need to ignore RelativeOverlap-->
                 <TextView
                     android:id="@+id/languageName"
                     android:layout_width="wrap_content"

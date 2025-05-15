@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:textSize="18sp"
-                android:text="Lost" />
+                android:text="@string/fragment_Post_Item_lost" />
 
             <RadioButton
                 android:id="@+id/radioFound"
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:textSize="18sp"
-                android:text="Found" />
+                android:text="@string/fragment_Post_Item_found" />
 
         </RadioGroup>
 

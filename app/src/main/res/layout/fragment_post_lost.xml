@@ -10,11 +10,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        tools:ignore="UselessParent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <!-- Image Upload Section -->
             <com.google.android.material.imageview.ShapeableImageView
@@ -26,7 +27,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Corner16dp" />
+                app:shapeAppearanceOverlay="@style/RoundedImageView" />
 
 
             <RelativeLayout
@@ -46,7 +47,8 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:contentDescription="Image"
-                    android:src="@drawable/ico_add_photo" />
+                    android:src="@drawable/ico_add_photo"
+                    tools:ignore="HardcodedText" />
             </RelativeLayout>
 
             <!-- Section Title -->
@@ -56,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Other Information"
+                android:text="@string/fragment_Post_Lost_other_information"
                 android:textSize="18sp"
                 style="@style/LabelStyle"
                 app:layout_constraintTop_toBottomOf="@+id/inputImage"
@@ -84,7 +86,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_input_edit_text"
-                android:hint="Title"
+                android:hint="@string/fragment_Post_Lost_title"
                 android:inputType="text"
                 android:lines="1"
                 android:paddingHorizontal="10dp"
@@ -115,7 +117,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/inputTitle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                tools:ignore="HardcodedText" />
 
             <!-- Location Label and Value -->
             <TextView
@@ -130,7 +133,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/inputInformation"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -138,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Royal Univerity of Phnom Penh"
+                android:text="Royal University of Phnom Penh"
                 android:textColor="#2196F3"
                 android:textSize="14sp"
                 android:drawableEnd="@drawable/ico_arrow_outward"
@@ -146,7 +150,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/inputInformation"
                 app:layout_constraintStart_toEndOf="@+id/tvLocation"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                tools:ignore="HardcodedText,UseCompatTextViewDrawableXml" />
 
             <!-- Location Note -->
             <TextView
@@ -154,13 +159,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="NOTE: Srroy, we currently availible in RUPP."
+                android:text="NOTE: Sorry, we currently available in RUPP."
                 android:textColor="#FF0000"
                 android:textSize="10sp"
                 app:layout_constraintTop_toBottomOf="@+id/tvLocation"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                tools:ignore="HardcodedText,SmallSp" />
 
             <!-- Date and Time Section -->
             <TextView
@@ -169,7 +175,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
-                android:text="Date and Time"
+                android:text="@string/fragment_Post_Lost_date_and_time"
                 android:textSize="18sp"
                 style="@style/LabelStyle"
                 app:layout_constraintTop_toBottomOf="@+id/textView3"
@@ -209,9 +215,10 @@
                     android:focusable="true"
                     android:gravity="center"
                     android:paddingHorizontal="10dp"
-                    android:text="Select Date"
+                    android:text="@string/fragment_Post_Lost_select_date"
                     android:textColor="#000000"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:ignore="UseCompatTextViewDrawableXml" />
 
                 <TextView
                     android:id="@+id/tvSelectedTime"
@@ -225,9 +232,10 @@
                     android:focusable="true"
                     android:gravity="center"
                     android:paddingHorizontal="10dp"
-                    android:text="Select Time"
+                    android:text="@string/fragment_Post_Lost_select_time"
                     android:textColor="#000000"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:ignore="UseCompatTextViewDrawableXml" />
             </LinearLayout>
 
             <!-- Contact Author Section -->
@@ -237,7 +245,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
-                android:text="Contact Author"
+                android:text="@string/fragment_Post_Lost_contact_author"
                 android:textSize="18sp"
                 style="@style/LabelStyle"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout"
@@ -263,7 +271,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
-                android:text="Email"
+                android:text="@string/fragment_Post_Lost_email"
                 android:textSize="14sp"
                 style="@style/LabelStyle"
                 app:layout_constraintTop_toBottomOf="@+id/divider3"
@@ -278,14 +286,17 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="5dp"
+                android:autofillHints="emailAddress"
                 android:background="@drawable/bg_input_edit_text"
                 android:hint="Email Address"
+                android:inputType="textEmailAddress"
                 android:paddingHorizontal="10dp"
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@+id/tvEmail"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/tvPhone"
@@ -299,7 +310,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/editText"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                tools:ignore="HardcodedText" />
 
             <EditText
                 android:id="@+id/editPhone"
@@ -307,6 +319,7 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="5dp"
+                android:autofillHints="phone"
                 android:background="@drawable/bg_input_edit_text"
                 android:hint="Phone Number"
                 android:inputType="phone"
@@ -315,7 +328,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvPhone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -329,7 +343,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/editPhone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                tools:ignore="HardcodedText,SmallSp" />
 
             <TextView
                 android:id="@+id/tvReward"
@@ -338,7 +353,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
-                android:text="Reward"
+                android:text="@string/fragment_Post_Lost_reward"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -376,7 +391,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider4" />
+                app:layout_constraintTop_toBottomOf="@+id/divider4"
+                tools:ignore="HardcodedText" />
 
             <!-- Submit Section -->
             <RelativeLayout
@@ -391,7 +407,7 @@
                     android:layout_width="375dp"
                     android:layout_height="65dp"
                     android:enabled="false"
-                    android:text="Create"
+                    android:text="@string/fragment_Post_Lost_create"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:backgroundTint="#E1E1E1"
@@ -403,7 +419,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="65dp"
                     android:text="I agree to the policy"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText" />
             </RelativeLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,8 +39,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:paddingTop="25dp"
-                android:contentDescription="Logo"
-                android:src="@drawable/logo" />
+                android:contentDescription="@string/activity_home_logo"
+                android:src="@drawable/logo"
+                tools:ignore="HardcodedText" />
         </RelativeLayout>
 
         <FrameLayout

@@ -19,7 +19,8 @@
         android:text="Return"
         android:textColor="#357AE9"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="HardcodedText,UseCompatTextViewDrawableXml" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -54,8 +55,9 @@
                     android:layout_marginTop="5dp"
                     android:checked="true"
                     android:clickable="false"
-                    android:text="Not Returned"
-                    android:textAlignment="center" />
+                    android:text="@string/fragment_Post_Detail_not_returned"
+                    android:textAlignment="center"
+                    tools:ignore="TextContrastCheck"/>
 
                 <ImageButton
                     android:id="@+id/btnDelete"
@@ -64,7 +66,7 @@
                     android:layout_marginStart="320dp"
                     android:layout_marginTop="185dp"
                     android:background="@drawable/bg_saved"
-                    android:contentDescription="TODO"
+                    android:contentDescription="@string/fragment_Post_Detail_Todo"
                     android:src="@drawable/ico_delete"
                     android:visibility="gone"
                     tools:ignore="TouchTargetSizeCheck" />
@@ -131,7 +133,8 @@
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_marginEnd="6dp"
-                                android:src="@drawable/ico_calendar" />
+                                android:src="@drawable/ico_calendar"
+                                tools:ignore="ContentDescription" />
 
                             <TextView
                                 android:id="@+id/displayDate"
@@ -139,7 +142,8 @@
                                 android:layout_height="wrap_content"
                                 android:text="Feb, 29 2025"
                                 android:textSize="16sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                tools:ignore="HardcodedText" />
 
                             <!-- Spacer -->
                             <View
@@ -151,7 +155,8 @@
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_marginEnd="6dp"
-                                android:src="@drawable/ico_clock" />
+                                android:src="@drawable/ico_clock"
+                                tools:ignore="ContentDescription" />
 
                             <TextView
                                 android:id="@+id/displayTime"
@@ -159,7 +164,8 @@
                                 android:layout_height="wrap_content"
                                 android:text="12:00"
                                 android:textSize="16sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                tools:ignore="HardcodedText" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -169,9 +175,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Other Information"
+                    android:text="@string/fragment_Post_Detail_other_information"
                     android:textColor="@color/black"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <View
@@ -189,14 +195,16 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="50dp">
+                        android:layout_marginEnd="50dp"
+                        tools:ignore="UselessLeaf">
 
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        tools:ignore="UselessLeaf">
 
 
                     </LinearLayout>
@@ -227,7 +235,8 @@
                         android:layout_marginEnd="5dp"
                         android:scaleType="centerInside"
                         android:src="@drawable/ico_pin"
-                        app:tint="@color/blue" />
+                        app:tint="@color/blue"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/textView2"
@@ -235,7 +244,8 @@
                         android:layout_height="wrap_content"
                         android:text="Royal University of Phnom Penh"
                         android:textColor="#2196F3"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        tools:ignore="HardcodedText, TextContrastCheck" />
                 </LinearLayout>
 
 
@@ -250,7 +260,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="10dp"
-                    android:text="Contact"
+                    android:text="@string/fragment_Post_Detail_contact"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -272,7 +282,8 @@
                             android:layout_height="20dp"
                             android:layout_marginEnd="10dp"
                             android:scaleType="centerInside"
-                            android:src="@drawable/ico_mail" />
+                            android:src="@drawable/ico_mail"
+                            tools:ignore="ContentDescription" />
 
                         <TextView
                             android:id="@+id/displayEmail"
@@ -280,7 +291,8 @@
                             android:layout_height="wrap_content"
                             android:text="tra@somthing.com"
                             android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:ignore="HardcodedText" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -295,7 +307,8 @@
                             android:layout_height="20dp"
                             android:layout_marginEnd="10dp"
                             android:scaleType="centerInside"
-                            android:src="@drawable/ico_phone" />
+                            android:src="@drawable/ico_phone"
+                            tools:ignore="ContentDescription" />
 
                         <TextView
                             android:id="@+id/displayPhone"
@@ -303,7 +316,8 @@
                             android:layout_height="wrap_content"
                             android:text="+855 96789876"
                             android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:ignore="HardcodedText" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -328,7 +342,8 @@
                         android:text="Reward"
                         android:textColor="@color/black"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText" />
 
                     <TextView
                         android:id="@+id/reward"
@@ -351,7 +366,7 @@
                 android:layout_marginTop="15dp"
                 android:backgroundTint="@color/blue"
                 android:enabled="true"
-                android:text="Call Now"
+                android:text="@string/fragment_Post_Detail_call_now"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:cornerRadius="4dp" />

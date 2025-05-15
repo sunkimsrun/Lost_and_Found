@@ -10,10 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UseCompoundDrawables">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/fragment_Successful_Todo"
             android:src="@drawable/ico_success"
             android:layout_gravity="center"/>
 
@@ -25,7 +27,7 @@
             android:textAlignment="center"
             android:textSize="46sp"
             android:textColor="@color/black"
-            android:text="Successfully!!"/>
+            android:text="@string/fragment_successful_successfully"/>
     </LinearLayout>
 
     <TextView
@@ -36,6 +38,6 @@
         android:layout_height="wrap_content"
         style="@style/LabelStyle"
         android:textSize="18sp"
-        android:text="Back!!" />
+        android:text="@string/fragment_successful_back" />
 
 </FrameLayout>

@@ -27,6 +27,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
+            android:autofillHints=""
             android:background="@drawable/bg_search_bar"
             android:drawableStart="@drawable/ico_search"
             android:drawablePadding="10dp"
@@ -37,7 +38,8 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/textView"
@@ -45,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
-            android:text="200+ Reported lost today"
+            android:text="@string/fragment_View_Found_200_reported_lost_today"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -79,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:checkable="true"
                     android:clickable="true"
-                    android:text="Today" />
+                    android:text="@string/fragment_View_Found_today" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_this_week"
@@ -88,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:checkable="true"
                     android:clickable="true"
-                    android:text="This Week" />
+                    android:text="@string/fragment_View_Found_this_week" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_this_month"
@@ -97,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:checkable="true"
                     android:clickable="true"
-                    android:text="This Month" />
+                    android:text="@string/fragment_View_Found_this_month" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_this_year"
@@ -106,14 +108,15 @@
                     android:layout_height="wrap_content"
                     android:checkable="true"
                     android:clickable="true"
-                    android:text="This Year" />
+                    android:text="This Year"
+                    tools:ignore="HardcodedText" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_clear_filter"
                     style="@style/Widget.MaterialComponents.Chip.Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Clear Filter" />
+                    android:text="@string/fragment_View_Found_clear_filter" />
 
 
             </com.google.android.material.chip.ChipGroup>
@@ -125,6 +128,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="@string/view_found_list_description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">

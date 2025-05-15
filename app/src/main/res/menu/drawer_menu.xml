@@ -1,41 +1,49 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Checkable group for main navigation -->
     <group android:id="@+id/group_main" android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ico_home"
-            android:title="Home" />
+            android:title="Home"
+            tools:ignore="HardcodedText" />
 
         <item
             android:id="@+id/nav_account"
             android:icon="@drawable/ico_user"
-            android:title="Account" />
+            android:title="Account"
+            tools:ignore="HardcodedText" />
 
         <item
             android:id="@+id/nav_lost"
             android:icon="@drawable/ico_lost"
-            android:title="View lose items" />
+            android:title="View lose items"
+            tools:ignore="HardcodedText" />
 
         <item
             android:id="@+id/nav_found"
             android:icon="@drawable/ico_found"
-            android:title="View found items" />
+            android:title="View found items"
+            tools:ignore="HardcodedText" />
 
         <item
             android:id="@+id/nav_privacy"
             android:icon="@drawable/ico_shield"
-            android:title="Privacy and Policy" />
+            android:title="Privacy and Policy"
+            tools:ignore="HardcodedText" />
 
         <item
             android:id="@+id/nav_contact"
             android:icon="@drawable/ico_contact"
-            android:title="Contact Us" />
+            android:title="Contact Us"
+            tools:ignore="HardcodedText" />
 
         <item
             android:id="@+id/nav_signout"
             android:icon="@drawable/ico_signout"
-            android:title="Sign Out" />
+            android:title="Sign Out"
+            tools:ignore="HardcodedText" />
     </group>
 
 </menu>

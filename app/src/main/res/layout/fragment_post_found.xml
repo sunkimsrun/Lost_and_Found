@@ -10,11 +10,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        tools:ignore="UselessParent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
 
             <com.google.android.material.imageview.ShapeableImageView
@@ -26,7 +27,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Corner16dp" />
+                app:shapeAppearanceOverlay="@style/RoundedImageView" />
 
 
             <RelativeLayout
@@ -46,7 +47,8 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:contentDescription="Image"
-                    android:src="@drawable/ico_add_photo" />
+                    android:src="@drawable/ico_add_photo"
+                    tools:ignore="HardcodedText" />
             </RelativeLayout>
 
             <!-- Image Upload Section -->
@@ -64,7 +66,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputImage" />
+                app:layout_constraintTop_toBottomOf="@+id/inputImage"
+                tools:ignore="HardcodedText" />
 
             <!-- Divider -->
             <View
@@ -95,7 +98,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider" />
+                app:layout_constraintTop_toBottomOf="@+id/divider"
+                tools:ignore="HardcodedText, TextContrastCheck" />
 
             <!-- Information Input -->
             <EditText
@@ -117,7 +121,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/inputTitle"
+                tools:ignore="HardcodedText, TextContrastCheck" />
 
             <!-- Location Label and Value -->
             <TextView
@@ -132,7 +137,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputInformation" />
+                app:layout_constraintTop_toBottomOf="@+id/inputInformation"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -142,13 +148,14 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:drawableEnd="@drawable/ico_arrow_outward"
-                android:text="Royal Univerity of Phnom Penh"
+                android:text="Royal University of Phnom Penh"
                 android:textColor="#2196F3"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/tvLocation"
-                app:layout_constraintTop_toBottomOf="@+id/inputInformation" />
+                app:layout_constraintTop_toBottomOf="@+id/inputInformation"
+                tools:ignore="HardcodedText,UseCompatTextViewDrawableXml, TextContrastCheck" />
 
             <!-- Location Note -->
             <TextView
@@ -156,13 +163,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="NOTE: Srroy, we currently availible in RUPP."
+                android:text="NOTE: Sorry, we currently available in RUPP."
                 android:textColor="#FF0000"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvLocation" />
+                app:layout_constraintTop_toBottomOf="@+id/tvLocation"
+                tools:ignore="HardcodedText,SmallSp, TextContrastCheck" />
 
             <!-- Date and Time Section -->
             <TextView
@@ -177,7 +185,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                tools:ignore="HardcodedText" />
 
             <View
                 android:id="@+id/divider2"
@@ -213,7 +222,8 @@
                     android:paddingHorizontal="10dp"
                     android:text="Select Date"
                     android:textColor="#000000"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText,UseCompatTextViewDrawableXml" />
 
                 <TextView
                     android:id="@+id/tvSelectedTime"
@@ -229,7 +239,8 @@
                     android:paddingHorizontal="10dp"
                     android:text="Select Time"
                     android:textColor="#000000"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText,UseCompatTextViewDrawableXml" />
             </LinearLayout>
 
             <!-- Contact Author Section -->
@@ -245,7 +256,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                tools:ignore="HardcodedText" />
 
             <View
                 android:id="@+id/divider3"
@@ -272,7 +284,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider3" />
+                app:layout_constraintTop_toBottomOf="@+id/divider3"
+                tools:ignore="HardcodedText" />
 
             <EditText
                 android:id="@+id/editText"
@@ -281,13 +294,16 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bg_input_edit_text"
+                android:autofillHints="emailAddress"
+                android:inputType="textEmailAddress"
                 android:hint="Email Address"
                 android:paddingHorizontal="10dp"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+                app:layout_constraintTop_toBottomOf="@+id/tvEmail"
+                tools:ignore="HardcodedText, TextContrastCheck" />
 
             <TextView
                 android:id="@+id/tvPhone"
@@ -301,7 +317,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText" />
+                app:layout_constraintTop_toBottomOf="@+id/editText"
+                tools:ignore="HardcodedText" />
 
             <EditText
                 android:id="@+id/editPhone"
@@ -309,6 +326,7 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="5dp"
+                android:autofillHints="phone"
                 android:background="@drawable/bg_input_edit_text"
                 android:hint="Phone Number"
                 android:inputType="phone"
@@ -317,7 +335,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvPhone" />
+                app:layout_constraintTop_toBottomOf="@+id/tvPhone"
+                tools:ignore="HardcodedText, TextContrastCheck" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -331,7 +350,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editPhone" />
+                app:layout_constraintTop_toBottomOf="@+id/editPhone"
+                tools:ignore="HardcodedText,SmallSp, TextContrastCheck" />
 
             <!-- Submit Section -->
             <RelativeLayout
@@ -350,7 +370,8 @@
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:backgroundTint="#E1E1E1"
-                    app:cornerRadius="4dp" />
+                    app:cornerRadius="4dp"
+                    tools:ignore="HardcodedText" />
 
                 <CheckBox
                     android:id="@+id/checkBoxPolicy"
@@ -358,7 +379,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="65dp"
                     android:text="I agree to the policy"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText" />
             </RelativeLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
