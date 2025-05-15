@@ -54,7 +54,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/languageButton"
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
@@ -65,7 +64,6 @@
             app:layout_constraintTop_toBottomOf="@id/languageText">
 
             <RelativeLayout
-                android:id="@+id/selected_english"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/bg_gray">
@@ -96,7 +94,6 @@
 
                 <!-- Country Text -->
                 <TextView
-                    android:id="@+id/countryName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/languageName"
@@ -109,7 +106,6 @@
 
                 <!-- Arrow Icon -->
                 <ImageView
-                    android:id="@+id/arrowIcon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_alignParentEnd="true"
@@ -123,7 +119,6 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/earthImage"
         android:layout_width="322dp"
         android:layout_height="246dp"
         android:contentDescription="@string/earth"

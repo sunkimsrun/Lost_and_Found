@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingTop="20dp"
-    android:id="@+id/nav_manage_post"
     tools:context=".fragment.ManagePostFragment">
 
     <TextView

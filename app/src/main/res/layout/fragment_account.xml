@@ -20,7 +20,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <View
-            android:id="@+id/testimonial_bg"
             android:layout_width="160dp"
             android:layout_height="160dp"
             android:background="@drawable/user_pf_bg" />
@@ -35,7 +34,6 @@
             app:shapeAppearanceOverlay="@style/UserImageView" />
 
         <ImageView
-            android:id="@+id/edit_icon"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignEnd="@+id/profile_image"
@@ -83,7 +81,6 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <RelativeLayout
-            android:id="@+id/account_info_item"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/container"
@@ -99,7 +96,6 @@
                 tools:ignore="RelativeOverlap" />
 
             <ImageView
-                android:id="@+id/arrow_back"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_alignParentEnd="true"
@@ -109,7 +105,6 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/manage_post_item"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"
@@ -135,7 +130,6 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/change_password_item"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"

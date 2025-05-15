@@ -35,23 +35,11 @@
         <string name="get_started">Get Started</string>
 
         <!--    login-->
-        <string name="skip_for_now">Skip for now!</string>
-        <string name="welcome_back">Welcome\nBack!</string>
-        <string name="username_auth1">Username or Email</string>
-        <string name="password_auth1">Password</string>
-        <string name="login">Login</string>
-        <string name="or_continue">- OR Continue With -</string>
 
-        <!--    register-->
-        <string name="create_an_a">Create An Account</string>
-        <string name="sign_up">Sign Up</string>
-        <string name="create_an_account">Create an Account!</string>
-        <string name="sign_up_des">By clicking the <font color="#FF0000">Register</font> button, you agree to\nthe public offer</string>
-        <string name="complete">Complete\n</string>
-        <string name="complete_your_profile">Complete\nYour Profile!</string>
+    <!--    register-->
+    <string name="complete_your_profile">Complete\nYour Profile!</string>
         <string name="don_t_worry">Don’t worry, we not selling your data.</string>
-        <string name="todo_forgetemail">TODO</string>
-        <string name="welcome_to_FountIt">Welcome to\n<br /><font color="#2196F3">Foundit.</font></string>
+    <string name="welcome_to_FountIt">Welcome to\n<br /><font color="#2196F3">Foundit.</font></string>
 
         <string-array name="gender">
                 <item>Male</item>
@@ -62,23 +50,14 @@
         <string name="account_inf">Account Information</string>
         <string name="manage_post">Manage Post</string>
         <string name="change_password">Change Password</string>
-        <string name="hello_blank_fragment">Hello blank fragment</string>
-        <string name="your_post">Your Post</string>
-        <string name="not_found">Not Found</string>
-        <string name="back">Back</string>
+    <string name="your_post">Your Post</string>
+    <string name="back">Back</string>
 
-        <string name="dob" tools:ignore="TypographyDashes">12 - 10 - 2004</string>
-        <string name="confirm_changes">Confirm Changes</string>
-        <string name="change_username">Change Username</string>
-        <string name="enter_new_username">Enter new username</string>
-        <string name="enter_new_email_address">Enter new email address</string>
-        <string name="gmail">traialetralala@gmail.com</string>
+    <string name="confirm_changes">Confirm Changes</string>
+    <string name="gmail">traialetralala@gmail.com</string>
 
         <string name="change_gender">Change Gender</string>
-        <string name="change_email">Change Email</string>
-        <string name="change_birth_date">Change Birth Date</string>
-        <string name="change_phone_number">Change Phone Number</string>
-        <string name="reset_password">Reset Password</string>
+    <string name="reset_password">Reset Password</string>
         <string name="confirm_new_password">Confirm New Password</string>
         <string name="current_password">Current Password</string>
         <string name="new_password">New Password</string>
@@ -86,8 +65,7 @@
 
         <string name="we_will_sen">* We will send you a message to set or reset your new password</string>
         <string name="resend_code">Resend code in</string>
-        <string name="enter_new_phone_number">Enter new phone number</string>
-        <string name="post_name">My Girlfriend</string>
+    <string name="post_name">My Girlfriend</string>
         <string name="post_description">"I lost my girlfriend at RUPP around 2 PM today. Last seen near RUPP. If found, please return her to me Tra. "</string>
 
         <string name="introduction">Welcome to Foundit! Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and protect your personal information when you use our lost and found platform.\n\nWhen you post a lost or found item, we may collect your name, contact details (such as email or phone number), and any other information you choose to provide. Item Information: Details about lost or found items, including descriptions, images, and locations. Usage Data: We may collect information about how you interact with our platform, such as page views, searches, and other activity logs. Device Information: Information about the device you use to access Foundit, such as IP address, browser type, and operating system.</string>
@@ -95,8 +73,7 @@
 
 
 <!--        fix warning activity_login-->
-        <string name="googleTodo">TODO</string>
-        <string name="activity_Login_Dont_Have_Account_Yet_Register">Don\'t have account yet? <font color="#2196F3">Register.</font></string>
+    <string name="activity_Login_Dont_Have_Account_Yet_Register">Don\'t have account yet? <font color="#2196F3">Register.</font></string>
 
 <!--        activity_profile-->
         <string name="activity_Profile_Phone_Number">Phone Number</string>
@@ -108,21 +85,14 @@
         <string name="activity_Register_Email">Email</string>
         <string name="activity_Register_Password">Password</string>
         <string name="activity_Register_ConfirmPassword">ConfirmPassword</string>
-        <string name="activity_Register_Todo">TODO</string>
-        <string name="activity_Register_Or_Continue_With">Or Continue with</string>
+    <string name="activity_Register_Or_Continue_With">Or Continue with</string>
         <string name="activity_Register_Register">Register</string>
         <string name="activity_Register_Button_Social_Media">Continue with Google</string>
         <string name="activity_Register_Already_Have_Account_Login">Already have account? <font color="#2196F3">Login.</font></string>
 
 
     <!--        activity_forget_password-->
-        <string name="activity_Forget_Password_0_59">0.59</string>
-        <string name="activity_Forget_Password_Enter_Your_Email_Address">Enter your email address</string>
-        <string name="activity_Forget_Password_Forgot_Password">Forgot\nPassword!</string>
-        <string name="submit">Submit</string>
-        <string name="activity_Forget_Password_Resend_Code_In">Resend code in</string>
-        <string name="activity_Forget_Password_How_To_Verify_Email">How to Verify Email</string>
-        <string name="activity_Forget_Password_Email">Email</string>
+    <string name="activity_Forget_Password_Email">Email</string>
         <string name="activity_Forget_Password_we_will_send_you_a_message_to_set_or_reset_your_new_password">* We will send you a message to set or reset your new password</string>
         <string name="activity_Forget_Password_Reset">Reset</string>
         <string name="activity_Forget_Password_Email_Sent_Successfully">Email sent successfully!</string>
@@ -148,9 +118,8 @@
 
 <!--    activity_auth_screen-->
     <string name="activity_Auth_Screen_Get_Start">Get Start</string>
-    <string name="already_have_account_login">Already have account?  <font color="#2196F3">Login.</font></string>
 
-<!--    Fragment Home-->
+    <!--    Fragment Home-->
     <string name="fragment_Home_Lost_Items">Lost Items</string>
     <string name="Fragment_Home_View_Lost_Items">View Lost Items</string>
     <string name="Fragment_Home_View_items">View Items</string>
@@ -205,8 +174,6 @@
     <string name="fragment_Policy_last_update_24_feb_2025">Last update 24-Feb-2025</string>
 
 <!--    fragment_post_detail-->
-    <string name="fragment_Post_Detail_Todo1">TODO</string>
-    <string name="fragment_Post_Detail_feb_29_2025">Feb, 29 2025</string>
     <string name="fragment_Post_Detail_other_information">Other Information</string>
     <string name="fragment_Post_Detail_contact">Contact</string>
     <string name="fragment_Post_Detail_call_now">Call Now</string>

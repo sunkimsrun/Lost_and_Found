@@ -31,7 +31,6 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView5"
         android:layout_marginTop="842dp"
         android:layout_marginStart="36dp"
         android:layout_width="wrap_content"

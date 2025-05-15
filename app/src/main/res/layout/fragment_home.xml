@@ -205,7 +205,6 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/view_items_button"
                 android:layout_width="145dp"
                 android:layout_height="36dp"
                 android:layout_alignBottom="@id/cardCreate"

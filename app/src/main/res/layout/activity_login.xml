@@ -164,7 +164,6 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageButton
-            android:id="@+id/btnFacebook"
             android:layout_width="105dp"
             android:layout_height="56dp"
             android:background="@drawable/bg_btn_social"
@@ -173,7 +172,6 @@
             tools:ignore="HardcodedText" />
 
         <ImageButton
-            android:id="@+id/btnGoogle"
             android:layout_width="105dp"
             android:layout_height="56dp"
             android:layout_marginStart="20dp"

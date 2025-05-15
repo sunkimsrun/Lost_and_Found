@@ -72,7 +72,6 @@
             app:shapeAppearanceOverlay="@style/UserCompleteImageView" />
 
         <RelativeLayout
-            android:id="@+id/edit_person"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginStart="68dp"
@@ -116,14 +115,12 @@
                 tools:ignore="ContentDescription" />
 
             <Spinner
-                android:id="@+id/gender_auth_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:entries="@array/gender" />
         </LinearLayout>
 
         <EditText
-            android:id="@+id/phoneNumber_auth"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="15dp"

@@ -34,7 +34,6 @@
                 tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             <ImageView
-                android:id="@+id/imgLogo"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
