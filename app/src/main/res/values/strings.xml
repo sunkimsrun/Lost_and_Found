@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
         <!--    activity_main-->
         <string name="app_name">Foundit</string>
         <string name="logo">logo</string>
@@ -67,7 +67,7 @@
         <string name="not_found">Not Found</string>
         <string name="back">Back</string>
 
-        <string name="dob">12 - 10 - 2004</string>
+        <string name="dob" tools:ignore="TypographyDashes">12 - 10 - 2004</string>
         <string name="confirm_changes">Confirm Changes</string>
         <string name="change_username">Change Username</string>
         <string name="enter_new_username">Enter new username</string>
@@ -203,8 +203,66 @@
 <!--    fragment_policy-->
     <string name="fragment_Policy_privacy_and_policy">Privacy and Policy</string>
     <string name="fragment_Policy_last_update_24_feb_2025">Last update 24-Feb-2025</string>
+
+<!--    fragment_post_detail-->
     <string name="fragment_Post_Detail_Todo1">TODO</string>
     <string name="fragment_Post_Detail_feb_29_2025">Feb, 29 2025</string>
+    <string name="fragment_Post_Detail_other_information">Other Information</string>
+    <string name="fragment_Post_Detail_contact">Contact</string>
+    <string name="fragment_Post_Detail_call_now">Call Now</string>
+    <string name="fragment_Post_Detail_not_returned">Not Returned</string>
+    <string name="fragment_Post_Detail_Todo">TODO</string>
+
+<!--    fragment_post-->
+    <string name="fragment_Post_Item_found">Found</string>
+    <string name="fragment_Post_Item_lost">Lost</string>
+
+<!--    fragment_post_lost-->
+    <string name="fragment_Post_Lost_other_information">Other Information</string>
+    <string name="fragment_Post_Lost_title">Title</string>
+    <string name="fragment_Post_Lost_date_and_time">Date and Time</string>
+    <string name="fragment_Post_Lost_select_date">Select Date</string>
+    <string name="fragment_Post_Lost_select_time">Select Time</string>
+    <string name="fragment_Post_Lost_contact_author">Contact Author</string>
+    <string name="fragment_Post_Lost_email">Email</string>
+    <string name="fragment_Post_Lost_reward">Reward</string>
+    <string name="fragment_Post_Lost_create">Create</string>
+
+<!--    fragment_successful-->
+    <string name="fragment_Successful_Todo">TODO</string>
+    <string name="fragment_successful_successfully">Successfully!!</string>
+    <string name="fragment_successful_back">Back!!</string>
+
+
+<!--    fragment_view_found-->
+    <string name="fragment_View_Found_clear_filter">Clear Filter</string>
+    <string name="fragment_View_Found_this_week">This Week</string>
+    <string name="fragment_View_Found_this_month">This Month</string>
+    <string name="fragment_View_Found_today">Today</string>
+    <string name="fragment_View_Found_200_reported_lost_today">200+ Reported lost today</string>
+
+<!--    fragment_view_lost-->
+    <string name="view_found_list_description">List of found item posts</string>
+    <string name="fragment_View_Lost_this_year">This Year</string>
+    <string name="fragment_View_Lost_clear_filter">Clear Filter</string>
+    <string name="fragment_View_Lost_this_month">This Month</string>
+    <string name="fragment_View_Lost_this_week">This Week</string>
+    <string name="fragment_View_Lost_today">Today</string>
+    <string name="fragment_View_Lost_search_something">Search</string>
+    <string name="_200_reported_lost_today">200+ Reported lost today</string>
+    <string name="view_lost_list_description">Search Something</string>
+
+<!--    header_layout-->
+    <string name="header_layout_Todo">TODO</string>
+    <string name="header_layout_close_drawer">Close Drawer</string>
+    <string name="post_Card_save_post_button">Save Post Button</string>
+    <string name="post_Card_found">Found</string>
+    <string name="post_Card_title">Title</string>
+    <string name="post_Card_18_feb_2025">18 Feb, 2025</string>
+    <string name="post_Card_rupp">RUPP</string>
+    <string name="activity_home_logo">Logo</string>
+    <string name="activity_Register_skip_for_now">Skip for now!</string>
+    <string name="activity_Register_create_an_account">Create an\nAccount!!</string>
 
 
 </resources>

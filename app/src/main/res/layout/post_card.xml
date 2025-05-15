@@ -31,7 +31,7 @@
         android:layout_marginTop="20dp"
         android:src="@drawable/ico_delete"
         android:background="@drawable/bg_saved"
-        android:contentDescription="Save Post Button"
+        android:contentDescription="@string/post_Card_save_post_button"
         android:visibility="gone"
         tools:ignore="TouchTargetSizeCheck" />
 
@@ -49,13 +49,14 @@
             android:layout_height="54dp"
             android:checked="true"
             android:clickable="false"
-            android:text="Found" />
+            android:text="@string/post_Card_found"
+            tools:ignore="TextContrastCheck"/>
 
         <TextView
             android:id="@+id/postTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Title"
+            android:text="@string/post_Card_title"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -72,8 +73,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:maxLines="3"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et porta eros. Fusce odio felis, lacinia eget posuere a, tempor sit amet ligula. Etiam non nulla ac metus condimentum pulvinar nec pellentesque urna."
-            android:textSize="14sp" />
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et porta eros. Fusce odio felis, niacin eget posuere a, tempor sit amet ligula. Etiam non nulla ac metus condimentum pulvinar nec pellentesque urna."
+            android:textSize="14sp"
+            tools:ignore="HardcodedText" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -88,9 +90,10 @@
                 android:drawableStart="@drawable/ico_clock"
                 android:drawablePadding="5dp"
                 android:padding="10dp"
-                android:text="18 Feb, 2025"
+                android:text="@string/post_Card_18_feb_2025"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="UseCompatTextViewDrawableXml" />
 
             <TextView
                 android:id="@+id/location"
@@ -100,9 +103,10 @@
                 android:drawableStart="@drawable/ico_pin"
                 android:drawablePadding="5dp"
                 android:padding="10dp"
-                android:text="RUPP"
+                android:text="@string/post_Card_rupp"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="UseCompatTextViewDrawableXml" />
 
         </LinearLayout>
 
