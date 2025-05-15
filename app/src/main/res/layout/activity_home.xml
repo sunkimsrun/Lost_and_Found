@@ -31,7 +31,7 @@
                 android:paddingTop="25dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/ico_hamburger_menu"
-                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             <ImageView
                 android:id="@+id/imgLogo"
