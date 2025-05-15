@@ -64,6 +64,7 @@
             app:layout_constraintTop_toBottomOf="@id/languageText">
 
             <RelativeLayout
+                android:id="@+id/selectedEnglish"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/bg_gray">
@@ -101,8 +102,8 @@
                     android:layout_toEndOf="@id/flagIcon"
                     android:text="@string/united_kingdom"
                     android:textColor="#6600091F"
-                    tools:ignore="TextContrastCheck"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    tools:ignore="TextContrastCheck" />
 
                 <!-- Arrow Icon -->
                 <ImageView

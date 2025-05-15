@@ -22,7 +22,6 @@ public class HomeActivity extends AppCompatActivity {
 
     public ActivityHomeBinding binding;
     private FirebaseAuth mAuth;
-    private final boolean userIsLoggedIn = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +32,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mAuth = FirebaseAuth.getInstance();
+
+        binding.navigationView.getMenu().findItem(R.id.nav_signout).setVisible(mAuth.getCurrentUser() != null);
 
         binding.btnHamburger.setOnClickListener(view -> {
             if (!binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -52,7 +53,7 @@ public class HomeActivity extends AppCompatActivity {
             if (itemId == R.id.nav_home) {
                 LoadFragment(new HomeFragment());
             } else if (itemId == R.id.nav_account) {
-                if (userIsLoggedIn) {
+                if (FirebaseAuth.getInstance().getCurrentUser() != null) {
                     LoadFragment(new AccountFragment());
                 } else {
                     startActivity(new Intent(HomeActivity.this, LoginActivity.class));
@@ -89,6 +90,7 @@ public class HomeActivity extends AppCompatActivity {
                 .replace(R.id.frameContainer, fragment)
                 .commit();
     }
+
     public void showProgressBar() {
         binding.loadingBar.setVisibility(View.VISIBLE);
     }

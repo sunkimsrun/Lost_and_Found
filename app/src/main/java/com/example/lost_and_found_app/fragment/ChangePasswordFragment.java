@@ -16,19 +16,18 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.lost_and_found_app.R;
-import com.example.lost_and_found_app.model.User;
+import com.google.firebase.auth.EmailAuthProvider;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class ChangePasswordFragment extends Fragment {
 
     private EditText currentPasswordInput, newPasswordInput, confirmPasswordInput;
     private ImageView currentEyeIcon, newEyeIcon, confirmEyeIcon;
     private RelativeLayout confirmButton, topPanel;
+    private boolean showCurrent = false, showNew = false, showConfirm = false;
 
-    private boolean showCurrent = false;
-    private boolean showNew = false;
-    private boolean showConfirm = false;
-
-    private String savedPassword = "";
+    private FirebaseAuth mAuth;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -40,6 +39,8 @@ public class ChangePasswordFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        mAuth = FirebaseAuth.getInstance();
+
         currentPasswordInput = view.findViewById(R.id.current_password_input);
         newPasswordInput = view.findViewById(R.id.new_password_input);
         confirmPasswordInput = view.findViewById(R.id.confirm_password_input);
@@ -50,14 +51,6 @@ public class ChangePasswordFragment extends Fragment {
 
         confirmButton = view.findViewById(R.id.confirm_button);
         topPanel = view.findViewById(R.id.top_panel);
-
-        if (User.currentUser != null) {
-            savedPassword = User.currentUser.password;
-        } else {
-            showToast("User not logged in");
-            closeFragment();
-            return;
-        }
 
         currentEyeIcon.setOnClickListener(v -> {
             showCurrent = !showCurrent;
@@ -98,17 +91,36 @@ public class ChangePasswordFragment extends Fragment {
 
         if (current.isEmpty() || newPass.isEmpty() || confirm.isEmpty()) {
             showToast("All fields are required");
-        } else if (!current.equals(savedPassword)) {
-            showToast("Incorrect password");
-        } else if (newPass.length() < 8) {
-            showToast("Password must be at least 8 characters");
-        } else if (!newPass.equals(confirm)) {
-            showToast("Passwords do not match");
-        } else {
-            User.currentUser.password = newPass;
-            showToast("Password changed successfully");
-            closeFragment();
+            return;
         }
+
+        if (newPass.length() < 8) {
+            showToast("Password must be at least 8 characters");
+            return;
+        }
+
+        if (!newPass.equals(confirm)) {
+            showToast("Passwords do not match");
+            return;
+        }
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user == null || user.getEmail() == null) {
+            showToast("User not authenticated");
+            return;
+        }
+
+        // Re-authenticate user before password change
+        user.reauthenticate(EmailAuthProvider.getCredential(user.getEmail(), current))
+                .addOnSuccessListener(unused -> {
+                    user.updatePassword(newPass)
+                            .addOnSuccessListener(unused1 -> {
+                                showToast("Password changed successfully");
+                                closeFragment();
+                            })
+                            .addOnFailureListener(e -> showToast("Failed to update password: " + e.getMessage()));
+                })
+                .addOnFailureListener(e -> showToast("Incorrect current password"));
     }
 
     private void showToast(String msg) {
@@ -116,7 +128,7 @@ public class ChangePasswordFragment extends Fragment {
     }
 
     private void closeFragment() {
-        requireActivity().getSupportFragmentManager().popBackStack(); // Better UX
+        requireActivity().getSupportFragmentManager().popBackStack();
         View container = requireActivity().findViewById(R.id.fragment_container);
         if (container != null) {
             container.setVisibility(View.GONE);

@@ -22,8 +22,13 @@ import com.example.lost_and_found_app.R;
 import com.example.lost_and_found_app.databinding.FragmentAccountBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.*;
-import com.google.firebase.storage.*;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class AccountFragment extends Fragment {
 
@@ -63,9 +68,9 @@ public class AccountFragment extends Fragment {
         updateUserDisplay();
 
         // Click listeners for navigation
-        binding.accountInfoItem.setOnClickListener(v -> loadFragment(new AccountInformationFragment()));
-        binding.managePostItem.setOnClickListener(v -> loadFragment(new ManagePostFragment()));
-        binding.changePasswordItem.setOnClickListener(v -> loadFragment(new ChangePasswordFragment()));
+        binding.accountInformations.setOnClickListener(v -> loadFragment(new AccountInformationFragment()));
+        binding.managePost.setOnClickListener(v -> loadFragment(new ManagePostFragment()));
+        binding.changePassword.setOnClickListener(v -> loadFragment(new ChangePasswordFragment()));
 
         // Profile image edit icon click
         binding.editIcon.setOnClickListener(v -> openGallery());

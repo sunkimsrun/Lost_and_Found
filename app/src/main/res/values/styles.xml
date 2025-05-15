@@ -2,12 +2,27 @@
 <resources>
 
     <!-- Primary text style -->
+    <style name="PrimaryText">
+        <item name="android:textColor">#1E1E1E</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 
     <!-- Highlighted text style -->
+    <style name="HighlightedText">
+        <item name="android:textColor">#2196F3</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 
     <!-- Large white text style -->
+    <style name="LargeWhiteText">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">20sp</item>
+    </style>
 
     <!-- Small text style -->
+    <style name="SmallText">
+        <item name="android:textSize">12sp</item>
+    </style>
 
     <!-- Style: Radio Button -->
     <style name="RadioButtonStyle">
@@ -34,6 +49,11 @@
         <item name="android:textColor">#1E1E1E</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:lineSpacingExtra">4sp</item>
+    </style>
+
+    <style name="your_post">
+        <item name="android:textSize">40sp</item>
+        <item name="android:textColor">#2196F3</item>
     </style>
 
     <style name="over_break_line">
@@ -67,6 +87,18 @@
         <item name="android:textColor">#626262</item>
     </style>
 
+    <style name="under_name">
+        <item name="android:textSize">10sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="not_found">
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">#666C79</item>
+    </style>
+
 
     <style name="post_name">
         <item name="android:textSize">18sp</item>
@@ -81,11 +113,47 @@
     </style>
 
 
+    <style name="post_date_location">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">#99000000</item>
+    </style>
+
+
     <!--  Srun  -->
+    <style name="username_or_email">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#1E1E1E</item>
+    </style>
 
     <style name="forgot_pass_blue">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">#2196F3</item>
+    </style>
+
+    <style name="login">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="or_continue">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#282828</item>
+    </style>
+
+    <style name="create_an_a">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#282828</item>
+    </style>
+
+    <style name="sign_up">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#0e75c2</item>
+    </style>
+
+    <style name="by_clicking">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#282828</item>
     </style>
 
     <style name="don_t_worry">

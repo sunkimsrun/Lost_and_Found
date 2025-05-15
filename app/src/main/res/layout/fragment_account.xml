@@ -34,6 +34,7 @@
             app:shapeAppearanceOverlay="@style/UserImageView" />
 
         <ImageView
+            android:id="@+id/editIcon"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignEnd="@+id/profile_image"
@@ -81,6 +82,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <RelativeLayout
+            android:id="@+id/accountInformations"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/container"
@@ -105,6 +107,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/managePost"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"
@@ -130,6 +133,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/changePassword"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"

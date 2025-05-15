@@ -115,12 +115,14 @@
                 tools:ignore="ContentDescription" />
 
             <Spinner
+                android:id="@+id/genderAuthSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:entries="@array/gender" />
         </LinearLayout>
 
         <EditText
+            android:id="@+id/phoneNumberAuth"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="15dp"
