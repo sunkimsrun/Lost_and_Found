@@ -180,7 +180,7 @@
 
     <style name="UserPostImageView" parent="">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">16dp</item>
+        <item name="cornerSize">28dp</item>
     </style>
 
     <style name="UserCompleteImageView" parent="">
@@ -198,6 +198,24 @@
         <item name="android:inputType">number</item>
         <item name="android:textSize">20sp</item>
         <item name="android:importantForAutofill">no</item>
+    </style>
+
+    <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/chip_background_selector</item>
+        <item name="android:textColor">@color/chip_text_selector</item>
+        <item name="chipCornerRadius">16dp</item>
+        <item name="chipStrokeColor">#E5E7EB</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="CustomStatusStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/chip_background_status_selector</item>
+        <item name="android:textColor">@color/chip_text_selector</item>
+        <item name="chipCornerRadius">16dp</item>
+        <item name="chipStrokeColor">#E5E7EB</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
 </resources>
