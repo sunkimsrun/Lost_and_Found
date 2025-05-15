@@ -40,6 +40,7 @@
             android:layout_height="40dp"
             android:layout_alignEnd="@+id/profile_image"
             android:layout_alignBottom="@+id/profile_image"
+            android:contentDescription="@string/Fragment_Account_click_for_image"
             android:src="@drawable/img_edit" />
     </RelativeLayout>
 
@@ -65,7 +66,8 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:ignore="UselessLeaf" />
 
     </LinearLayout>
 
@@ -93,7 +95,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:text="@string/account_inf"
-                android:textAppearance="@style/account_inf" />
+                android:textAppearance="@style/account_inf"
+                tools:ignore="RelativeOverlap" />
 
             <ImageView
                 android:id="@+id/arrow_back"
@@ -101,6 +104,7 @@
                 android:layout_height="24dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
+                android:contentDescription="@string/fragment_Account_Todo1"
                 android:src="@drawable/arrow_right" />
         </RelativeLayout>
 
@@ -118,13 +122,15 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:text="@string/manage_post"
-                android:textAppearance="@style/account_inf" />
+                android:textAppearance="@style/account_inf"
+                tools:ignore="RelativeOverlap" />
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
+                android:contentDescription="@string/fragment_Account_Todo2"
                 android:src="@drawable/arrow_right" />
         </RelativeLayout>
 
@@ -142,13 +148,15 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:text="@string/change_password"
-                android:textAppearance="@style/account_inf" />
+                android:textAppearance="@style/account_inf"
+                tools:ignore="RelativeOverlap" />
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
+                android:contentDescription="@string/fragment_Account_Todo3"
                 android:src="@drawable/arrow_right" />
         </RelativeLayout>
     </LinearLayout>

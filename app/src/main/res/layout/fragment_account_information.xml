@@ -27,7 +27,8 @@
             android:text="@string/account_inf"
             android:textSize="20sp"
             android:textAppearance="@style/over_break_line"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            tools:ignore="TextContrastCheck"/>
     </RelativeLayout>
 
     <!-- Divider -->
@@ -49,6 +50,7 @@
             android:layout_height="24dp"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
+            android:contentDescription="@string/fragment_Account_Information_Todo1"
             android:src="@drawable/user"/>
 
         <TextView
@@ -58,7 +60,8 @@
             android:layout_centerVertical="true"
             android:translationX="60dp"
             android:text="@string/username"
-            android:textAppearance="@style/edit_label"/>
+            android:textAppearance="@style/edit_label"
+            tools:ignore="RelativeOverlap" />
 
         <ImageView
             android:id="@+id/edit_username"
@@ -67,6 +70,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="16dp"
+            android:contentDescription="@string/fragment_Account_Information_Todo5"
             android:src="@drawable/in_edit"/>
     </RelativeLayout>
 
@@ -81,6 +85,7 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:contentDescription="@string/fragment_Account_Information_Todo2"
             android:src="@drawable/email"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"/>
@@ -92,12 +97,14 @@
             android:text="@string/gmail"
             android:textAppearance="@style/edit_label"
             android:layout_centerVertical="true"
-            android:translationX="60dp"/>
+            android:translationX="60dp"
+            tools:ignore="RelativeOverlap" />
 
         <ImageView
             android:id="@+id/edit_email"
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:contentDescription="@string/fragment_Account_Information_Todo6"
             android:src="@drawable/in_edit"
             android:layout_centerVertical="true"
             android:layout_marginEnd="16dp"
@@ -115,6 +122,7 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:contentDescription="@string/fragment_Account_Information_Todo3"
             android:src="@drawable/gender"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"/>
@@ -123,15 +131,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/gender"
-            android:text="@string/selected_gender"
+            android:text="@string/fragment_Change_Gender_selected_gender"
             android:textAppearance="@style/edit_label"
             android:layout_centerVertical="true"
-            android:translationX="60dp"/>
+            android:translationX="60dp"
+            tools:ignore="RelativeOverlap" />
 
         <ImageView
             android:id="@+id/edit_gender"
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:contentDescription="@string/fragment_Account_Information_Todo7"
             android:src="@drawable/in_edit"
             android:layout_centerVertical="true"
             android:layout_marginEnd="16dp"
@@ -149,6 +159,7 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:contentDescription="@string/fragment_Account_Information_Todo4"
             android:src="@drawable/phone"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"/>
@@ -160,12 +171,14 @@
             android:text="0123456789"
             android:textAppearance="@style/edit_label"
             android:layout_centerVertical="true"
-            android:translationX="60dp"/>
+            android:translationX="60dp"
+            tools:ignore="HardcodedText" />
 
         <ImageView
             android:id="@+id/edit_phnumber"
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:contentDescription="@string/fragment_Account_Information_Todo8"
             android:src="@drawable/in_edit"
             android:layout_centerVertical="true"
             android:layout_marginEnd="16dp"
@@ -186,7 +199,8 @@
             android:layout_width="317dp"
             android:layout_height="55dp"
             android:background="@drawable/button"
-            android:layout_centerInParent="true">
+            android:layout_centerInParent="true"
+            tools:ignore="UselessParent">
 
             <TextView
                 android:layout_width="match_parent"

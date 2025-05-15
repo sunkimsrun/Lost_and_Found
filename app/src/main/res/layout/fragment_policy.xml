@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <TextView
             style="@style/LabelStyle"
@@ -18,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center_horizontal"
-            android:text="Privacy and Policy"
+            android:text="@string/fragment_Policy_privacy_and_policy"
             android:textSize="30sp" />
 
         <TextView
@@ -27,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
-            android:text="Last update 24-Feb-2025"
+            android:text="@string/fragment_Policy_last_update_24_feb_2025"
             android:textSize="13sp" />
 
         <TextView

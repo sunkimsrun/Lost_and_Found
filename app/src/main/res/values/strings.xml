@@ -66,14 +66,14 @@
         <string name="your_post">Your Post</string>
         <string name="not_found">Not Found</string>
         <string name="back">Back</string>
-        <string name="enter_password_to_confirm">Enter Password to Confirm</string>
+
         <string name="dob">12 - 10 - 2004</string>
         <string name="confirm_changes">Confirm Changes</string>
         <string name="change_username">Change Username</string>
         <string name="enter_new_username">Enter new username</string>
         <string name="enter_new_email_address">Enter new email address</string>
         <string name="gmail">traialetralala@gmail.com</string>
-        <string name="selected_gender">Male</string>
+
         <string name="change_gender">Change Gender</string>
         <string name="change_email">Change Email</string>
         <string name="change_birth_date">Change Birth Date</string>
@@ -83,8 +83,7 @@
         <string name="current_password">Current Password</string>
         <string name="new_password">New Password</string>
         <string name="confirm_password">Confirm Password</string>
-        <string name="forgot_pass">Forgot Password?</string>
-        <string name="reset_passw">Reset Password</string>
+
         <string name="we_will_sen">* We will send you a message to set or reset your new password</string>
         <string name="resend_code">Resend code in</string>
         <string name="enter_new_phone_number">Enter new phone number</string>
@@ -162,9 +161,50 @@
     <string name="Fragment_Home_Report_Lost_Or_Found">Report lost or found.</string>
     <string name="Create_Post">Create Post</string>
 
+<!--    fragment_account-->
+    <string name="Fragment_Account_click_for_image">Click For Image</string>
+    <string name="fragment_Account_Todo1">TODO</string>
+    <string name="fragment_Account_Todo2">TODO</string>
+    <string name="fragment_Account_Todo3">TODO</string>
+
+<!--    fragment_account_information-->
+    <string name="fragment_Account_Information_Todo1">Todo</string>
+    <string name="fragment_Account_Information_Todo2">TODO</string>
+    <string name="fragment_Account_Information_Todo3">TODO</string>
+    <string name="fragment_Account_Information_Todo4">TODO</string>
+    <string name="fragment_Account_Information_Todo5">TODO</string>
+    <string name="fragment_Account_Information_Todo6">TODO</string>
+    <string name="fragment_Account_Information_Todo7">TODO</string>
+    <string name="fragment_Account_Information_Todo8">TODO</string>
+
+<!--    fragment_change_field-->
+    <string name="fragment_Change_Field_confirm_changes">Confirm Changes</string>
+    <string name="fragment_Change_Field_enter">Enter</string>
+
+<!--    fragment_change_gender-->
+    <string name="fragment_Change_Gender_enter_password_to_confirm">Enter Password to Confirm</string>
+    <string name="fragment_Change_Gender_selected_gender">Male</string>
+
+<!--    fragment_change_password-->
+    <string name="fragment_Change_Password_forgot_pass">Forgot Password?</string>
+    <string name="fragment_Change_Password_reset_passw">Reset Password</string>
 
 
+<!--    fragment_contact-->
+    <string name="fragment_Contact_contact_us">Contact Us</string>
+    <string name="fragment_Contact_shayla_example_com">shayla@example.com</string>
+    <string name="fragment_Contact_view_on_google_map">View on google map</string>
+    <string name="fragment_Contact_mon_fri_8am_to_8pm">Mon-Fri/8am to 8pm</string>
+    <string name="fragment_Contact_855_12345678">+855 12345678</string>
 
+<!--    fragment_fragment_forgot_password-->
+    <string name="fragment_Forgot_Password_0_59">0.59</string>
+
+<!--    fragment_policy-->
+    <string name="fragment_Policy_privacy_and_policy">Privacy and Policy</string>
+    <string name="fragment_Policy_last_update_24_feb_2025">Last update 24-Feb-2025</string>
+    <string name="fragment_Post_Detail_Todo1">TODO</string>
+    <string name="fragment_Post_Detail_feb_29_2025">Feb, 29 2025</string>
 
 
 </resources>

@@ -28,7 +28,8 @@
             android:text="Change"
             android:textSize="20sp"
             android:textAppearance="@style/over_break_line"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            tools:ignore="HardcodedText,TextContrastCheck" />
     </RelativeLayout>
 
     <View
@@ -50,22 +51,24 @@
             android:layout_height="24dp"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
-            android:src="@drawable/user" />
+            android:src="@drawable/user"
+            tools:ignore="ContentDescription" />
 
         <EditText
             android:id="@+id/input_field"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/input_icon"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:background="@android:color/transparent"
-            android:hint="Enter"
+            android:hint="@string/fragment_Change_Field_enter"
             android:textAppearance="@style/edit_label"
             android:inputType="text"
             android:maxLines="1"
-            android:padding="0dp" />
+            android:padding="0dp"
+            tools:ignore="Autofill,TextContrastCheck" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -82,23 +85,25 @@
             android:id="@+id/lock_icon"
             android:src="@drawable/pass_lock"
             android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"/>
+            android:layout_marginStart="16dp"
+            tools:ignore="ContentDescription" />
 
         <EditText
             android:id="@+id/password_input"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@id/eye_icon"
             android:layout_toEndOf="@id/lock_icon"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:background="@android:color/transparent"
-            android:hint="@string/enter_password_to_confirm"
+            android:hint="@string/fragment_Change_Gender_enter_password_to_confirm"
             android:textAppearance="@style/edit_label"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:padding="0dp" />
+            android:padding="0dp"
+            tools:ignore="Autofill,TextContrastCheck" />
 
         <ImageView
             android:layout_width="24dp"
@@ -107,7 +112,8 @@
             android:src="@drawable/eye"
             android:layout_centerVertical="true"
             android:layout_marginEnd="16dp"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignParentEnd="true"
+            tools:ignore="ContentDescription" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -121,13 +127,14 @@
             android:layout_width="317dp"
             android:layout_height="55dp"
             android:background="@drawable/button"
-            android:layout_centerInParent="true">
+            android:layout_centerInParent="true"
+            tools:ignore="UselessParent">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Confirm Changes"
+                android:text="@string/fragment_Change_Field_confirm_changes"
                 android:textAppearance="@style/back"/>
         </RelativeLayout>
     </RelativeLayout>
