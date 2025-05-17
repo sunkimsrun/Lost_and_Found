@@ -42,7 +42,7 @@ public class PostFoundFragment extends Fragment {
     private static final int IMAGE_PICK_CODE = 1000;
     private final PostCardRepository postCardRepository = new PostCardRepository();
     private Uri imageUri;
-    HomeActivity homeActivity;
+    private HomeActivity homeActivity;
     private FragmentPostFoundBinding binding;
     private boolean isEditing = false;
 
@@ -55,7 +55,14 @@ public class PostFoundFragment extends Fragment {
         View view = binding.getRoot();
         homeActivity = (HomeActivity) getActivity();
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user != null && user.getEmail() != null) {
+            binding.editText.setText(user.getEmail());
+        }
+
         binding.editPhone.setText("+855 ");
+        String phoneNumber = user.getPhoneNumber();
         binding.editPhone.setSelection(binding.editPhone.getText().length());
 
         binding.editPhone.addTextChangedListener(new TextWatcher() {
@@ -73,8 +80,10 @@ public class PostFoundFragment extends Fragment {
                 isEditing = true;
 
                 String prefix = "+855 ";
+
                 if (!s.toString().startsWith(prefix)) {
-                    binding.editPhone.setText(prefix);
+                    String cleanedPhone = phoneNumber.replace("+855", "").replace(" ", "");
+                    binding.editPhone.setText(prefix + cleanedPhone);
                     binding.editPhone.setSelection(binding.editPhone.getText().length());
                 } else {
                     if (s.length() > prefix.length()) {
@@ -100,6 +109,7 @@ public class PostFoundFragment extends Fragment {
                 isEditing = false;
             }
         });
+
 
         binding.checkBoxPolicy.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked && binding.editPhone.getError() == null) {

@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.lottie)
     implementation(libs.ucrop)
     implementation (libs.glide)
     annotationProcessor (libs.compiler)
