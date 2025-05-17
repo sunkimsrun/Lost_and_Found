@@ -220,38 +220,21 @@
 
     <RelativeLayout
         android:id="@+id/loadingBar"
-        android:elevation="26dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:background="#80000000"
+        android:elevation="26dp"
         android:gravity="center"
-        android:background="#80000000">
+        android:visibility="gone">
 
-        <RelativeLayout
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="@drawable/loading_background"
-            android:gravity="center_horizontal"
-            android:elevation="5dp">
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:layout_marginTop="30dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading" />
 
-            <ProgressBar
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="40dp"
-                android:elevation="1dp"
-                android:indeterminateTint="@color/white"
-                android:visibility="visible" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
-                android:gravity="center"
-                android:text="@string/loading"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </RelativeLayout>
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
