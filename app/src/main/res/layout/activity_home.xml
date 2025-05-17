@@ -67,7 +67,7 @@
             <RelativeLayout
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:background="@drawable/loading_background"
+                android:background="#00000000"
                 android:gravity="center_horizontal"
                 android:elevation="5dp">
 

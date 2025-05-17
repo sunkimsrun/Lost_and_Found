@@ -109,13 +109,22 @@ public class ViewLostFragment extends Fragment {
         showProgressBar();
         PostCardRepository repository = new PostCardRepository();
 
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        String currentUserId = currentUser != null ? currentUser.getUid() : null;
+
         repository.getAllPosts("lostitems", new IApiCallback<>() {
             @Override
             public void onSuccess(List<PostCard> postCards) {
                 fullPostList.clear();
-                fullPostList.addAll(postCards);
+
+                for (PostCard post : postCards) {
+                    if (post.getUserId() != null && !post.getUserId().equals(currentUserId)) {
+                        fullPostList.add(post);
+                    }
+                }
+
                 filteredList.clear();
-                filteredList.addAll(postCards);
+                filteredList.addAll(fullPostList);
                 adapter.setPostCards(filteredList);
                 hideProgressBar();
             }

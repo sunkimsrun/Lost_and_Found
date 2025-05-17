@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +29,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.yalantis.ucrop.UCrop;
 
+import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -39,6 +44,7 @@ public class PostFoundFragment extends Fragment {
     private Uri imageUri;
     HomeActivity homeActivity;
     private FragmentPostFoundBinding binding;
+    private boolean isEditing = false;
 
     public PostFoundFragment() {
     }
@@ -49,10 +55,60 @@ public class PostFoundFragment extends Fragment {
         View view = binding.getRoot();
         homeActivity = (HomeActivity) getActivity();
 
+        binding.editPhone.setText("+855 ");
+        binding.editPhone.setSelection(binding.editPhone.getText().length());
+
+        binding.editPhone.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (isEditing) return;
+                isEditing = true;
+
+                String prefix = "+855 ";
+                if (!s.toString().startsWith(prefix)) {
+                    binding.editPhone.setText(prefix);
+                    binding.editPhone.setSelection(binding.editPhone.getText().length());
+                } else {
+                    if (s.length() > prefix.length()) {
+                        char firstChar = s.charAt(prefix.length());
+                        if (firstChar == '0') {
+                            binding.editPhone.setError("First digit after +855 cannot be 0");
+                            binding.btnCreate.setEnabled(false);
+                            binding.btnCreate.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), android.R.color.darker_gray));
+                        } else {
+                            binding.editPhone.setError(null);
+                            if (binding.checkBoxPolicy.isChecked()) {
+                                binding.btnCreate.setEnabled(true);
+                                binding.btnCreate.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.blue));
+                            }
+                        }
+                    } else {
+                        binding.editPhone.setError(null);
+                        binding.btnCreate.setEnabled(false);
+                        binding.btnCreate.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), android.R.color.darker_gray));
+                    }
+                }
+
+                isEditing = false;
+            }
+        });
+
         binding.checkBoxPolicy.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            binding.btnCreate.setEnabled(isChecked);
-            binding.btnCreate.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(),
-                    isChecked ? R.color.blue : android.R.color.darker_gray));
+            if (isChecked && binding.editPhone.getError() == null) {
+                binding.btnCreate.setEnabled(true);
+                binding.btnCreate.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.blue));
+            } else {
+                binding.btnCreate.setEnabled(false);
+                binding.btnCreate.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), android.R.color.darker_gray));
+            }
         });
 
         binding.inputImage.setOnClickListener(v -> {
@@ -151,7 +207,6 @@ public class PostFoundFragment extends Fragment {
         postCard.setReward(null);
         postCard.setCreatedDate(createdDate);
 
-
         postCardRepository.createPost("founditems", postId, postCard, new IApiCallback<PostCard>() {
             @Override
             public void onSuccess(PostCard result) {
@@ -172,7 +227,7 @@ public class PostFoundFragment extends Fragment {
         binding.inputTitle.setText("");
         binding.inputInformation.setText("");
         binding.editText.setText("");
-        binding.editPhone.setText("");
+        binding.editPhone.setText("+855 ");
         binding.tvSelectedDate.setText("Select Date");
         binding.tvSelectedTime.setText("Select Time");
         binding.inputImage.setImageResource(R.drawable.bg_input_image);
@@ -184,12 +239,39 @@ public class PostFoundFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == IMAGE_PICK_CODE && resultCode == Activity.RESULT_OK && data != null) {
-            imageUri = data.getData();
-            binding.inputImage.setImageURI(imageUri);
-            binding.inputImage.setBackground(null);
-            binding.selectImageOverlay.setVisibility(View.GONE);
-            Toast.makeText(getContext(), "Image selected", Toast.LENGTH_SHORT).show();
+
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == IMAGE_PICK_CODE && data != null) {
+                Uri sourceUri = data.getData();
+                if (sourceUri != null) {
+                    Uri destinationUri = Uri.fromFile(new File(requireContext().getCacheDir(), "cropped_" + UUID.randomUUID() + ".jpg"));
+
+                    UCrop.Options options = new UCrop.Options();
+                    options.setCircleDimmedLayer(false);
+                    options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
+                    options.setCompressionQuality(90);
+
+                    UCrop.of(sourceUri, destinationUri)
+                            .withAspectRatio(375, 240)
+                            .withMaxResultSize(375, 240)
+                            .withOptions(options)
+                            .start(requireContext(), this);
+                }
+            } else if (requestCode == UCrop.REQUEST_CROP) {
+                final Uri resultUri = UCrop.getOutput(data);
+                if (resultUri != null) {
+                    imageUri = resultUri;
+                    binding.inputImage.setImageURI(imageUri);
+                    binding.inputImage.setBackground(null);
+                    binding.selectImageOverlay.setVisibility(View.GONE);
+                    Toast.makeText(getContext(), "Image cropped and selected", Toast.LENGTH_SHORT).show();
+                }
+            }
+        } else if (resultCode == UCrop.RESULT_ERROR) {
+            final Throwable cropError = UCrop.getError(data);
+            if (cropError != null) {
+                Toast.makeText(getContext(), "Crop error: " + cropError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

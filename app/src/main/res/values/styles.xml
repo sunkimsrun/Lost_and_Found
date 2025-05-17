@@ -26,7 +26,7 @@
 
     <!-- Style: Radio Button -->
     <style name="RadioButtonStyle">
-        <item name="android:fontFamily">@font/adlam_display</item>
+        <item name="android:fontFamily">@font/lato</item>
         <item name="android:textColor">@color/radio_text_color</item>
         <item name="android:button">@null</item>
         <item name="android:background">@drawable/radio_selector</item>

@@ -1,24 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <View
-        android:layout_width="375dp"
-        android:layout_height="2dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/didver_line" />
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="16dp"
+    android:paddingBottom="16dp">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/postImage"
         android:layout_width="375dp"
         android:layout_height="240dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
         android:scaleType="centerCrop"
         android:src="@drawable/img_container"
         app:shapeAppearanceOverlay="@style/RoundedImageView" />
@@ -29,6 +23,8 @@
         android:layout_height="42dp"
         android:layout_marginStart="340dp"
         android:layout_marginTop="20dp"
+        android:layout_alignTop="@id/postImage"
+        android:layout_alignParentStart="true"
         android:src="@drawable/ico_delete"
         android:background="@drawable/bg_saved"
         android:contentDescription="@string/post_Card_save_post_button"
@@ -36,10 +32,12 @@
         tools:ignore="TouchTargetSizeCheck" />
 
     <LinearLayout
+        android:id="@+id/contentLayout"
         android:layout_width="375dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="270dp"
+        android:layout_below="@id/postImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
         <com.google.android.material.chip.Chip
@@ -50,7 +48,7 @@
             android:checked="true"
             android:clickable="false"
             android:text="@string/post_Card_found"
-            tools:ignore="TextContrastCheck"/>
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/postTitle"
@@ -107,10 +105,16 @@
                 android:textSize="14sp"
                 android:textStyle="bold"
                 tools:ignore="UseCompatTextViewDrawableXml" />
-
         </LinearLayout>
+
+        <View
+            android:layout_width="375dp"
+            android:layout_height="2dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/didver_line" />
 
     </LinearLayout>
 
-
-</androidx.cardview.widget.CardView>
+</RelativeLayout>

@@ -164,8 +164,11 @@ public class PostDetailFragment extends Fragment {
                 binding.checkbox.setText(card.getStatus());
 
                 binding.btnCall.setOnClickListener(v -> {
-                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(card.getPhone()));
-                    startActivity(intent);
+                    String phone = card.getPhone();
+                    if (phone != null && !phone.isEmpty()) {
+                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone));
+                        startActivity(intent);
+                    }
                 });
 
                 binding.location.setOnClickListener(v -> {

@@ -8,6 +8,8 @@ android {
     compileSdk = 35
     viewBinding.enable = true
 
+
+
     defaultConfig {
         applicationId = "com.example.lost_and_found_app"
         minSdk = 35
@@ -34,7 +36,7 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.ucrop)
     implementation (libs.glide)
     annotationProcessor (libs.compiler)
     implementation (libs.retrofit)

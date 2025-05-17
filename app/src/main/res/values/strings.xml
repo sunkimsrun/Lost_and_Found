@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
         <!--    activity_main-->
         <string name="app_name">Foundit</string>
         <string name="logo">logo</string>
@@ -32,7 +32,7 @@
         <string name="explore_start_screen5">explore</string>
         <string name="bg_explore_start_screen5">Explore</string>
         <string name="explore_something">Browse through reported lost and found items, connect with users, and help reunite lost belongings with their owners.</string>
-        <string name="get_started">Get Started</string>
+    <string name="get_started">Start</string>
 
         <!--    login-->
 
