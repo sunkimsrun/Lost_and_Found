@@ -231,6 +231,7 @@ public class PostLostFragment extends Fragment {
         binding.inputImage.setBackgroundResource(R.drawable.bg_input_image);
         imageUri = null;
         binding.selectImageOverlay.setVisibility(View.VISIBLE);
+        binding.inputReward.setText("");
     }
 
     @Override
