@@ -96,6 +96,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void hideProgressBar() {
-        binding.loadingBar.setVisibility(View.GONE);
+        binding.loadingBar.postDelayed(() -> {
+            binding.loadingBar.setVisibility(View.GONE);
+        }, 1500);
     }
 }

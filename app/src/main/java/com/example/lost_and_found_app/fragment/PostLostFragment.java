@@ -45,6 +45,7 @@ public class PostLostFragment extends Fragment {
     private Uri imageUri;
 
     public PostLostFragment() {
+
     }
 
     @Override
@@ -53,9 +54,17 @@ public class PostLostFragment extends Fragment {
         binding = FragmentPostLostBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = auth.getCurrentUser();
+
+        if (currentUser != null) {
+            String email = currentUser.getEmail();
+            binding.editText.setText(email);
+        }
+
         homeActivity = (HomeActivity) getActivity();
 
-        // Initialize phone with +855
         binding.editPhone.setText("+855 ");
         binding.editPhone.setSelection(binding.editPhone.getText().length());
 
@@ -77,7 +86,6 @@ public class PostLostFragment extends Fragment {
 
                 String input = s.toString();
 
-                // Force +855 prefix
                 if (!input.startsWith("+855 ")) {
                     binding.editPhone.setText("+855 ");
                     binding.editPhone.setSelection(binding.editPhone.getText().length());
@@ -93,6 +101,7 @@ public class PostLostFragment extends Fragment {
                 isFormatting = false;
             }
         });
+
 
         binding.checkBoxPolicy.setOnCheckedChangeListener((buttonView, isChecked) -> {
             binding.btnCreate.setEnabled(isChecked);
@@ -208,7 +217,13 @@ public class PostLostFragment extends Fragment {
             public void onSuccess(PostCard result) {
                 hideProgressBar();
                 Toast.makeText(getContext(), "Post uploaded successfully", Toast.LENGTH_SHORT).show();
-                clearFields();
+
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, new SuccessfulFragment())
+                        .addToBackStack(null)
+                        .commit();
+
             }
 
             @Override

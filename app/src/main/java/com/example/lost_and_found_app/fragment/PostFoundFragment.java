@@ -44,7 +44,7 @@ public class PostFoundFragment extends Fragment {
     private Uri imageUri;
     private HomeActivity homeActivity;
     private FragmentPostFoundBinding binding;
-    private boolean isEditing = false;
+    private final boolean isEditing = false;
 
     public PostFoundFragment() {
     }
@@ -53,19 +53,25 @@ public class PostFoundFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentPostFoundBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+
         homeActivity = (HomeActivity) getActivity();
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = auth.getCurrentUser();
 
-        if (user != null && user.getEmail() != null) {
-            binding.editText.setText(user.getEmail());
+        if (currentUser != null) {
+            String email = currentUser.getEmail();
+            binding.editText.setText(email);
         }
 
+        homeActivity = (HomeActivity) getActivity();
+
         binding.editPhone.setText("+855 ");
-        String phoneNumber = user.getPhoneNumber();
         binding.editPhone.setSelection(binding.editPhone.getText().length());
 
         binding.editPhone.addTextChangedListener(new TextWatcher() {
+            boolean isFormatting;
+
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -76,37 +82,24 @@ public class PostFoundFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (isEditing) return;
-                isEditing = true;
+                if (isFormatting) return;
+                isFormatting = true;
 
-                String prefix = "+855 ";
+                String input = s.toString();
 
-                if (!s.toString().startsWith(prefix)) {
-                    String cleanedPhone = phoneNumber.replace("+855", "").replace(" ", "");
-                    binding.editPhone.setText(prefix + cleanedPhone);
+                if (!input.startsWith("+855 ")) {
+                    binding.editPhone.setText("+855 ");
                     binding.editPhone.setSelection(binding.editPhone.getText().length());
-                } else {
-                    if (s.length() > prefix.length()) {
-                        char firstChar = s.charAt(prefix.length());
-                        if (firstChar == '0') {
-                            binding.editPhone.setError("First digit after +855 cannot be 0");
-                            binding.btnCreate.setEnabled(false);
-                            binding.btnCreate.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), android.R.color.darker_gray));
-                        } else {
-                            binding.editPhone.setError(null);
-                            if (binding.checkBoxPolicy.isChecked()) {
-                                binding.btnCreate.setEnabled(true);
-                                binding.btnCreate.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.blue));
-                            }
-                        }
-                    } else {
-                        binding.editPhone.setError(null);
-                        binding.btnCreate.setEnabled(false);
-                        binding.btnCreate.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), android.R.color.darker_gray));
+                } else if (input.length() > 6) {
+                    char firstDigit = input.charAt(6);
+                    if (firstDigit == '0') {
+                        Toast.makeText(requireContext(), "First number after +855 cannot be 0", Toast.LENGTH_SHORT).show();
+                        binding.editPhone.setText("+855 ");
+                        binding.editPhone.setSelection(binding.editPhone.getText().length());
                     }
                 }
 
-                isEditing = false;
+                isFormatting = false;
             }
         });
 
@@ -222,7 +215,13 @@ public class PostFoundFragment extends Fragment {
             public void onSuccess(PostCard result) {
                 hideProgressBar();
                 Toast.makeText(getContext(), "Post uploaded successfully", Toast.LENGTH_SHORT).show();
-                clearFields();
+
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, new SuccessfulFragment())
+                        .addToBackStack(null)
+                        .commit();
+
             }
 
             @Override

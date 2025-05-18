@@ -14,12 +14,14 @@ import com.example.lost_and_found_app.HomeActivity;
 import com.example.lost_and_found_app.databinding.PostCardBinding;
 import com.example.lost_and_found_app.fragment.PostDetailFragment;
 import com.example.lost_and_found_app.model.PostCard;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 
 public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHolder> {
@@ -54,6 +56,8 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHo
         holder.binding.checkbox.setChecked(Objects.equals(post.getStatus(), "Found") || Objects.equals(post.getStatus(), "Returned"));
         holder.binding.checkbox.setText(post.getStatus());
 
+        loadUserData(holder.binding, post.getUserId(), holder.itemView.getContext());
+
         String source;
         if (Objects.equals(post.getUserId(), currentUserId)) {
             source = "manage";
@@ -64,7 +68,6 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHo
         } else {
             source = "lost";
         }
-
 
         holder.itemView.setOnClickListener(view -> {
             PostDetailFragment fragment = new PostDetailFragment();
@@ -79,6 +82,45 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHo
             Context context = view.getContext();
             if (context instanceof HomeActivity) {
                 ((HomeActivity) context).LoadFragment(fragment);
+            }
+        });
+    }
+
+    private void loadUserData(PostCardBinding binding, String userId, Context context) {
+        DatabaseReference userRef = FirebaseDatabase.getInstance()
+                .getReference("Users").child(userId);
+
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    String username = snapshot.child("username").getValue(String.class);
+                    String profileImageUrl = snapshot.child("profileImageUrl").getValue(String.class);
+
+                    if (username != null) {
+                        binding.userName.setText(username);
+                    } else {
+                        binding.userName.setText("Unknown");
+                    }
+
+                    if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
+                        Glide.with(context)
+                                .load(profileImageUrl)
+                                .centerCrop()
+                                .into(binding.userImage);
+                    } else {
+                        binding.userImage.setImageResource(android.R.color.darker_gray); // or default image
+                    }
+                } else {
+                    binding.userName.setText("Unknown");
+                    binding.userImage.setImageResource(android.R.color.darker_gray);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                binding.userName.setText("Unknown");
+                binding.userImage.setImageResource(android.R.color.darker_gray);
             }
         });
     }
@@ -103,15 +145,6 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHo
 
     public PostCard getPostCardAt(int position) {
         return postCards.get(position);
-    }
-
-    private String formatDate(String isoDate) {
-        try {
-            Date parsedDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse(isoDate);
-            return new SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(parsedDate);
-        } catch (Exception e) {
-            return isoDate;
-        }
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

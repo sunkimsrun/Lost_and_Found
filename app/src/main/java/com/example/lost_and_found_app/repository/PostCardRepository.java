@@ -1,5 +1,7 @@
 package com.example.lost_and_found_app.repository;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.example.lost_and_found_app.model.PostCard;
@@ -59,7 +61,34 @@ public class PostCardRepository {
         });
     }
 
-    public void createPost(String itemType, String postId, PostCard postCard, final IApiCallback<PostCard> callback) {
+    public void getCardsByDates(String itemType, String orderBy, String startDate, String endDate, final IApiCallback<List<PostCard>> callback) {
+
+        String orderByParam = "\"" + orderBy + "\"";
+        String startDateParam = "\"" + startDate + "\"";
+        String endDateParam = "\"" + endDate + "\"";
+
+        Log.d("Date", orderByParam + " - " + startDateParam + " - " + endDateParam);
+
+        postCardService.getCardsByDateRange(itemType, orderByParam, startDateParam, endDateParam).enqueue(new Callback<Map<String, PostCard>>() {
+            @Override
+            public void onResponse(@NonNull Call<Map<String, PostCard>> call, @NonNull Response<Map<String, PostCard>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    List<PostCard> postCards = new ArrayList<>(response.body().values());
+                    callback.onSuccess(postCards);
+                } else {
+                    callback.onError(getErrorMessage(response));
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Map<String, PostCard>> call, @NonNull Throwable t) {
+                callback.onError("Network error: " + t.getMessage());
+            }
+        });
+    }
+
+    public void createPost(String itemType, String postId, PostCard postCard,
+                           final IApiCallback<PostCard> callback) {
         postCardService.createCard(itemType, postId, postCard).enqueue(new Callback<PostCard>() {
             @Override
             public void onResponse(@NonNull Call<PostCard> call, @NonNull Response<PostCard> response) {

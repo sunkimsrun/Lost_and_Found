@@ -1,14 +1,13 @@
 package com.example.lost_and_found_app.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,23 +25,21 @@ import com.google.android.material.chip.ChipGroup;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 public class ViewFoundFragment extends Fragment {
 
     private final List<PostCard> fullPostList = new ArrayList<>();
-
-    private PostCardAdapter adapter;
     private final List<PostCard> filteredList = new ArrayList<>();
-    HomeActivity homeActivity;
+    private PostCardAdapter adapter;
+    private PostCardRepository cardRepository;
 
     public ViewFoundFragment() {
+        // Required empty public constructor
     }
 
     @Override
@@ -52,9 +49,12 @@ public class ViewFoundFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_view_found, container, false);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        cardRepository = new PostCardRepository();
 
         RecyclerView recyclerView = view.findViewById(R.id.rcv_list_post);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -90,7 +90,6 @@ public class ViewFoundFragment extends Fragment {
                 filteredList.clear();
                 filteredList.addAll(fullPostList);
                 adapter.setPostCards(filteredList);
-                Toast.makeText(getContext(), "Filter cleared. Showing all items.", Toast.LENGTH_SHORT).show();
             } else if (checkedId == R.id.chip_today) {
                 filterByDate("today");
             } else if (checkedId == R.id.chip_this_week) {
@@ -107,22 +106,12 @@ public class ViewFoundFragment extends Fragment {
 
     private void loadDataFromRepository() {
         showProgressBar();
-        PostCardRepository repository = new PostCardRepository();
 
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        String currentUserId = currentUser != null ? currentUser.getUid() : null;
-
-        repository.getAllPosts("founditems", new IApiCallback<>() {
+        cardRepository.getAllPosts("founditems", new IApiCallback<>() {
             @Override
             public void onSuccess(List<PostCard> postCards) {
                 fullPostList.clear();
-
-                for (PostCard post : postCards) {
-                    if (post.getUserId() != null && !post.getUserId().equals(currentUserId)) {
-                        fullPostList.add(post);
-                    }
-                }
-
+                fullPostList.addAll(postCards);
                 filteredList.clear();
                 filteredList.addAll(fullPostList);
                 adapter.setPostCards(filteredList);
@@ -131,7 +120,6 @@ public class ViewFoundFragment extends Fragment {
 
             @Override
             public void onError(String errorMessage) {
-                Log.e("ViewFoundFragment", "Error loading found items: " + errorMessage);
                 hideProgressBar();
             }
         });
@@ -148,53 +136,91 @@ public class ViewFoundFragment extends Fragment {
         filteredList.clear();
         filteredList.addAll(tempList);
         adapter.setPostCards(filteredList);
-        Toast.makeText(getContext(), "Search: Found " + tempList.size() + " result(s)", Toast.LENGTH_SHORT).show();
     }
 
     private void filterByDate(String type) {
-        List<PostCard> tempList = new ArrayList<>();
-        Calendar now = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("d MMM, yyyy", Locale.getDefault());
+        Calendar startCal = Calendar.getInstance();
+        Calendar endCal = Calendar.getInstance();
 
-        for (PostCard post : fullPostList) {
-            try {
-                Date postDate = sdf.parse(post.getDate());
-                if (postDate == null) continue;
-                Calendar postCal = Calendar.getInstance();
-                postCal.setTime(postDate);
-                boolean include = false;
+        switch (type) {
+            case "today":
+                startCal.set(Calendar.HOUR_OF_DAY, 0);
+                startCal.set(Calendar.MINUTE, 0);
+                startCal.set(Calendar.SECOND, 0);
+                startCal.set(Calendar.MILLISECOND, 0);
 
-                switch (type) {
-                    case "today":
-                        include = postCal.get(Calendar.YEAR) == now.get(Calendar.YEAR) &&
-                                postCal.get(Calendar.DAY_OF_YEAR) == now.get(Calendar.DAY_OF_YEAR);
-                        break;
-                    case "week":
-                        include = postCal.get(Calendar.WEEK_OF_YEAR) == now.get(Calendar.WEEK_OF_YEAR) &&
-                                postCal.get(Calendar.YEAR) == now.get(Calendar.YEAR);
-                        break;
-                    case "month":
-                        include = postCal.get(Calendar.MONTH) == now.get(Calendar.MONTH) &&
-                                postCal.get(Calendar.YEAR) == now.get(Calendar.YEAR);
-                        break;
-                    case "year":
-                        include = postCal.get(Calendar.YEAR) == now.get(Calendar.YEAR);
-                        break;
-                }
+                endCal.set(Calendar.HOUR_OF_DAY, 23);
+                endCal.set(Calendar.MINUTE, 59);
+                endCal.set(Calendar.SECOND, 59);
+                endCal.set(Calendar.MILLISECOND, 999);
+                break;
 
-                if (include) {
-                    tempList.add(post);
-                }
-            } catch (ParseException e) {
-                Log.e("DateParse", "Failed to parse date: " + post.getDate());
-            }
+            case "week":
+                startCal.set(Calendar.DAY_OF_WEEK, startCal.getFirstDayOfWeek());
+                startCal.set(Calendar.HOUR_OF_DAY, 0);
+                startCal.set(Calendar.MINUTE, 0);
+                startCal.set(Calendar.SECOND, 0);
+                startCal.set(Calendar.MILLISECOND, 0);
+
+                endCal.set(Calendar.DAY_OF_WEEK, startCal.getFirstDayOfWeek() + 6);
+                endCal.set(Calendar.HOUR_OF_DAY, 23);
+                endCal.set(Calendar.MINUTE, 59);
+                endCal.set(Calendar.SECOND, 59);
+                endCal.set(Calendar.MILLISECOND, 999);
+                break;
+
+            case "month":
+                startCal.set(Calendar.DAY_OF_MONTH, 1);
+                startCal.set(Calendar.HOUR_OF_DAY, 0);
+                startCal.set(Calendar.MINUTE, 0);
+                startCal.set(Calendar.SECOND, 0);
+                startCal.set(Calendar.MILLISECOND, 0);
+
+                endCal.set(Calendar.DAY_OF_MONTH, endCal.getActualMaximum(Calendar.DAY_OF_MONTH));
+                endCal.set(Calendar.HOUR_OF_DAY, 23);
+                endCal.set(Calendar.MINUTE, 59);
+                endCal.set(Calendar.SECOND, 59);
+                endCal.set(Calendar.MILLISECOND, 999);
+                break;
+
+            case "year":
+                startCal.set(Calendar.MONTH, Calendar.JANUARY);
+                startCal.set(Calendar.DAY_OF_MONTH, 1);
+                startCal.set(Calendar.HOUR_OF_DAY, 0);
+                startCal.set(Calendar.MINUTE, 0);
+                startCal.set(Calendar.SECOND, 0);
+                startCal.set(Calendar.MILLISECOND, 0);
+
+                endCal.set(Calendar.MONTH, Calendar.DECEMBER);
+                endCal.set(Calendar.DAY_OF_MONTH, 31);
+                endCal.set(Calendar.HOUR_OF_DAY, 23);
+                endCal.set(Calendar.MINUTE, 59);
+                endCal.set(Calendar.SECOND, 59);
+                endCal.set(Calendar.MILLISECOND, 999);
+                break;
         }
 
-        filteredList.clear();
-        filteredList.addAll(tempList);
-        adapter.setPostCards(filteredList);
-        Toast.makeText(getContext(), "Filtered by " + type + ": " + tempList.size() + " item(s)", Toast.LENGTH_SHORT).show();
+        SimpleDateFormat sdf = new SimpleDateFormat("d MMM, yyyy", Locale.getDefault());
+        String startDate = sdf.format(startCal.getTime());
+        String endDate = sdf.format(endCal.getTime());
+
+        if (cardRepository == null) {
+            cardRepository = new PostCardRepository();
+        }
+        cardRepository.getCardsByDates("founditems", "date", startDate, endDate, new IApiCallback<>() {
+            @Override
+            public void onSuccess(List<PostCard> result) {
+                filteredList.clear();
+                filteredList.addAll(result);
+                adapter.setPostCards(filteredList);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+            }
+        });
     }
+
 
     private void showProgressBar() {
         if (getActivity() instanceof HomeActivity) {

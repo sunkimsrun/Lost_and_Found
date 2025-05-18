@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingHorizontal="16dp"
     android:paddingBottom="16dp">
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -40,16 +39,6 @@
         android:layout_marginTop="10dp"
         android:orientation="vertical">
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/checkbox"
-            style="@style/CustomStatusStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="54dp"
-            android:checked="true"
-            android:clickable="false"
-            android:text="@string/post_Card_found"
-            tools:ignore="TextContrastCheck" />
-
         <TextView
             android:id="@+id/postTitle"
             android:layout_width="match_parent"
@@ -58,6 +47,86 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/userImage"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_container"
+                app:shapeAppearanceOverlay="@style/UserPostImageView" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="@string/post_name"
+                    android:textAppearance="@style/post_name"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <!-- Calendar icon -->
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="6dp"
+                        android:src="@drawable/ico_calendar"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Feb, 29 2025"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText" />
+
+                    <!-- Spacer -->
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="0dp" />
+
+                    <!-- Clock icon -->
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="6dp"
+                        android:src="@drawable/ico_pin"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/displayTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="RUPP"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
 
         <View
             android:layout_width="275dp"
@@ -75,46 +144,28 @@
             android:textSize="14sp"
             tools:ignore="HardcodedText" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ico_clock"
-                android:drawablePadding="5dp"
-                android:padding="10dp"
-                android:text="@string/post_Card_18_feb_2025"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                tools:ignore="UseCompatTextViewDrawableXml" />
-
-            <TextView
-                android:id="@+id/location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:drawableStart="@drawable/ico_pin"
-                android:drawablePadding="5dp"
-                android:padding="10dp"
-                android:text="@string/post_Card_rupp"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                tools:ignore="UseCompatTextViewDrawableXml" />
-        </LinearLayout>
 
         <View
             android:layout_width="375dp"
             android:layout_height="2dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/didver_line" />
 
     </LinearLayout>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/checkbox"
+        style="@style/CustomStatusStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="54dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
+        android:checked="true"
+        android:clickable="false"
+        android:text="@string/post_Card_found"
+        android:textAlignment="textStart"
+        tools:ignore="TextContrastCheck" />
 
 </RelativeLayout>

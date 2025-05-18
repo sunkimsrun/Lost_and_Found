@@ -12,10 +12,12 @@
         android:layout_gravity="center"
         android:orientation="vertical"
         tools:ignore="UseCompoundDrawables">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:contentDescription="@string/fragment_Successful_Todo"
+            android:layout_marginBottom="50dp"
             android:src="@drawable/ico_success"
             android:layout_gravity="center"/>
 
@@ -23,7 +25,7 @@
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/LabelStyle"
+            android:textStyle="bold"
             android:textAlignment="center"
             android:textSize="46sp"
             android:textColor="@color/black"
@@ -31,12 +33,13 @@
     </LinearLayout>
 
     <TextView
-        android:layout_marginTop="842dp"
-        android:layout_marginStart="36dp"
+        android:id="@+id/tvBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/LabelStyle"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="750dp"
+        android:text="@string/fragment_successful_back"
         android:textSize="18sp"
-        android:text="@string/fragment_successful_back" />
+        android:textStyle="bold" />
 
 </FrameLayout>
