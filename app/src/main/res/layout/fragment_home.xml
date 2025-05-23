@@ -380,7 +380,7 @@
             android:layout_height="65dp"
             android:layout_marginHorizontal="41.5dp"
             android:layout_marginTop="15dp"
-            android:backgroundTint="@color/blue"
+            android:backgroundTint="@color/light_blue"
             android:text="@string/Create_Post"
             android:textColor="@color/white"
             android:textSize="16sp"
