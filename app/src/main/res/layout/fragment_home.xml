@@ -1,228 +1,390 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="20dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="220dp"
         android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="8dp"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            app:tabBackground="@drawable/selector_tab_dot"
+            app:tabIndicatorHeight="0dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp"
         android:orientation="vertical"
-        android:paddingTop="52dp"
-        tools:ignore="UselessParent">
+        android:paddingHorizontal="10dp">
 
-        <RelativeLayout
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:text="latest's lost"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardLost"
-                android:layout_width="300dp"
-                android:layout_height="200dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="6dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/bg_card_home">
+        <View
+            android:layout_width="42dp"
+            android:layout_height="2dp"
+            android:background="@drawable/bg_blue" />
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="16dp">
+        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="390dp"
+            android:layout_height="223dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp">
 
-                    <ImageView
-                        android:layout_width="125dp"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="Continue With Lost Item"
-                        android:src="@drawable/view_lost_png"
-                        tools:ignore="HardcodedText" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:layout_marginStart="140dp"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/LabelStyle"
-                            android:textSize="16sp"
-                            android:text="@string/fragment_Home_Lost_Items"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="14sp"
-                            android:layout_marginTop="10dp"
-                            android:text="@string/Fragment_Home_View_Lost_Items"/>
-                    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/latestCard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/card_post_bg"
+                android:orientation="vertical">
 
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:layout_width="145dp"
-                android:layout_height="36dp"
-                android:layout_alignBottom="@id/cardLost"
-                android:layout_alignEnd="@id/cardLost"
-                android:layout_marginBottom="-18dp"
-                android:layout_marginEnd="10dp"
-                android:paddingHorizontal="16dp"
-                android:gravity="center"
-                android:background="@drawable/bg_under_text_card_home"
-                android:text="@string/Fragment_Home_View_items"
-                android:textColor="@color/white"
-                android:drawableEnd="@drawable/ico_arrow_forward"
-                android:drawablePadding="4dp"
-                android:textSize="14sp"
-                android:elevation="12dp"
-                android:translationZ="12dp"
-                tools:ignore="UseCompatTextViewDrawableXml,TextContrastCheck" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardFound"
-                android:layout_width="300dp"
-                android:layout_height="200dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="6dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/bg_card_home">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="16dp">
-
-                    <ImageView
-                        android:layout_width="125dp"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="Continue With Found Item"
-                        android:src="@drawable/view_found_png"
-                        tools:ignore="HardcodedText" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:layout_marginStart="140dp"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/LabelStyle"
-                            android:textSize="16sp"
-                            android:text="@string/Fragment_Home_Found_Items"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="14sp"
-                            android:layout_marginTop="10dp"
-                            android:text="@string/Fragment_Home_View_Found_Items"/>
-                    </LinearLayout>
-
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:layout_width="145dp"
-                android:layout_height="36dp"
-                android:layout_alignBottom="@id/cardFound"
-                android:layout_alignEnd="@id/cardFound"
-                android:layout_marginBottom="-18dp"
-                android:layout_marginEnd="10dp"
-                android:paddingHorizontal="16dp"
-                android:gravity="center"
-                android:background="@drawable/bg_under_text_card_home"
-                android:text="@string/Fragment_Home_View_Items"
-                android:textColor="@color/white"
-                android:drawableEnd="@drawable/ico_arrow_forward"
-                android:drawablePadding="4dp"
-                android:textSize="14sp"
-                android:elevation="12dp"
-                android:translationZ="12dp"
-                tools:ignore="UseCompatTextViewDrawableXml, TextContrastCheck" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardCreate"
-                android:layout_width="300dp"
-                android:layout_height="100dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="6dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/bg_card_home">
-
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:padding="8dp">
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="10dp">
 
-                    <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="12dp"
-                        android:contentDescription="Continue With Create Post"
-                        android:src="@drawable/create_post"
-                        tools:ignore="HardcodedText" />
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/postImage"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_container"
+                        app:shapeAppearanceOverlay="@style/RoundedImageView" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:layout_marginStart="140dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp">
+
                         <TextView
+                            android:id="@+id/postTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            style="@style/LabelStyle"
+                            android:layout_marginTop="5dp"
+                            android:text="Title"
                             android:textSize="16sp"
-                            android:text="@string/Fragment_Home_Create_Post"/>
+                            android:textStyle="bold" />
+
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/postInformation"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="14sp"
                             android:layout_marginTop="10dp"
-                            android:text="@string/Fragment_Home_Report_Lost_Or_Found"/>
+                            android:lineSpacingExtra="9sp"
+                            android:maxLines="3"
+                            android:text="After users agree to meet through messaging and can initiate the verification by tapping on ‘Verify.’"
+                            android:textSize="11sp"
+                            android:textStyle="normal" />
+
                     </LinearLayout>
 
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
+                </LinearLayout>
 
-            <TextView
-                android:layout_width="145dp"
-                android:layout_height="36dp"
-                android:layout_alignBottom="@id/cardCreate"
-                android:layout_alignEnd="@id/cardCreate"
-                android:layout_marginBottom="-18dp"
-                android:layout_marginEnd="10dp"
-                android:paddingHorizontal="16dp"
-                android:gravity="center"
-                android:background="@drawable/bg_under_text_card_home"
-                android:text="@string/Create_Post"
-                android:textColor="@color/white"
-                android:drawableEnd="@drawable/ico_arrow_forward"
-                android:drawablePadding="4dp"
-                android:textSize="14sp"
-                android:elevation="12dp"
-                android:translationZ="12dp"
-                tools:ignore="UseCompatTextViewDrawableXml,TextContrastCheck" />
-        </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="30dp">
+
+                    <!-- Calendar icon -->
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="6dp"
+                        android:src="@drawable/ico_calendar"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Feb, 29 2025"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText" />
+
+                    <!-- Spacer -->
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_height="0dp" />
+
+                    <!-- Clock icon -->
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="6dp"
+                        android:src="@drawable/ico_clock"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12:00"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText" />
+                    <!-- Spacer -->
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_height="0dp" />
+
+                    <!-- Clock icon -->
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="6dp"
+                        android:src="@drawable/ico_pin"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="RUPP"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/bg_under_post_card"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="10dp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/userImage"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_container"
+                        app:shapeAppearanceOverlay="@style/UserPostImageView2" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/userName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:text="Sok Sochetraaaaa"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/userPhone"
+                            android:layout_width="125dp"
+                            android:layout_height="wrap_content"
+                            android:lineSpacingExtra="9sp"
+                            android:maxLines="1"
+                            android:text="+855 966482541"
+                            android:textSize="11sp"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/checkbox"
+                        style="@style/CustomStatusStyle"
+                        android:layout_width="134dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginVertical="4dp"
+                        android:layout_marginStart="30dp"
+                        android:checked="true"
+                        android:clickable="false"
+                        android:text="Lost"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="See more..."
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bg_homefrag_card"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="42.5dp"
+            android:layout_marginTop="30.5dp"
+            android:text="Sad Person"
+            android:textColor="@color/blue"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:paddingHorizontal="41.5dp">
+
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_sad_person">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/sadUserImage1"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15.5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_container"
+                    app:shapeAppearanceOverlay="@style/UserPostImageView2" />
+
+                <TextView
+                    android:id="@+id/sadUserText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sadUserImage1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="14.5dp"
+                    android:text="168 Lost"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/bg_sad_person">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/sadUserImage2"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15.5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_container"
+                    app:shapeAppearanceOverlay="@style/UserPostImageView2" />
+
+                <TextView
+                    android:id="@+id/sadUserText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sadUserImage2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="14.5dp"
+                    android:text="168 Lost"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/bg_sad_person">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/sadUserImage3"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15.5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_container"
+                    app:shapeAppearanceOverlay="@style/UserPostImageView2" />
+
+                <TextView
+                    android:id="@+id/sadUserText3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sadUserImage3"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="14.5dp"
+                    android:text="168 Lost"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cardCreate"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginHorizontal="41.5dp"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="@color/blue"
+            android:text="@string/Create_Post"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

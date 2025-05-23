@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,9 +36,8 @@ import retrofit2.Response;
 
 public class PostDetailFragment extends Fragment {
 
-    FragmentPostDetailBinding binding;
-    HomeActivity homeActivity;
-    private final boolean isBookmarked = false;
+    private FragmentPostDetailBinding binding;
+    private HomeActivity homeActivity;
     private boolean isPostLoaded = false;
     private boolean isUserLoaded = false;
 
@@ -48,13 +48,23 @@ public class PostDetailFragment extends Fragment {
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         homeActivity = (HomeActivity) getActivity();
-        String postId = getArguments() != null ? getArguments().getString("postId") : null;
-        String status = getArguments() != null ? getArguments().getString("status") : null;
-        String source = getArguments() != null ? getArguments().getString("source") : null;
+
+        Bundle args = getArguments();
+        if (args == null) return;
+
+        String postId = args.getString("postId");
+        String status = args.getString("status");
+        String source = args.getString("source");
 
         if (postId != null && status != null) {
             loadPostById(postId, status);
@@ -63,43 +73,41 @@ public class PostDetailFragment extends Fragment {
         binding.tvReturn.setOnClickListener(v -> {
             if (homeActivity == null) return;
 
-            if ("found".equals(source)) {
-                homeActivity.binding.navigationView.setCheckedItem(R.id.nav_found);
-                homeActivity.binding.navigationView.getMenu().performIdentifierAction(R.id.nav_found, 0);
-            } else if ("lost".equals(source)) {
-                homeActivity.binding.navigationView.setCheckedItem(R.id.nav_lost);
-                homeActivity.binding.navigationView.getMenu().performIdentifierAction(R.id.nav_lost, 0);
-            } else if ("manage".equals(source)) {
-                homeActivity.binding.navigationView.setCheckedItem(R.id.nav_account);
-                homeActivity.LoadFragment(new ManagePostFragment());
+            switch (source) {
+                case "found":
+                    homeActivity.binding.navigationView.setCheckedItem(R.id.nav_found);
+                    homeActivity.binding.navigationView.getMenu().performIdentifierAction(R.id.nav_found, 0);
+                    break;
+                case "lost":
+                    homeActivity.binding.navigationView.setCheckedItem(R.id.nav_lost);
+                    homeActivity.binding.navigationView.getMenu().performIdentifierAction(R.id.nav_lost, 0);
+                    break;
+                case "manage":
+                    homeActivity.binding.navigationView.setCheckedItem(R.id.nav_account);
+                    homeActivity.LoadFragment(new ManagePostFragment());
+                    break;
             }
         });
 
         binding.btnDelete.setOnClickListener(v -> {
-            if (getArguments() == null) return;
+            if (args == null) return;
 
-            String postIdArg = getArguments().getString("postId");
-            String statusArg = getArguments() != null ? getArguments().getString("status") : null;
+            String postIdArg = args.getString("postId");
+            String statusArg = args.getString("status");
 
             if (postIdArg == null || statusArg == null) return;
 
-            String itemType;
-            if ("Not Found".equals(statusArg) || "Found".equals(statusArg)) {
-                itemType = "lostitems";
-            } else if ("Not Returned".equals(statusArg) || "Returned".equals(statusArg)) {
-                itemType = "founditems";
-            } else {
-                return;
-            }
+            String itemType = getItemType(statusArg);
+            if (itemType == null) return;
 
             showProgressBar();
 
             PostCardService postCardService = RetrofitClient.getClient().create(PostCardService.class);
             Call<Void> call = postCardService.deleteCard(itemType, postIdArg);
 
-            call.enqueue(new retrofit2.Callback<>() {
+            call.enqueue(new Callback<>() {
                 @Override
-                public void onResponse(@NonNull Call<Void> call, @NonNull retrofit2.Response<Void> response) {
+                public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
                     hideProgressBar();
                     if (!response.isSuccessful() || !isAdded()) return;
 
@@ -112,6 +120,7 @@ public class PostDetailFragment extends Fragment {
                 @Override
                 public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
                     hideProgressBar();
+                    Toast.makeText(requireContext(), "Failed to delete post", Toast.LENGTH_SHORT).show();
                 }
             });
         });
@@ -122,12 +131,8 @@ public class PostDetailFragment extends Fragment {
         isPostLoaded = false;
         isUserLoaded = false;
 
-        String itemType;
-        if ("Not Found".equals(status) || "Found".equals(status)) {
-            itemType = "lostitems";
-        } else if ("Not Returned".equals(status) || "Returned".equals(status)) {
-            itemType = "founditems";
-        } else {
+        String itemType = getItemType(status);
+        if (itemType == null) {
             hideProgressBar();
             return;
         }
@@ -166,14 +171,12 @@ public class PostDetailFragment extends Fragment {
                 binding.btnCall.setOnClickListener(v -> {
                     String phone = card.getPhone();
                     if (phone != null && !phone.isEmpty()) {
-                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone));
-                        startActivity(intent);
+                        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone)));
                     }
                 });
 
                 binding.location.setOnClickListener(v -> {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://maps.app.goo.gl/2kiK5XSakXmyMYy68"));
-                    startActivity(intent);
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://maps.app.goo.gl/2kiK5XSakXmyMYy68")));
                 });
 
                 if (card.getReward() != null) {
@@ -188,22 +191,13 @@ public class PostDetailFragment extends Fragment {
 
                 Glide.with(requireContext())
                         .load(card.getImageUrl())
+                        .placeholder(R.drawable.img_container)
+                        .error(R.drawable.img_container)
                         .into(binding.displayImage);
 
                 binding.checkbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                    if (isChecked) {
-                        if ("Not Found".equals(card.getStatus())) {
-                            updatePostStatus(postId, "Found");
-                        } else if ("Not Returned".equals(card.getStatus())) {
-                            updatePostStatus(postId, "Returned");
-                        }
-                    } else {
-                        if ("Found".equals(card.getStatus())) {
-                            updatePostStatus(postId, "Not Found");
-                        } else if ("Returned".equals(card.getStatus())) {
-                            updatePostStatus(postId, "Not Returned");
-                        }
-                    }
+                    String newStatus = getUpdatedStatus(card.getStatus(), isChecked);
+                    if (newStatus != null) updatePostStatus(postId, newStatus);
                 });
 
                 isPostLoaded = true;
@@ -213,8 +207,44 @@ public class PostDetailFragment extends Fragment {
             @Override
             public void onFailure(@NonNull Call<PostCard> call, @NonNull Throwable t) {
                 hideProgressBar();
+                Toast.makeText(requireContext(), "Failed to load post", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private String getItemType(String status) {
+        switch (status) {
+            case "Not Found":
+            case "Found":
+                return "lostitems";
+            case "Not Returned":
+            case "Returned":
+                return "founditems";
+            default:
+                return null;
+        }
+    }
+
+    private String getUpdatedStatus(String currentStatus, boolean isChecked) {
+        if (isChecked) {
+            switch (currentStatus) {
+                case "Not Found":
+                    return "Found";
+                case "Not Returned":
+                    return "Returned";
+                default:
+                    return null;
+            }
+        } else {
+            switch (currentStatus) {
+                case "Found":
+                    return "Not Found";
+                case "Returned":
+                    return "Not Returned";
+                default:
+                    return null;
+            }
+        }
     }
 
     public void updateUserDisplay(String userId) {
@@ -224,9 +254,7 @@ public class PostDetailFragment extends Fragment {
     }
 
     private void getUserDataFromDatabase(String userID) {
-        DatabaseReference userRef = FirebaseDatabase.getInstance()
-                .getReference("Users").child(userID);
-
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(userID);
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -236,14 +264,13 @@ public class PostDetailFragment extends Fragment {
                     String username = snapshot.child("username").getValue(String.class);
                     String profileImageUrl = snapshot.child("profileImageUrl").getValue(String.class);
 
-                    if (username != null) {
-                        binding.userName.setText(username);
-                    }
-
+                    if (username != null) binding.userName.setText(username);
                     if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
                         Glide.with(requireContext())
                                 .load(profileImageUrl)
                                 .centerCrop()
+                                .placeholder(R.drawable.img_container)
+                                .error(R.drawable.img_container)
                                 .into(binding.userImage);
                     }
                 }
@@ -280,15 +307,8 @@ public class PostDetailFragment extends Fragment {
 
     private void updatePostStatus(String postId, String newStatus) {
         PostCardService postCardService = RetrofitClient.getClient().create(PostCardService.class);
-
-        String itemType;
-        if ("Not Found".equals(newStatus) || "Found".equals(newStatus)) {
-            itemType = "lostitems";
-        } else if ("Not Returned".equals(newStatus) || "Returned".equals(newStatus)) {
-            itemType = "founditems";
-        } else {
-            return;
-        }
+        String itemType = getItemType(newStatus);
+        if (itemType == null) return;
 
         Map<String, String> statusMap = new HashMap<>();
         statusMap.put("status", newStatus);
@@ -304,8 +324,8 @@ public class PostDetailFragment extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<PostCard> call, @NonNull Throwable t) {
+                Toast.makeText(requireContext(), "Failed to update status", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
 }

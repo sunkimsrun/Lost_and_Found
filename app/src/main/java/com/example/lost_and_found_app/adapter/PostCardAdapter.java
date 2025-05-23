@@ -53,8 +53,11 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHo
         holder.binding.postTitle.setText(post.getTitle());
         holder.binding.postInformation.setText(post.getInformation());
         holder.binding.date.setText(post.getDate());
-        holder.binding.checkbox.setChecked(Objects.equals(post.getStatus(), "Found") || Objects.equals(post.getStatus(), "Returned"));
+        holder.binding.phone.setText(post.getPhone());
+        holder.binding.time.setText(post.getPostTime());
         holder.binding.checkbox.setText(post.getStatus());
+
+        holder.binding.checkbox.setChecked(Objects.equals(post.getStatus(), "Found") || Objects.equals(post.getStatus(), "Returned"));
 
         loadUserData(holder.binding, post.getUserId(), holder.itemView.getContext());
 

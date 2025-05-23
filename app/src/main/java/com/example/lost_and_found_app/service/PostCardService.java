@@ -29,6 +29,12 @@ public interface PostCardService {
             @Query("endAt") String endDate
     );
 
+    @GET("{type}.json")
+    Call<Map<String, PostCard>> getLatestCard(
+            @Path("type") String type,
+            @Query("orderBy") String orderBy,
+            @Query("limitToLast") int limit
+    );
 
     @PUT("{type}/{id}.json")
     Call<PostCard> createCard(@Path("type") String type, @Path("id") String id, @Body PostCard postCard);

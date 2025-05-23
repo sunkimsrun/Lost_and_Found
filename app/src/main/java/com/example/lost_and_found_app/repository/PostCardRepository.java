@@ -9,8 +9,12 @@ import com.example.lost_and_found_app.service.PostCardService;
 import com.example.lost_and_found_app.util.RetrofitClient;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -60,6 +64,41 @@ public class PostCardRepository {
             }
         });
     }
+
+    public void getLatestPosts(String itemType, String orderBy, int limit, final IApiCallback<List<PostCard>> callback) {
+        String orderByParam = "\"" + orderBy + "\"";
+        postCardService.getLatestCard(itemType, orderByParam, limit).enqueue(new Callback<Map<String, PostCard>>() {
+            @Override
+            public void onResponse(@NonNull Call<Map<String, PostCard>> call, @NonNull Response<Map<String, PostCard>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    List<PostCard> postCards = new ArrayList<>(response.body().values());
+
+                    postCards.sort((p1, p2) -> {
+
+                        try {
+                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+                            Date d1 = sdf.parse(p1.getCreatedDate());
+                            Date d2 = sdf.parse(p2.getCreatedDate());
+                            return d2.compareTo(d1);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                            return 0;
+                        }
+                    });
+
+                    callback.onSuccess(postCards);
+                } else {
+                    callback.onError(getErrorMessage(response));
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Map<String, PostCard>> call, @NonNull Throwable t) {
+                callback.onError("Network error: " + t.getMessage());
+            }
+        });
+    }
+
 
     public void getCardsByDates(String itemType, String orderBy, String startDate, String endDate, final IApiCallback<List<PostCard>> callback) {
 

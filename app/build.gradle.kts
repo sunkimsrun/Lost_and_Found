@@ -8,16 +8,15 @@ android {
     compileSdk = 35
     viewBinding.enable = true
 
-
-
     defaultConfig {
         applicationId = "com.example.lost_and_found_app"
-        minSdk = 35
+        minSdk = 24
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled = true
+
     }
 
     buildTypes {
@@ -28,6 +27,9 @@ android {
                 "proguard-rules.pro"
             )
         }
+        debug {
+            isMinifyEnabled = false
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -36,6 +38,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.play.services.auth)
     implementation(libs.lottie)
     implementation(libs.ucrop)
     implementation (libs.glide)

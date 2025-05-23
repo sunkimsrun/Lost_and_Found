@@ -93,7 +93,7 @@
 
     <!--        activity_forget_password-->
     <string name="activity_Forget_Password_Email">Email</string>
-        <string name="activity_Forget_Password_we_will_send_you_a_message_to_set_or_reset_your_new_password">* We will send you a message to set or reset your new password</string>
+    <string name="activity_Forget_Password_we_will_send_you_a_message_to_set_or_reset_your_new_password"><font color="#FF4B26">*</font> We will send you a message to set or reset your new password</string>
         <string name="activity_Forget_Password_Reset">Reset</string>
         <string name="activity_Forget_Password_Email_Sent_Successfully">Email sent successfully!</string>
         <string name="activity_Forget_Password_Log_In">Log In</string>
@@ -231,5 +231,7 @@
     <string name="activity_Register_skip_for_now">Skip for now!</string>
     <string name="activity_Register_create_an_account">Create an\nAccount!!</string>
 
+    <!-- Google Log in Key -->
+    <string name="default_web_client_id">991018082480-gou3esun83k11ljf5v1o4b8hf78ldmbo.apps.googleusercontent.com</string>
 
 </resources>

@@ -39,7 +39,6 @@
         android:id="@+id/submitBtn"
         android:layout_width="317dp"
         android:layout_height="65dp"
-        android:layout_marginTop="430dp"
         android:backgroundTint="#FFFFFF"
         android:text="@string/activity_Auth_Screen_Get_Start"
         android:textColor="@android:color/black"
@@ -47,9 +46,8 @@
         app:cornerRadius="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.606"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_to_"
-        app:layout_constraintVertical_bias="0.379" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

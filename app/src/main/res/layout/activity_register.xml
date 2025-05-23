@@ -136,7 +136,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         app:backgroundTint="@color/blue"
-        app:cornerRadius="4dp"
+        app:cornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
@@ -185,20 +185,10 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/linearLayout2">
-
         <ImageButton
-            android:id="@+id/btnFacebook"
+            android:id="@+id/btnGoLogin"
             android:layout_width="105dp"
             android:layout_height="56dp"
-            android:background="@drawable/bg_btn_social"
-            android:contentDescription="@string/activity_Register_Button_Social_Media"
-            android:src="@drawable/facebook_ic" />
-
-        <ImageButton
-            android:id="@+id/btnGoogle"
-            android:layout_width="105dp"
-            android:layout_height="56dp"
-            android:layout_marginStart="20dp"
             android:background="@drawable/bg_btn_social"
             android:contentDescription="@string/activity_Register_Button_Social_Media"
             android:src="@drawable/google_ic" />

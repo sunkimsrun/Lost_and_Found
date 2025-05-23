@@ -133,7 +133,8 @@ public class PostFoundFragment extends Fragment {
                 (view, year, month, dayOfMonth) -> {
                     String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun",
                             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-                    String date = dayOfMonth + " " + months[month] + ", " + year;
+                    String formattedDay = String.format(Locale.getDefault(), "%02d", dayOfMonth);
+                    String date = formattedDay + " " + months[month] + ", " + year;
                     binding.tvSelectedDate.setText(date);
                 },
                 calendar.get(Calendar.YEAR),

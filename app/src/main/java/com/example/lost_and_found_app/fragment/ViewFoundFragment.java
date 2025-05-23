@@ -25,9 +25,11 @@ import com.google.android.material.chip.ChipGroup;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -114,6 +116,16 @@ public class ViewFoundFragment extends Fragment {
                 fullPostList.addAll(postCards);
                 filteredList.clear();
                 filteredList.addAll(fullPostList);
+                filteredList.sort((p1, p2) -> {
+                    try {
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM, yyyy", Locale.getDefault());
+                        Date d1 = sdf.parse(p1.getDate());
+                        Date d2 = sdf.parse(p2.getDate());
+                        return d2.compareTo(d1);
+                    } catch (ParseException e) {
+                        return 0;
+                    }
+                });
                 adapter.setPostCards(filteredList);
                 hideProgressBar();
             }
@@ -200,7 +212,7 @@ public class ViewFoundFragment extends Fragment {
                 break;
         }
 
-        SimpleDateFormat sdf = new SimpleDateFormat("d MMM, yyyy", Locale.getDefault());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM, yyyy", Locale.getDefault());
         String startDate = sdf.format(startCal.getTime());
         String endDate = sdf.format(endCal.getTime());
 
@@ -212,6 +224,16 @@ public class ViewFoundFragment extends Fragment {
             public void onSuccess(List<PostCard> result) {
                 filteredList.clear();
                 filteredList.addAll(result);
+                filteredList.sort((p1, p2) -> {
+                    try {
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM, yyyy", Locale.getDefault());
+                        Date d1 = sdf.parse(p1.getDate());
+                        Date d2 = sdf.parse(p2.getDate());
+                        return d2.compareTo(d1);
+                    } catch (ParseException e) {
+                        return 0;
+                    }
+                });
                 adapter.setPostCards(filteredList);
             }
 
