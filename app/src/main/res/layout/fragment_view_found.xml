@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="175dp"
         android:layout_gravity="top"
-        android:background="@color/blue" />
+        android:background="@color/light_blue" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

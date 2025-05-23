@@ -135,7 +135,7 @@
         android:text="@string/activity_Register_Register"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:backgroundTint="@color/blue"
+        app:backgroundTint="@color/light_blue"
         app:cornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintHorizontal_bias="0.0"

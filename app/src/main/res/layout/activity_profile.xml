@@ -142,7 +142,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginStart="46dp"
         android:layout_marginEnd="46dp"
-        android:backgroundTint="@color/blue"
+        android:backgroundTint="@color/light_blue"
         android:enabled="true"
         android:text="@string/activity_Profile_complete"
         android:textColor="@color/white"
