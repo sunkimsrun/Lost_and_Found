@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="412dp"
+    android:height="334dp"
+    android:viewportWidth="412"
+    android:viewportHeight="334">
+
+    <group>
+        <clip-path android:pathData="M0 0H412V334H0V0Z" />
+        <!-- Rounded corners (top left and top right) with radius 40 -->
+        <path
+            android:fillColor="#E8F0FA"
+            android:pathData="
+                M0,40
+                Q0,0 40,0
+                H372
+                Q412,0 412,40
+                V334
+                H0
+                Z" />
+    </group>
+</vector>
