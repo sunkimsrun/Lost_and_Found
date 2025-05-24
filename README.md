@@ -10,4 +10,3 @@ Figma, Android Studio Application.
 
 # Contact Us
 If you have any questions or concerns about this Privacy Policy, please contact us at [sunkimsrun123@gmail.com].
-don't contact b srun contact me [soksochetraaa@gmail.com]
