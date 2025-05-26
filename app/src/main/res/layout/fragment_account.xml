@@ -10,79 +10,183 @@
     android:background="#FFFFFF"
     tools:context=".fragment.AccountFragment">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/userLayout"
+        android:layout_width="339dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <View
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:background="@drawable/user_pf_bg" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/profile_image"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:scaleType="centerCrop"
-            android:translationX="5dp"
-            android:translationY="5dp"
-            app:shapeAppearanceOverlay="@style/UserImageView" />
-
-        <ImageView
-            android:id="@+id/editIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignEnd="@+id/profile_image"
-            android:layout_alignBottom="@+id/profile_image"
-            android:contentDescription="@string/Fragment_Account_click_for_image"
-            android:src="@drawable/img_edit" />
-    </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/relativeLayout">
-
-        <TextView
-            android:id="@+id/nameText"
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/username"
-            android:textColor="#000000"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:background="@drawable/user_pf_bg" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profile_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:translationX="5dp"
+                android:translationY="5dp"
+                app:shapeAppearanceOverlay="@style/UserImageView" />
+
+            <ImageView
+                android:id="@+id/editIcon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignEnd="@+id/profile_image"
+                android:layout_alignBottom="@+id/profile_image"
+                android:contentDescription="@string/Fragment_Account_click_for_image"
+                android:src="@drawable/img_edit" />
+        </RelativeLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:ignore="UselessLeaf" />
+            android:layout_marginStart="20dp"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/nameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/username"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textColor="#A9A9A9"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/phoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Number"
+                android:textColor="#A9A9A9"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender"
+                android:textColor="#A9A9A9"
+                android:textSize="12sp"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="102dp"
+                android:layout_height="32dp"
+                android:text="Edit"
+                android:textSize="10sp"
+                android:textColor="#2196F3"
+                android:background="@drawable/btn_edit"/>
+
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="390dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_lost_found_label"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userLayout">
+
+        <RadioButton
+            android:id="@+id/radioLost"
+            android:layout_width="186.67dp"
+            android:layout_height="36dp"
+
+            android:background="@drawable/active_btn"
+            android:button="@null"
+            android:checked="true"
+            android:text="@string/fragment_Post_Item_lost"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+        <RadioButton
+            android:id="@+id/radioFound"
+            android:layout_width="186.67dp"
+            android:layout_height="36dp"
+
+            android:layout_marginStart="5dp"
+            android:button="@null"
+            android:text="@string/fragment_Post_Item_found"
+            android:textAlignment="center"
+            android:textSize="13sp" />
+
+    </RadioGroup>
+
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="375dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lostFoundFrameContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <LinearLayout
+        android:layout_width="199dp"
+        android:layout_height="569dp"
+        android:layout_marginTop="340dp"
         android:orientation="vertical"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/userLayout">
 
         <RelativeLayout
-            android:id="@+id/accountInformations"
+            android:id="@+id/accountInformation"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/container"
