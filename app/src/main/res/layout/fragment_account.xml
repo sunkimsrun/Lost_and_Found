@@ -101,8 +101,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Gender"
+                android:drawablePadding="10dp"
                 android:textColor="#A9A9A9"
-                android:textSize="12sp"
+                android:drawableStart="@drawable/icon_gender"
+                android:gravity="center_vertical"
+                android:textSize="14sp"
                 android:layout_marginBottom="10dp"
                 android:textStyle="bold" />
 
@@ -142,7 +145,8 @@
             android:text="@string/fragment_Post_Item_lost"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="13sp" />
+            android:textSize="13sp"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <RadioButton
             android:id="@+id/radioFound"
@@ -153,7 +157,8 @@
             android:button="@null"
             android:text="@string/fragment_Post_Item_found"
             android:textAlignment="center"
-            android:textSize="13sp" />
+            android:textSize="13sp"
+            tools:ignore="TouchTargetSizeCheck" />
 
     </RadioGroup>
 
