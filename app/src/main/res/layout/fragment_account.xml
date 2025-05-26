@@ -104,10 +104,11 @@
                 android:id="@+id/button2"
                 android:layout_width="102dp"
                 android:layout_height="32dp"
+                android:background="@drawable/btn_edit"
                 android:text="Edit"
-                android:textSize="10sp"
                 android:textColor="#2196F3"
-                android:background="@drawable/btn_edit"/>
+                android:textSize="10sp"
+                tools:ignore="TouchTargetSizeCheck" />
 
         </LinearLayout>
     </LinearLayout>
