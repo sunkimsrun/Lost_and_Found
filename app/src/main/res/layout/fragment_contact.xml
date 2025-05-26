@@ -3,211 +3,433 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingTop="20dp"
     tools:context=".fragment.ContactFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        tools:ignore="UselessParent">
+        android:layout_height="wrap_content">
 
-        <TextView
-            style="@style/LabelStyle"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:gravity="center_horizontal"
-            android:text="@string/fragment_Contact_contact_us"
-            android:textSize="30sp" />
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
 
-        <TextView
-            style="@style/LabelStyle"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
-            android:text="Thank you for using FoundIt! If you have any question let us know what we can help you with :)"
-            android:textSize="13sp"
-            tools:ignore="HardcodedText" />
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="wrap_content"
+                android:layout_height="280dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/aimations"
+                />
 
-        <RelativeLayout
-            android:layout_width="228dp"
-            android:layout_height="165dp"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/bg_contact_card">
+            <TextView
+                style="@style/LabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/About_Us"
+                android:textSize="35sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp" />
 
-            <ImageView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:text="Welcome to Foundit!"
+                tools:ignore="HardcodedText"
+                android:textSize="20sp"
+                style="@style/LabelStyle"
+                android:padding="10sp"
+
+                />
+
+            <TextView
+                style="@style/LabelStyle"
+                android:textColor="@color/light_blue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="What You Can Do With FoundIt !"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                android:layout_marginStart="5sp"
+                tools:ignore="HardcodedText" />
+            <TextView
+                style="@style/LabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10sp"
+                android:fontFamily="@font/adlam_display"
+                android:text="@string/Why_We_build"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="16sp" />
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="10sp"
+                    >
+
+                    <TextView
+                        android:layout_width="280dp"
+                        android:textColor="@color/black"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/report_lost"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:textColor="@color/black"
+                        android:layout_height="wrap_content"
+                        android:padding="10sp"
+                        android:layout_marginStart="5sp"
+                        android:fontFamily="@font/lato"
+                        android:text=" - By sharing a description, time, and location"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:layout_width="280dp"
+                        android:textColor="@color/black"
+                        android:layout_height="wrap_content"
+                        android:text="@string/report_found"
+                        android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5sp"
+                    android:fontFamily="@font/lato"
+                    android:padding="10sp"
+                    android:text=" - to help the owner claim it back"
+                    android:textColor="@color/black"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                        android:layout_width="280dp"
+                        android:textColor="@color/black"
+                        android:layout_height="wrap_content"
+                        android:text="@string/upload_photo"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5sp"
+                        android:fontFamily="@font/lato"
+                        android:padding="10sp"
+                        android:textColor="@color/black"
+                        android:text=" - for better identification"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:layout_width="280dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:paddingRight="25sp"
+                        android:text="@string/provide_contact"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10sp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="5sp"
+                        android:fontFamily="@font/lato"
+                        android:text=" - Use by (phone number or email) for direct communication"
+                        tools:ignore="HardcodedText" />
+
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:layout_width="280dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Browse_other_posts"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:padding="10sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5sp"
+                        android:fontFamily="@font/lato"
+                        android:text=" - to find items or help others"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+            <TextView
+                style="@style/LabelStyle"
+                android:textColor="@color/light_blue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Why We Built It:"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                android:layout_marginStart="5sp"
+                tools:ignore="HardcodedText" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10sp"
+                style="@style/LabelStyle"
+                android:text="@string/to_solve"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10sp"
+                style="@style/LabelStyle"
+                android:text="@string/to_encourage"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10sp"
+                style="@style/LabelStyle"
+                android:text="@string/to_create"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/purpose"
+                android:layout_marginTop="10sp"
+                android:textColor="@color/light_blue"
+                android:layout_marginStart="5sp"
+                style="@style/LabelStyle"
+                android:textSize="20sp"
+
+                />
+
+            <TextView
+                android:textColor="@color/black"
+                android:fontFamily="@font/lato"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textSize="16sp"
+                android:layout_marginBottom="20sp"
+                android:text="@string/about_information" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginTop="10sp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/didver_line"
+                />
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="wrap_content"
+                android:layout_height="280dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/contact_us"
+
+                />
+
+            <TextView
+                style="@style/LabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10sp"
+                android:text="@string/fragment_Contact_contact_us"
+                android:textSize="35sp" />
+
+            <TextView
+                style="@style/LabelStyle"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:contentDescription="Ico Message"
-                android:src="@drawable/ico_message"
+                android:gravity="center_horizontal"
+                android:text="Thank you for using FoundIt! If you have any question let us know what we can help you with :)"
+                android:textSize="13sp"
+                tools:ignore="HardcodedText" />
+
+            <!-- Support Card -->
+
+            <!-- Visit Us Card -->
+            <RelativeLayout
+                android:layout_width="228dp"
+                android:layout_height="165dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_contact_card">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:contentDescription="Ico Message"
+                    android:src="@drawable/ico_message"
+                    tools:ignore="HardcodedText" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="74dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chat to Support"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="11dp"
+                        android:text="We're here to help you"
+                        android:textSize="12sp"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="11dp"
+                        android:text="@string/fragment_Contact_shayla_example_com"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="228dp"
+                android:layout_height="165dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_contact_card">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:contentDescription="Ico Message"
+                    android:src="@drawable/ico_contact_location"
+                    tools:ignore="HardcodedText" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="74dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Visit Us"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="11dp"
+                        android:text="Our Office"
+                        android:textSize="12sp"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="11dp"
+                        android:text="@string/fragment_Contact_view_on_google_map"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <!-- Call Us Card -->
+            <RelativeLayout
+                android:layout_width="228dp"
+                android:layout_height="165dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_contact_card">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:contentDescription="Ico Message"
+                    android:src="@drawable/ico_contact_phone"
+                    tools:ignore="HardcodedText" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="74dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Call Us"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="11dp"
+                        android:text="@string/fragment_Contact_mon_fri_8am_to_8pm"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="11dp"
+                        android:text="@string/fragment_Contact_855_12345678"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Check our social media"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 tools:ignore="HardcodedText" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="74dp"
-                android:orientation="vertical">
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
 
-                <TextView
+                <ImageView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Chat to Support"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
+                    android:contentDescription="Ico Facebook"
+                    android:src="@drawable/ico_facebook"
                     tools:ignore="HardcodedText" />
 
-                <TextView
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
-                    android:text="We're here to help you"
-                    android:textSize="12sp"
+                    android:layout_marginStart="15dp"
+                    android:contentDescription="Ico Telegram"
+                    android:src="@drawable/ico_telegram"
                     tools:ignore="HardcodedText" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
-                    android:text="@string/fragment_Contact_shayla_example_com"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
             </LinearLayout>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="228dp"
-            android:layout_height="165dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_contact_card">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:contentDescription="Ico Message"
-                android:src="@drawable/ico_contact_location"
-                tools:ignore="HardcodedText" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="74dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Visit Us"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
-                    android:text="Our Office"
-                    android:textSize="12sp"
-                    tools:ignore="HardcodedText" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
-                    android:text="@string/fragment_Contact_view_on_google_map"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="228dp"
-            android:layout_height="165dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_contact_card">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:contentDescription="Ico Message"
-                android:src="@drawable/ico_contact_phone"
-                tools:ignore="HardcodedText" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="74dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Call Us"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
-                    android:text="@string/fragment_Contact_mon_fri_8am_to_8pm"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
-                    android:text="@string/fragment_Contact_855_12345678"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-        </RelativeLayout>
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Check our social media"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            tools:ignore="HardcodedText" />
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="Ico Facebook"
-                android:src="@drawable/ico_facebook"
-                tools:ignore="HardcodedText" />
-
-            <ImageView
-                android:layout_marginStart="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="Ico Facebook"
-                android:src="@drawable/ico_telegram"
-                tools:ignore="HardcodedText" />
-
         </LinearLayout>
-    </LinearLayout>
-
-
+    </ScrollView>
 </FrameLayout>

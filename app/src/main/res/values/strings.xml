@@ -160,7 +160,25 @@
 
 
 <!--    fragment_contact-->
-    <string name="fragment_Contact_contact_us">Contact Us</string>
+    <string name="about_information">FoundIt is a mobile application designed specifically to support
+        students and staff at <u>Royal University of Phnom Penh</u> in locating and recovering lost items on campus.
+        Created by a team of four passionate computer science students, FoundIt addresses a common
+        problem we all face: misplacing or losing personal belongings in and around the university.</string>
+    <string name="purpose">Our Purpose</string>
+    <string name="approach">Our Approach</string>
+    <string name="to_solve"> • To solve the common problem of losing personal belongings on campus</string>
+    <string name="to_encourage"> • To encourage responsibility and honesty among students and staff</string>
+    <string name="to_create"> • To create a user-friendly, helpful tool for the university community</string>
+    <string name="Why_We_build">FoundIt gives users the ability to:</string>
+    <string name="report_lost"> <b> • Report a lost item</b> </string>
+    <string name="report_found"> <b> • Report a found item</b> </string>
+    <string name="upload_photo"> <b> • Upload photos</b> </string>
+    <string name="provide_contact"> <b> • Provide contact information</b> </string>
+    <string name="Browse_other_posts"> <b> • Browse other posts</b> </string>
+
+
+    <string name="About_Us"><u>About Us.</u></string>
+    <string name="fragment_Contact_contact_us"><u>Contact Us.</u></string>
     <string name="fragment_Contact_shayla_example_com">shayla@example.com</string>
     <string name="fragment_Contact_view_on_google_map">View on google map</string>
     <string name="fragment_Contact_mon_fri_8am_to_8pm">Mon-Fri/8am to 8pm</string>
