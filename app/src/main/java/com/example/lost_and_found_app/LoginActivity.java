@@ -26,7 +26,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.Objects;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     ActivityLoginBinding binding;
     private FirebaseAuth mAuth;

@@ -46,12 +46,8 @@
 
     <!--  Style : Post Items -->
     <style name="LabelStyle">
-        <item name="android:fontFamily">@font/adlam_display</item>
         <item name="android:textColor">@color/black</item>
     </style>
-
-
-
 
     <!--  Den  -->
     <style name="account_inf">
@@ -198,16 +194,12 @@
         <item name="cornerSize">50dp</item>
     </style>
 
-    <style name="OtpBox">
-        <item name="android:layout_width">48dp</item>
-        <item name="android:layout_height">60dp</item>
-        <item name="android:layout_marginStart">6dp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:background">@drawable/otp_box_background</item>
-        <item name="android:maxLength">1</item>
-        <item name="android:inputType">number</item>
-        <item name="android:textSize">20sp</item>
+    <style name="UCropTheme.Custom" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:fitsSystemWindows">true</item>
     </style>
+
 
     <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
         <item name="chipBackgroundColor">@color/chip_background_selector</item>

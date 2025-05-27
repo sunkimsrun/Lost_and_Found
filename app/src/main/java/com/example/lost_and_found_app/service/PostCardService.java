@@ -16,6 +16,13 @@ import retrofit2.http.Query;
 public interface PostCardService {
 
     @GET("{type}.json")
+    Call<Map<String, PostCard>> getCardsByUserId(
+            @Path("type") String type,
+            @Query("orderBy") String orderBy,
+            @Query("equalTo") String equalTo
+    );
+
+    @GET("{type}.json?orderBy=\"date\"")
     Call<Map<String, PostCard>> getCards(@Path("type") String type);
 
     @GET("{type}/{id}.json")
