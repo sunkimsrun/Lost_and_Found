@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lost_and_found_app.databinding.ActivityStartScreen3Binding;
 
-public class StartScreen3Activity extends AppCompatActivity {
+public class StartScreen3Activity extends BaseActivity {
 
     ActivityStartScreen3Binding binding;
     @Override

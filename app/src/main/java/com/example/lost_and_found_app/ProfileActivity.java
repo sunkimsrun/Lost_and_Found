@@ -27,7 +27,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends BaseActivity {
 
     private ActivityProfileBinding binding;
     private Uri imageUri;

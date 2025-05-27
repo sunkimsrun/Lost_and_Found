@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -18,7 +17,7 @@ import com.example.lost_and_found_app.fragment.ViewFoundFragment;
 import com.example.lost_and_found_app.fragment.ViewLostFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseActivity {
 
     public ActivityHomeBinding binding;
     private FirebaseAuth mAuth;
@@ -53,7 +52,7 @@ public class HomeActivity extends AppCompatActivity {
             if (itemId == R.id.nav_home) {
                 LoadFragment(new HomeFragment());
             } else if (itemId == R.id.nav_account) {
-                if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+                if (mAuth.getCurrentUser() != null) {
                     LoadFragment(new AccountFragment());
                 } else {
                     startActivity(new Intent(HomeActivity.this, LoginActivity.class));

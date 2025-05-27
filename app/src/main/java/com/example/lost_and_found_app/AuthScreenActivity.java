@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lost_and_found_app.databinding.ActivityAuthScreenBinding;
 
-public class AuthScreenActivity extends AppCompatActivity {
+public class AuthScreenActivity extends BaseActivity {
 
     private ActivityAuthScreenBinding binding;
 

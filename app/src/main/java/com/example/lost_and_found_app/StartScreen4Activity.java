@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lost_and_found_app.databinding.ActivityStartScreen4Binding;
 
-public class StartScreen4Activity extends AppCompatActivity {
+public class StartScreen4Activity extends BaseActivity {
 
     ActivityStartScreen4Binding binding;
 
@@ -20,7 +20,7 @@ public class StartScreen4Activity extends AppCompatActivity {
         binding = ActivityStartScreen4Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.textView3.setOnClickListener(view -> {
+        binding.textView2.setOnClickListener(view -> {
             Intent intent = new Intent(StartScreen4Activity.this, LoginActivity.class);
             startActivity(intent);
         });

@@ -12,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.lost_and_found_app.databinding.ActivityStartScreen3Binding;
 import com.example.lost_and_found_app.databinding.ActivityStartScreen5Binding;
 
-public class StartScreen5Activity extends AppCompatActivity {
+public class StartScreen5Activity extends BaseActivity {
 
     ActivityStartScreen5Binding binding;
     @Override

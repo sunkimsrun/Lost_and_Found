@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.lost_and_found_app.databinding.ActivityHomeBinding;
 import com.example.lost_and_found_app.databinding.ActivityStartScreen2Binding;
 
-public class StartScreen2Activity extends AppCompatActivity {
+public class StartScreen2Activity extends BaseActivity {
 
     ActivityStartScreen2Binding binding;
     @Override
