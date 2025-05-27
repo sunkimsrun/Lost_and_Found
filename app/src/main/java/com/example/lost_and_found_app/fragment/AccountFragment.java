@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -15,11 +17,16 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.lost_and_found_app.HomeActivity;
 import com.example.lost_and_found_app.R;
+import com.example.lost_and_found_app.adapter.PostCardAdapter;
 import com.example.lost_and_found_app.databinding.FragmentAccountBinding;
+import com.example.lost_and_found_app.model.PostCard;
+import com.example.lost_and_found_app.repository.PostCardRepository;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,17 +37,23 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
 public class AccountFragment extends Fragment {
 
     private FragmentAccountBinding binding;
     private FirebaseAuth mAuth;
     private FirebaseStorage firebaseStorage;
     private FirebaseDatabase firebaseDatabase;
+
+    private PostCardAdapter adapter;
     private Uri imageUri;
     private HomeActivity homeActivity;
 
     public AccountFragment() {}
-    // Launch image picker
+
     private final ActivityResultLauncher<Intent> imagePickerLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                     result -> {
@@ -57,6 +70,7 @@ public class AccountFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
+
         return binding.getRoot();
     }
 
@@ -67,12 +81,46 @@ public class AccountFragment extends Fragment {
 
         updateUserDisplay();
 
-        // Click listeners for navigation
-        binding.accountInformations.setOnClickListener(v -> loadFragment(new AccountInformationFragment()));
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        String currentUserId = currentUser != null ? currentUser.getUid() : null;
+
+        RecyclerView recyclerView = view.findViewById(R.id.rcv_list_post);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        adapter = new PostCardAdapter(currentUserId);
+        recyclerView.setAdapter(adapter);
+
+        RadioGroup radioGroup = view.findViewById(R.id.radioGroup);
+
+        int selectedId = radioGroup.getCheckedRadioButtonId();
+        if (selectedId != -1) {
+            RadioButton selectedRadioButton = view.findViewById(selectedId);
+            String selectedText = selectedRadioButton.getText().toString().toLowerCase(Locale.ROOT);
+
+            if ("lost".equals(selectedText)) {
+                loadPosts(currentUserId, "lostitems");
+            } else if ("found".equals(selectedText)) {
+                loadPosts(currentUserId, "founditems");
+            }
+        }
+
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId != -1) {
+                RadioButton selectedRadioButton = view.findViewById(checkedId);
+                String selectedText = selectedRadioButton.getText().toString().toLowerCase(Locale.ROOT);
+
+                if ("lost".equals(selectedText)) {
+                    loadPosts(currentUserId, "lostitems");
+                } else if ("found".equals(selectedText)) {
+                    loadPosts(currentUserId, "founditems");
+                }
+            }
+        });
+
+        binding.accountInformation.setOnClickListener(v -> loadFragment(new AccountInformationFragment()));
         binding.managePost.setOnClickListener(v -> loadFragment(new ManagePostFragment()));
         binding.changePassword.setOnClickListener(v -> loadFragment(new ChangePasswordFragment()));
 
-        // Profile image edit icon click
         binding.editIcon.setOnClickListener(v -> openGallery());
 
         requireActivity().getSupportFragmentManager().addOnBackStackChangedListener(() -> {
@@ -91,7 +139,6 @@ public class AccountFragment extends Fragment {
         imagePickerLauncher.launch(Intent.createChooser(intent, "Select Profile Image"));
     }
 
-    // Upload image to Firebase Storage
     private void uploadImageToFirebase() {
         if (imageUri == null) return;
 
@@ -118,7 +165,6 @@ public class AccountFragment extends Fragment {
                 });
     }
 
-    // Save image URL in Realtime Database
     private void saveImageUrlToDatabase(String url) {
         FirebaseUser user = mAuth.getCurrentUser();
         if (user == null) return;
@@ -151,10 +197,16 @@ public class AccountFragment extends Fragment {
 
                 if (snapshot.exists()) {
                     String username = snapshot.child("username").getValue(String.class);
+                    String email = snapshot.child("email").getValue(String.class);
+                    String phoneNumber = snapshot.child("phoneNumber").getValue(String.class);
+                    String gender = snapshot.child("gender").getValue(String.class);
                     String profileImageUrl = snapshot.child("profileImageUrl").getValue(String.class);
 
-                    if (username != null) {
+                    if (username != null || email != null || phoneNumber != null || gender != null) {
                         binding.nameText.setText(username);
+                        binding.email.setText(email);
+                        binding.phoneNumber.setText(phoneNumber);
+                        binding.gender.setText(gender);
                     }
 
                     if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
@@ -172,6 +224,28 @@ public class AccountFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("FirebaseError", "Failed to fetch user data: " + error.getMessage());
                 hideProgressBar();
+            }
+        });
+    }
+
+    private void loadPosts(String currentUserId, String ref) {
+        DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference(ref);
+
+        itemsRef.orderByChild("userId").equalTo(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<PostCard> posts = new ArrayList<>();
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    PostCard post = postSnapshot.getValue(PostCard.class);
+                    if (post != null) {
+                        posts.add(post);
+                    }
+                }
+                adapter.setPostCards(posts);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
     }

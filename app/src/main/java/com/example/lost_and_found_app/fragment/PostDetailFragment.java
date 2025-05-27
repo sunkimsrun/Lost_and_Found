@@ -64,7 +64,6 @@ public class PostDetailFragment extends Fragment {
 
         String postId = args.getString("postId");
         String status = args.getString("status");
-        String source = args.getString("source");
 
         if (postId != null && status != null) {
             loadPostById(postId, status);
@@ -73,57 +72,64 @@ public class PostDetailFragment extends Fragment {
         binding.tvReturn.setOnClickListener(v -> {
             if (homeActivity == null) return;
 
-            switch (source) {
-                case "found":
-                    homeActivity.binding.navigationView.setCheckedItem(R.id.nav_found);
-                    homeActivity.binding.navigationView.getMenu().performIdentifierAction(R.id.nav_found, 0);
-                    break;
-                case "lost":
-                    homeActivity.binding.navigationView.setCheckedItem(R.id.nav_lost);
-                    homeActivity.binding.navigationView.getMenu().performIdentifierAction(R.id.nav_lost, 0);
-                    break;
-                case "manage":
-                    homeActivity.binding.navigationView.setCheckedItem(R.id.nav_account);
-                    homeActivity.LoadFragment(new ManagePostFragment());
-                    break;
+            int selectedId = homeActivity.binding.navigationView.getCheckedItem().getItemId();
+
+            if (selectedId == R.id.nav_found) {
+                homeActivity.LoadFragment(new ViewFoundFragment());
+            } else if (selectedId == R.id.nav_lost) {
+                homeActivity.LoadFragment(new ViewLostFragment());
+            } else if (selectedId == R.id.nav_account) {
+                homeActivity.LoadFragment(new AccountFragment());
+            } else if (selectedId == R.id.nav_home) {
+                homeActivity.LoadFragment(new HomeFragment());
             }
         });
 
+
         binding.btnDelete.setOnClickListener(v -> {
-            if (args == null) return;
 
             String postIdArg = args.getString("postId");
             String statusArg = args.getString("status");
 
             if (postIdArg == null || statusArg == null) return;
 
-            String itemType = getItemType(statusArg);
-            if (itemType == null) return;
+            new androidx.appcompat.app.AlertDialog.Builder(requireContext())
+                    .setTitle("Confirm Delete")
+                    .setMessage("Are you sure you want to delete this post?")
+                    .setPositiveButton("Delete", (dialog, which) -> {
+                        String itemType = getItemType(statusArg);
+                        if (itemType == null) return;
 
-            showProgressBar();
+                        showProgressBar();
 
-            PostCardService postCardService = RetrofitClient.getClient().create(PostCardService.class);
-            Call<Void> call = postCardService.deleteCard(itemType, postIdArg);
+                        PostCardService postCardService = RetrofitClient.getClient().create(PostCardService.class);
+                        Call<Void> call = postCardService.deleteCard(itemType, postIdArg);
 
-            call.enqueue(new Callback<>() {
-                @Override
-                public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
-                    hideProgressBar();
-                    if (!response.isSuccessful() || !isAdded()) return;
+                        call.enqueue(new Callback<>() {
+                            @Override
+                            public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
+                                hideProgressBar();
+                                if (!response.isSuccessful() || !isAdded()) return;
 
-                    if (homeActivity != null) {
-                        homeActivity.LoadFragment(new ManagePostFragment());
-                        homeActivity.binding.navigationView.getMenu().performIdentifierAction(R.id.nav_account, 0);
-                    }
-                }
+                                if (homeActivity != null) {
+                                    new android.os.Handler().postDelayed(() -> {
+                                        homeActivity.LoadFragment(new SuccessfulFragment());
+                                    }, 1500);
+                                }
 
-                @Override
-                public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
-                    hideProgressBar();
-                    Toast.makeText(requireContext(), "Failed to delete post", Toast.LENGTH_SHORT).show();
-                }
-            });
+                            }
+
+                            @Override
+                            public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
+                                hideProgressBar();
+                                Toast.makeText(requireContext(), "Failed to delete post", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    })
+                    .setNegativeButton("Cancel", null)
+                    .show();
         });
+
     }
 
     private void loadPostById(String postId, String status) {
@@ -191,8 +197,8 @@ public class PostDetailFragment extends Fragment {
 
                 Glide.with(requireContext())
                         .load(card.getImageUrl())
-                        .placeholder(R.drawable.img_container)
-                        .error(R.drawable.img_container)
+                        .placeholder(R.drawable.placeholder)
+                        .error(R.drawable.placeholder)
                         .into(binding.displayImage);
 
                 binding.checkbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -269,8 +275,8 @@ public class PostDetailFragment extends Fragment {
                         Glide.with(requireContext())
                                 .load(profileImageUrl)
                                 .centerCrop()
-                                .placeholder(R.drawable.img_container)
-                                .error(R.drawable.img_container)
+                                .placeholder(R.drawable.placeholder)
+                                .error(R.drawable.placeholder)
                                 .into(binding.userImage);
                     }
                 }

@@ -36,6 +36,9 @@ import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
+    private final android.os.Handler autoScrollHandler = new android.os.Handler();
+    private Runnable autoScrollRunnable;
+    private int currentPage = 0;
     private FragmentHomeBinding binding;
     private PostCardRepository postCardRepository;
     private FirebaseAuth mAuth;
@@ -90,7 +93,16 @@ public class HomeFragment extends Fragment {
         cardList.add(new ViewCardData("Lost Items", "Let's Help You Find\nWhat’s Lost!", R.raw.viewlostcard));
 
         ViewCardAdapter adapter = new ViewCardAdapter(cardList);
+
         binding.viewPager.setAdapter(adapter);
+        startAutoScroll(cardList.size());
+
+        binding.tvSkip.setOnClickListener(v -> {
+            if (getActivity() instanceof HomeActivity) {
+                HomeActivity homeActivity = (HomeActivity) getActivity();
+                homeActivity.LoadFragment(new ViewFoundFragment());
+            }
+        });
 
         new TabLayoutMediator(binding.tabIndicator, binding.viewPager, (tab, position) -> {
         }).attach();
@@ -136,20 +148,20 @@ public class HomeFragment extends Fragment {
                     if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
                         Glide.with(requireContext())
                                 .load(profileImageUrl)
-                                .placeholder(R.drawable.img_container)
+                                .placeholder(R.drawable.placeholder)
                                 .centerCrop()
                                 .into(imageView);
                     } else {
-                        imageView.setImageResource(R.drawable.img_container);
+                        imageView.setImageResource(R.drawable.placeholder);
                     }
                 } else {
-                    imageView.setImageResource(R.drawable.img_container);
+                    imageView.setImageResource(R.drawable.placeholder);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                imageView.setImageResource(R.drawable.img_container);
+                imageView.setImageResource(R.drawable.placeholder);
             }
         });
     }
@@ -165,8 +177,18 @@ public class HomeFragment extends Fragment {
                     Glide.with(requireContext())
                             .load(post.getImageUrl())
                             .centerCrop()
-                            .placeholder(R.drawable.img_container)
+                            .placeholder(R.drawable.placeholder)
                             .into(binding.postImage);
+
+                    binding.latestCard.setOnClickListener(v -> {
+                        PostDetailFragment fragment = new PostDetailFragment();
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("postId", post.getPostId());
+
+                        fragment.setArguments(bundle);
+
+                    });
 
                     binding.postTitle.setText(post.getTitle());
                     binding.postInformation.setText(post.getInformation());
@@ -179,6 +201,32 @@ public class HomeFragment extends Fragment {
                     binding.checkbox.setText(post.getStatus());
 
                     loadUserData(post.getUserId(), requireContext());
+
+                    binding.latestCard.setOnClickListener(v -> {
+                        PostDetailFragment fragment = new PostDetailFragment();
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("postId", post.getPostId());
+                        bundle.putString("status", post.getStatus());
+
+                        if (getActivity() instanceof HomeActivity) {
+                            HomeActivity homeActivity = (HomeActivity) getActivity();
+                            int selectedId = homeActivity.binding.navigationView.getCheckedItem().getItemId();
+
+                            if (selectedId == R.id.nav_lost) {
+                                bundle.putString("source", "lost");
+                            } else if (selectedId == R.id.nav_found) {
+                                bundle.putString("source", "found");
+                            } else if (selectedId == R.id.nav_account) {
+                                bundle.putString("source", "manage");
+                            }
+
+                            fragment.setArguments(bundle);
+                            homeActivity.LoadFragment(fragment);
+                        }
+                    });
+
+
                 }
                 hideProgressBar();
             }
@@ -207,25 +255,50 @@ public class HomeFragment extends Fragment {
                     if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
                         Glide.with(context)
                                 .load(profileImageUrl)
-                                .placeholder(R.drawable.img_container)
+                                .placeholder(R.drawable.placeholder)
                                 .centerCrop()
                                 .into(binding.userImage);
                     } else {
-                        binding.userImage.setImageResource(R.drawable.img_container);
+                        binding.userImage.setImageResource(R.drawable.placeholder);
                     }
                 } else {
                     binding.userName.setText("Unknown");
-                    binding.userImage.setImageResource(R.drawable.img_container);
+                    binding.userImage.setImageResource(R.drawable.placeholder);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 binding.userName.setText("Unknown");
-                binding.userImage.setImageResource(R.drawable.img_container);
+                binding.userImage.setImageResource(R.drawable.placeholder);
             }
         });
     }
+    private void startAutoScroll(int pageCount) {
+        autoScrollRunnable = new Runnable() {
+            @Override
+            public void run() {
+                if (binding != null && binding.viewPager != null && pageCount > 0) {
+                    currentPage = (currentPage + 1) % pageCount;
+                    binding.viewPager.setCurrentItem(currentPage, true);
+                    autoScrollHandler.postDelayed(this, 3000);
+                }
+            }
+        };
+        autoScrollHandler.postDelayed(autoScrollRunnable, 1000);
+    }
+
+    private void stopAutoScroll() {
+        autoScrollHandler.removeCallbacks(autoScrollRunnable);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        stopAutoScroll();
+        binding = null;
+    }
+
 
     private void showProgressBar() {
         if (homeActivity != null) homeActivity.showProgressBar();

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,6 +41,10 @@ public class ViewLostFragment extends Fragment {
     private PostCardAdapter adapter;
     private PostCardRepository postCardRepository;
 
+    private View noFoundLayout;
+
+    private TextView textViewCount;
+
     public ViewLostFragment() {
     }
 
@@ -61,6 +66,10 @@ public class ViewLostFragment extends Fragment {
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         String currentUserId = currentUser != null ? currentUser.getUid() : null;
+
+        textViewCount = view.findViewById(R.id.textView);
+        noFoundLayout = view.findViewById(R.id.noFound);
+        noFoundLayout.setVisibility(View.GONE);
 
         adapter = new PostCardAdapter(currentUserId);
         recyclerView.setAdapter(adapter);
@@ -112,6 +121,13 @@ public class ViewLostFragment extends Fragment {
                 fullPostList.addAll(postCards);
                 filteredList.clear();
                 filteredList.addAll(fullPostList);
+
+                if (filteredList.isEmpty()) {
+                    noFoundLayout.setVisibility(View.VISIBLE);
+                } else {
+                    noFoundLayout.setVisibility(View.GONE);
+                }
+
                 filteredList.sort((p1, p2) -> {
                     try {
                         SimpleDateFormat sdf = new SimpleDateFormat("dd MMM, yyyy", Locale.getDefault());
@@ -122,6 +138,11 @@ public class ViewLostFragment extends Fragment {
                         return 0;
                     }
                 });
+
+                if (textViewCount != null) {
+                    textViewCount.setText(filteredList.size() + " total reported lost.");
+                }
+
                 adapter.setPostCards(filteredList);
                 hideProgressBar();
             }
@@ -220,6 +241,13 @@ public class ViewLostFragment extends Fragment {
                         return 0;
                     }
                 });
+
+                if (filteredList.isEmpty()) {
+                    noFoundLayout.setVisibility(View.VISIBLE);
+                } else {
+                    noFoundLayout.setVisibility(View.GONE);
+                }
+
                 adapter.setPostCards(filteredList);
             }
 

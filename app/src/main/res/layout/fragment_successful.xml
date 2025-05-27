@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:paddingTop="20dp"
     tools:context=".fragment.SuccessfulFragment">
 
@@ -10,26 +12,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:gravity="center"
         android:orientation="vertical"
         tools:ignore="UseCompoundDrawables">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/fragment_Successful_Todo"
-            android:layout_marginBottom="50dp"
-            android:src="@drawable/ico_success"
-            android:layout_gravity="center"/>
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieView"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="30dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/error404" />
+
 
         <TextView
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:text="@string/fragment_successful_successfully"
             android:textAlignment="center"
+            android:textColor="@color/light_blue"
             android:textSize="46sp"
-            android:textColor="@color/black"
-            android:text="@string/fragment_successful_successfully"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <TextView
@@ -37,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="750dp"
+        android:layout_marginTop="700dp"
         android:text="@string/fragment_successful_back"
         android:textSize="18sp"
         android:textStyle="bold" />

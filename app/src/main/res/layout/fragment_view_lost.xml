@@ -5,15 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:paddingTop="20dp"
     tools:context=".fragment.ViewLostFragment">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:layout_gravity="top"
+        android:background="@color/light_blue" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingTop="20dp">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout"
+            android:id="@+id/textInputLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -25,43 +31,47 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
             android:autofillHints=""
             android:background="@drawable/bg_search_bar"
             android:drawableStart="@drawable/ico_search"
             android:drawablePadding="10dp"
-            android:hint="@string/fragment_View_Lost_search_something"
+            android:hint="Search Something"
             android:inputType="text"
             android:paddingHorizontal="10dp"
             android:textColorHint="@color/black"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/_200_reported_lost_today"
+            android:layout_marginTop="10dp"
+            android:text="@string/fragment_View_Found_200_reported_lost_today"
+            android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editText" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <HorizontalScrollView
             android:id="@+id/horizontalScrollView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:scrollbars="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView">
+            app:layout_constraintTop_toBottomOf="@+id/editText">
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/filterChipGroup"
@@ -80,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:checkable="true"
                     android:clickable="true"
-                    android:text="@string/fragment_View_Lost_today" />
+                    android:text="@string/fragment_View_Found_today" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_this_week"
@@ -89,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:checkable="true"
                     android:clickable="true"
-                    android:text="@string/fragment_View_Lost_this_week" />
+                    android:text="@string/fragment_View_Found_this_week" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_this_month"
@@ -98,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:checkable="true"
                     android:clickable="true"
-                    android:text="@string/fragment_View_Lost_this_month" />
+                    android:text="@string/fragment_View_Found_this_month" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_this_year"
@@ -107,29 +117,67 @@
                     android:layout_height="wrap_content"
                     android:checkable="true"
                     android:clickable="true"
-                    android:text="@string/fragment_View_Lost_this_year" />
+                    android:text="This Year"
+                    tools:ignore="HardcodedText" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_clear_filter"
                     style="@style/Widget.MaterialComponents.Chip.Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/fragment_View_Lost_clear_filter" />
+                    android:text="@string/fragment_View_Found_clear_filter" />
 
 
             </com.google.android.material.chip.ChipGroup>
 
         </HorizontalScrollView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcv_list_post"
+        <RelativeLayout
+            android:id="@+id/noFound"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:contentDescription="@string/view_lost_list_description"
-            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieView"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_centerHorizontal="true"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/error404" />
+
+            <TextView
+                android:id="@+id/tvUnderLottieFile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lottieView"
+                android:layout_centerHorizontal="true"
+                android:text="Still missing...\nBut hope is never lost."
+                android:textAlignment="center"
+                android:textColor="@color/light_blue"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_list_post"
+            android:layout_width="411dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="1.5dp"
+            android:contentDescription="@string/view_found_list_description"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

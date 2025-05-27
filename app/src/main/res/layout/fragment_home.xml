@@ -82,7 +82,7 @@
                         android:layout_width="150dp"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/img_container"
+                        android:src="@drawable/placeholder"
                         app:shapeAppearanceOverlay="@style/RoundedImageView" />
 
                     <LinearLayout
@@ -197,7 +197,7 @@
                         android:layout_width="42dp"
                         android:layout_height="42dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/img_container"
+                        android:src="@drawable/placeholder"
                         app:shapeAppearanceOverlay="@style/UserPostImageView2" />
 
                     <LinearLayout
@@ -249,6 +249,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
+            android:id="@+id/tvSkip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -297,7 +298,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15.5dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/img_container"
+                    android:src="@drawable/placeholder"
                     app:shapeAppearanceOverlay="@style/UserPostImageView2" />
 
                 <TextView
@@ -326,7 +327,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15.5dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/img_container"
+                    android:src="@drawable/placeholder"
                     app:shapeAppearanceOverlay="@style/UserPostImageView2" />
 
                 <TextView
@@ -356,7 +357,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15.5dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/img_container"
+                    android:src="@drawable/placeholder"
                     app:shapeAppearanceOverlay="@style/UserPostImageView2" />
 
                 <TextView

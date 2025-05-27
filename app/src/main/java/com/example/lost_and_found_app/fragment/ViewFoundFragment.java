@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,9 +40,10 @@ public class ViewFoundFragment extends Fragment {
     private final List<PostCard> filteredList = new ArrayList<>();
     private PostCardAdapter adapter;
     private PostCardRepository cardRepository;
+    private View noFoundLayout;
+    private TextView textViewCount;
 
     public ViewFoundFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -66,6 +68,10 @@ public class ViewFoundFragment extends Fragment {
 
         adapter = new PostCardAdapter(currentUserId);
         recyclerView.setAdapter(adapter);
+
+        textViewCount = view.findViewById(R.id.textView);
+        noFoundLayout = view.findViewById(R.id.noFound);
+        noFoundLayout.setVisibility(View.GONE);
 
         EditText editText = view.findViewById(R.id.editText);
         ChipGroup chipGroup = view.findViewById(R.id.filterChipGroup);
@@ -110,12 +116,20 @@ public class ViewFoundFragment extends Fragment {
         showProgressBar();
 
         cardRepository.getAllPosts("founditems", new IApiCallback<>() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onSuccess(List<PostCard> postCards) {
                 fullPostList.clear();
                 fullPostList.addAll(postCards);
                 filteredList.clear();
                 filteredList.addAll(fullPostList);
+
+                if (filteredList.isEmpty()) {
+                    noFoundLayout.setVisibility(View.VISIBLE);
+                } else {
+                    noFoundLayout.setVisibility(View.GONE);
+                }
+
                 filteredList.sort((p1, p2) -> {
                     try {
                         SimpleDateFormat sdf = new SimpleDateFormat("dd MMM, yyyy", Locale.getDefault());
@@ -126,6 +140,11 @@ public class ViewFoundFragment extends Fragment {
                         return 0;
                     }
                 });
+
+                if (textViewCount != null) {
+                    textViewCount.setText(filteredList.size() + " total reported found.");
+                }
+
                 adapter.setPostCards(filteredList);
                 hideProgressBar();
             }
@@ -147,6 +166,13 @@ public class ViewFoundFragment extends Fragment {
         }
         filteredList.clear();
         filteredList.addAll(tempList);
+
+        if (filteredList.isEmpty()) {
+            noFoundLayout.setVisibility(View.VISIBLE);
+        } else {
+            noFoundLayout.setVisibility(View.GONE);
+        }
+
         adapter.setPostCards(filteredList);
     }
 
@@ -160,41 +186,35 @@ public class ViewFoundFragment extends Fragment {
                 startCal.set(Calendar.MINUTE, 0);
                 startCal.set(Calendar.SECOND, 0);
                 startCal.set(Calendar.MILLISECOND, 0);
-
                 endCal.set(Calendar.HOUR_OF_DAY, 23);
                 endCal.set(Calendar.MINUTE, 59);
                 endCal.set(Calendar.SECOND, 59);
                 endCal.set(Calendar.MILLISECOND, 999);
                 break;
-
             case "week":
                 startCal.set(Calendar.DAY_OF_WEEK, startCal.getFirstDayOfWeek());
                 startCal.set(Calendar.HOUR_OF_DAY, 0);
                 startCal.set(Calendar.MINUTE, 0);
                 startCal.set(Calendar.SECOND, 0);
                 startCal.set(Calendar.MILLISECOND, 0);
-
                 endCal.set(Calendar.DAY_OF_WEEK, startCal.getFirstDayOfWeek() + 6);
                 endCal.set(Calendar.HOUR_OF_DAY, 23);
                 endCal.set(Calendar.MINUTE, 59);
                 endCal.set(Calendar.SECOND, 59);
                 endCal.set(Calendar.MILLISECOND, 999);
                 break;
-
             case "month":
                 startCal.set(Calendar.DAY_OF_MONTH, 1);
                 startCal.set(Calendar.HOUR_OF_DAY, 0);
                 startCal.set(Calendar.MINUTE, 0);
                 startCal.set(Calendar.SECOND, 0);
                 startCal.set(Calendar.MILLISECOND, 0);
-
                 endCal.set(Calendar.DAY_OF_MONTH, endCal.getActualMaximum(Calendar.DAY_OF_MONTH));
                 endCal.set(Calendar.HOUR_OF_DAY, 23);
                 endCal.set(Calendar.MINUTE, 59);
                 endCal.set(Calendar.SECOND, 59);
                 endCal.set(Calendar.MILLISECOND, 999);
                 break;
-
             case "year":
                 startCal.set(Calendar.MONTH, Calendar.JANUARY);
                 startCal.set(Calendar.DAY_OF_MONTH, 1);
@@ -202,7 +222,6 @@ public class ViewFoundFragment extends Fragment {
                 startCal.set(Calendar.MINUTE, 0);
                 startCal.set(Calendar.SECOND, 0);
                 startCal.set(Calendar.MILLISECOND, 0);
-
                 endCal.set(Calendar.MONTH, Calendar.DECEMBER);
                 endCal.set(Calendar.DAY_OF_MONTH, 31);
                 endCal.set(Calendar.HOUR_OF_DAY, 23);
@@ -219,6 +238,7 @@ public class ViewFoundFragment extends Fragment {
         if (cardRepository == null) {
             cardRepository = new PostCardRepository();
         }
+
         cardRepository.getCardsByDates("founditems", "date", startDate, endDate, new IApiCallback<>() {
             @Override
             public void onSuccess(List<PostCard> result) {
@@ -234,6 +254,13 @@ public class ViewFoundFragment extends Fragment {
                         return 0;
                     }
                 });
+
+                if (filteredList.isEmpty()) {
+                    noFoundLayout.setVisibility(View.VISIBLE);
+                } else {
+                    noFoundLayout.setVisibility(View.GONE);
+                }
+
                 adapter.setPostCards(filteredList);
             }
 
@@ -242,7 +269,6 @@ public class ViewFoundFragment extends Fragment {
             }
         });
     }
-
 
     private void showProgressBar() {
         if (getActivity() instanceof HomeActivity) {

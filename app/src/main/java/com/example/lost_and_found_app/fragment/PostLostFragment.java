@@ -217,13 +217,13 @@ public class PostLostFragment extends Fragment {
             @Override
             public void onSuccess(PostCard result) {
                 hideProgressBar();
-                Toast.makeText(getContext(), "Post uploaded successfully", Toast.LENGTH_SHORT).show();
 
-                requireActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.fragment_container, new SuccessfulFragment())
-                        .addToBackStack(null)
-                        .commit();
+                if (homeActivity != null) {
+                    new android.os.Handler().postDelayed(() -> {
+                        Toast.makeText(getContext(), "Post uploaded successfully", Toast.LENGTH_SHORT).show();
+                        homeActivity.LoadFragment(new SuccessfulFragment());
+                    }, 1500);
+                }
 
             }
 

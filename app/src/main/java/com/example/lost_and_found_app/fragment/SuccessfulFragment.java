@@ -13,7 +13,7 @@ import com.example.lost_and_found_app.databinding.FragmentSuccessfulBinding;
 
 public class SuccessfulFragment extends Fragment {
 
-    FragmentSuccessfulBinding binding;
+    private FragmentSuccessfulBinding binding;
 
     public SuccessfulFragment() {
         // Required empty public constructor
@@ -23,16 +23,23 @@ public class SuccessfulFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentSuccessfulBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
+        return binding.getRoot();
+    }
 
-        HomeActivity homeActivity = (HomeActivity) getActivity();
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         binding.tvBack.setOnClickListener(v -> {
-            if (homeActivity != null) {
-                homeActivity.LoadFragment(new HomeFragment());
+            if (isAdded() && getActivity() instanceof HomeActivity) {
+                ((HomeActivity) getActivity()).LoadFragment(new HomeFragment());
             }
         });
+    }
 
-        return view;
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }
