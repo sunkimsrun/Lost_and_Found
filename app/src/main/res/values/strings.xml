@@ -187,10 +187,6 @@
 <!--    fragment_fragment_forgot_password-->
     <string name="fragment_Forgot_Password_0_59">0.59</string>
 
-<!--    fragment_policy-->
-    <string name="fragment_Policy_privacy_and_policy">Privacy and Policy</string>
-    <string name="fragment_Policy_last_update_24_feb_2025">Last update 24-Feb-2025</string>
-
 <!--    fragment_post_detail-->
     <string name="fragment_Post_Detail_other_information">Other Information</string>
     <string name="fragment_Post_Detail_contact">Contact</string>
@@ -251,5 +247,21 @@
 
     <!-- Google Log in Key -->
     <string name="default_web_client_id">991018082480-gou3esun83k11ljf5v1o4b8hf78ldmbo.apps.googleusercontent.com</string>
+
+
+
+    <string name="fragment_Policy_privacy_and_policy">Privacy and Policy</string>
+
+    <!--    fragment policy-->
+    <string name="fragment_Policy_last_update_24_feb_2025">Last update 25-May-2025</string>
+
+    <string name="privacy_policy_image_desc">Privacy Policy Illustration</string>
+    <string name="here_is_more_information_about_our_privacy">
+    Here is more information about our privacy practices, data protection policies, and how we handle user information responsibly. Please read carefully to understand your rights and our commitments.
+    \n\nWe collect personal information only when necessary and use it solely for providing and improving our services. We implement strong security measures to protect your data from unauthorized access, disclosure, or misuse.
+    \n\nYou have the right to access, update, or delete your personal data. If you have any questions about our privacy policy, feel free to contact our support team.
+</string>
+
+
 
 </resources>

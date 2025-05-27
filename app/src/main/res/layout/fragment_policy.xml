@@ -1,43 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="20dp"
+    android:fillViewport="true"
+    android:background="@drawable/bg_gradient"
+    android:padding="16dp"
+    android:clipToPadding="false"
     tools:context=".fragment.PolicyFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="vertical"
-        tools:ignore="UselessParent">
+        android:gravity="center_horizontal">
 
-        <TextView
-            style="@style/LabelStyle"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:gravity="center_horizontal"
-            android:text="@string/fragment_Policy_privacy_and_policy"
-            android:textSize="30sp" />
+            android:layout_marginTop="24dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="12dp"
+            app:cardBackgroundColor="@android:color/white"
+            android:backgroundTint="@android:color/white">
 
-        <TextView
-            style="@style/LabelStyle"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
-            android:text="@string/fragment_Policy_last_update_24_feb_2025"
-            android:textSize="13sp" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="24dp">
 
-        <TextView
-            style="@style/LabelStyle"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:text="@string/introduction"
-            android:textSize="13sp" />
+                <!-- Faint background image -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bg_policy"
+                    android:alpha="0.1"
+                    tools:ignore="ContentDescription" />
+
+                <!-- Semi-transparent overlay -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#88FFFFFF" />
+
+                <!-- Main Content -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp">
+
+                    <!-- Title -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fragment_Policy_privacy_and_policy"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        android:textColor="#1E1E1E"
+                        android:letterSpacing="0.02"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="4dp" />
+
+                    <!-- Last Updated -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fragment_Policy_last_update_24_feb_2025"
+                        android:textSize="13sp"
+                        android:textColor="#777777"
+                        android:fontFamily="sans-serif"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- Divider -->
+                    <View
+                        android:layout_width="60dp"
+                        android:layout_height="2dp"
+                        android:background="#DADADA"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="18dp" />
+
+                    <!-- Illustration -->
+                    <ImageView
+                        android:id="@+id/policyImage"
+                        android:layout_width="280dp"
+                        android:layout_height="180dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:src="@drawable/ic_privacy_illustration"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/privacy_policy_image_desc"
+                        android:background="@drawable/rounded_image_bg"
+                        android:elevation="4dp"
+                        android:clipToOutline="true" />
+
+                    <!-- Introduction Text -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="sans-serif-light"
+                        android:lineSpacingExtra="8dp"
+                        android:text="@string/introduction"
+                        android:textColor="#444444"
+                        android:textSize="15sp"
+                        android:letterSpacing="0.01" />
+
+                    <!-- Read More Button -->
+                    <Button
+                        android:id="@+id/readMoreButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Read More"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="#2196F3"
+                        android:textColor="@android:color/white" />
+
+                    <!-- Extra Content Hidden Initially -->
+                    <TextView
+                        android:id="@+id/moreContentText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/here_is_more_information_about_our_privacy"
+                        android:textColor="@color/red"
+                        android:textSize="15sp"
+                        android:lineSpacingExtra="6dp"
+                        android:fontFamily="sans-serif-light"
+                        android:visibility="gone"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- Extra Image (Lottie Animation) -->
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:layout_width="wrap_content"
+                        android:layout_height="300dp"
+                        android:layout_marginTop="30dp"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        app:lottie_rawRes="@raw/privacy" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
-
-</FrameLayout>
+</ScrollView>

@@ -17,6 +17,11 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true
 
+        //using for apk to install in mobile phone
+//        ndk {
+//            abiFilters += listOf("armeabi-v7a", "arm64-v8a")
+//        }
+
     }
 
     buildTypes {
