@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.example.lost_and_found_app.R;
@@ -25,7 +26,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class AccountInformationFragment extends Fragment {
+public class AccountInformationFragment extends DialogFragment {
+
 
     private TextView usernameText, emailText, genderText, phoneText;
 
@@ -45,7 +47,7 @@ public class AccountInformationFragment extends Fragment {
         phoneText = view.findViewById(R.id.phone);
 
         RelativeLayout backButton = view.findViewById(R.id.back_button);
-        RelativeLayout topPanel = view.findViewById(R.id.top_panel);
+//        RelativeLayout topPanel = view.findViewById(R.id.top_panel);
         ImageView editUsername = view.findViewById(R.id.edit_username);
         ImageView editEmail = view.findViewById(R.id.edit_email);
         ImageView editGender = view.findViewById(R.id.edit_gender);
@@ -67,7 +69,7 @@ public class AccountInformationFragment extends Fragment {
         };
 
         backButton.setOnClickListener(closeFragment);
-        topPanel.setOnClickListener(closeFragment);
+//        topPanel.setOnClickListener(closeFragment);
 
         editUsername.setOnClickListener(v -> openEditField("username", "Username", usernameText));
         editEmail.setOnClickListener(v -> openEditField("email", "Email", emailText));

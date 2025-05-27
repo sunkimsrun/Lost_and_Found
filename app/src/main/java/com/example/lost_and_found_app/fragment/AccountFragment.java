@@ -117,11 +117,15 @@ public class AccountFragment extends Fragment {
             }
         });
 
-        binding.accountInformation.setOnClickListener(v -> loadFragment(new AccountInformationFragment()));
-        binding.managePost.setOnClickListener(v -> loadFragment(new ManagePostFragment()));
-        binding.changePassword.setOnClickListener(v -> loadFragment(new ChangePasswordFragment()));
 
         binding.editIcon.setOnClickListener(v -> openGallery());
+
+        binding.button2.setOnClickListener(v -> {
+            AccountInformationFragment dialog = new AccountInformationFragment();
+            dialog.show(getParentFragmentManager(), "AccountInfoDialog");
+        });
+
+
 
         requireActivity().getSupportFragmentManager().addOnBackStackChangedListener(() -> {
             if (!isAdded() || getActivity() == null) return;
@@ -228,6 +232,8 @@ public class AccountFragment extends Fragment {
         });
     }
 
+
+
     private void loadPosts(String currentUserId, String ref) {
         DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference(ref);
 
@@ -257,6 +263,7 @@ public class AccountFragment extends Fragment {
                 .addToBackStack(null)
                 .commit();
     }
+
 
     private void showProgressBar() {
         if (homeActivity != null) homeActivity.showProgressBar();
