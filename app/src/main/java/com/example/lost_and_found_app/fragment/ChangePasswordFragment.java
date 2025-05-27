@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.example.lost_and_found_app.R;
@@ -20,11 +21,11 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class ChangePasswordFragment extends Fragment {
+public class ChangePasswordFragment extends DialogFragment {
 
     private EditText currentPasswordInput, newPasswordInput, confirmPasswordInput;
     private ImageView currentEyeIcon, newEyeIcon, confirmEyeIcon;
-    private RelativeLayout confirmButton, topPanel;
+    private RelativeLayout confirmButton;
     private boolean showCurrent = false, showNew = false, showConfirm = false;
 
     private FirebaseAuth mAuth;
@@ -50,7 +51,6 @@ public class ChangePasswordFragment extends Fragment {
         confirmEyeIcon = view.findViewById(R.id.confirm_eye_icon);
 
         confirmButton = view.findViewById(R.id.confirm_button);
-        topPanel = view.findViewById(R.id.top_panel);
 
         currentEyeIcon.setOnClickListener(v -> {
             showCurrent = !showCurrent;
@@ -66,8 +66,6 @@ public class ChangePasswordFragment extends Fragment {
             showConfirm = !showConfirm;
             toggleVisibility(confirmPasswordInput, showConfirm);
         });
-
-        topPanel.setOnClickListener(v -> closeFragment());
 
         confirmButton.setOnClickListener(v -> updatePassword());
 
@@ -116,7 +114,7 @@ public class ChangePasswordFragment extends Fragment {
                     user.updatePassword(newPass)
                             .addOnSuccessListener(unused1 -> {
                                 showToast("Password changed successfully");
-                                closeFragment();
+                                dismiss();
                             })
                             .addOnFailureListener(e -> showToast("Failed to update password: " + e.getMessage()));
                 })

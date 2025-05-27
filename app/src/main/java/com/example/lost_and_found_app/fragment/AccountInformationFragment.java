@@ -52,6 +52,7 @@ public class AccountInformationFragment extends DialogFragment {
         ImageView editEmail = view.findViewById(R.id.edit_email);
         ImageView editGender = view.findViewById(R.id.edit_gender);
         ImageView editPhoneNumber = view.findViewById(R.id.edit_phnumber);
+        ImageView editPassword = view.findViewById(R.id.edit_password);
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
@@ -68,6 +69,7 @@ public class AccountInformationFragment extends DialogFragment {
             requireActivity().findViewById(R.id.fragment_container).setVisibility(View.GONE);
         };
 
+
         backButton.setOnClickListener(closeFragment);
 //        topPanel.setOnClickListener(closeFragment);
 
@@ -75,6 +77,12 @@ public class AccountInformationFragment extends DialogFragment {
         editEmail.setOnClickListener(v -> openEditField("email", "Email", emailText));
         editGender.setOnClickListener(v -> openEditField("gender", "Gender", genderText));
         editPhoneNumber.setOnClickListener(v -> openEditField("phoneNumber", "Phone Number", phoneText));
+
+        editPassword.setOnClickListener(v -> {
+            ChangePasswordFragment dialog = new ChangePasswordFragment();
+            dialog.show(getParentFragmentManager(), "ChangePassDialog");
+        });
+
 
         return view;
     }
