@@ -105,6 +105,9 @@ public class ProfileActivity extends BaseActivity {
 
     private void uploadProfile() {
         binding.loadingBar.setVisibility(View.VISIBLE);
+
+        boolean google = getIntent().getBooleanExtra("continueWithGoogle", false);
+
         String username = getIntent().getStringExtra("username");
         String email = getIntent().getStringExtra("email");
         String password = getIntent().getStringExtra("password");
@@ -116,55 +119,99 @@ public class ProfileActivity extends BaseActivity {
             return;
         }
 
-        auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(registerTask -> {
-                    if (registerTask.isSuccessful()) {
-                        FirebaseUser user = auth.getCurrentUser();
-                        String userId = user.getUid();
-                        StorageReference imageRef = storage.getReference().child("profile_images/" + userId + ".jpg");
+        if (google) {
+            FirebaseUser user = auth.getCurrentUser();
+            if (user != null) {
+                String userId = user.getUid();
+                StorageReference imageRef = storage.getReference().child("profile_images/" + userId + ".jpg");
 
-                        imageRef.putFile(imageUri).continueWithTask(task -> {
-                            if (!task.isSuccessful()) {
-                                throw task.getException();
-                            }
-                            return imageRef.getDownloadUrl();
-                        }).addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                Uri downloadUri = task.getResult();
+                imageRef.putFile(imageUri).continueWithTask(task -> {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
+                    }
+                    return imageRef.getDownloadUrl();
+                }).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Uri downloadUri = task.getResult();
 
-                                HashMap<String, Object> profileData = new HashMap<>();
-                                profileData.put("username", username);
-                                profileData.put("email", email);
-                                profileData.put("gender", gender);
-                                profileData.put("phoneNumber", phone);
-                                profileData.put("profileImageUrl", downloadUri.toString());
-                                profileData.put("isProfileComplete", true);
+                        HashMap<String, Object> profileData = new HashMap<>();
+                        profileData.put("username", username);
+                        profileData.put("email", user.getEmail());
+                        profileData.put("gender", gender);
+                        profileData.put("phoneNumber", phone);
+                        profileData.put("profileImageUrl", downloadUri.toString());
+                        profileData.put("isProfileComplete", true);
 
-                                DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(userId);
-                                userRef.setValue(profileData)
-                                        .addOnSuccessListener(unused -> {
-                                            auth.signInWithEmailAndPassword(email, password)
-                                                    .addOnSuccessListener(authResult -> {
-                                                        binding.loadingBar.setVisibility(View.GONE);
-                                                        Toast.makeText(this, "Welcome!", Toast.LENGTH_SHORT).show();
-                                                        startActivity(new Intent(this, AuthScreenActivity.class));
-                                                        finish();
-                                                    })
-                                                    .addOnFailureListener(e -> {
-                                                        binding.loadingBar.setVisibility(View.GONE);
-                                                        Toast.makeText(this, "Login failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                                    });
-                                        })
-                                        .addOnFailureListener(e -> {
-                                            binding.loadingBar.setVisibility(View.GONE);
-                                            Toast.makeText(this, "Error saving profile: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                        });
-                            }
-                        });
-                    } else {
-                        binding.loadingBar.setVisibility(View.GONE);
-                        Toast.makeText(this, "Registration failed: " + registerTask.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(userId);
+                        userRef.setValue(profileData)
+                                .addOnSuccessListener(unused -> {
+                                    binding.loadingBar.setVisibility(View.GONE);
+                                    Toast.makeText(this, "Welcome!", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(this, AuthScreenActivity.class));
+                                    finish();
+                                })
+                                .addOnFailureListener(e -> {
+                                    binding.loadingBar.setVisibility(View.GONE);
+                                    Toast.makeText(this, "Error saving profile: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                });
                     }
                 });
+            } else {
+                binding.loadingBar.setVisibility(View.GONE);
+                Toast.makeText(this, "Google user not authenticated.", Toast.LENGTH_SHORT).show();
+            }
+
+        } else {
+            auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(registerTask -> {
+                        if (registerTask.isSuccessful()) {
+                            FirebaseUser user = auth.getCurrentUser();
+                            String userId = user.getUid();
+                            StorageReference imageRef = storage.getReference().child("profile_images/" + userId + ".jpg");
+
+                            imageRef.putFile(imageUri).continueWithTask(task -> {
+                                if (!task.isSuccessful()) {
+                                    throw task.getException();
+                                }
+                                return imageRef.getDownloadUrl();
+                            }).addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    Uri downloadUri = task.getResult();
+
+                                    HashMap<String, Object> profileData = new HashMap<>();
+                                    profileData.put("username", username);
+                                    profileData.put("email", email);
+                                    profileData.put("gender", gender);
+                                    profileData.put("phoneNumber", phone);
+                                    profileData.put("profileImageUrl", downloadUri.toString());
+                                    profileData.put("isProfileComplete", true);
+
+                                    DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(userId);
+                                    userRef.setValue(profileData)
+                                            .addOnSuccessListener(unused -> {
+                                                auth.signInWithEmailAndPassword(email, password)
+                                                        .addOnSuccessListener(authResult -> {
+                                                            binding.loadingBar.setVisibility(View.GONE);
+                                                            Toast.makeText(this, "Welcome!", Toast.LENGTH_SHORT).show();
+                                                            startActivity(new Intent(this, AuthScreenActivity.class));
+                                                            finish();
+                                                        })
+                                                        .addOnFailureListener(e -> {
+                                                            binding.loadingBar.setVisibility(View.GONE);
+                                                            Toast.makeText(this, "Login failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                        });
+                                            })
+                                            .addOnFailureListener(e -> {
+                                                binding.loadingBar.setVisibility(View.GONE);
+                                                Toast.makeText(this, "Error saving profile: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                            });
+                                }
+                            });
+                        } else {
+                            binding.loadingBar.setVisibility(View.GONE);
+                            Toast.makeText(this, "Registration failed: " + registerTask.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
     }
 }

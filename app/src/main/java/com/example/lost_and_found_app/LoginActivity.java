@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lost_and_found_app.databinding.ActivityLoginBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -20,27 +19,27 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class LoginActivity extends BaseActivity {
 
     ActivityLoginBinding binding;
     private FirebaseAuth mAuth;
-
     private static final int RC_SIGN_IN = 9001;
     private GoogleSignInClient mGoogleSignInClient;
-
     private boolean isPasswordVisible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -54,7 +53,6 @@ public class LoginActivity extends BaseActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         binding.btnGoLogin.setOnClickListener(v -> signInWithGoogle());
-
         setupPasswordToggle(binding.etPassword, true);
 
         binding.tvSkipForNow.setOnClickListener(view -> {
@@ -74,7 +72,7 @@ public class LoginActivity extends BaseActivity {
             String password = binding.etPassword.getText().toString().trim();
 
             if (TextUtils.isEmpty(userInput)) {
-                binding.etEmail.setError("Please enter email or phone number!");
+                binding.etEmail.setError("Please enter email!");
                 return;
             }
 
@@ -85,43 +83,17 @@ public class LoginActivity extends BaseActivity {
 
             if (android.util.Patterns.EMAIL_ADDRESS.matcher(userInput).matches()) {
                 loginWithEmail(userInput, password);
-            } else if (userInput.matches("^\\+?[0-9]{10,13}$")) {
-                loginWithPhone(userInput, password);
-            } else {
+            }  else {
                 binding.etEmail.setError("Invalid email or phone number format!");
             }
         });
     }
 
-    public void loginWithPhone(String phoneNumber, String password) {
-        binding.loadingBar.setVisibility(View.VISIBLE);
-
-        mAuth.signInWithEmailAndPassword(phoneNumber + "@phoneuser.com", password)
-                .addOnCompleteListener(task -> {
-                    binding.loadingBar.setVisibility(View.GONE);
-                    if (task.isSuccessful()) {
-                        Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, AuthScreenActivity.class));
-                        finish();
-                    } else {
-                        String errorMsg = "Login failed";
-                        if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                            errorMsg = "Invalid phone or password!";
-                        } else if (task.getException() != null) {
-                            errorMsg = task.getException().getMessage();
-                        }
-                        Toast.makeText(LoginActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-
     private void loginWithEmail(String email, String password) {
         binding.loadingBar.setVisibility(View.VISIBLE);
-
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     binding.loadingBar.setVisibility(View.GONE);
-
                     if (task.isSuccessful()) {
                         Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, AuthScreenActivity.class));
@@ -141,7 +113,6 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
@@ -155,21 +126,51 @@ public class LoginActivity extends BaseActivity {
 
     private void firebaseAuthWithGoogle(String idToken) {
         binding.loadingBar.setVisibility(View.VISIBLE);
-
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
                     binding.loadingBar.setVisibility(View.GONE);
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
-                        Toast.makeText(this, "Google Sign-In Successful!", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, AuthScreenActivity.class));
-                        finish();
+                        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
+
+                        userRef.get().addOnCompleteListener(snapshotTask -> {
+                            if (snapshotTask.isSuccessful()) {
+                                DataSnapshot snapshot = snapshotTask.getResult();
+                                if (!snapshot.exists() || task.getResult().getAdditionalUserInfo().isNewUser()) {
+                                    HashMap<String, Object> userData = new HashMap<>();
+                                    userData.put("username", user.getDisplayName());
+                                    userData.put("email", user.getEmail());
+                                    userData.put("profileImageUrl", user.getPhotoUrl() != null ? user.getPhotoUrl().toString() : "");
+                                    userData.put("isProfileComplete", false);
+                                    userRef.setValue(userData);
+                                    startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
+                                } else {
+                                    String gender = snapshot.child("gender").getValue(String.class);
+                                    String phone = snapshot.child("phoneNumber").getValue(String.class);
+                                    String profileImage = snapshot.child("profileImageUrl").getValue(String.class);
+
+                                    boolean isComplete = gender != null && !gender.isEmpty()
+                                            && phone != null && !phone.isEmpty()
+                                            && profileImage != null && !profileImage.isEmpty();
+
+                                    if (isComplete) {
+                                        startActivity(new Intent(LoginActivity.this, AuthScreenActivity.class));
+                                    } else {
+                                        startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
+                                    }
+                                }
+                                finish();
+                            } else {
+                                Toast.makeText(this, "Failed to fetch user data.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     } else {
                         Toast.makeText(this, "Authentication Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
+
 
     @SuppressLint("ClickableViewAccessibility")
     private void setupPasswordToggle(EditText editText, boolean isMainPassword) {

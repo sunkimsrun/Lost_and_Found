@@ -91,11 +91,24 @@ public class RegisterActivity extends BaseActivity {
             return;
         }
 
-        Intent intent = new Intent(RegisterActivity.this, ProfileActivity.class);
-        intent.putExtra("username", username);
-        intent.putExtra("email", email);
-        intent.putExtra("password", password);
-        startActivity(intent);
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                FirebaseUser user = mAuth.getCurrentUser();
+                if (user != null) {
+                    String uid = user.getUid();
+                    usersRef.child(uid).child("username").setValue(username);
+                    usersRef.child(uid).child("email").setValue(email);
+
+                    Intent intent = new Intent(RegisterActivity.this, ProfileActivity.class);
+                    intent.putExtra("username", username);
+                    intent.putExtra("email", email);
+                    startActivity(intent);
+                    finish();
+                }
+            } else {
+                Toast.makeText(RegisterActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void signInWithGoogle() {
@@ -119,21 +132,25 @@ public class RegisterActivity extends BaseActivity {
 
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        if (user != null) {
-                            Intent intent = new Intent(RegisterActivity.this, ProfileActivity.class);
-                            intent.putExtra("username", user.getDisplayName());
-                            intent.putExtra("email", user.getEmail());
-                            startActivity(intent);
-                            finish();
-                        }
-                    } else {
-                        Toast.makeText(this, "Authentication Failed", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        mAuth.signInWithCredential(credential).addOnCompleteListener(this, task -> {
+            if (task.isSuccessful()) {
+                FirebaseUser user = mAuth.getCurrentUser();
+                if (user != null) {
+                    String uid = user.getUid();
+                    usersRef.child(uid).child("username").setValue(user.getDisplayName());
+                    usersRef.child(uid).child("email").setValue(user.getEmail());
+
+                    Intent intent = new Intent(RegisterActivity.this, ProfileActivity.class);
+                    intent.putExtra("username", user.getDisplayName());
+                    intent.putExtra("email", user.getEmail());
+                    intent.putExtra("continueWithGoogle", true);
+                    startActivity(intent);
+                    finish();
+                }
+            } else {
+                Toast.makeText(this, "Authentication Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @SuppressLint("ClickableViewAccessibility")
