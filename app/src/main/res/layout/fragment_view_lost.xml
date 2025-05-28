@@ -144,8 +144,10 @@
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/lottieView"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:layout_width="match_parent"
+                android:layout_height="330dp"
+                android:layout_margin="5dp"
+                android:scaleType="fitXY"
                 android:layout_centerHorizontal="true"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
@@ -157,10 +159,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/lottieView"
                 android:layout_centerHorizontal="true"
-                android:text="Still missing...\nBut hope is never lost."
+                android:text="Being lost today \n doesn’t mean being lost forever."
                 android:textAlignment="center"
-                android:textColor="@color/light_blue"
-                android:textSize="22sp"
+                android:textColor="@color/black"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
         </RelativeLayout>

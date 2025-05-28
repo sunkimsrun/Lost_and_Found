@@ -164,6 +164,13 @@ public class ViewLostFragment extends Fragment {
         }
         filteredList.clear();
         filteredList.addAll(tempList);
+
+        if (filteredList.isEmpty()) {
+            noFoundLayout.setVisibility(View.VISIBLE);
+        } else {
+            noFoundLayout.setVisibility(View.GONE);
+        }
+
         adapter.setPostCards(filteredList);
     }
 

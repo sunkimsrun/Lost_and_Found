@@ -40,11 +40,11 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/error404"
+        app:lottie_rawRes="@raw/lost_screen4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.585"
@@ -56,15 +56,15 @@
         android:id="@+id/report_lose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
         android:gravity="center"
         android:text="@string/report_found_start_screen4"
+        android:layout_marginTop="600dp"
         android:textColor="@color/black"
-        android:textStyle="bold"
         android:textSize="29sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lottieView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/found_something"

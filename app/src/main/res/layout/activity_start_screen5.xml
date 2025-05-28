@@ -24,31 +24,31 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/error404"
+        android:layout_width="350dp"
+        android:layout_height="450dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.585"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.364" />
+        app:layout_constraintVertical_bias="0.27"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/lost_screen5" />
 
     <TextView
         android:id="@+id/explore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
         android:gravity="center"
         android:text="@string/bg_explore_start_screen5"
         android:textColor="@color/black"
-        android:textStyle="bold"
+        android:layout_marginTop="600dp"
         android:textSize="29sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lottieView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/explore_something"

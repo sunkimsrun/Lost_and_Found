@@ -40,47 +40,49 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/error404"
+        android:layout_width="336dp"
+        android:layout_height="395dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.585"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.364" />
+        app:layout_constraintVertical_bias="0.274"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/lost_screen3" />
 
     <TextView
         android:id="@+id/report_lose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
         android:gravity="center"
+        android:layout_marginTop="600dp"
         android:text="@string/report_lose"
         android:textColor="@color/black"
-        android:textStyle="bold"
         android:textSize="29sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lottieView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/found_something"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:gravity="center_horizontal|top"
         android:lineSpacingExtra="7sp"
         android:text="@string/lost_something"
-        android:translationY="-3.53sp"
         android:textColor="#6600091F"
-        tools:ignore="TextContrastCheck"
+        android:translationY="-3.53sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/report_lose" />
+        app:layout_constraintTop_toBottomOf="@+id/report_lose"
+        tools:ignore="TextContrastCheck" />
 
     <LinearLayout
         android:layout_width="345dp"
