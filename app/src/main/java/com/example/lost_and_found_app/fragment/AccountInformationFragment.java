@@ -75,13 +75,25 @@ public class AccountInformationFragment extends DialogFragment {
 
         editUsername.setOnClickListener(v -> openEditField("username", "Username", usernameText));
         editEmail.setOnClickListener(v -> openEditField("email", "Email", emailText));
-        editGender.setOnClickListener(v -> openEditField("gender", "Gender", genderText));
         editPhoneNumber.setOnClickListener(v -> openEditField("phoneNumber", "Phone Number", phoneText));
+
+
+        editGender.setOnClickListener(v -> {
+            Fragment changeGenderFragment = new ChangeGenderFragment();
+            getParentFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.accountInformation, changeGenderFragment)
+                    .addToBackStack(null)
+                    .commit();
+        });
 
         editPassword.setOnClickListener(v -> {
             ChangePasswordFragment dialog = new ChangePasswordFragment();
             dialog.show(getParentFragmentManager(), "ChangePassDialog");
         });
+
+
+
 
 
         return view;

@@ -15,13 +15,16 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.lost_and_found_app.R;
-import com.example.lost_and_found_app.model.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class NewPasswordFragment extends Fragment {
 
     private EditText newPasswordInput, confirmPasswordInput;
     private ImageView newEyeIcon, confirmEyeIcon;
     private RelativeLayout confirmButton, topPanel;
+
+    private FirebaseAuth mAuth;
 
     private boolean isNewPasswordVisible = false;
     private boolean isConfirmPasswordVisible = false;
@@ -44,6 +47,8 @@ public class NewPasswordFragment extends Fragment {
         confirmEyeIcon = view.findViewById(R.id.confirm_eye_icon);
         confirmButton = view.findViewById(R.id.confirm_button);
         topPanel = view.findViewById(R.id.top_panel);
+
+        mAuth = FirebaseAuth.getInstance();
 
         newEyeIcon.setOnClickListener(v -> {
             isNewPasswordVisible = !isNewPasswordVisible;
@@ -71,10 +76,20 @@ public class NewPasswordFragment extends Fragment {
                 return;
             }
 
-            // Update password in User model
-            User.currentUser.password = newPassword;
-            Toast.makeText(getContext(), "Password updated successfully", Toast.LENGTH_SHORT).show();
-            closeFragment();
+            FirebaseUser user = mAuth.getCurrentUser();
+            if (user == null) {
+                Toast.makeText(getContext(), "No logged in user found", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            user.updatePassword(newPassword).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Toast.makeText(getContext(), "Password updated successfully", Toast.LENGTH_SHORT).show();
+                    closeFragment();
+                } else {
+                    Toast.makeText(getContext(), "Failed to update password: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
         });
     }
 
