@@ -172,12 +172,16 @@
     <string name="Why_We_build">FoundIt gives users the ability to:</string>
     <string name="report_lost"> <b> • Report a lost item</b> </string>
     <string name="report_found"> <b> • Report a found item</b> </string>
+    <string name="get_in_touch"><u>Get in Touch</u></string>
     <string name="upload_photo"> <b> • Upload photos</b> </string>
     <string name="provide_contact"> <b> • Provide contact information</b> </string>
     <string name="Browse_other_posts"> <b> • Browse other posts</b> </string>
+    <string name="about_us"><u>About Us.</u></string>
+<!--    Email-->
 
-
-    <string name="About_Us"><u>About Us.</u></string>
+    <string name="email">Email   techteam@gmail.com </string>
+    <string name="location">Royal University of Phnom Penh,  Phnom Penh </string>
+    <string name="contact_phone"> Our Phone Number +855 974567005</string>
     <string name="fragment_Contact_contact_us"><u>Contact Us.</u></string>
     <string name="fragment_Contact_shayla_example_com">shayla@example.com</string>
     <string name="fragment_Contact_view_on_google_map">View on google map</string>
