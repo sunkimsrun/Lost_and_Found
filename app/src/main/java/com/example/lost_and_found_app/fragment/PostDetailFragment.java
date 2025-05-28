@@ -19,6 +19,9 @@ import com.example.lost_and_found_app.databinding.FragmentPostDetailBinding;
 import com.example.lost_and_found_app.model.PostCard;
 import com.example.lost_and_found_app.service.PostCardService;
 import com.example.lost_and_found_app.util.RetrofitClient;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,6 +43,8 @@ public class PostDetailFragment extends Fragment {
     private HomeActivity homeActivity;
     private boolean isPostLoaded = false;
     private boolean isUserLoaded = false;
+
+    private static final String MAP_VIEW_BUNDLE_KEY = "unforgettable";
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -68,6 +73,16 @@ public class PostDetailFragment extends Fragment {
         if (postId != null && status != null) {
             loadPostById(postId, status);
         }
+
+        Bundle mapViewBundle = savedInstanceState != null ? savedInstanceState.getBundle(MAP_VIEW_BUNDLE_KEY) : null;
+        binding.mapView.onCreate(mapViewBundle);
+
+        binding.mapView.getMapAsync(googleMap -> {
+            LatLng rupp = new LatLng(11.5673, 104.8885);
+            googleMap.addMarker(new MarkerOptions().position(rupp).title("Royal University of Phnom Penh"));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(rupp, 16f));
+        });
+
 
         binding.tvReturn.setOnClickListener(v -> {
             if (homeActivity == null) return;
@@ -179,10 +194,6 @@ public class PostDetailFragment extends Fragment {
                     if (phone != null && !phone.isEmpty()) {
                         startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone)));
                     }
-                });
-
-                binding.location.setOnClickListener(v -> {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://maps.app.goo.gl/2kiK5XSakXmyMYy68")));
                 });
 
                 if (card.getReward() != null) {
@@ -334,4 +345,52 @@ public class PostDetailFragment extends Fragment {
             }
         });
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (binding != null) binding.mapView.onResume();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (binding != null) binding.mapView.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (binding != null) binding.mapView.onStop();
+    }
+
+    @Override
+    public void onPause() {
+        if (binding != null) binding.mapView.onPause();
+        super.onPause();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        if (binding != null) binding.mapView.onLowMemory();
+    }
+
+    @Override
+    public void onDestroy() {
+        if (binding != null) binding.mapView.onDestroy();
+        super.onDestroy();
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Bundle mapViewBundle = outState.getBundle(MAP_VIEW_BUNDLE_KEY);
+        if (mapViewBundle == null) {
+            mapViewBundle = new Bundle();
+            outState.putBundle(MAP_VIEW_BUNDLE_KEY, mapViewBundle);
+        }
+        if (binding != null) binding.mapView.onSaveInstanceState(mapViewBundle);
+    }
+
 }

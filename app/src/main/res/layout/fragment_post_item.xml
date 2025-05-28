@@ -4,44 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:paddingTop="20dp"
     tools:context=".fragment.PostItemFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp">
 
         <RadioGroup
             android:id="@+id/radioGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
+            android:layout_width="390dp"
+            android:layout_height="55dp"
+            android:background="@drawable/bg_radio_forget"
             android:orientation="horizontal"
+            android:paddingHorizontal="7dp"
+            android:gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <RadioButton
                 android:id="@+id/radioLost"
-                style="@style/RadioButtonStyle"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
+                style="@style/RadioButtonStyle2"
+                android:layout_height="48dp"
+                android:width="186.67dp"
                 android:checked="true"
-                android:textSize="18sp"
-                android:text="@string/fragment_Post_Item_lost" />
+                android:text="Lost"
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
             <RadioButton
                 android:id="@+id/radioFound"
-                style="@style/RadioButtonStyle"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:textSize="18sp"
-                android:text="@string/fragment_Post_Item_found" />
-
+                style="@style/RadioButtonStyle2"
+                android:layout_height="48dp"
+                android:width="186.67dp"
+                android:checked="false"
+                android:text="Found"
+                android:textSize="13sp"
+                android:textStyle="bold" />
         </RadioGroup>
 
         <FrameLayout

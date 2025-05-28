@@ -16,6 +16,7 @@ android {
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true
+        manifestPlaceholders["MAPS_API_KEY"] = project.properties["MAPS_API_KEY"] ?: ""
 
         //using for apk to install in mobile phone
 //        ndk {
@@ -43,6 +44,7 @@ android {
 }
 
 dependencies {
+    implementation (libs.play.services.maps)
     implementation(libs.play.services.auth)
     implementation(libs.lottie)
     implementation(libs.ucrop)

@@ -186,7 +186,6 @@
                 android:clickable="false"
                 android:text="Lost"
                 android:textAlignment="center"
-                android:textColor="@color/white"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 

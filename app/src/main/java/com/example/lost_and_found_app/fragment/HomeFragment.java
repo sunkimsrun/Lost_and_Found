@@ -7,9 +7,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.bumptech.glide.Glide;
 import com.example.lost_and_found_app.HomeActivity;
@@ -22,7 +24,6 @@ import com.example.lost_and_found_app.model.ViewCardData;
 import com.example.lost_and_found_app.repository.IApiCallback;
 import com.example.lost_and_found_app.repository.PostCardRepository;
 import com.example.lost_and_found_app.service.PostCardServiceHelper;
-import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -97,15 +98,35 @@ public class HomeFragment extends Fragment {
         binding.viewPager.setAdapter(adapter);
         startAutoScroll(cardList.size());
 
+        ImageView bgBlue = binding.swapButton.findViewById(R.id.bg_blue);
+        ImageView bgDot2 = binding.swapButton.findViewById(R.id.bg_dot2);
+
+        bgBlue.setImageResource(R.drawable.blue_dot);
+        bgDot2.setImageResource(R.drawable.gray_dot);
+
+        binding.viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                if (position == 0) {
+                    bgBlue.setImageResource(R.drawable.blue_dot);
+                    bgDot2.setImageResource(R.drawable.gray_dot);
+                } else {
+                    bgBlue.setImageResource(R.drawable.gray_dot);
+                    bgDot2.setImageResource(R.drawable.blue_dot);
+                }
+            }
+        });
+
+        bgBlue.setOnClickListener(v -> binding.viewPager.setCurrentItem(0, true));
+        bgDot2.setOnClickListener(v -> binding.viewPager.setCurrentItem(1, true));
+
         binding.tvSkip.setOnClickListener(v -> {
             if (getActivity() instanceof HomeActivity) {
                 HomeActivity homeActivity = (HomeActivity) getActivity();
                 homeActivity.LoadFragment(new ViewFoundFragment());
             }
         });
-
-        new TabLayoutMediator(binding.tabIndicator, binding.viewPager, (tab, position) -> {
-        }).attach();
 
         binding.cardCreate.setOnClickListener(v -> {
             if (mAuth.getCurrentUser() == null) {
@@ -180,16 +201,6 @@ public class HomeFragment extends Fragment {
                             .placeholder(R.drawable.placeholder)
                             .into(binding.postImage);
 
-                    binding.latestCard.setOnClickListener(v -> {
-                        PostDetailFragment fragment = new PostDetailFragment();
-
-                        Bundle bundle = new Bundle();
-                        bundle.putString("postId", post.getPostId());
-
-                        fragment.setArguments(bundle);
-
-                    });
-
                     binding.postTitle.setText(post.getTitle());
                     binding.postInformation.setText(post.getInformation());
                     binding.date.setText(post.getDate());
@@ -225,7 +236,6 @@ public class HomeFragment extends Fragment {
                             homeActivity.LoadFragment(fragment);
                         }
                     });
-
 
                 }
                 hideProgressBar();
@@ -274,6 +284,7 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
     private void startAutoScroll(int pageCount) {
         autoScrollRunnable = new Runnable() {
             @Override
@@ -298,7 +309,6 @@ public class HomeFragment extends Fragment {
         stopAutoScroll();
         binding = null;
     }
-
 
     private void showProgressBar() {
         if (homeActivity != null) homeActivity.showProgressBar();

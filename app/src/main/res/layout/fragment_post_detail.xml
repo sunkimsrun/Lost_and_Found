@@ -4,330 +4,187 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="20dp"
     android:background="@color/white"
     tools:context=".fragment.PostDetailFragment">
 
-    <TextView
-        android:id="@+id/tvReturn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="15dp"
-        android:drawableStart="@drawable/icon_return_up_back"
-        android:drawablePadding="8dp"
-        android:text="Return"
-        android:textColor="#357AE9"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:ignore="HardcodedText,UseCompatTextViewDrawableXml" />
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp">
+        android:orientation="vertical"
+        android:paddingTop="20dp">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/tvReturn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="10dp"
+            android:drawableTint="@color/light_blue"
+            android:drawableStart="@drawable/ico_left_arrow"
+            android:drawablePadding="8dp"
+            android:text="Back"
+            android:textColor="@color/light_blue"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,UseCompatTextViewDrawableXml" />
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="30dp"
-            android:orientation="vertical"
-            android:paddingHorizontal="18dp">
-
-            <RelativeLayout
-                android:layout_width="375dp"
-                android:layout_height="240dp">
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/displayImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/placeholder"
-                    app:shapeAppearanceOverlay="@style/RoundedImageView" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/checkbox"
-                    style="@style/CustomStatusStyle"
-                    android:layout_width="110dp"
-                    android:layout_height="54dp"
-                    android:layout_marginStart="250dp"
-                    android:layout_marginTop="5dp"
-                    android:checked="true"
-                    android:clickable="false"
-                    android:text="@string/fragment_Post_Detail_not_returned"
-                    android:textAlignment="center"
-                    tools:ignore="TextContrastCheck"/>
-
-                <ImageButton
-                    android:id="@+id/btnDelete"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:layout_marginStart="320dp"
-                    android:layout_marginTop="185dp"
-                    android:background="@drawable/bg_saved"
-                    android:contentDescription="@string/fragment_Post_Detail_Todo"
-                    android:src="@drawable/ico_delete"
-                    android:visibility="gone"
-                    tools:ignore="TouchTargetSizeCheck" />
-
-            </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:layout_marginTop="15dp">
 
             <LinearLayout
-                android:layout_width="366dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="30dp"
+                android:orientation="vertical"
+                android:paddingHorizontal="18dp">
 
-                <TextView
-                    android:id="@+id/displayTitle"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:gravity="start"
-                    android:maxLines="2"
-                    android:text="@string/post_name"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:layout_height="240dp">
 
                     <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/userImage"
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
+                        android:id="@+id/displayImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:scaleType="centerCrop"
                         android:src="@drawable/placeholder"
-                        app:shapeAppearanceOverlay="@style/UserPostImageView" />
+                        app:shapeAppearanceOverlay="@style/RoundedImageView" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:orientation="vertical">
+                    <ImageButton
+                        android:id="@+id/btnDelete"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_marginStart="320dp"
+                        android:layout_marginTop="185dp"
+                        android:background="@drawable/bg_saved"
+                        android:contentDescription="@string/fragment_Post_Detail_Todo"
+                        android:src="@drawable/ico_delete"
+                        android:visibility="gone"
+                        tools:ignore="TouchTargetSizeCheck" />
 
-                        <TextView
-                            android:id="@+id/userName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="start"
-                            android:text="@string/post_name"
-                            android:textAppearance="@style/post_name"
-                            android:textSize="22sp"
-                            android:textStyle="bold" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <!-- Calendar icon -->
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_marginEnd="6dp"
-                                android:src="@drawable/ico_calendar"
-                                tools:ignore="ContentDescription" />
-
-                            <TextView
-                                android:id="@+id/displayDate"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Feb, 29 2025"
-                                android:textSize="16sp"
-                                android:textStyle="bold"
-                                tools:ignore="HardcodedText" />
-
-                            <!-- Spacer -->
-                            <View
-                                android:layout_width="10dp"
-                                android:layout_height="0dp" />
-
-                            <!-- Clock icon -->
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_marginEnd="6dp"
-                                android:src="@drawable/ico_clock"
-                                tools:ignore="ContentDescription" />
-
-                            <TextView
-                                android:id="@+id/displayTime"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="12:00"
-                                android:textSize="16sp"
-                                android:textStyle="bold"
-                                tools:ignore="HardcodedText" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/fragment_Post_Detail_other_information"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/didver_line" />
+                </RelativeLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="50dp"
-                        tools:ignore="UselessLeaf">
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:ignore="UselessLeaf">
-
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/displayInformation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:lineSpacingExtra="5sp"
-                    android:text="@string/post_description"
-                    android:textAlignment="textStart"
-                    android:textAppearance="@style/post_description"
-                    android:textSize="14sp" />
+                    android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginEnd="5dp"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ico_pin"
-                        app:tint="@color/blue"
-                        tools:ignore="ContentDescription" />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/checkbox"
+                        style="@style/CustomStatusStyle"
+                        android:layout_width="150dp"
+                        android:layout_height="65dp"
+                        android:layout_marginTop="5dp"
+                        android:checked="true"
+                        android:clickable="false"
+                        android:text="@string/fragment_Post_Detail_not_returned"
+                        android:textAlignment="center"
+                        tools:ignore="TextContrastCheck" />
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/displayTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="start"
+                        android:maxLines="2"
+                        android:text="@string/post_name"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/userImage"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/placeholder"
+                            app:shapeAppearanceOverlay="@style/UserPostImageView" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/userName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:text="@string/post_name"
+                                android:textAppearance="@style/post_name"
+                                android:textSize="22sp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <!-- Calendar icon -->
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginEnd="6dp"
+                                    android:src="@drawable/ico_calendar"
+                                    tools:ignore="ContentDescription" />
+
+                                <TextView
+                                    android:id="@+id/displayDate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Feb, 29 2025"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    tools:ignore="HardcodedText" />
+
+                                <!-- Spacer -->
+                                <View
+                                    android:layout_width="10dp"
+                                    android:layout_height="0dp" />
+
+                                <!-- Clock icon -->
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginEnd="6dp"
+                                    android:src="@drawable/ico_clock"
+                                    tools:ignore="ContentDescription" />
+
+                                <TextView
+                                    android:id="@+id/displayTime"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="12:00"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    tools:ignore="HardcodedText" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Royal University of Phnom Penh"
-                        android:textColor="#2196F3"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/fragment_Post_Detail_other_information"
+                        android:textColor="@color/black"
                         android:textSize="16sp"
-                        tools:ignore="HardcodedText, TextContrastCheck" />
-                </LinearLayout>
-
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/didver_line" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/fragment_Post_Detail_contact"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginEnd="10dp"
-                            android:scaleType="centerInside"
-                            android:src="@drawable/ico_mail"
-                            tools:ignore="ContentDescription" />
-
-                        <TextView
-                            android:id="@+id/displayEmail"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="tra@somthing.com"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            tools:ignore="HardcodedText" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginEnd="10dp"
-                            android:scaleType="centerInside"
-                            android:src="@drawable/ico_phone"
-                            tools:ignore="ContentDescription" />
-
-                        <TextView
-                            android:id="@+id/displayPhone"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="+855 96789876"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            tools:ignore="HardcodedText" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/rewardContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                        android:textStyle="bold" />
 
                     <View
                         android:layout_width="match_parent"
@@ -335,18 +192,32 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/didver_line" />
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Reward"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        tools:ignore="HardcodedText" />
+                        android:layout_gravity="end"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="50dp"
+                            tools:ignore="UselessLeaf">
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:ignore="UselessLeaf">
+
+
+                        </LinearLayout>
+                    </LinearLayout>
 
                     <TextView
-                        android:id="@+id/reward"
+                        android:id="@+id/displayInformation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
@@ -355,28 +226,166 @@
                         android:textAlignment="textStart"
                         android:textAppearance="@style/post_description"
                         android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/didver_line" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/fragment_Post_Detail_contact"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginEnd="10dp"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/ico_mail"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:id="@+id/displayEmail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="tra@somthing.com"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                tools:ignore="HardcodedText" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginEnd="10dp"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/ico_phone"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:id="@+id/displayPhone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="+855 96789876"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                tools:ignore="HardcodedText" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/didver_line" />
+
+                    <TextView
+                        android:id="@+id/tvLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="Location"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="20dp">
+
+                        <com.google.android.gms.maps.MapView
+                            android:id="@+id/mapView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </androidx.cardview.widget.CardView>
+
+
+                    <LinearLayout
+                        android:id="@+id/rewardContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/didver_line" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Reward"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/reward"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:lineSpacingExtra="5sp"
+                            android:text="@string/post_description"
+                            android:textAlignment="textStart"
+                            android:textAppearance="@style/post_description"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
+                <Button
+                    android:id="@+id/btnCall"
+                    android:layout_width="370dp"
+                    android:layout_height="65dp"
+                    android:layout_marginTop="15dp"
+                    android:backgroundTint="@color/light_blue"
+                    android:enabled="true"
+                    android:textStyle="bold"
+                    android:text="@string/fragment_Post_Detail_call_now"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    app:cornerRadius="40dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/white" />
+
             </LinearLayout>
-
-            <Button
-                android:id="@+id/btnCall"
-                android:layout_width="370dp"
-                android:layout_height="65dp"
-                android:layout_marginTop="15dp"
-                android:backgroundTint="@color/light_blue"
-                android:enabled="true"
-                android:text="@string/fragment_Post_Detail_call_now"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:cornerRadius="4dp" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/white" />
-
-        </LinearLayout>
-    </ScrollView>
+        </ScrollView>
+    </LinearLayout>
 
 </FrameLayout>

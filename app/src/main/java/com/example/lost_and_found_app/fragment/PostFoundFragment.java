@@ -107,7 +107,7 @@ public class PostFoundFragment extends Fragment {
         binding.checkBoxPolicy.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked && binding.editPhone.getError() == null) {
                 binding.btnCreate.setEnabled(true);
-                binding.btnCreate.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.blue));
+                binding.btnCreate.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.light_blue));
             } else {
                 binding.btnCreate.setEnabled(false);
                 binding.btnCreate.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), android.R.color.darker_gray));

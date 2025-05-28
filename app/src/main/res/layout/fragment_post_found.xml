@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:paddingTop="20dp"
     tools:context=".fragment.PostFoundFragment">
 
@@ -142,7 +143,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:drawableEnd="@drawable/ico_arrow_outward"
-                android:text="Royal Univerity of Phnom Penh"
+                android:text="Royal University of Phnom Penh"
                 android:textColor="#2196F3"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -156,7 +157,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="NOTE: Srroy, we currently availible in RUPP."
+                android:text="NOTE: Sorry, we currently available in RUPP."
                 android:textColor="#FF0000"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -206,14 +207,14 @@
                     android:layout_marginStart="16dp"
                     android:background="@drawable/bg_input_edit_text"
                     android:clickable="true"
-                    android:drawableStart="@drawable/ico_calendar_month"
                     android:drawablePadding="8dp"
                     android:focusable="true"
                     android:gravity="center"
                     android:paddingHorizontal="10dp"
                     android:text="Select Date"
                     android:textColor="#000000"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    app:drawableStartCompat="@drawable/ico_calendar" />
 
                 <TextView
                     android:id="@+id/tvSelectedTime"
@@ -222,14 +223,14 @@
                     android:layout_marginStart="8dp"
                     android:background="@drawable/bg_input_edit_text"
                     android:clickable="true"
-                    android:drawableStart="@drawable/ico_timer"
                     android:drawablePadding="8dp"
                     android:focusable="true"
                     android:gravity="center"
                     android:paddingHorizontal="10dp"
                     android:text="Select Time"
                     android:textColor="#000000"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    app:drawableStartCompat="@drawable/ico_clock" />
             </LinearLayout>
 
             <!-- Contact Author Section -->
@@ -349,8 +350,8 @@
                     android:text="Create"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:backgroundTint="#E1E1E1"
-                    app:cornerRadius="4dp" />
+                    app:backgroundTint="#aaa"
+                    app:cornerRadius="30dp" />
 
                 <CheckBox
                     android:id="@+id/checkBoxPolicy"
