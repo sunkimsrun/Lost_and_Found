@@ -18,7 +18,7 @@
         <item
             android:id="@+id/nav_lost"
             android:icon="@drawable/ico_lost"
-            android:title="View lose items"
+            android:title="View lost items"
             tools:ignore="HardcodedText" />
 
         <item

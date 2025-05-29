@@ -61,6 +61,10 @@ public class RegisterActivity extends BaseActivity {
         setupPasswordToggle(binding.etPassword, true);
         setupPasswordToggle(binding.etConfirmPassword, false);
 
+        binding.tvSkipForNow.setOnClickListener(view -> {
+            startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
+        });
+
         binding.btnRegister.setOnClickListener(v -> registerUser());
     }
 

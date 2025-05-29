@@ -9,14 +9,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="180dp"
             android:layout_marginBottom="8dp"
             android:clipToPadding="false"
             android:overScrollMode="never"
@@ -52,25 +52,51 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="200dp"
         android:orientation="vertical"
         android:paddingHorizontal="10dp">
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/toggleGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="latest's lost"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
 
+            <TextView
+                android:id="@+id/tvLatestLost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Latest's Lost"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:padding="8dp"
+                tools:ignore="HardcodedText"/>
+
+            <TextView
+                android:id="@+id/tvLatestFound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Latest's Found"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:padding="8dp"
+                tools:ignore="HardcodedText"/>
+
+        </LinearLayout>
+
+        <!-- Blue underline that moves -->
         <View
+            android:id="@+id/activeIndicator"
             android:layout_width="42dp"
-            android:layout_height="2dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="-6dp"
+            android:layout_marginStart="4dp"
             android:background="@drawable/bg_blue" />
 
-        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
+        <androidx.cardview.widget.CardView
             android:layout_width="390dp"
             android:layout_height="223dp"
             android:layout_gravity="center_horizontal"
@@ -114,7 +140,8 @@
                             android:layout_marginTop="5dp"
                             android:text="Title"
                             android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:ignore="HardcodedText"/>
 
                         <TextView
                             android:id="@+id/postInformation"
@@ -125,7 +152,8 @@
                             android:maxLines="3"
                             android:text="After users agree to meet through messaging and can initiate the verification by tapping on ‘Verify.’"
                             android:textSize="11sp"
-                            android:textStyle="normal" />
+                            android:textStyle="normal"
+                            tools:ignore="HardcodedText"/>
 
                     </LinearLayout>
 
@@ -229,7 +257,8 @@
                             android:layout_marginTop="1dp"
                             android:text="Sok Sochetraaaaa"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:ignore="HardcodedText"/>
 
                         <TextView
                             android:id="@+id/userPhone"
@@ -239,7 +268,8 @@
                             android:maxLines="1"
                             android:text="+855 966482541"
                             android:textSize="11sp"
-                            android:textStyle="normal" />
+                            android:textStyle="normal"
+                            tools:ignore="HardcodedText"/>
 
                     </LinearLayout>
 
@@ -255,7 +285,8 @@
                         android:text="Lost"
                         android:textAlignment="center"
                         android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText"/>
 
                 </LinearLayout>
 
@@ -267,11 +298,13 @@
             android:id="@+id/tvSkip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:layout_gravity="center_horizontal"
             android:text="See more..."
             android:textColor="@color/black"
             android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="HardcodedText"/>
 
     </LinearLayout>
 
@@ -287,10 +320,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="42.5dp"
             android:layout_marginTop="30.5dp"
-            android:text="Sad Person"
+            android:text="Unlucky People"
             android:textColor="@color/blue"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -327,7 +361,8 @@
                     android:text="168 Lost"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -357,7 +392,8 @@
                     android:text="168 Lost"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -388,7 +424,8 @@
                     android:text="168 Lost"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText"/>
             </RelativeLayout>
 
         </LinearLayout>
