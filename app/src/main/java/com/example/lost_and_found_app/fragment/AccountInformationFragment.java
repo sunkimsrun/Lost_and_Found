@@ -4,13 +4,14 @@ import android.app.AlertDialog;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -111,51 +112,71 @@ public class AccountInformationFragment extends DialogFragment {
         TextView customTitle = new TextView(requireContext());
         customTitle.setText("Edit " + label);
         customTitle.setTextSize(20);
-        customTitle.setPadding((int) (16 * getResources().getDisplayMetrics().density), 24, 16, 16);
-        customTitle.setTextColor(getResources().getColor(android.R.color.black));
+        int paddingPx = (int) (16 * getResources().getDisplayMetrics().density);
+        customTitle.setPadding(45, 24, paddingPx, 16);
+        customTitle.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.black));
         customTitle.setTypeface(Typeface.DEFAULT_BOLD);
         builder.setCustomTitle(customTitle);
+
+        LinearLayout container = new LinearLayout(requireContext());
+        container.setOrientation(LinearLayout.VERTICAL);
+        int margin = (int) (20 * getResources().getDisplayMetrics().density);
+        container.setPadding(margin, margin, margin, margin);
 
         final EditText input = new EditText(requireContext());
         input.setInputType(InputType.TYPE_CLASS_TEXT);
         input.setText(targetView.getText().toString());
         input.setBackgroundResource(R.drawable.bg_gray_rectangle);
-        int padding = (int) (12 * getResources().getDisplayMetrics().density);
-        input.setPadding(padding, padding, padding, padding);
+        int editPadding = (int) (12 * getResources().getDisplayMetrics().density);
+        input.setPadding(editPadding, editPadding, editPadding, editPadding);
+        container.addView(input);
 
-        builder.setView(input);
-        builder.setPositiveButton("Save", null);
-        builder.setNegativeButton("Cancel", null);
+        LinearLayout buttonLayout = new LinearLayout(requireContext());
+        buttonLayout.setOrientation(LinearLayout.HORIZONTAL);
+        buttonLayout.setGravity(Gravity.END);
+        buttonLayout.setPadding(0, margin, 0, 0);
+
+        Button cancelBtn = new Button(requireContext());
+        cancelBtn.setText("Cancel");
+        cancelBtn.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.black));
+        cancelBtn.setBackgroundResource(R.drawable.edit_cancel);
+
+        Button saveBtn = new Button(requireContext());
+        saveBtn.setText("Save");
+        saveBtn.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.white));
+        saveBtn.setBackgroundResource(R.drawable.edit_confirm);
+
+        LinearLayout.LayoutParams btnParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        btnParams.setMargins(20, 0, 0, 0);
+
+        buttonLayout.addView(cancelBtn);
+        buttonLayout.addView(saveBtn, btnParams);
+
+        container.addView(buttonLayout);
+        builder.setView(container);
 
         AlertDialog dialog = builder.create();
-        dialog.setOnShowListener(dialogInterface -> {
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE)
-                    .setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.light_blue));
-            dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
-                    .setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.red));
 
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
-                String value = input.getText().toString().trim();
-                if (!value.isEmpty()) {
-                    userRef.child(key).setValue(value)
-                            .addOnSuccessListener(unused -> {
-                                targetView.setText(value);
-                                Toast.makeText(getContext(), label + " updated", Toast.LENGTH_SHORT).show();
-                                dialog.dismiss();
-                            })
-                            .addOnFailureListener(e -> Toast.makeText(getContext(), "Failed to update " + label, Toast.LENGTH_SHORT).show());
-                } else {
-                    Toast.makeText(getContext(), label + " cannot be empty", Toast.LENGTH_SHORT).show();
-                }
-            });
+        cancelBtn.setOnClickListener(v -> dialog.dismiss());
 
-            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(v -> dialog.dismiss());
+        saveBtn.setOnClickListener(v -> {
+            String value = input.getText().toString().trim();
+            if (!value.isEmpty()) {
+                userRef.child(key).setValue(value)
+                        .addOnSuccessListener(unused -> {
+                            targetView.setText(value);
+                            Toast.makeText(getContext(), label + " updated", Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        })
+                        .addOnFailureListener(e -> Toast.makeText(getContext(), "Failed to update " + label, Toast.LENGTH_SHORT).show());
+            } else {
+                Toast.makeText(getContext(), label + " cannot be empty", Toast.LENGTH_SHORT).show();
+            }
         });
 
         dialog.show();
     }
-
-
 
     private void openGenderPicker() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), R.style.MyDialogTheme);
