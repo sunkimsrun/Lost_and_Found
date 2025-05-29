@@ -18,7 +18,6 @@ android {
         multiDexEnabled = true
         manifestPlaceholders["MAPS_API_KEY"] = project.properties["MAPS_API_KEY"] ?: ""
 
-        //using for apk to install in mobile phone
 //        ndk {
 //            abiFilters += listOf("armeabi-v7a", "arm64-v8a")
 //        }

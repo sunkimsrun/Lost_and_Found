@@ -3,243 +3,326 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A64A4A4A"
+    android:background="@color/white"
     android:orientation="vertical"
-    android:gravity="center"
     tools:context=".fragment.AccountInformationFragment">
 
     <LinearLayout
+        android:id="@+id/tvBack"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="35dp">
+
+        <ImageView
+            android:id="@+id/ivBackArrow"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:backgroundTint="@color/black"
+            android:src="@drawable/ico_left_arrow"
+            android:contentDescription="@string/back"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Account"
+            android:textAlignment="textStart"
+            android:textColor="#1E1E1E"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:paddingStart="16dp"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/user_information_bg"
         android:orientation="vertical"
-        android:paddingHorizontal="29dp"
-        android:paddingVertical="44dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/account_inf"
-            android:textAppearance="@style/over_break_line"
-            android:textSize="20sp"
-            tools:ignore="TextContrastCheck" />
+        android:layout_marginTop="50dp"
+        android:padding="16dp">
 
 
         <!-- Divider -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginVertical="16dp"
-            android:background="@drawable/didver_line" />
 
         <!-- Name Item -->
         <RelativeLayout
-            android:layout_width="317dp"
+            android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/information_container">
+            android:layout_gravity="center_horizontal">
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:id="@+id/iconUsername"
+                android:layout_width="36dp"
+                android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="16dp"
-                android:contentDescription="@string/fragment_Account_Information_Todo1"
-                android:src="@drawable/user" />
+                android:contentDescription="@string/fragment_Account_Information_Todo4"
+                android:src="@drawable/ico_user" />
 
-            <TextView
-                android:id="@+id/username"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/username"
-                android:textAppearance="@style/edit_label"
-                android:translationX="60dp"
-                tools:ignore="RelativeOverlap" />
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@+id/iconUsername"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="5dp"
+                    android:text="0123456789"
+                    android:textAppearance="@style/edit_label"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/edit_username"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="16dp"
                 android:contentDescription="@string/fragment_Account_Information_Todo5"
-                android:src="@drawable/in_edit" />
+                android:src="@drawable/ico_edit" />
         </RelativeLayout>
 
         <!-- Email Item -->
         <RelativeLayout
-            android:layout_width="317dp"
+            android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="19dp"
-            android:background="@drawable/information_container">
+            android:layout_marginTop="19dp">
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:id="@+id/iconEmail"
+                android:layout_width="36dp"
+                android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="16dp"
-                android:contentDescription="@string/fragment_Account_Information_Todo2"
-                android:src="@drawable/email" />
+                android:contentDescription="@string/fragment_Account_Information_Todo4"
+                android:src="@drawable/ico_mail" />
 
-            <TextView
-                android:id="@+id/email"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/gmail"
-                android:textAppearance="@style/edit_label"
-                android:translationX="60dp"
-                tools:ignore="RelativeOverlap" />
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@+id/iconEmail"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="5dp"
+                    android:text="admin@foundit.com"
+                    android:textAppearance="@style/edit_label"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/edit_email"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="16dp"
                 android:contentDescription="@string/fragment_Account_Information_Todo6"
-                android:src="@drawable/in_edit" />
+                android:src="@drawable/ico_edit" />
         </RelativeLayout>
 
         <!-- Gender Item -->
         <RelativeLayout
-            android:layout_width="317dp"
+            android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="19dp"
-            android:background="@drawable/information_container">
+            android:layout_marginTop="19dp">
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:id="@+id/iconGender"
+                android:layout_width="36dp"
+                android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="16dp"
-                android:contentDescription="@string/fragment_Account_Information_Todo3"
-                android:src="@drawable/gender" />
+                android:contentDescription="@string/fragment_Account_Information_Todo4"
+                android:src="@drawable/icon_gender" />
 
-            <TextView
-                android:id="@+id/gender"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/fragment_Change_Gender_selected_gender"
-                android:textAppearance="@style/edit_label"
-                android:translationX="60dp"
-                tools:ignore="RelativeOverlap" />
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@+id/iconGender"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="5dp"
+                    android:text="Gay"
+                    android:textAppearance="@style/edit_label"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/edit_gender"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="16dp"
                 android:contentDescription="@string/fragment_Account_Information_Todo7"
-                android:src="@drawable/in_edit" />
+                android:src="@drawable/ico_edit" />
         </RelativeLayout>
 
         <!-- Phone Item -->
         <RelativeLayout
-            android:layout_width="317dp"
+            android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="19dp"
-            android:background="@drawable/information_container">
+            android:layout_marginTop="19dp">
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:id="@+id/iconPhoneNumber"
+                android:layout_width="36dp"
+                android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="16dp"
                 android:contentDescription="@string/fragment_Account_Information_Todo4"
-                android:src="@drawable/phone" />
+                android:src="@drawable/ico_phone" />
 
-            <TextView
-                android:id="@+id/phone"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="0123456789"
-                android:textAppearance="@style/edit_label"
-                android:translationX="60dp"
-                tools:ignore="HardcodedText" />
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@+id/iconPhoneNumber"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone Number"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="5dp"
+                    android:text="0123456789"
+                    android:textAppearance="@style/edit_label"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/edit_phnumber"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="16dp"
                 android:contentDescription="@string/fragment_Account_Information_Todo8"
-                android:src="@drawable/in_edit" />
+                android:src="@drawable/ico_edit" />
         </RelativeLayout>
 
         <!-- Phone Item -->
         <RelativeLayout
-            android:layout_width="317dp"
+            android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="19dp"
-            android:background="@drawable/information_container">
+            android:layout_marginTop="19dp">
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:id="@+id/iconPassword"
+                android:layout_width="36dp"
+                android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="16dp"
                 android:contentDescription="@string/fragment_Account_Information_Todo4"
-                android:src="@drawable/pass_lock" />
+                android:src="@drawable/ico_lock" />
 
-            <TextView
-                android:id="@+id/password"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="********"
-                android:textAppearance="@style/edit_label"
-                android:textSize="20sp"
-                android:translationX="60dp"
-                tools:ignore="HardcodedText" />
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@+id/iconPassword"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Password"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="********"
+                    android:textAppearance="@style/edit_label"
+                    android:textSize="20sp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/edit_password"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="16dp"
                 android:contentDescription="@string/fragment_Account_Information_Todo8"
-                android:src="@drawable/in_edit" />
+                android:src="@drawable/ico_edit" />
         </RelativeLayout>
 
-        <!-- Centered Back Button -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp">
-
-            <RelativeLayout
-                android:id="@+id/back_button"
-                android:layout_width="317dp"
-                android:layout_height="55dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/button"
-                tools:ignore="UselessParent">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="@string/back"
-                    android:textAppearance="@style/back" />
-            </RelativeLayout>
-        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

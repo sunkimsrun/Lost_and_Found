@@ -47,7 +47,6 @@ public class AccountFragment extends Fragment {
     private FirebaseAuth mAuth;
     private FirebaseStorage firebaseStorage;
     private FirebaseDatabase firebaseDatabase;
-
     private PostCardAdapter adapter;
     private Uri imageUri;
     private HomeActivity homeActivity;
@@ -70,7 +69,6 @@ public class AccountFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
-
         return binding.getRoot();
     }
 
@@ -78,7 +76,6 @@ public class AccountFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         homeActivity = (HomeActivity) getActivity();
-
         updateUserDisplay();
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -86,7 +83,6 @@ public class AccountFragment extends Fragment {
 
         RecyclerView recyclerView = view.findViewById(R.id.rcv_list_post);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
         adapter = new PostCardAdapter(currentUserId);
         recyclerView.setAdapter(adapter);
 
@@ -96,7 +92,6 @@ public class AccountFragment extends Fragment {
         if (selectedId != -1) {
             RadioButton selectedRadioButton = view.findViewById(selectedId);
             String selectedText = selectedRadioButton.getText().toString().toLowerCase(Locale.ROOT);
-
             if ("lost".equals(selectedText)) {
                 loadPosts(currentUserId, "lostitems");
             } else if ("found".equals(selectedText)) {
@@ -108,7 +103,6 @@ public class AccountFragment extends Fragment {
             if (checkedId != -1) {
                 RadioButton selectedRadioButton = view.findViewById(checkedId);
                 String selectedText = selectedRadioButton.getText().toString().toLowerCase(Locale.ROOT);
-
                 if ("lost".equals(selectedText)) {
                     loadPosts(currentUserId, "lostitems");
                 } else if ("found".equals(selectedText)) {
@@ -117,21 +111,18 @@ public class AccountFragment extends Fragment {
             }
         });
 
-
         binding.editIcon.setOnClickListener(v -> openGallery());
 
         binding.button2.setOnClickListener(v -> {
-            AccountInformationFragment dialog = new AccountInformationFragment();
-            dialog.show(getParentFragmentManager(), "AccountInfoDialog");
+            if (homeActivity != null) {
+                homeActivity.LoadFragment(new AccountInformationFragment());
+            }
         });
 
-
-
         requireActivity().getSupportFragmentManager().addOnBackStackChangedListener(() -> {
-            if (!isAdded() || getActivity() == null) return;
             Fragment currentFragment = getActivity().getSupportFragmentManager()
                     .findFragmentById(R.id.fragment_container);
-            if (currentFragment instanceof AccountInformationFragment) {
+            if (!(currentFragment instanceof AccountInformationFragment)) {
                 updateUserDisplay();
             }
         });
@@ -145,7 +136,6 @@ public class AccountFragment extends Fragment {
 
     private void uploadImageToFirebase() {
         if (imageUri == null) return;
-
         showProgressBar();
         FirebaseUser user = mAuth.getCurrentUser();
         if (user == null) {
@@ -172,7 +162,6 @@ public class AccountFragment extends Fragment {
     private void saveImageUrlToDatabase(String url) {
         FirebaseUser user = mAuth.getCurrentUser();
         if (user == null) return;
-
         DatabaseReference userRef = firebaseDatabase.getReference("Users").child(user.getUid());
         userRef.child("profileImageUrl").setValue(url);
     }
@@ -232,8 +221,6 @@ public class AccountFragment extends Fragment {
         });
     }
 
-
-
     private void loadPosts(String currentUserId, String ref) {
         DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference(ref);
 
@@ -256,14 +243,11 @@ public class AccountFragment extends Fragment {
         });
     }
 
-    private void loadFragment(Fragment fragment) {
-        binding.fragmentContainer.setVisibility(View.VISIBLE);
-        requireActivity().getSupportFragmentManager().beginTransaction()
-                .replace(binding.fragmentContainer.getId(), fragment)
-                .addToBackStack(null)
-                .commit();
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUserDisplay();
     }
-
 
     private void showProgressBar() {
         if (homeActivity != null) homeActivity.showProgressBar();
