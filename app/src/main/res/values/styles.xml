@@ -43,6 +43,13 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <!-- Style: Radio Button 3 -->
+    <style name="RadioButtonStyle3">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="android:textColor">@color/radio_text_color</item>
+        <item name="android:button">@null</item>
+        <item name="android:textAlignment">textStart</item>
+    </style>
 
     <!--  Style : Post Items -->
     <style name="LabelStyle">

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="lost_count">
+        <item quantity="one">%d lost</item>
+        <item quantity="other">%d losts</item>
+    </plurals>
+</resources>
