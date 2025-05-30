@@ -1,12 +1,19 @@
 package com.example.lost_and_found_app.fragment;
 
+import static com.google.android.gms.auth.api.signin.GoogleSignIn.hasPermissions;
+
+import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -40,10 +47,14 @@ import java.util.UUID;
 public class PostFoundFragment extends Fragment {
 
     private static final int IMAGE_PICK_CODE = 1000;
+    private static final int REQUEST_CAMERA = 1001;
+    private static final int REQUEST_PERMISSIONS = 1003;
     private final PostCardRepository postCardRepository = new PostCardRepository();
     private Uri imageUri;
+
     private HomeActivity homeActivity;
     private FragmentPostFoundBinding binding;
+    private static final String[] REQUIRED_PERMISSIONS = new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_MEDIA_IMAGES};
     private final boolean isEditing = false;
 
     public PostFoundFragment() {
@@ -115,9 +126,11 @@ public class PostFoundFragment extends Fragment {
         });
 
         binding.inputImage.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_PICK);
-            intent.setType("image/*");
-            startActivityForResult(intent, IMAGE_PICK_CODE);
+            if (hasPermissions()) {
+                showImagePickerDialog();
+            } else {
+                requestPermissions(REQUIRED_PERMISSIONS, REQUEST_PERMISSIONS);
+            }
         });
 
         binding.tvSelectedDate.setOnClickListener(v -> showDatePicker());
@@ -126,6 +139,38 @@ public class PostFoundFragment extends Fragment {
 
         return view;
     }
+
+    private boolean hasPermissions() {
+        for (String permission : REQUIRED_PERMISSIONS) {
+            if (ContextCompat.checkSelfPermission(requireContext(), permission) != PackageManager.PERMISSION_GRANTED) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    private void showImagePickerDialog() {
+        String[] options = {"Camera", "Gallery"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Select Image From");
+        builder.setItems(options, (dialog, which) -> {
+            if (which == 0) {
+                ContentValues values = new ContentValues();
+                values.put(MediaStore.Images.Media.TITLE, "New Picture");
+                imageUri = requireActivity().getContentResolver()
+                        .insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                startActivityForResult(cameraIntent, REQUEST_CAMERA);
+            } else {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, IMAGE_PICK_CODE);
+            }
+        });
+        builder.show();
+    }
+
 
     private void showDatePicker() {
         Calendar calendar = Calendar.getInstance();
@@ -250,22 +295,11 @@ public class PostFoundFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == IMAGE_PICK_CODE && data != null) {
+            if (requestCode == IMAGE_PICK_CODE && data != null && data.getData() != null) {
                 Uri sourceUri = data.getData();
-                if (sourceUri != null) {
-                    Uri destinationUri = Uri.fromFile(new File(requireContext().getCacheDir(), "cropped_" + UUID.randomUUID() + ".jpg"));
-
-                    UCrop.Options options = new UCrop.Options();
-                    options.setCircleDimmedLayer(false);
-                    options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
-                    options.setCompressionQuality(90);
-
-                    UCrop.of(sourceUri, destinationUri)
-                            .withAspectRatio(375, 240)
-                            .withMaxResultSize(375, 240)
-                            .withOptions(options)
-                            .start(requireContext(), this);
-                }
+                startCrop(sourceUri);
+            } else if (requestCode == REQUEST_CAMERA && imageUri != null) {
+                startCrop(imageUri);
             } else if (requestCode == UCrop.REQUEST_CROP) {
                 final Uri resultUri = UCrop.getOutput(data);
                 if (resultUri != null) {
@@ -283,6 +317,24 @@ public class PostFoundFragment extends Fragment {
             }
         }
     }
+
+    private void startCrop(Uri sourceUri) {
+        Uri destinationUri = Uri.fromFile(new File(requireContext().getCacheDir(), "cropped_" + UUID.randomUUID() + ".jpg"));
+
+        UCrop.Options options = new UCrop.Options();
+        options.setCircleDimmedLayer(false);
+        options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
+        options.setCompressionQuality(90);
+
+        UCrop.of(sourceUri, destinationUri)
+                .withAspectRatio(375, 240)
+                .withMaxResultSize(375, 240)
+                .withOptions(options)
+                .start(requireContext(), this);
+    }
+
+
+
 
     @Override
     public void onDestroyView() {
