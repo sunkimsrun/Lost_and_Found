@@ -316,7 +316,8 @@
                         android:text="Location"
                         android:textColor="@color/black"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText"/>
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
