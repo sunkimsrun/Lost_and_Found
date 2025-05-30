@@ -84,7 +84,6 @@
         app:layout_constraintTop_toBottomOf="@+id/report_lose" />
 
     <LinearLayout
-        android:id="@+id/screen3_actionbar"
         android:layout_width="345dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
@@ -108,7 +107,6 @@
             android:textStyle="bold" />
 
         <LinearLayout
-            android:id="@+id/swap_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -116,7 +114,6 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/bg_dot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/todo"
