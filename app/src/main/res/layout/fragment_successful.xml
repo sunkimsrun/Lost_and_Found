@@ -23,10 +23,11 @@
             android:layout_marginTop="30dp"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/error404" />
+            app:lottie_rawRes="@raw/success" />
 
 
         <TextView
+            android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

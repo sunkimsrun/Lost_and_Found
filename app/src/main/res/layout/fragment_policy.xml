@@ -108,15 +108,6 @@
                         android:textColor="#444444"
                         android:textSize="15sp" />
 
-                    <!-- Extra Image (Lottie Animation) -->
-                    <com.airbnb.lottie.LottieAnimationView
-                        android:layout_width="wrap_content"
-                        android:layout_height="300dp"
-                        android:layout_marginTop="30dp"
-                        app:lottie_autoPlay="true"
-                        app:lottie_loop="true"
-                        app:lottie_rawRes="@raw/privacy" />
-
                     <!-- Extra Content Hidden Initially -->
                     <TextView
                         android:id="@+id/moreContentText"

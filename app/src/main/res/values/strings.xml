@@ -215,7 +215,7 @@
 
 <!--    fragment_successful-->
     <string name="fragment_Successful_Todo">TODO</string>
-    <string name="fragment_successful_successfully">Successfully!!</string>
+    <string name="fragment_successful_successfully">Post Successfully!!</string>
     <string name="fragment_successful_back">Back!!</string>
 
 
