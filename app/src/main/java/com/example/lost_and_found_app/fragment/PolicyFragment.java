@@ -9,25 +9,22 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.lost_and_found_app.R;
 
 public class PolicyFragment extends Fragment {
 
     public PolicyFragment() {
-        // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_policy, container, false);
 
-        // Find the views
         Button readMoreButton = view.findViewById(R.id.readMoreButton);
         TextView moreContentText = view.findViewById(R.id.moreContentText);
 
-        // Set up button click
         readMoreButton.setOnClickListener(v -> {
             if (moreContentText.getVisibility() == View.GONE) {
                 moreContentText.setVisibility(View.VISIBLE);

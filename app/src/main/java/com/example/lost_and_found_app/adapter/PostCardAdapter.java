@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.lost_and_found_app.HomeActivity;
+import com.example.lost_and_found_app.R;
 import com.example.lost_and_found_app.databinding.PostCardBinding;
+import com.example.lost_and_found_app.fragment.AccountFragment;
 import com.example.lost_and_found_app.fragment.PostDetailFragment;
 import com.example.lost_and_found_app.model.PostCard;
 import com.google.firebase.database.DataSnapshot;
@@ -74,19 +76,31 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHo
 
         holder.itemView.setOnClickListener(view -> {
             PostDetailFragment fragment = new PostDetailFragment();
-
-            Bundle bundle = new Bundle();
-            bundle.putString("postId", post.getPostId());
-            bundle.putString("status", post.getStatus());
-            bundle.putString("source", source);
-
-            fragment.setArguments(bundle);
-
             Context context = view.getContext();
+
             if (context instanceof HomeActivity) {
-                ((HomeActivity) context).LoadFragment(fragment);
+                HomeActivity homeActivity = (HomeActivity) context;
+                int selectedId = homeActivity.binding.navigationView.getCheckedItem().getItemId();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("userId", post.getUserId());
+                bundle.putString("postId", post.getPostId());
+                bundle.putString("status", post.getStatus());
+                bundle.putString("source", source);
+
+                if (selectedId == R.id.nav_lost) {
+                    bundle.putString("back", "View lost items");
+                } else if (selectedId == R.id.nav_found) {
+                    bundle.putString("back", "View found items");
+                }
+
+                fragment.setArguments(bundle);
+                homeActivity.LoadFragment(fragment);
             }
         });
+
+
+
     }
 
     private void loadUserData(PostCardBinding binding, String userId, Context context) {
@@ -112,7 +126,7 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHo
                                 .centerCrop()
                                 .into(binding.userImage);
                     } else {
-                        binding.userImage.setImageResource(android.R.color.darker_gray); // or default image
+                        binding.userImage.setImageResource(android.R.color.darker_gray);
                     }
                 } else {
                     binding.userName.setText("Unknown");
@@ -138,16 +152,6 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardAdapter.ViewHo
         postCards.clear();
         postCards.addAll(newCards);
         notifyDataSetChanged();
-    }
-
-    public void addPostCards(List<PostCard> newCards) {
-        int start = postCards.size();
-        postCards.addAll(newCards);
-        notifyItemRangeInserted(start, newCards.size());
-    }
-
-    public PostCard getPostCardAt(int position) {
-        return postCards.get(position);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

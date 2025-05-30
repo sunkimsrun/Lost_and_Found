@@ -1,5 +1,6 @@
 package com.example.lost_and_found_app.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
+import com.example.lost_and_found_app.ForgetPasswordActivity;
 import com.example.lost_and_found_app.R;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,6 +28,7 @@ public class ChangePasswordFragment extends DialogFragment {
     private EditText currentPasswordInput, newPasswordInput, confirmPasswordInput;
     private ImageView currentEyeIcon, newEyeIcon, confirmEyeIcon;
     private RelativeLayout confirmButton;
+
     private boolean showCurrent = false, showNew = false, showConfirm = false;
 
     private FirebaseAuth mAuth;
@@ -70,7 +73,12 @@ public class ChangePasswordFragment extends DialogFragment {
         confirmButton.setOnClickListener(v -> updatePassword());
 
         TextView resetPassText = view.findViewById(R.id.reset_passw);
-        resetPassText.setOnClickListener(v -> openForgotPasswordFragment());
+        resetPassText.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), ForgetPasswordActivity.class);
+            intent.putExtra("openFromAccount",true);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        });
     }
 
     private void toggleVisibility(EditText field, boolean visible) {
@@ -125,19 +133,4 @@ public class ChangePasswordFragment extends DialogFragment {
         Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
-    private void closeFragment() {
-        requireActivity().getSupportFragmentManager().popBackStack();
-        View container = requireActivity().findViewById(R.id.fragment_container);
-        if (container != null) {
-            container.setVisibility(View.GONE);
-        }
-    }
-
-    private void openForgotPasswordFragment() {
-        requireActivity().getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragment_container, new ForgotPasswordFragment())
-                .addToBackStack(null)
-                .commit();
-    }
 }

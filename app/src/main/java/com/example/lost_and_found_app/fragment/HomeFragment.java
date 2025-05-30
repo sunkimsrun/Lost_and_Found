@@ -68,7 +68,7 @@ public class HomeFragment extends Fragment {
 
         showProgressBar();
 
-        serviceHelper.getTop3UsersWithMostLostPosts(new IApiCallback<List<Map.Entry<String, Integer>>>() {
+        serviceHelper.getTop3UsersWithMostLostPosts(new IApiCallback<>() {
             @Override
             public void onSuccess(List<Map.Entry<String, Integer>> result) {
                 for (int i = 0; i < result.size(); i++) {
@@ -81,12 +81,15 @@ public class HomeFragment extends Fragment {
                     if (i == 0) {
                         binding.sadUserText1.setText(text);
                         loadUserImage(userId, binding.sadUserImage1);
+                        binding.person1.setOnClickListener(v -> openAccountFragment(userId));
                     } else if (i == 1) {
                         binding.sadUserText2.setText(text);
                         loadUserImage(userId, binding.sadUserImage2);
+                        binding.person2.setOnClickListener(v -> openAccountFragment(userId));
                     } else if (i == 2) {
                         binding.sadUserText3.setText(text);
                         loadUserImage(userId, binding.sadUserImage3);
+                        binding.person3.setOnClickListener(v -> openAccountFragment(userId));
                     }
                 }
                 hideProgressBar();
@@ -103,7 +106,7 @@ public class HomeFragment extends Fragment {
 
         binding.tvSkip.setOnClickListener(v -> {
             if (getActivity() instanceof HomeActivity) {
-                ((HomeActivity) getActivity()).binding.navigationView.setCheckedItem(R.id.nav_lost); ;
+                ((HomeActivity) getActivity()).binding.navigationView.setCheckedItem(R.id.nav_lost);
                 ((HomeActivity) getActivity()).LoadFragment(new ViewLostFragment());
             }
         });
@@ -127,7 +130,7 @@ public class HomeFragment extends Fragment {
 
             binding.tvSkip.setOnClickListener(v1 -> {
                 if (getActivity() instanceof HomeActivity) {
-                    ((HomeActivity) getActivity()).binding.navigationView.setCheckedItem(R.id.nav_lost); ;
+                    ((HomeActivity) getActivity()).binding.navigationView.setCheckedItem(R.id.nav_lost);
                     ((HomeActivity) getActivity()).LoadFragment(new ViewLostFragment());
                 }
             });
@@ -142,7 +145,7 @@ public class HomeFragment extends Fragment {
 
             binding.tvSkip.setOnClickListener(v1 -> {
                 if (getActivity() instanceof HomeActivity) {
-                    ((HomeActivity) getActivity()).binding.navigationView.setCheckedItem(R.id.nav_found); ;
+                    ((HomeActivity) getActivity()).binding.navigationView.setCheckedItem(R.id.nav_found);
                     ((HomeActivity) getActivity()).LoadFragment(new ViewFoundFragment());
                 }
             });
@@ -246,6 +249,7 @@ public class HomeFragment extends Fragment {
                 binding.latestCard.setOnClickListener(v -> {
                     PostDetailFragment fragment = new PostDetailFragment();
                     Bundle bundle = new Bundle();
+                    bundle.putBoolean("latestCard",true);
                     bundle.putString("postId", post.getPostId());
                     bundle.putString("status", post.getStatus());
 
@@ -300,6 +304,16 @@ public class HomeFragment extends Fragment {
                 binding.userImage.setImageResource(R.drawable.placeholder);
             }
         });
+    }
+
+    private void openAccountFragment(String userId) {
+        if (getActivity() instanceof HomeActivity) {
+            AccountFragment fragment = new AccountFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("userId", userId);
+            fragment.setArguments(bundle);
+            ((HomeActivity) getActivity()).LoadFragment(fragment);
+        }
     }
 
     private void startAutoScroll(int pageCount) {

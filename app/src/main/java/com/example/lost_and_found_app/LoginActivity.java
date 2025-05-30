@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -30,10 +32,10 @@ import java.util.Objects;
 
 public class LoginActivity extends BaseActivity {
 
-    ActivityLoginBinding binding;
+    private ActivityLoginBinding binding;
     private FirebaseAuth mAuth;
-    private static final int RC_SIGN_IN = 9001;
     private GoogleSignInClient mGoogleSignInClient;
+    private static final int RC_SIGN_IN = 9001;
     private boolean isPasswordVisible = false;
 
     @Override
@@ -52,41 +54,37 @@ public class LoginActivity extends BaseActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
+        // Event Listeners
         binding.btnGoLogin.setOnClickListener(v -> signInWithGoogle());
+        binding.tvSkipForNow.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, HomeActivity.class)));
+        binding.tvForgetPassword.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, ForgetPasswordActivity.class)));
+        binding.tvRegister.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
+
+        binding.btnLogIn.setOnClickListener(v -> handleEmailLogin());
+
         setupPasswordToggle(binding.etPassword, true);
+    }
 
-        binding.tvSkipForNow.setOnClickListener(view -> {
-            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-        });
+    private void handleEmailLogin() {
+        String email = binding.etEmail.getText().toString().trim();
+        String password = binding.etPassword.getText().toString().trim();
 
-        binding.tvForgetPassword.setOnClickListener(view -> {
-            startActivity(new Intent(LoginActivity.this, ForgetPasswordActivity.class));
-        });
+        if (TextUtils.isEmpty(email)) {
+            binding.etEmail.setError("Please enter email!");
+            return;
+        }
 
-        binding.tvRegister.setOnClickListener(view -> {
-            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-        });
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.etEmail.setError("Invalid email format!");
+            return;
+        }
 
-        binding.btnLogIn.setOnClickListener(view -> {
-            String userInput = binding.etEmail.getText().toString().trim();
-            String password = binding.etPassword.getText().toString().trim();
+        if (TextUtils.isEmpty(password)) {
+            binding.etPassword.setError("Password is required!");
+            return;
+        }
 
-            if (TextUtils.isEmpty(userInput)) {
-                binding.etEmail.setError("Please enter email!");
-                return;
-            }
-
-            if (TextUtils.isEmpty(password)) {
-                binding.etPassword.setError("Password is required!");
-                return;
-            }
-
-            if (android.util.Patterns.EMAIL_ADDRESS.matcher(userInput).matches()) {
-                loginWithEmail(userInput, password);
-            }  else {
-                binding.etEmail.setError("Invalid email or phone number format!");
-            }
-        });
+        loginWithEmail(email, password);
     }
 
     private void loginWithEmail(String email, String password) {
@@ -95,11 +93,10 @@ public class LoginActivity extends BaseActivity {
                 .addOnCompleteListener(task -> {
                     binding.loadingBar.setVisibility(View.GONE);
                     if (task.isSuccessful()) {
-                        Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, AuthScreenActivity.class));
-                        finish();
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        checkUserProfile(user);
                     } else {
-                        Toast.makeText(LoginActivity.this, "Login failed: " +
+                        Toast.makeText(this, "Login failed: " +
                                 Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -139,26 +136,18 @@ public class LoginActivity extends BaseActivity {
                                 DataSnapshot snapshot = snapshotTask.getResult();
                                 if (!snapshot.exists() || task.getResult().getAdditionalUserInfo().isNewUser()) {
                                     HashMap<String, Object> userData = new HashMap<>();
-                                    userData.put("username", user.getDisplayName());
-                                    userData.put("email", user.getEmail());
-                                    userData.put("profileImageUrl", user.getPhotoUrl() != null ? user.getPhotoUrl().toString() : "");
                                     userData.put("isProfileComplete", false);
+
                                     userRef.setValue(userData);
-                                    startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
+
+                                    Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                                    intent.putExtra("continueWithGoogle", true);
+                                    intent.putExtra("username", user.getDisplayName());
+                                    intent.putExtra("email", user.getEmail());
+
+                                    startActivity(intent);
                                 } else {
-                                    String gender = snapshot.child("gender").getValue(String.class);
-                                    String phone = snapshot.child("phoneNumber").getValue(String.class);
-                                    String profileImage = snapshot.child("profileImageUrl").getValue(String.class);
-
-                                    boolean isComplete = gender != null && !gender.isEmpty()
-                                            && phone != null && !phone.isEmpty()
-                                            && profileImage != null && !profileImage.isEmpty();
-
-                                    if (isComplete) {
-                                        startActivity(new Intent(LoginActivity.this, AuthScreenActivity.class));
-                                    } else {
-                                        startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
-                                    }
+                                    checkUserProfile(user);
                                 }
                                 finish();
                             } else {
@@ -166,11 +155,37 @@ public class LoginActivity extends BaseActivity {
                             }
                         });
                     } else {
-                        Toast.makeText(this, "Authentication Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Authentication failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
+    private void checkUserProfile(FirebaseUser user) {
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
+        userRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DataSnapshot snapshot = task.getResult();
+                String gender = snapshot.child("gender").getValue(String.class);
+                String phone = snapshot.child("phoneNumber").getValue(String.class);
+                String profileImage = snapshot.child("profileImageUrl").getValue(String.class);
+
+                boolean isComplete = gender != null && !gender.isEmpty()
+                        && phone != null && !phone.isEmpty()
+                        && profileImage != null && !profileImage.isEmpty();
+
+                if (isComplete) {
+                    Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginActivity.this, AuthScreenActivity.class));
+                } else {
+                    Toast.makeText(this, "Please complete your profile to continue.", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
+                }
+                finish();
+            } else {
+                Toast.makeText(this, "Failed to fetch user data.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     @SuppressLint("ClickableViewAccessibility")
     private void setupPasswordToggle(EditText editText, boolean isMainPassword) {

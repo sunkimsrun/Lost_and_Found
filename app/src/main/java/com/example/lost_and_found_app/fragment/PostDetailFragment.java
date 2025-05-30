@@ -1,5 +1,6 @@
 package com.example.lost_and_found_app.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -43,7 +44,6 @@ public class PostDetailFragment extends Fragment {
     private HomeActivity homeActivity;
     private boolean isPostLoaded = false;
     private boolean isUserLoaded = false;
-
     private static final String MAP_VIEW_BUNDLE_KEY = "unforgettable";
 
     @Override
@@ -83,26 +83,7 @@ public class PostDetailFragment extends Fragment {
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(rupp, 16f));
         });
 
-
-        binding.tvReturn.setOnClickListener(v -> {
-            if (homeActivity == null) return;
-
-            int selectedId = homeActivity.binding.navigationView.getCheckedItem().getItemId();
-
-            if (selectedId == R.id.nav_found) {
-                homeActivity.LoadFragment(new ViewFoundFragment());
-            } else if (selectedId == R.id.nav_lost) {
-                homeActivity.LoadFragment(new ViewLostFragment());
-            } else if (selectedId == R.id.nav_account) {
-                homeActivity.LoadFragment(new AccountFragment());
-            } else if (selectedId == R.id.nav_home) {
-                homeActivity.LoadFragment(new HomeFragment());
-            }
-        });
-
-
         binding.btnDelete.setOnClickListener(v -> {
-
             String postIdArg = args.getString("postId");
             String statusArg = args.getString("status");
 
@@ -127,11 +108,16 @@ public class PostDetailFragment extends Fragment {
                                 if (!response.isSuccessful() || !isAdded()) return;
 
                                 if (homeActivity != null) {
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("action", "delete");
+
+                                    SuccessfulFragment successfulFragment = new SuccessfulFragment();
+                                    successfulFragment.setArguments(bundle);
+
                                     new android.os.Handler().postDelayed(() -> {
-                                        homeActivity.LoadFragment(new SuccessfulFragment());
+                                        homeActivity.LoadFragment(successfulFragment);
                                     }, 1500);
                                 }
-
                             }
 
                             @Override
@@ -144,7 +130,6 @@ public class PostDetailFragment extends Fragment {
                     .setNegativeButton("Cancel", null)
                     .show();
         });
-
     }
 
     private void loadPostById(String postId, String status) {
@@ -188,6 +173,48 @@ public class PostDetailFragment extends Fragment {
                 binding.displayPhone.setText(card.getPhone());
                 binding.displayTime.setText(card.getPostTime());
                 binding.checkbox.setText(card.getStatus());
+
+                binding.tvReturn.setOnClickListener(v -> {
+                    if (homeActivity == null) return;
+
+                    int selectedId = homeActivity.binding.navigationView.getCheckedItem().getItemId();
+
+                    if (getArguments().getBoolean("latestCard", false)) {
+                        homeActivity.LoadFragment(new HomeFragment());
+                    } else if (selectedId == R.id.nav_found) {
+                        homeActivity.LoadFragment(new ViewFoundFragment());
+                    } else if (selectedId == R.id.nav_lost) {
+                        homeActivity.LoadFragment(new ViewLostFragment());
+                    } else if (selectedId == R.id.nav_account) {
+                        homeActivity.LoadFragment(new AccountFragment());
+                    } else if (selectedId == R.id.nav_home) {
+                        AccountFragment fragment = new AccountFragment();
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("userId", card.getUserId());
+                        bundle.putBoolean("fromOther", true);
+                        fragment.setArguments(bundle);
+
+                        Context context = v.getContext();
+                        if (context instanceof HomeActivity) {
+                            ((HomeActivity) context).LoadFragment(fragment);
+                        }
+                    }
+                });
+
+                binding.userImage.setOnClickListener(view -> {
+                    AccountFragment fragment = new AccountFragment();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("userId", card.getUserId());
+                    bundle.putBoolean("fromOther", true);
+                    fragment.setArguments(bundle);
+
+                    Context context = view.getContext();
+                    if (context instanceof HomeActivity) {
+                        ((HomeActivity) context).LoadFragment(fragment);
+                    }
+                });
 
                 binding.btnCall.setOnClickListener(v -> {
                     String phone = card.getPhone();
@@ -281,7 +308,23 @@ public class PostDetailFragment extends Fragment {
                     String username = snapshot.child("username").getValue(String.class);
                     String profileImageUrl = snapshot.child("profileImageUrl").getValue(String.class);
 
-                    if (username != null) binding.userName.setText(username);
+                    if (username != null) {
+                        int selectedId = homeActivity.binding.navigationView.getCheckedItem().getItemId();
+
+                        assert getArguments() != null;
+                        String returnStatus = getArguments().getString("back");
+
+                        if (getArguments().getBoolean("latestCard", false)) {
+                            binding.tvReturn.setText("Home");
+                        }else if (selectedId == R.id.nav_home) {
+                            binding.tvReturn.setText(username + "'s Profile");
+                        } else {
+                            binding.tvReturn.setText(returnStatus);
+                        }
+
+                        binding.userName.setText(username);
+                    } ;
+
                     if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
                         Glide.with(requireContext())
                                 .load(profileImageUrl)
@@ -291,6 +334,7 @@ public class PostDetailFragment extends Fragment {
                                 .into(binding.userImage);
                     }
                 }
+
 
                 isUserLoaded = true;
                 tryHideProgressBar();
@@ -392,5 +436,4 @@ public class PostDetailFragment extends Fragment {
         }
         if (binding != null) binding.mapView.onSaveInstanceState(mapViewBundle);
     }
-
 }

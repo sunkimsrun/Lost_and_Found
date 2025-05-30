@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lost_and_found_app.databinding.ActivityRegisterBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -22,8 +22,11 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class RegisterActivity extends BaseActivity {
 
@@ -135,28 +138,69 @@ public class RegisterActivity extends BaseActivity {
     }
 
     private void firebaseAuthWithGoogle(String idToken) {
+        binding.loadingBar.setVisibility(View.VISIBLE);
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
-        mAuth.signInWithCredential(credential).addOnCompleteListener(this, task -> {
-            if (task.isSuccessful()) {
-                FirebaseUser user = mAuth.getCurrentUser();
-                if (user != null) {
-                    String uid = user.getUid();
-                    usersRef.child(uid).child("username").setValue(user.getDisplayName());
-                    usersRef.child(uid).child("email").setValue(user.getEmail());
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, task -> {
+                    binding.loadingBar.setVisibility(View.GONE);
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
 
-                    Intent intent = new Intent(RegisterActivity.this, ProfileActivity.class);
-                    intent.putExtra("username", user.getDisplayName());
-                    intent.putExtra("email", user.getEmail());
-                    intent.putExtra("continueWithGoogle", true);
-                    startActivity(intent);
-                    finish();
+                        userRef.get().addOnCompleteListener(snapshotTask -> {
+                            if (snapshotTask.isSuccessful()) {
+                                DataSnapshot snapshot = snapshotTask.getResult();
+                                if (!snapshot.exists() || task.getResult().getAdditionalUserInfo().isNewUser()) {
+                                    HashMap<String, Object> userData = new HashMap<>();
+                                    userData.put("isProfileComplete", false);
+
+                                    userRef.setValue(userData);
+
+                                    Intent intent = new Intent(RegisterActivity.this, ProfileActivity.class);
+                                    intent.putExtra("continueWithGoogle", true);
+                                    intent.putExtra("username", user.getDisplayName());
+                                    intent.putExtra("email", user.getEmail());
+
+                                    startActivity(intent);
+                                } else {
+                                    checkUserProfile(user);
+                                }
+                                finish();
+                            } else {
+                                Toast.makeText(this, "Failed to fetch user data.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } else {
+                        Toast.makeText(this, "Authentication failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+    private void checkUserProfile(FirebaseUser user) {
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
+        userRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DataSnapshot snapshot = task.getResult();
+                String gender = snapshot.child("gender").getValue(String.class);
+                String phone = snapshot.child("phoneNumber").getValue(String.class);
+                String profileImage = snapshot.child("profileImageUrl").getValue(String.class);
+
+                boolean isComplete = gender != null && !gender.isEmpty()
+                        && phone != null && !phone.isEmpty()
+                        && profileImage != null && !profileImage.isEmpty();
+
+                if (isComplete) {
+                    Toast.makeText(this, "Register Successful!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(RegisterActivity.this, AuthScreenActivity.class));
+                } else {
+                    Toast.makeText(this, "Please complete your profile to continue.", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(RegisterActivity.this, ProfileActivity.class));
                 }
+                finish();
             } else {
-                Toast.makeText(this, "Authentication Failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Failed to fetch user data.", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
     @SuppressLint("ClickableViewAccessibility")
     private void setupPasswordToggle(EditText editText, boolean isMainPassword) {
         editText.setOnTouchListener((v, event) -> {

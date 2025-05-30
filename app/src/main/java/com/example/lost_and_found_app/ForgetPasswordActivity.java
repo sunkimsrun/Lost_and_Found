@@ -28,11 +28,21 @@ public class ForgetPasswordActivity extends BaseActivity {
         binding = ActivityForgetPasswordBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.tvBack.setOnClickListener(v -> {
-            Intent intent = new Intent(ForgetPasswordActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-        });
+        boolean account = getIntent().getBooleanExtra("openFromAccount", false);
+
+        if(account){
+            binding.tvBack.setText("Back");
+            binding.tvBack.setOnClickListener(v -> {
+                onBackPressed();
+            });
+        }else {
+            binding.tvBack.setOnClickListener(v -> {
+                Intent intent = new Intent(ForgetPasswordActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            });
+        }
+
         binding.btnReset.setOnClickListener(v -> {
             String email = binding.etEmail.getText().toString().trim();
 
