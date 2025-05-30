@@ -1,148 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <!--    activity_main-->
-        <string name="app_name">Foundit</string>
-        <string name="logo">logo</string>
+    <!--    activity_main-->
+    <string name="app_name">Foundit</string>
+    <string name="logo">logo</string>
 
-        <!--    start_screen2-->
-        <string name="earth">Earth</string>
-        <string name="flag">Flag</string>
-        <string name="choose_your_language">Choose your Language</string>
-        <string name="english">English</string>
-        <string name="united_kingdom">United Kingdom</string>
-        <string name="next">Next</string>
+    <!--    start_screen2-->
+    <string name="earth">Earth</string>
+    <string name="flag">Flag</string>
+    <string name="choose_your_language">Choose your Language</string>
+    <string name="english">English</string>
+    <string name="united_kingdom">United Kingdom</string>
+    <string name="next">Next</string>
 
-        <!--    start_screen3-->
-        <string name="some_id">1&#47;3</string>
-        <string name="skip">Skip</string>
-        <string name="report_lose">Report Lost Items</string>
-        <string name="lost_something">Lost something valuable? Submit details about your lost item, including descriptions and location, to help others identify and return it.</string>
-        <string name="prev">Prev</string>
+    <!--    start_screen3-->
+    <string name="some_id">1&#47;3</string>
+    <string name="skip">Skip</string>
+    <string name="report_lose">Report Lost Items</string>
+    <string name="lost_something">Lost something valuable? Submit details about your lost item, including descriptions and location, to help others identify and return it.</string>
+    <string name="prev">Prev</string>
+    <string name="lost_found">lost_found</string>
     <string name="todo">TODO</string>
 
-        <!--    start_screen4-->
-        <string name="some_id_start_screen4">2/3</string>
+    <!--    start_screen4-->
+    <string name="some_id_start_screen4">2/3</string>
+    <string name="found_item_start_screen4">found_item</string>
     <string name="report_found_start_screen4">Report Found Items</string>
-        <string name="found_something">Found an item? Provide details, including photos and location, so the rightful owner can claim it quickly and easily.</string>
+    <string name="found_something">Found an item? Provide details, including photos and location, so the rightful owner can claim it quickly and easily.</string>
 
-        <!--    start_screen5-->
-        <string name="some_id_start_screen5">3/3</string>
+    <!--    start_screen5-->
+    <string name="some_id_start_screen5">3/3</string>
+    <string name="explore_start_screen5">explore</string>
     <string name="bg_explore_start_screen5">Explore</string>
-        <string name="explore_something">Browse through reported lost and found items, connect with users, and help reunite lost belongings with their owners.</string>
+    <string name="explore_something">Browse through reported lost and found items, connect with users, and help reunite lost belongings with their owners.</string>
     <string name="get_started">Start</string>
 
-        <!--    login-->
+    <!--    login-->
 
     <!--    register-->
     <string name="complete_your_profile">Complete\nYour Profile!</string>
-        <string name="don_t_worry">Don’t worry, we not selling your data.</string>
+    <string name="don_t_worry">Don’t worry, we not selling your data.</string>
     <string name="welcome_to_FountIt">Welcome to\n<br /><font color="#2196F3">Foundit.</font></string>
 
-        <string-array name="gender">
-                <item>Male</item>
-                <item>Female</item>
-        </string-array>
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 
-        <string name="username">Username</string>
-        <string name="account_inf">Account Information</string>
-        <string name="manage_post">Manage Post</string>
-        <string name="change_password">Change Password</string>
+    <string name="username">Username</string>
+    <string name="account_inf">Account Information</string>
+    <string name="manage_post">Manage Post</string>
+    <string name="change_password">Change Password</string>
+    <string name="your_post">Your Post</string>
     <string name="back">Back</string>
 
     <string name="confirm_changes">Confirm Changes</string>
+    <string name="gmail">traialetralala@gmail.com</string>
 
+    <string name="change_gender">Change Gender</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
     <string name="current_password">Current Password</string>
-        <string name="new_password">New Password</string>
-        <string name="confirm_password">Confirm Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
 
+    <string name="we_will_sen">* We will send you a message to set or reset your new password</string>
+    <string name="resend_code">Resend code in</string>
     <string name="post_name">My Girlfriend</string>
-        <string name="post_description">"I lost my girlfriend at RUPP around 2 PM today. Last seen near RUPP. If found, please return her to me Tra. "</string>
+    <string name="post_description">"I lost my girlfriend at RUPP around 2 PM today. Last seen near RUPP. If found, please return her to me Tra. "</string>
 
-        <string name="introduction">Welcome to Foundit! Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and protect your personal information when you use our lost and found platform.\n\nWhen you post a lost or found item, we may collect your name, contact details (such as email or phone number), and any other information you choose to provide. Item Information: Details about lost or found items, including descriptions, images, and locations. Usage Data: We may collect information about how you interact with our platform, such as page views, searches, and other activity logs. Device Information: Information about the device you use to access Foundit, such as IP address, browser type, and operating system.</string>
+    <string name="introduction">Welcome to Foundit! Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and protect your personal information when you use our lost and found platform.\n\nWhen you post a lost or found item, we may collect your name, contact details (such as email or phone number), and any other information you choose to provide. Item Information: Details about lost or found items, including descriptions, images, and locations. Usage Data: We may collect information about how you interact with our platform, such as page views, searches, and other activity logs. Device Information: Information about the device you use to access Foundit, such as IP address, browser type, and operating system.</string>
+    <string name="loading">Loading</string>
 
 
     <!--        fix warning activity_login-->
     <string name="activity_Login_Dont_Have_Account_Yet_Register">Don\'t have account yet? <font color="#2196F3">Register.</font></string>
 
-<!--        activity_profile-->
-        <string name="activity_Profile_Phone_Number">Phone Number</string>
-        <string name="activity_Profile_Todo">TODO</string>
-        <string name="activity_Profile_complete">Complete</string>
+    <!--        activity_profile-->
+    <string name="activity_Profile_Phone_Number">Phone Number</string>
+    <string name="activity_Profile_Todo">TODO</string>
+    <string name="activity_Profile_complete">Complete</string>
 
-<!--        activity_register-->
-        <string name="activity_Register_Username">Username</string>
-        <string name="activity_Register_Email">Email</string>
-        <string name="activity_Register_Password">Password</string>
-        <string name="activity_Register_ConfirmPassword">ConfirmPassword</string>
+    <!--        activity_register-->
+    <string name="activity_Register_Username">Username</string>
+    <string name="activity_Register_Email">Email</string>
+    <string name="activity_Register_Password">Password</string>
+    <string name="activity_Register_ConfirmPassword">ConfirmPassword</string>
     <string name="activity_Register_Or_Continue_With">Or Continue with</string>
-        <string name="activity_Register_Register">Register</string>
-        <string name="activity_Register_Button_Social_Media">Continue with Google</string>
-        <string name="activity_Register_Already_Have_Account_Login">Already have account? <font color="#2196F3">Login.</font></string>
+    <string name="activity_Register_Register">Register</string>
+    <string name="activity_Register_Button_Social_Media">Continue with Google</string>
+    <string name="activity_Register_Already_Have_Account_Login">Already have account? <font color="#2196F3">Login.</font></string>
 
 
     <!--        activity_forget_password-->
     <string name="activity_Forget_Password_Email">Email</string>
     <string name="activity_Forget_Password_we_will_send_you_a_message_to_set_or_reset_your_new_password"><font color="#FF4B26">*</font> We will send you a message to set or reset your new password</string>
-        <string name="activity_Forget_Password_Reset">Reset</string>
-        <string name="activity_Forget_Password_Email_Sent_Successfully">Email sent successfully!</string>
-        <string name="activity_Forget_Password_Log_In">Log In</string>
+    <string name="activity_Forget_Password_Reset">Reset</string>
+    <string name="activity_Forget_Password_Email_Sent_Successfully">Email sent successfully!</string>
+    <string name="activity_Forget_Password_Log_In">Log In</string>
+    <string name="activity_Forget_Password_hint_1">1</string>
+    <string name="activity_Forget_Password_hint_2">2</string>
+    <string name="activity_Forget_Password_hint_3">3</string>
+    <string name="activity_Forget_Password_hint_4">4</string>
+    <string name="activity_Forget_Password_hint_5">5</string>
+    <string name="activity_Forget_Password_hint_6">6</string>
 
     <!--    activity_create_new_password-->
+    <string name="activity_Create_New_Password_ConfirmPassword">ConfirmPassword</string>
+    <string name="activity_Create_New_Password_Create_Your_New_Password">Create your\nNew Password!</string>
+    <string name="activity_Create_New_Password_Lock_Icon">Lock Icon</string>
+    <string name="activity_Create_New_Password_New_Password">New Password</string>
+    <string name="Lock_Icon">Lock Icon</string>
+    <string name="activity_Create_New_Password_Submit">Submit</string>
 
     <!--    activity_changed_password-->
+    <string name="activity_Changed_Password_Password_Changed">Password Changed!</string>
+    <string name="activity_Changed_Password_Go_To_Log_In">Go to Log In</string>
 
     <!--    activity_auth_screen-->
     <string name="activity_Auth_Screen_Get_Start">Get Start</string>
 
     <!--    Fragment Home-->
+    <string name="fragment_Home_Lost_Items">Lost Items</string>
+    <string name="Fragment_Home_View_Lost_Items">View Lost Items</string>
+    <string name="Fragment_Home_View_items">View Items</string>
+    <string name="Fragment_Home_Found_Items">Found Items</string>
+    <string name="Fragment_Home_View_Found_Items">View Found Items</string>
+    <string name="Fragment_Home_View_Items">View Items</string>
+    <string name="Fragment_Home_Create_Post">Create Post</string>
+    <string name="Fragment_Home_Report_Lost_Or_Found">Report lost or found.</string>
     <string name="Create_Post">Create Post</string>
 
-<!--    fragment_account-->
+    <!--    fragment_account-->
     <string name="Fragment_Account_click_for_image">Click For Image</string>
     <string name="fragment_Account_Todo1">TODO</string>
     <string name="fragment_Account_Todo2">TODO</string>
     <string name="fragment_Account_Todo3">TODO</string>
 
-<!--    fragment_account_information-->
+    <!--    fragment_account_information-->
+    <string name="fragment_Account_Information_Todo1">Todo</string>
+    <string name="fragment_Account_Information_Todo2">TODO</string>
+    <string name="fragment_Account_Information_Todo3">TODO</string>
     <string name="fragment_Account_Information_Todo4">TODO</string>
     <string name="fragment_Account_Information_Todo5">TODO</string>
     <string name="fragment_Account_Information_Todo6">TODO</string>
     <string name="fragment_Account_Information_Todo7">TODO</string>
     <string name="fragment_Account_Information_Todo8">TODO</string>
 
-<!--    fragment_change_field-->
+    <!--    fragment_change_field-->
+    <string name="fragment_Change_Field_confirm_changes">Confirm Changes</string>
+    <string name="fragment_Change_Field_enter">Enter</string>
 
     <!--    fragment_change_gender-->
+    <string name="fragment_Change_Gender_enter_password_to_confirm">Enter Password to Confirm</string>
+    <string name="fragment_Change_Gender_selected_gender">Male</string>
 
     <!--    fragment_change_password-->
     <string name="fragment_Change_Password_forgot_pass">Forgot Password?</string>
     <string name="fragment_Change_Password_reset_passw">Reset Password</string>
 
 
-<!--    fragment_contact-->
+    <!--    fragment_contact-->
     <string name="about_information">FoundIt is a mobile application designed specifically to support
         students and staff at <u>Royal University of Phnom Penh</u> in locating and recovering lost items on campus.
         Created by a team of four passionate computer science students, FoundIt addresses a common
         problem we all face: misplacing or losing personal belongings in and around the university.</string>
     <string name="purpose">Our Purpose</string>
+    <string name="approach">Our Approach</string>
     <string name="to_solve"> • To solve the common problem of losing personal belongings on campus</string>
     <string name="to_encourage"> • To encourage responsibility and honesty among students and staff</string>
     <string name="to_create"> • To create a user-friendly, helpful tool for the university community</string>
     <string name="Why_We_build">FoundIt gives users the ability to:</string>
     <string name="report_lost"> <b> • Report a lost item</b> </string>
     <string name="report_found"> <b> • Report a found item</b> </string>
+    <string name="get_in_touch"><u>Get in Touch</u></string>
     <string name="upload_photo"> <b> • Upload photos</b> </string>
     <string name="provide_contact"> <b> • Provide contact information</b> </string>
     <string name="Browse_other_posts"> <b> • Browse other posts</b> </string>
     <string name="about_us">About Us</string>
-<!--    Email-->
+    <!--    Email-->
 
     <string name="email">support@example.com </string>
     <string name="location">Royal University of Phnom Penh</string>
     <string name="contact_phone">+855 96 648 2541</string>
     <string name="fragment_Contact_contact_us">Contact Us</string>
+    <string name="fragment_Contact_shayla_example_com">shayla@example.com</string>
+    <string name="fragment_Contact_view_on_google_map">View on google map</string>
+    <string name="fragment_Contact_mon_fri_8am_to_8pm">Mon-Fri/8am to 8pm</string>
+    <string name="fragment_Contact_855_12345678">+855 12345678</string>
 
     <!--    fragment_fragment_forgot_password-->
+    <string name="fragment_Forgot_Password_0_59">0.59</string>
 
     <!--    fragment_post_detail-->
     <string name="fragment_Post_Detail_other_information">Other Information</string>
@@ -151,7 +198,9 @@
     <string name="fragment_Post_Detail_not_returned">Not Returned</string>
     <string name="fragment_Post_Detail_Todo">TODO</string>
 
-<!--    fragment_post-->
+    <!--    fragment_post-->
+    <string name="fragment_Post_Item_found">Found</string>
+    <string name="fragment_Post_Item_lost">Lost</string>
 
     <!--    fragment_post_lost-->
     <string name="fragment_Post_Lost_other_information">Other Information</string>
@@ -164,31 +213,44 @@
     <string name="fragment_Post_Lost_reward">Reward</string>
     <string name="fragment_Post_Lost_create">Create</string>
 
-<!--    fragment_successful-->
+    <!--    fragment_successful-->
+    <string name="fragment_Successful_Todo">TODO</string>
     <string name="fragment_successful_successfully">Post Successfully!!</string>
     <string name="fragment_successful_back">Back!!</string>
 
 
-<!--    fragment_view_found-->
+    <!--    fragment_view_found-->
     <string name="fragment_View_Found_clear_filter">Clear Filter</string>
     <string name="fragment_View_Found_this_week">This Week</string>
     <string name="fragment_View_Found_this_month">This Month</string>
     <string name="fragment_View_Found_today">Today</string>
     <string name="fragment_View_Found_200_reported_lost_today">200+ Reported lost today</string>
 
-<!--    fragment_view_lost-->
+    <!--    fragment_view_lost-->
     <string name="view_found_list_description">List of found item posts</string>
+    <string name="fragment_View_Lost_this_year">This Year</string>
+    <string name="fragment_View_Lost_clear_filter">Clear Filter</string>
+    <string name="fragment_View_Lost_this_month">This Month</string>
+    <string name="fragment_View_Lost_this_week">This Week</string>
+    <string name="fragment_View_Lost_today">Today</string>
+    <string name="fragment_View_Lost_search_something">Search</string>
+    <string name="_200_reported_lost_today">200+ Reported lost today</string>
+    <string name="view_lost_list_description">Search Something</string>
 
     <!--    header_layout-->
     <string name="header_layout_Todo">TODO</string>
     <string name="header_layout_close_drawer">Close Drawer</string>
+    <string name="post_Card_save_post_button">Save Post Button</string>
+    <string name="post_Card_found">Found</string>
+    <string name="post_Card_title">Title</string>
+    <string name="post_Card_18_feb_2025">18 Feb, 2025</string>
+    <string name="post_Card_rupp">RUPP</string>
     <string name="activity_home_logo">Logo</string>
     <string name="activity_Register_skip_for_now">Skip for now!</string>
     <string name="activity_Register_create_an_account">Create an\nAccount!!</string>
 
     <!-- Google Log in Key -->
-    <string name="default_web_client_id">991018082480-gou3esun83k11ljf5v1o4b8hf78ldmbo.apps.googleusercontent.com</string>
-
+    <string name="default_web_client_id">991018082480-j1g5lvidrlgnej01hg8ntkvvuk3ljgas.apps.googleusercontent.com</string>
 
 
     <string name="fragment_Policy_privacy_and_policy">Privacy and Policy</string>
@@ -202,7 +264,8 @@
     \n\nWe collect personal information only when necessary and use it solely for providing and improving our services. We implement strong security measures to protect your data from unauthorized access, disclosure, or misuse.
     \n\nYou have the right to access, update, or delete your personal data. If you have any questions about our privacy policy, feel free to contact our support team.
 </string>
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

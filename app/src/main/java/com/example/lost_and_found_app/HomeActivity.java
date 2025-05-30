@@ -12,7 +12,6 @@ import com.example.lost_and_found_app.databinding.ActivityHomeBinding;
 import com.example.lost_and_found_app.fragment.AccountFragment;
 import com.example.lost_and_found_app.fragment.ContactFragment;
 import com.example.lost_and_found_app.fragment.HomeFragment;
-import com.example.lost_and_found_app.fragment.PolicyFragment;
 import com.example.lost_and_found_app.fragment.ViewFoundFragment;
 import com.example.lost_and_found_app.fragment.ViewLostFragment;
 import com.google.firebase.auth.FirebaseAuth;
@@ -63,7 +62,7 @@ public class HomeActivity extends BaseActivity {
             } else if (itemId == R.id.nav_found) {
                 LoadFragment(new ViewFoundFragment());
             } else if (itemId == R.id.nav_privacy) {
-                LoadFragment(new PolicyFragment());
+                LoadFragment(new PrivacyPolicyFragment());
             } else if (itemId == R.id.nav_contact) {
                 LoadFragment(new ContactFragment());
             } else if (itemId == R.id.nav_signout) {
