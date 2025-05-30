@@ -26,7 +26,6 @@ import com.example.lost_and_found_app.R;
 import com.example.lost_and_found_app.adapter.PostCardAdapter;
 import com.example.lost_and_found_app.databinding.FragmentAccountBinding;
 import com.example.lost_and_found_app.model.PostCard;
-import com.example.lost_and_found_app.repository.PostCardRepository;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -40,6 +39,7 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class AccountFragment extends Fragment {
 
@@ -50,6 +50,7 @@ public class AccountFragment extends Fragment {
     private PostCardAdapter adapter;
     private Uri imageUri;
     private HomeActivity homeActivity;
+    private String userIdToUse;
 
     public AccountFragment() {}
 
@@ -76,26 +77,67 @@ public class AccountFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         homeActivity = (HomeActivity) getActivity();
-        updateUserDisplay();
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         String currentUserId = currentUser != null ? currentUser.getUid() : null;
 
+        userIdToUse = getArguments() != null && getArguments().containsKey("userId")
+                ? getArguments().getString("userId")
+                : currentUserId;
+
+        if (userIdToUse == null) {
+            Toast.makeText(getContext(), "No user found.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (currentUser != null && !currentUser.getUid().equals(userIdToUse) || currentUserId == null ) {
+            binding.tvBack.setVisibility(View.VISIBLE);
+            binding.editIcon.setVisibility(View.GONE);
+            binding.button2.setVisibility(View.GONE);
+        }
+
+        updateUserDisplay(userIdToUse);
+
         RecyclerView recyclerView = view.findViewById(R.id.rcv_list_post);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new PostCardAdapter(currentUserId);
+        adapter = new PostCardAdapter(userIdToUse);
         recyclerView.setAdapter(adapter);
 
-        RadioGroup radioGroup = view.findViewById(R.id.radioGroup);
+        if (homeActivity == null) return;
 
-        int selectedId = radioGroup.getCheckedRadioButtonId();
-        if (selectedId != -1) {
-            RadioButton selectedRadioButton = view.findViewById(selectedId);
+        int selectedId = Objects.requireNonNull(homeActivity.binding.navigationView.getCheckedItem()).getItemId();
+        String backText = "Back";
+        Fragment destinationFragment = null;
+
+        if (selectedId == R.id.nav_found) {
+            backText = "View found items";
+            destinationFragment = new ViewFoundFragment();
+        } else if (selectedId == R.id.nav_lost) {
+            backText = "View lost items";
+            destinationFragment = new ViewLostFragment();
+        } else if (selectedId == R.id.nav_home) {
+            backText = "Home";
+            destinationFragment = new HomeFragment();
+        }
+
+        binding.tvBack.setText(backText);
+
+        Fragment finalDestination = destinationFragment;
+        binding.tvBack.setOnClickListener(v -> {
+            if (homeActivity != null && finalDestination != null) {
+                homeActivity.LoadFragment(finalDestination);
+            }
+        });
+
+        RadioGroup radioGroup = view.findViewById(R.id.radioGroup);
+        int selectedRadioId = radioGroup.getCheckedRadioButtonId();
+        if (selectedRadioId != -1) {
+            RadioButton selectedRadioButton = view.findViewById(selectedRadioId);
             String selectedText = selectedRadioButton.getText().toString().toLowerCase(Locale.ROOT);
             if ("lost".equals(selectedText)) {
-                loadPosts(currentUserId, "lostitems");
+                loadPosts(userIdToUse, "lostitems");
             } else if ("found".equals(selectedText)) {
-                loadPosts(currentUserId, "founditems");
+                loadPosts(userIdToUse, "founditems");
             }
         }
 
@@ -104,9 +146,9 @@ public class AccountFragment extends Fragment {
                 RadioButton selectedRadioButton = view.findViewById(checkedId);
                 String selectedText = selectedRadioButton.getText().toString().toLowerCase(Locale.ROOT);
                 if ("lost".equals(selectedText)) {
-                    loadPosts(currentUserId, "lostitems");
+                    loadPosts(userIdToUse, "lostitems");
                 } else if ("found".equals(selectedText)) {
-                    loadPosts(currentUserId, "founditems");
+                    loadPosts(userIdToUse, "founditems");
                 }
             }
         });
@@ -120,10 +162,10 @@ public class AccountFragment extends Fragment {
         });
 
         requireActivity().getSupportFragmentManager().addOnBackStackChangedListener(() -> {
-            Fragment currentFragment = getActivity().getSupportFragmentManager()
+            Fragment currentFragment = requireActivity().getSupportFragmentManager()
                     .findFragmentById(R.id.fragment_container);
             if (!(currentFragment instanceof AccountInformationFragment)) {
-                updateUserDisplay();
+                updateUserDisplay(userIdToUse);
             }
         });
     }
@@ -166,12 +208,10 @@ public class AccountFragment extends Fragment {
         userRef.child("profileImageUrl").setValue(url);
     }
 
-    public void updateUserDisplay() {
+    public void updateUserDisplay(String userId) {
         showProgressBar();
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user != null) {
-            String userID = user.getUid();
-            getUserDataFromDatabase(userID);
+        if (userId != null) {
+            getUserDataFromDatabase(userId);
         } else {
             hideProgressBar();
         }
@@ -234,6 +274,12 @@ public class AccountFragment extends Fragment {
                         posts.add(post);
                     }
                 }
+                if(posts.isEmpty()){
+                    binding.noFound.setVisibility(View.VISIBLE);
+                }else{
+                    binding.noFound.setVisibility(View.GONE);
+                }
+
                 adapter.setPostCards(posts);
             }
 
@@ -246,7 +292,7 @@ public class AccountFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        updateUserDisplay();
+        updateUserDisplay(userIdToUse);
     }
 
     private void showProgressBar() {
