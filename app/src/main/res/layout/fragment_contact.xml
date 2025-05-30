@@ -257,6 +257,7 @@
                 tools:ignore="HardcodedText" />
 
             <RelativeLayout
+                android:id="@+id/tvEmail"
                 android:layout_width="310dp"
                 android:layout_height="105dp"
                 android:layout_marginTop="20dp"
@@ -288,6 +289,7 @@
 
             </RelativeLayout>
             <RelativeLayout
+                android:id="@+id/tvLocation"
                 android:layout_width="310dp"
                 android:layout_height="105dp"
                 android:layout_marginTop="20dp"
@@ -319,6 +321,7 @@
 
             </RelativeLayout>
             <RelativeLayout
+                android:id="@+id/tvCall"
                 android:layout_width="310dp"
                 android:layout_height="105dp"
                 android:layout_marginTop="20dp"
@@ -339,10 +342,11 @@
                         tools:ignore="HardcodedText" />
 
                     <TextView
+                        android:id="@+id/contact_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/contact_phone"
-                        android:layout_marginRight="64dp"
+                        android:layout_marginRight="57dp"
                         android:textSize="18sp" />
 
 
