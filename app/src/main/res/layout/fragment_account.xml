@@ -43,7 +43,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
-            android:id="@+id/relativeLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -118,7 +117,7 @@
                 android:textColor="#2196F3"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                tools:ignore="TouchTargetSizeCheck" />
+                tools:ignore="TouchTargetSizeCheck,HardcodedText" />
 
         </LinearLayout>
 
@@ -146,7 +145,8 @@
             android:text="Email"
             android:textColor="#A9A9A9"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="UseCompatTextViewDrawableXml,HardcodedText" />
 
         <TextView
             android:id="@+id/phoneNumber"
@@ -159,7 +159,8 @@
             android:text="Phone Number"
             android:textColor="#A9A9A9"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="UseCompatTextViewDrawableXml,HardcodedText" />
 
     </LinearLayout>
 
@@ -178,24 +179,24 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <RadioButton
-            android:id="@+id/radioEmail"
             style="@style/RadioButtonStyle2"
             android:layout_height="43dp"
             android:width="186.67dp"
             android:checked="true"
             android:text="Lost"
             android:textSize="13sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="HardcodedText"/>
 
         <RadioButton
-            android:id="@+id/radioPhone"
             style="@style/RadioButtonStyle2"
             android:layout_height="43dp"
             android:width="186.67dp"
             android:checked="false"
             android:text="Found"
             android:textSize="13sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="HardcodedText"/>
 
     </RadioGroup>
 
@@ -231,7 +232,6 @@
             app:lottie_rawRes="@raw/empty" />
 
         <TextView
-            android:id="@+id/tvUnderLottieFile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/lottieView"
@@ -240,7 +240,8 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="25sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="HardcodedText"/>
 
     </RelativeLayout>
 
@@ -268,7 +269,6 @@
         app:layout_constraintTop_toBottomOf="@+id/userLayout">
 
         <RelativeLayout
-            android:id="@+id/accountInformation"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/container"
@@ -293,7 +293,6 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/managePost"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"
@@ -319,7 +318,6 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/changePassword"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"

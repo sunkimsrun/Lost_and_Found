@@ -19,7 +19,6 @@
         android:layout_marginTop="35dp">
 
         <ImageView
-            android:id="@+id/ivBackArrow"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:backgroundTint="@color/black"
@@ -75,7 +74,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvUsername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Username"
@@ -185,7 +183,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvGender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Gender"
@@ -295,7 +292,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Password"
@@ -304,7 +300,6 @@
                     tools:ignore="HardcodedText" />
 
                 <TextView
-                    android:id="@+id/password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
