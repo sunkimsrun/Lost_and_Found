@@ -6,18 +6,21 @@
     android:background="@drawable/bg_gradient"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingTop="20dp"
-
     tools:context=".fragment.ContactFragment">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:scrollbars="none" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
+            android:background="@drawable/user_information_bg"
+            android:padding="24dp"
             tools:ignore="UselessParent">
 
             <com.airbnb.lottie.LottieAnimationView
@@ -27,15 +30,12 @@
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/aimations" />
 
-            <TextView
-                style="@style/LabelStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"
-                android:text="@string/about_us"
-                android:textColor="@color/blue"
-                android:textSize="35sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_us"
+                    android:textSize="30sp"
+                    android:textStyle="bold"/>
 
             <TextView
                 style="@style/LabelStyle"
@@ -51,7 +51,6 @@
                 style="@style/LabelStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10sp"
                 android:layout_marginTop="10dp"
                 android:text="What You Can Do With FoundIt !"
                 android:textColor="@color/light_blue"
@@ -62,7 +61,6 @@
                 style="@style/LabelStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10sp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/adlam_display"
                 android:text="@string/Why_We_build"
@@ -72,7 +70,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10sp"
                 android:orientation="vertical">
 
                 <TextView
@@ -166,7 +163,6 @@
                 style="@style/LabelStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10sp"
                 android:layout_marginTop="10dp"
                 android:text="Why We Built It:"
                 android:textColor="@color/light_blue"
@@ -177,13 +173,17 @@
                 style="@style/LabelStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="14dp"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="3dp"
+                android:layout_marginTop="10dp"
                 android:text="@string/to_solve" />
 
             <TextView
                 style="@style/LabelStyle"
                 android:layout_width="match_parent"
-                android:layout_margin="14dp"
+                android:layout_marginTop="10dp"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="3dp"
                 android:layout_height="wrap_content"
                 android:text="@string/to_encourage" />
 
@@ -191,14 +191,15 @@
                 style="@style/LabelStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="14dp"
+                android:layout_marginTop="10dp"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="3dp"
                 android:text="@string/to_create" />
 
             <TextView
                 style="@style/LabelStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10sp"
                 android:layout_marginTop="10sp"
                 android:text="@string/purpose"
                 android:textColor="@color/light_blue"
@@ -209,48 +210,25 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="14dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="20sp"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="8dp"
                 android:fontFamily="@font/lato"
                 android:text="@string/about_information"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10sp"
-                android:background="@drawable/didver_line" />
 
             <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_gradien_blackt"
             android:gravity="center"
+            android:layout_marginTop="20dp"
             android:orientation="vertical"
             tools:ignore="UselessParent">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/yellow"
-                android:text="@string/get_in_touch"
-                android:layout_marginTop="10sp"
-                style="@style/LabelStyle"
-                android:layout_marginStart="5sp"
-                android:textSize="20sp"
-                />
-            <TextView
-                android:layout_width="290dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/white"
-                android:gravity="center_horizontal"
-                android:text="Let's Chat, Reach Out to Us"
-                android:textSize="30sp"
-                tools:ignore="HardcodedText" />
 
             <TextView
-                style="@style/LabelStyle"
                 android:layout_width="wrap_content"
                 android:textColor="@color/light_blue"
                 android:layout_height="wrap_content"
@@ -272,35 +250,29 @@
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/white"
+                android:textColor="@color/gray"
                 android:gravity="center_horizontal"
                 android:text="Thank you for using FoundIt! If you have any question let us know what we can help you with :)"
                 android:textSize="13sp"
                 tools:ignore="HardcodedText" />
 
-            <!-- Support Card -->
-
-            <!-- Visit Us Card -->
             <RelativeLayout
-                android:layout_width="288dp"
+                android:layout_width="310dp"
                 android:layout_height="105dp"
                 android:layout_marginTop="20dp"
+                android:gravity="center"
                 android:background="@drawable/bg_contact_card">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:paddingEnd="5sp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="23dp">
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="20dp">
 
                     <ImageView
-                        android:layout_width="50sp"
+                        android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="15dp"
                         android:contentDescription="Ico Message"
                         android:src="@drawable/ico_message"
                         tools:ignore="HardcodedText" />
@@ -308,8 +280,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="15sp"
                         android:text="@string/email"
                         android:textSize="20sp" />
 
@@ -318,25 +288,22 @@
 
             </RelativeLayout>
             <RelativeLayout
-                android:layout_width="288dp"
+                android:layout_width="310dp"
                 android:layout_height="105dp"
                 android:layout_marginTop="20dp"
+                android:gravity="center"
                 android:background="@drawable/bg_contact_card">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:paddingEnd="5sp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="23dp">
+                    android:padding="20dp">
 
                     <ImageView
                         android:layout_width="50sp"
                         android:layout_height="50dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="15dp"
+
+                        android:layout_marginRight="15dp"
                         android:contentDescription="Ico Message"
                         android:src="@drawable/ico_contact_location"
                         tools:ignore="HardcodedText" />
@@ -344,8 +311,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="15sp"
                         android:text="@string/location"
                         android:textSize="17sp" />
 
@@ -354,7 +319,7 @@
 
             </RelativeLayout>
             <RelativeLayout
-                android:layout_width="288dp"
+                android:layout_width="310dp"
                 android:layout_height="105dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_contact_card">
@@ -362,17 +327,13 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:paddingEnd="5sp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="23dp">
+                    android:gravity="center"
+                    android:padding="20dp">
 
                     <ImageView
                         android:layout_width="50sp"
                         android:layout_height="50dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="15dp"
                         android:contentDescription="Ico Message"
                         android:src="@drawable/ico_contact_phone"
                         tools:ignore="HardcodedText" />
@@ -380,9 +341,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="15sp"
                         android:text="@string/contact_phone"
+                        android:layout_marginRight="64dp"
                         android:textSize="18sp" />
 
 
@@ -398,7 +358,7 @@
                 android:text="Check our social media"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/white"
+                android:textColor="@color/gray"
                 android:layout_margin="15sp"
                 tools:ignore="HardcodedText" />
 
