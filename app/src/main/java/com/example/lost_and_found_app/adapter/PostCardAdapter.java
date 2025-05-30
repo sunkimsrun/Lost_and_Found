@@ -13,7 +13,6 @@ import com.bumptech.glide.Glide;
 import com.example.lost_and_found_app.HomeActivity;
 import com.example.lost_and_found_app.R;
 import com.example.lost_and_found_app.databinding.PostCardBinding;
-import com.example.lost_and_found_app.fragment.AccountFragment;
 import com.example.lost_and_found_app.fragment.PostDetailFragment;
 import com.example.lost_and_found_app.model.PostCard;
 import com.google.firebase.database.DataSnapshot;

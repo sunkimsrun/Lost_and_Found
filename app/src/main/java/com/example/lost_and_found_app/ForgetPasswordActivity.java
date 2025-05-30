@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lost_and_found_app.databinding.ActivityForgetPasswordBinding;
 import com.google.firebase.auth.FirebaseAuth;

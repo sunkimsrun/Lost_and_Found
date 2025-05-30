@@ -30,7 +30,8 @@
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="fullSensor"
-            android:theme="@style/UCropTheme.Custom" />
+            android:theme="@style/UCropTheme.Custom"
+            tools:ignore="DiscouragedApi" />
         <activity
             android:name=".StartScreen5Activity"
             android:exported="false" />

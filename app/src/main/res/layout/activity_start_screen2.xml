@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:id="@+id/main"
     android:background="@color/white"
-    tools:context=".StartScreen2Activity">
+    tools:context=".StartScreen2Activity"
+    tools:ignore="Overdraw">
 
 
     <ImageView

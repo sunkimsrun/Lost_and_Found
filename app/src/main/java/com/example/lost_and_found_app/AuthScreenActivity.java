@@ -3,8 +3,6 @@ package com.example.lost_and_found_app;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.lost_and_found_app.databinding.ActivityAuthScreenBinding;
 
 public class AuthScreenActivity extends BaseActivity {

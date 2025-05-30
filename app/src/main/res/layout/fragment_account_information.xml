@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".fragment.AccountInformationFragment">
+    tools:context=".fragment.AccountInformationFragment"
+    tools:ignore="Overdraw">
 
     <LinearLayout
         android:id="@+id/tvBack"
@@ -90,7 +91,7 @@
                     android:layout_marginTop="5dp"
                     android:text="0123456789"
                     android:textAppearance="@style/edit_label"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="HardcodedText,ObsoleteLayoutParam" />
 
             </LinearLayout>
 
@@ -145,7 +146,7 @@
                     android:layout_marginTop="5dp"
                     android:text="admin@foundit.com"
                     android:textAppearance="@style/edit_label"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="HardcodedText,ObsoleteLayoutParam" />
 
             </LinearLayout>
 
@@ -200,7 +201,7 @@
                     android:layout_marginTop="5dp"
                     android:text="Gay"
                     android:textAppearance="@style/edit_label"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="HardcodedText,ObsoleteLayoutParam" />
 
             </LinearLayout>
 
@@ -255,7 +256,7 @@
                     android:layout_marginTop="5dp"
                     android:text="0123456789"
                     android:textAppearance="@style/edit_label"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="HardcodedText,ObsoleteLayoutParam" />
 
             </LinearLayout>
 

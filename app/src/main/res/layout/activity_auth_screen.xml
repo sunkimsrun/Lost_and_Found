@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_auth_screen"
-    tools:context=".AuthScreenActivity">
+    tools:context=".AuthScreenActivity"
+    tools:ignore="Overdraw">
 
     <View
         android:id="@+id/logo_2"

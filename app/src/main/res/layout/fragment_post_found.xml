@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:paddingTop="20dp"
-    tools:context=".fragment.PostFoundFragment">
+    tools:context=".fragment.PostFoundFragment"
+    tools:ignore="Overdraw">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -15,7 +16,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:ignore="ScrollViewSize">
 
 
             <com.google.android.material.imageview.ShapeableImageView
@@ -149,7 +151,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/tvLocation"
-                app:layout_constraintTop_toBottomOf="@+id/inputInformation" />
+                app:layout_constraintTop_toBottomOf="@+id/inputInformation"
+                tools:ignore="UseCompatTextViewDrawableXml,HardcodedText" />
 
             <!-- Location Note -->
             <TextView
@@ -160,6 +163,7 @@
                 android:text="NOTE: Sorry, we currently available in RUPP."
                 android:textColor="#FF0000"
                 android:textSize="10sp"
+                tools:ignore="SmallSp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -288,7 +292,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+                app:layout_constraintTop_toBottomOf="@+id/tvEmail"
+                tools:ignore="Autofill,TextFields" />
 
             <TextView
                 android:id="@+id/tvPhone"
@@ -312,6 +317,7 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bg_input_edit_text"
                 android:hint="Phone Number"
+                android:importantForAutofill="no"
                 android:inputType="phone"
                 android:paddingHorizontal="10dp"
                 android:textSize="14sp"
@@ -329,6 +335,7 @@
                 android:text="NOTE: Please use your real information."
                 android:textColor="#FF0000"
                 android:textSize="10sp"
+                tools:ignore="SmallSp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
