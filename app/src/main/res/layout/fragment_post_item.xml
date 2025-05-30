@@ -34,7 +34,8 @@
                 android:checked="true"
                 android:text="Lost"
                 android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
 
             <RadioButton
                 android:id="@+id/radioFound"
@@ -44,7 +45,8 @@
                 android:checked="false"
                 android:text="Found"
                 android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
         </RadioGroup>
 
         <FrameLayout

@@ -48,7 +48,8 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:contentDescription="Image"
-                    android:src="@drawable/ico_add_photo" />
+                    android:src="@drawable/ico_add_photo"
+                    tools:ignore="HardcodedText" />
             </RelativeLayout>
 
             <!-- Image Upload Section -->
@@ -66,7 +67,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputImage" />
+                app:layout_constraintTop_toBottomOf="@+id/inputImage"
+                tools:ignore="HardcodedText" />
 
             <!-- Divider -->
             <View
@@ -97,7 +99,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider" />
+                app:layout_constraintTop_toBottomOf="@+id/divider"
+                tools:ignore="HardcodedText" />
 
             <!-- Information Input -->
             <EditText
@@ -119,7 +122,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/inputTitle"
+                tools:ignore="HardcodedText" />
 
             <!-- Location Label and Value -->
             <TextView
@@ -134,7 +138,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputInformation" />
+                app:layout_constraintTop_toBottomOf="@+id/inputInformation"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -162,7 +167,7 @@
                 android:text="NOTE: Sorry, we currently available in RUPP."
                 android:textColor="#FF0000"
                 android:textSize="10sp"
-                tools:ignore="SmallSp"
+                tools:ignore="HardcodedText,SmallSp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -181,7 +186,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                tools:ignore="HardcodedText" />
 
             <View
                 android:id="@+id/divider2"
@@ -217,7 +223,8 @@
                     android:text="Select Date"
                     android:textColor="#000000"
                     android:textSize="14sp"
-                    app:drawableStartCompat="@drawable/ico_calendar" />
+                    app:drawableStartCompat="@drawable/ico_calendar"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/tvSelectedTime"
@@ -233,7 +240,8 @@
                     android:text="Select Time"
                     android:textColor="#000000"
                     android:textSize="14sp"
-                    app:drawableStartCompat="@drawable/ico_clock" />
+                    app:drawableStartCompat="@drawable/ico_clock"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
             <!-- Contact Author Section -->
@@ -249,7 +257,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                tools:ignore="HardcodedText" />
 
             <View
                 android:id="@+id/divider3"
@@ -276,7 +285,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider3" />
+                app:layout_constraintTop_toBottomOf="@+id/divider3"
+                tools:ignore="HardcodedText" />
 
             <EditText
                 android:id="@+id/editText"
@@ -292,7 +302,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvEmail"
-                tools:ignore="Autofill,TextFields" />
+                tools:ignore="Autofill,HardcodedText,TextFields" />
 
             <TextView
                 android:id="@+id/tvPhone"
@@ -306,7 +316,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText" />
+                app:layout_constraintTop_toBottomOf="@+id/editText"
+                tools:ignore="HardcodedText" />
 
             <EditText
                 android:id="@+id/editPhone"
@@ -323,7 +334,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvPhone" />
+                app:layout_constraintTop_toBottomOf="@+id/tvPhone"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -334,7 +346,7 @@
                 android:text="NOTE: Please use your real information."
                 android:textColor="#FF0000"
                 android:textSize="10sp"
-                tools:ignore="SmallSp"
+                tools:ignore="HardcodedText,SmallSp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -357,7 +369,8 @@
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:backgroundTint="#aaa"
-                    app:cornerRadius="30dp" />
+                    app:cornerRadius="30dp"
+                    tools:ignore="HardcodedText" />
 
                 <CheckBox
                     android:id="@+id/checkBoxPolicy"
@@ -365,7 +378,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="65dp"
                     android:text="I agree to the policy"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText" />
             </RelativeLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

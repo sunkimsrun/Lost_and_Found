@@ -90,7 +90,8 @@
                     android:layout_height="wrap_content"
                     android:checkable="true"
                     android:clickable="true"
-                    android:text="@string/fragment_View_Found_today" />
+                    android:text="@string/fragment_View_Found_today"
+                    tools:ignore="KeyboardInaccessibleWidget" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_this_week"
@@ -99,7 +100,8 @@
                     android:layout_height="wrap_content"
                     android:checkable="true"
                     android:clickable="true"
-                    android:text="@string/fragment_View_Found_this_week" />
+                    android:text="@string/fragment_View_Found_this_week"
+                    tools:ignore="KeyboardInaccessibleWidget" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_this_month"
@@ -108,7 +110,8 @@
                     android:layout_height="wrap_content"
                     android:checkable="true"
                     android:clickable="true"
-                    android:text="@string/fragment_View_Found_this_month" />
+                    android:text="@string/fragment_View_Found_this_month"
+                    tools:ignore="KeyboardInaccessibleWidget" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_this_year"
@@ -118,7 +121,7 @@
                     android:checkable="true"
                     android:clickable="true"
                     android:text="This Year"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="HardcodedText,KeyboardInaccessibleWidget" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_clear_filter"
@@ -162,7 +165,8 @@
                 android:text="Today you found nothing\n but tomorrow may be everything."
                 android:textColor="@color/black"
                 android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
 
         </RelativeLayout>
 
