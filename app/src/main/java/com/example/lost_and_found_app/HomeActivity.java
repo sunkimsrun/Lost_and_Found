@@ -14,6 +14,7 @@ import com.example.lost_and_found_app.fragment.ContactFragment;
 import com.example.lost_and_found_app.fragment.HomeFragment;
 import com.example.lost_and_found_app.fragment.ViewFoundFragment;
 import com.example.lost_and_found_app.fragment.ViewLostFragment;
+import com.example.lost_and_found_app.fragment.PrivacyPolicyFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends BaseActivity {
