@@ -33,7 +33,7 @@
                 android:width="186.67dp"
                 android:checked="true"
                 android:text="Lost"
-                android:textSize="13sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 tools:ignore="HardcodedText" />
 
@@ -44,7 +44,7 @@
                 android:width="186.67dp"
                 android:checked="false"
                 android:text="Found"
-                android:textSize="13sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 tools:ignore="HardcodedText" />
         </RadioGroup>

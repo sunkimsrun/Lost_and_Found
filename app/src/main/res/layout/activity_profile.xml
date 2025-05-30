@@ -129,6 +129,8 @@
             android:autofillHints="phone"
             android:background="@drawable/bg_gray_rectangle"
             android:drawableStart="@drawable/ico_phone"
+            android:maxLines="1"
+            android:maxLength="14"
             android:drawablePadding="10dp"
             android:hint="@string/activity_Profile_Phone_Number"
             android:paddingHorizontal="10dp"

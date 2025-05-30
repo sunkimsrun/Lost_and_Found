@@ -105,7 +105,17 @@ public class AccountFragment extends Fragment {
 
         setupRecyclerView(view);
         setupNavigationBack(view);
-        setupRadioGroup(view);
+
+        loadPosts(userIdToUse, "lostitems");
+
+        binding.radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == binding.radioLost.getId()) {
+                loadPosts(userIdToUse, "lostitems");
+            } else if (checkedId == binding.radioFound.getId()) {
+                loadPosts(userIdToUse, "founditems");
+            }
+        });
+
 
         binding.editIcon.setOnClickListener(v -> showImagePickerDialog());
 
@@ -224,32 +234,6 @@ public class AccountFragment extends Fragment {
                 homeActivity.LoadFragment(destinationFragment);
             }
         });
-    }
-
-    private void setupRadioGroup(View view) {
-        RadioGroup radioGroup = view.findViewById(R.id.radioGroup);
-        int selectedId = radioGroup.getCheckedRadioButtonId();
-
-        if (selectedId != -1) {
-            RadioButton selected = view.findViewById(selectedId);
-            handleRadioSelection(selected.getText().toString());
-        }
-
-        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId != -1) {
-                RadioButton selected = view.findViewById(checkedId);
-                handleRadioSelection(selected.getText().toString());
-            }
-        });
-    }
-
-    private void handleRadioSelection(String selectedText) {
-        String lower = selectedText.toLowerCase(Locale.ROOT);
-        if ("lost".equals(lower)) {
-            loadPosts(userIdToUse, "lostitems");
-        } else if ("found".equals(lower)) {
-            loadPosts(userIdToUse, "founditems");
-        }
     }
 
     private void uploadImageToFirebase() {

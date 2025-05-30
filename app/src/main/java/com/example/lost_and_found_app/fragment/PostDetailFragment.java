@@ -78,7 +78,7 @@ public class PostDetailFragment extends Fragment {
         binding.mapView.onCreate(mapViewBundle);
 
         binding.mapView.getMapAsync(googleMap -> {
-            LatLng rupp = new LatLng(11.5673, 104.8885);
+            LatLng rupp = new LatLng(11.5682157, 104.8899682);
             googleMap.addMarker(new MarkerOptions().position(rupp).title("Royal University of Phnom Penh"));
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(rupp, 16f));
         });

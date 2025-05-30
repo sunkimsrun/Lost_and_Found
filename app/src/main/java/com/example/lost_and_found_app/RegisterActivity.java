@@ -98,24 +98,13 @@ public class RegisterActivity extends BaseActivity {
             return;
         }
 
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                FirebaseUser user = mAuth.getCurrentUser();
-                if (user != null) {
-                    String uid = user.getUid();
-                    usersRef.child(uid).child("username").setValue(username);
-                    usersRef.child(uid).child("email").setValue(email);
+        Intent intent = new Intent(RegisterActivity.this, ProfileActivity.class);
+        intent.putExtra("username", username);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
+        startActivity(intent);
+        finish();
 
-                    Intent intent = new Intent(RegisterActivity.this, ProfileActivity.class);
-                    intent.putExtra("username", username);
-                    intent.putExtra("email", email);
-                    startActivity(intent);
-                    finish();
-                }
-            } else {
-                Toast.makeText(RegisterActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     private void signInWithGoogle() {

@@ -179,22 +179,24 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <RadioButton
+            android:id="@+id/radioLost"
             style="@style/RadioButtonStyle2"
             android:layout_height="43dp"
             android:width="186.67dp"
             android:checked="true"
             android:text="Lost"
-            android:textSize="13sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             tools:ignore="HardcodedText"/>
 
         <RadioButton
+            android:id="@+id/radioFound"
             style="@style/RadioButtonStyle2"
             android:layout_height="43dp"
             android:width="186.67dp"
             android:checked="false"
             android:text="Found"
-            android:textSize="13sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             tools:ignore="HardcodedText"/>
 

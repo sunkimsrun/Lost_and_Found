@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class ChangePasswordFragment extends DialogFragment {
 
+
     private EditText currentPasswordInput, newPasswordInput, confirmPasswordInput;
     private ImageView currentEyeIcon, newEyeIcon, confirmEyeIcon;
     private RelativeLayout confirmButton;
@@ -56,16 +57,37 @@ public class ChangePasswordFragment extends DialogFragment {
 
         currentEyeIcon.setOnClickListener(v -> {
             showCurrent = !showCurrent;
+
+            if(showCurrent){
+                currentEyeIcon.setImageResource(R.drawable.ico_eye_closed);
+            } else {
+                currentEyeIcon.setImageResource(R.drawable.ico_eye_open);
+            }
+
             toggleVisibility(currentPasswordInput, showCurrent);
         });
 
         newEyeIcon.setOnClickListener(v -> {
             showNew = !showNew;
+
+            if(showCurrent){
+                newEyeIcon.setImageResource(R.drawable.ico_eye_closed);
+            } else {
+                newEyeIcon.setImageResource(R.drawable.ico_eye_open);
+            }
+
             toggleVisibility(newPasswordInput, showNew);
         });
 
         confirmEyeIcon.setOnClickListener(v -> {
             showConfirm = !showConfirm;
+
+            if(showCurrent){
+                confirmEyeIcon.setImageResource(R.drawable.ico_eye_closed);
+            } else {
+                confirmEyeIcon.setImageResource(R.drawable.ico_eye_open);
+            }
+
             toggleVisibility(confirmPasswordInput, showConfirm);
         });
 
