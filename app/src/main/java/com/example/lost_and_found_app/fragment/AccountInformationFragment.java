@@ -181,6 +181,7 @@ public class AccountInformationFragment extends DialogFragment {
     private void openGenderPicker() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), R.style.MyDialogTheme);
         builder.setTitle("Select Gender");
+
         final String[] genderOptions = {"Male", "Female", "Non Binary"};
         int currentSelection = -1;
         String currentGender = genderText.getText().toString();
@@ -190,21 +191,66 @@ public class AccountInformationFragment extends DialogFragment {
                 break;
             }
         }
+
         builder.setSingleChoiceItems(genderOptions, currentSelection, null);
-        builder.setPositiveButton("Save", (dialog, which) -> {
-            AlertDialog alertDialog = (AlertDialog) dialog;
-            int selectedPosition = alertDialog.getListView().getCheckedItemPosition();
-            if (selectedPosition >= 0) {
-                String selectedGender = genderOptions[selectedPosition];
-                userRef.child("gender").setValue(selectedGender)
-                        .addOnSuccessListener(unused -> {
-                            genderText.setText(selectedGender);
-                            Toast.makeText(getContext(), "Gender updated", Toast.LENGTH_SHORT).show();
-                        })
-                        .addOnFailureListener(e -> Toast.makeText(getContext(), "Failed to update gender", Toast.LENGTH_SHORT).show());
-            }
+
+        AlertDialog dialog = builder.create();
+
+        dialog.setOnShowListener(dialogInterface -> {
+            dialog.getListView();
+            ViewGroup parent = (ViewGroup) dialog.getListView().getParent();
+
+            LinearLayout container = new LinearLayout(requireContext());
+            container.setOrientation(LinearLayout.VERTICAL);
+            int padding = (int) (20 * getResources().getDisplayMetrics().density);
+            container.setPadding(padding, padding, padding, padding);
+
+            parent.removeView(dialog.getListView());
+            container.addView(dialog.getListView());
+
+            LinearLayout buttonLayout = new LinearLayout(requireContext());
+            buttonLayout.setOrientation(LinearLayout.HORIZONTAL);
+            buttonLayout.setGravity(Gravity.END);
+            buttonLayout.setPadding(0, padding, 0, 0);
+
+            Button cancelBtn = new Button(requireContext());
+            cancelBtn.setText("Cancel");
+            cancelBtn.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.black));
+            cancelBtn.setBackgroundResource(R.drawable.edit_cancel);
+
+            Button saveBtn = new Button(requireContext());
+            saveBtn.setText("Save");
+            saveBtn.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.white));
+            saveBtn.setBackgroundResource(R.drawable.edit_confirm);
+
+            LinearLayout.LayoutParams btnParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            btnParams.setMargins(20, 0, 0, 0);
+
+            buttonLayout.addView(cancelBtn);
+            buttonLayout.addView(saveBtn, btnParams);
+            container.addView(buttonLayout);
+
+            parent.addView(container);
+
+            cancelBtn.setOnClickListener(v -> dialog.dismiss());
+
+            saveBtn.setOnClickListener(v -> {
+                int selectedPosition = dialog.getListView().getCheckedItemPosition();
+                if (selectedPosition >= 0) {
+                    String selectedGender = genderOptions[selectedPosition];
+                    userRef.child("gender").setValue(selectedGender)
+                            .addOnSuccessListener(unused -> {
+                                genderText.setText(selectedGender);
+                                Toast.makeText(getContext(), "Gender updated", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+                            })
+                            .addOnFailureListener(e -> Toast.makeText(getContext(), "Failed to update gender", Toast.LENGTH_SHORT).show());
+                }
+            });
         });
-        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
-        builder.show();
+
+        dialog.show();
     }
+
 }
