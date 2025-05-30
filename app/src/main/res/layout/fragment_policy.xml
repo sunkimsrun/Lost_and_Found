@@ -25,23 +25,14 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="-20dp"
             android:backgroundTint="@android:color/white"
-            android:scrollbars="none"
             app:cardBackgroundColor="@android:color/white"
             app:cardCornerRadius="24dp">
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="24dp"
-                android:scrollbars="none">
+                android:padding="24dp">
 
-                <!-- Semi-transparent overlay -->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:background="#88FFFFFF" />
-
-                <!-- Main Content -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -94,9 +85,7 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_privacy_illustration" />
 
-
-
-                    <!-- Introduction Text -->
+                    <!-- Intro Text -->
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -108,7 +97,7 @@
                         android:textColor="#444444"
                         android:textSize="15sp" />
 
-                    <!-- Extra Content Hidden Initially -->
+                    <!-- More Text -->
                     <TextView
                         android:id="@+id/moreContentText"
                         android:layout_width="match_parent"
@@ -121,7 +110,7 @@
                         android:textSize="15sp"
                         android:visibility="gone" />
 
-                    <!-- Read More Button -->
+                    <!-- Button -->
                     <Button
                         android:id="@+id/readMoreButton"
                         android:layout_width="wrap_content"
@@ -131,7 +120,6 @@
                         android:text="Read More"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white" />
-
                 </LinearLayout>
 
             </FrameLayout>

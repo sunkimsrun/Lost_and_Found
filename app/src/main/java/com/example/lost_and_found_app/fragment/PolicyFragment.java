@@ -9,12 +9,12 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.example.lost_and_found_app.R;
 
 public class PolicyFragment extends Fragment {
 
     public PolicyFragment() {
+        // Required empty public constructor
     }
 
     @Override
