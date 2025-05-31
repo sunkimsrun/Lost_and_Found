@@ -97,30 +97,6 @@
                             android:textColor="#444444"
                             android:textSize="15sp" />
 
-                        <!-- More Text -->
-                        <TextView
-                            android:id="@+id/moreContentText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"
-                            android:lineSpacingExtra="6dp"
-                            android:text="@string/here_is_more_information_about_our_privacy"
-                            android:textColor="@color/red"
-                            android:textSize="15sp"
-                            android:visibility="gone" />
-
-                        <!-- Button -->
-                        <Button
-                            android:id="@+id/readMoreButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:backgroundTint="#2196F3"
-                            android:text="Read More"
-                            android:textAllCaps="false"
-                            android:textColor="@android:color/white"
-                            tools:ignore="HardcodedText" />
                     </LinearLayout>
 
                 </FrameLayout>
